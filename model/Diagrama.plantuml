@@ -1,0 +1,45 @@
+@startuml Hola
+abstract class Vehiculo {
+    -tipoCombustible : TipoCombustible
+    -marca
+    -modelo
+    -e
+}
+enum State as "Estado" <<enumeration>> {
+    NUEVO
+    USADO
+}
+enum TipoCombustible <<enumeration>> {
+    GASOLINA
+    DIESEL
+    ELECTRICO
+    HIBRIDO
+}
+
+
+abstract class Combustible {
+    -tipoCombustible : TipoCombustible
+
+    'Si ninguno es null, significa que es eléctrico
+    'Como el tipo de variable es con mayús, es un objeto
+    'por los que puede dar null
+    -autonomiaCargaCompleta : Double
+    -tiempoDemoraCarga : Double
+
+    'si ninguno es null, significa que es hibrido
+    -esEnchufable : Boolean
+    -esHibridoLigero : Boolean
+
+
+
+    setAutonomiaCargaCompleta(Double) : void
+    getAutonomiaCargaCompleta() : Double
+    esHibrido() : Boolean
+
+    esHibridoLigero() : Boolean
+
+}
+
+tipoCombustible <|-- Electrico : label
+tipoCombustible <|-- Hibrido : label
+@enduml

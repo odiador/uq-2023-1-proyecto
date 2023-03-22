@@ -2,10 +2,15 @@
 
 skinparam Class {
     FontSize 15
-    BorderColor Blue
-    BackgroundColor APPLICATION
+    BorderColor Black
+    BackgroundColor Lavender
     BorderThickness 3
+
 }
+skinparam Arrow{
+    Thickness 2
+}
+
 interface CompraVentaVehiculo <<interface>> {
 
     +venderVehiculo()
@@ -29,13 +34,12 @@ class Transaccion {
     -codigo : String
     agregarDetalleTransaccion(TipoTransaccion)
 }
-class TipoTransaccion {
+enum TipoTransaccion {
     VENTA
     ALQUILER
     COMPRA
 }
 class DetalleTransaccion {
-    - tipoDetalleTransaccion : TipoTransaccion
     - vehiculo : Vehiculo
     -codigoTransaccion : String
 
@@ -73,18 +77,14 @@ class Administrador {
 }
 
 abstract class Combustible {
-    -tipoCombustible : TipoCombustible
-
     'Si ninguno es null, significa que es eléctrico
     'Como el tipo de variable es con mayús, es un objeto
     'por los que puede dar null
     -autonomiaCargaCompleta
     -tiempoDemoraCarga
-
     'si ninguno es null, significa que es hibrido
     -esEnchufable
     -esHibridoLigero
-
     +Combustible(TipoCombustible)
     +Combustible(TipoCombustible, Boolean, Boolean)
     +Combustible(TipoCombustible, Double, Double)
@@ -100,12 +100,17 @@ enum TipoCombustible {
 }
 
 abstract class Vehiculo {
-    -combustible : Combustible
     -marca : String
     -modelo : String
     -cilindraje: Double
-    -cambio:TipoCambio
     -velocidadMaxima : Double
+    -numeroPasajeros : Integer
+    -numeroBolsasAire : Integer
+}
+
+enum EstadoVehiculo{
+    NUEVO
+    USADO
 }
 
 enum TipoCambio{
@@ -195,12 +200,13 @@ class Camion{
 
 }
 
-Concesionario "1" *-- "*" Usuario : +listaUsuarios
-Concesionario "1" *-- "*" Transaccion : +listaTransacciones
-Concesionario "1" *-- "*" Cliente : +listaClientes
-Concesionario  "1" o-- "*" Vehiculo : +listaVehiculos
-Transaccion  "1" o-- "*" DetalleTransaccion : +listaDetalleTransacciones
-DetalleTransaccion -> TipoTransaccion
+Concesionario "1" *--> "*" Usuario : +listaUsuarios
+Concesionario "1" *--> "*" Transaccion : +listaTransacciones
+Concesionario "1" *--> "*" Cliente : +listaClientes
+Concesionario  "1" o--> "*" Vehiculo : +listaVehiculos
+Transaccion  "1  '" o--> "*" DetalleTransaccion : -  listaDetalleTransacciones
+DetalleTransaccion "1"-> TipoTransaccion : " + tipo"
+Vehiculo "1"-> EstadoVehiculo : "+ estado"
 Sedan --|> Vehiculo
 Deportivo --|> Vehiculo
 Camioneta --|> Vehiculo
@@ -211,9 +217,9 @@ Camion --|> Vehiculo
 Usuario <|-- Cliente
 Usuario <|-- Empleado
 Empleado <|- Administrador
-Combustible -> TipoCombustible
-Vehiculo --> TipoCambio
-Vehiculo --> Combustible
+Combustible "1"-> TipoCombustible : " + tipo"
+Vehiculo "1"--> TipoCambio : " + tipo"
+Vehiculo "1"--> Combustible : " + combustible"
 Empleado ..|> CompraVentaVehiculo
 Cliente ..|> CompraVentaVehiculo
 @enduml

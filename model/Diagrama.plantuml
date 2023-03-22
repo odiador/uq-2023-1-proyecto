@@ -80,11 +80,11 @@ abstract class Combustible {
     'Si ninguno es null, significa que es eléctrico
     'Como el tipo de variable es con mayús, es un objeto
     'por los que puede dar null
-    -autonomiaCargaCompleta
-    -tiempoDemoraCarga
+    -autonomiaCargaCompleta : Double
+    -tiempoDemoraCarga : Double
     'si ninguno es null, significa que es hibrido
-    -esEnchufable
-    -esHibridoLigero
+    -esEnchufable : Boolean
+    -esHibridoLigero : Boolean
     +Combustible(TipoCombustible)
     +Combustible(TipoCombustible, Boolean, Boolean)
     +Combustible(TipoCombustible, Double, Double)
@@ -104,6 +104,10 @@ abstract class Vehiculo {
     -modelo : String
     -cilindraje: Double
     -velocidadMaxima : Double
+    
+}
+
+abstract class Automovil{
     -numeroPasajeros : Integer
     -numeroBolsasAire : Integer
 }
@@ -200,13 +204,13 @@ class Camion{
 
 }
 
-Concesionario "1" *--> "*" Usuario : +listaUsuarios
-Concesionario "1" *--> "*" Transaccion : +listaTransacciones
-Concesionario "1" *--> "*" Cliente : +listaClientes
-Concesionario  "1" o--> "*" Vehiculo : +listaVehiculos
+Concesionario "1" *--> "*" Usuario : -listaUsuarios
+Concesionario "1" *--> "*" Transaccion : -listaTransacciones
+Concesionario "1" *--> "*" Cliente : -listaClientes
+Concesionario  "1" o--> "*" Vehiculo : -listaVehiculos
 Transaccion  "1  '" o--> "*" DetalleTransaccion : -  listaDetalleTransacciones
-DetalleTransaccion "1"-> TipoTransaccion : " + tipo"
-Vehiculo "1"-> EstadoVehiculo : "+ estado"
+DetalleTransaccion "1"-> TipoTransaccion : - tipo
+Vehiculo "1"--> EstadoVehiculo : - estado
 Sedan --|> Vehiculo
 Deportivo --|> Vehiculo
 Camioneta --|> Vehiculo
@@ -217,9 +221,9 @@ Camion --|> Vehiculo
 Usuario <|-- Cliente
 Usuario <|-- Empleado
 Empleado <|- Administrador
-Combustible "1"-> TipoCombustible : " + tipo"
-Vehiculo "1"--> TipoCambio : " + tipo"
-Vehiculo "1"--> Combustible : " + combustible"
+Combustible "1"-> TipoCombustible : - tipo
+Vehiculo "1"--> TipoCambio : - tipo
+Vehiculo "1"--> Combustible : - combustible
 Empleado ..|> CompraVentaVehiculo
 Cliente ..|> CompraVentaVehiculo
 @enduml

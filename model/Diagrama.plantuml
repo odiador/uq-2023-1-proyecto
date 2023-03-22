@@ -12,7 +12,6 @@ skinparam Arrow{
 }
 
 interface CompraVentaVehiculo <<interface>> {
-
     +venderVehiculo()
     +comprarVehiculo()
 }
@@ -110,6 +109,7 @@ abstract class Vehiculo {
 abstract class Automovil{
     -numeroPasajeros : Integer
     -numeroBolsasAire : Integer
+    -numeroPuertas : Integer
 }
 
 enum EstadoVehiculo{
@@ -123,73 +123,37 @@ enum TipoCambio{
 }
 
 class Sedan {
-    -numeroPasajeros : Integer
-    -numeroPuertas : Integer
-    -capacidadMaletero : Double
-    -tieneAireAcondicinado : Boolean
-    -tieneCamaraReversa : Boolean
     -tieneVelocidadCrucero : Boolean
-    -numeroBolsasAire : Integer
-    -tieneABS : Boolean
     -tieneSensorColision : Boolean
     -tieneSensorTrafico : Boolean
     -tieneAsistentePermanencia : Boolean
 }
 
 class Deportivo{
-    -numeroPasajeros : Integer
-    -numeroPuertas : Integer
-    -numeroBolsasAire : Integer
     -numeroCaballosFuerza : Integer
     -TiempoAlcanza100Kmh : Integer
 }
 
 class Camioneta{
-    -numeroPasajeros : Integer 
-    -numeroPuertas : Integer
-    -capacidadMaletero : Double 
-    -tieneAireAcondicinado : Boolean
-    -tieneCamaraReversa : Boolean 
-    -tieneVelocidadCrucero : Boolean 
-    -numeroBolsasAire : Integer 
-    -tieneABS : Boolean 
-    -tieneSensorColision : Boolean 
-    -tieneSensorTrafico : Boolean
-    -tieneAsistentePermanencia : Boolean 
     -es4x4 : Boolean
 }
 
 class PickUp{
-    -numeroPasajeros : Integer 
-    -numeroPuertas : Integer
-    -tieneAireAcondicinado : Boolean 
-    -tieneCamaraReversa : Boolean 
-    -numeroBolsasAire : Integer  
-    -tieneABS : Boolean 
     -es4x4 : Boolean
     -capacidadCajaCarga : Double
 
 }
-
-class Van{
-    -numeroPasajeros : Integer 
-    -numeroPuertas : Integer 
-    -capacidadMaletero : Double 
+abstract class Familiar{
     -tieneAireAcondicinado : Boolean 
     -tieneCamaraReversa : Boolean 
-    -numeroBolsasAire : Integer
-    -tieneABS : Boolean
+    -tieneABS : Boolean 
+}
 
+class Van{
+    -capacidadMaletero : Double 
 }
 
 class Bus{
-    -numeroPasajeros : Integer 
-    -numeroPuertas : Integer
-    -capacidadMaletero : Double
-    -tieneAireAcondicinado : Boolean 
-    -tieneCamaraReversa : Boolean 
-    -numeroBolsasAire : Integer 
-    -tieneABS : Boolean 
     -numeroEjes : Integer
     -numeroSalidasEmergencia : Integer
 }
@@ -200,28 +164,31 @@ class Camion{
     -tieneFrenosAire : Boolean
     -tieneABS : Boolean 
     -numeroEjes : Integer
-    -tipoCamión : String
-
+    -tipoCamion : String
 }
-
+class Moto {
+}
 Concesionario "1" *--> "*" Usuario : -listaUsuarios
 Concesionario "1" *--> "*" Transaccion : -listaTransacciones
 Concesionario "1" *--> "*" Cliente : -listaClientes
 Concesionario  "1" o--> "*" Vehiculo : -listaVehiculos
 Transaccion  "1  '" o--> "*" DetalleTransaccion : -  listaDetalleTransacciones
-DetalleTransaccion "1"-> TipoTransaccion : - tipo
+DetalleTransaccion "1"--> TipoTransaccion : - tipo
 Vehiculo "1"--> EstadoVehiculo : - estado
-Sedan --|> Vehiculo
-Deportivo --|> Vehiculo
-Camioneta --|> Vehiculo
-PickUp --|> Vehiculo
-Van --|> Vehiculo
-Bus --|> Vehiculo
+Deportivo --|> Automovil
+Automovil --|> Vehiculo
+Moto --|> Vehiculo
+Camioneta --|> Sedan
+PickUp --|> Familiar
+Familiar --|> Automovil
+Bus --|> Van
+Sedan --|> Van
+Van --|> Familiar
 Camion --|> Vehiculo
 Usuario <|-- Cliente
 Usuario <|-- Empleado
 Empleado <|- Administrador
-Combustible "1"-> TipoCombustible : - tipo
+Combustible "1" --> TipoCombustible : - tipo
 Vehiculo "1"--> TipoCambio : - tipo
 Vehiculo "1"--> Combustible : - combustible
 Empleado ..|> CompraVentaVehiculo

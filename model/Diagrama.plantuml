@@ -1,21 +1,76 @@
 @startuml Hola
-abstract class Vehiculo {
-    -tipoCombustible : TipoCombustible
-    -marca
-    -modelo
-    -e
+
+skinparam Class {
+    FontSize 15
+    BorderColor Blue
+    BackgroundColor APPLICATION
+    BorderThickness 3
 }
-enum State as "Estado" <<enumeration>> {
-    NUEVO
-    USADO
+interface CompraVentaVehiculo <<interface>> {
+
+    +venderVehiculo()
+    +comprarVehiculo()
 }
-enum TipoCombustible <<enumeration>> {
-    GASOLINA
-    DIESEL
-    ELECTRICO
-    HIBRIDO
+class Concesionario {
+    -nombre : String
+    -direccion : String
+    -direccion : String
+
+    +registrarVehiculo()
+    +venderVehiculo()
+    +agregarTransaccion()
+    +agregarDetalleTransaccion()
+    +generarReporte()
+    +agregarFoto()
+    +enviarEmailRecuperacion()
 }
 
+class Transaccion {
+    -codigo : String
+    agregarDetalleTransaccion(TipoTransaccion)
+}
+class TipoTransaccion {
+    VENTA
+    ALQUILER
+    COMPRA
+}
+class DetalleTransaccion {
+    - tipoDetalleTransaccion : TipoTransaccion
+    - vehiculo : Vehiculo
+    -codigoTransaccion : String
+
+}
+
+
+abstract class Usuario {
+    - nombre : String
+    - id : String
+}
+
+class Cliente {
+    +venderVehiculo()
+    +comprarVehiculo()
+    +alquilarVehiculo()
+
+}
+
+class Empleado {
+    + registrarVehiculo()
+    + registrarCliente()
+    + venderVehiculo()
+    + comprarVehiculo()
+    + agregarTransaccion()
+}
+
+class Administrador {
+    + registrarEmpleado()
+    + eliminarEmpleado()
+    + actulizarEmpleado()
+    + bloquearEmpleado()
+    + generarReporte()
+    + recuperarContrasena()
+
+}
 
 abstract class Combustible {
     -tipoCombustible : TipoCombustible
@@ -23,23 +78,142 @@ abstract class Combustible {
     'Si ninguno es null, significa que es eléctrico
     'Como el tipo de variable es con mayús, es un objeto
     'por los que puede dar null
-    -autonomiaCargaCompleta : Double
-    -tiempoDemoraCarga : Double
+    -autonomiaCargaCompleta
+    -tiempoDemoraCarga
 
     'si ninguno es null, significa que es hibrido
-    -esEnchufable : Boolean
-    -esHibridoLigero : Boolean
+    -esEnchufable
+    -esHibridoLigero
 
+    +Combustible(TipoCombustible)
+    +Combustible(TipoCombustible, Boolean, Boolean)
+    +Combustible(TipoCombustible, Double, Double)
+    +esElectrico()
+    +esHibrido()
+}
 
+enum TipoCombustible {
+    GASOLINA
+    DIESEL
+    ELECTRICO
+    HIBRIDO
+}
 
-    setAutonomiaCargaCompleta(Double) : void
-    getAutonomiaCargaCompleta() : Double
-    esHibrido() : Boolean
+abstract class Vehiculo {
+    -combustible : Combustible
+    -marca : String
+    -modelo : String
+    -cilindraje: Double
+    -cambio:TipoCambio
+    -velocidadMaxima : Double
+}
 
-    esHibridoLigero() : Boolean
+enum TipoCambio{
+    MANUAL
+    AUTOMATICO
+}
+
+class Sedan {
+    -numeroPasajeros : Integer
+    -numeroPuertas : Integer
+    -capacidadMaletero : Double
+    -tieneAireAcondicinado : Boolean
+    -tieneCamaraReversa : Boolean
+    -tieneVelocidadCrucero : Boolean
+    -numeroBolsasAire : Integer
+    -tieneABS : Boolean
+    -tieneSensorColision : Boolean
+    -tieneSensorTrafico : Boolean
+    -tieneAsistentePermanencia : Boolean
+}
+
+class Deportivo{
+    -numeroPasajeros : Integer
+    -numeroPuertas : Integer
+    -numeroBolsasAire : Integer
+    -numeroCaballosFuerza : Integer
+    -TiempoAlcanza100Kmh : Integer
+}
+
+class Camioneta{
+    -numeroPasajeros : Integer 
+    -numeroPuertas : Integer
+    -capacidadMaletero : Double 
+    -tieneAireAcondicinado : Boolean
+    -tieneCamaraReversa : Boolean 
+    -tieneVelocidadCrucero : Boolean 
+    -numeroBolsasAire : Integer 
+    -tieneABS : Boolean 
+    -tieneSensorColision : Boolean 
+    -tieneSensorTrafico : Boolean
+    -tieneAsistentePermanencia : Boolean 
+    -es4x4 : Boolean
+}
+
+class PickUp{
+    -numeroPasajeros : Integer 
+    -numeroPuertas : Integer
+    -tieneAireAcondicinado : Boolean 
+    -tieneCamaraReversa : Boolean 
+    -numeroBolsasAire : Integer  
+    -tieneABS : Boolean 
+    -es4x4 : Boolean
+    -capacidadCajaCarga : Double
 
 }
 
-tipoCombustible <|-- Electrico : label
-tipoCombustible <|-- Hibrido : label
+class Van{
+    -numeroPasajeros : Integer 
+    -numeroPuertas : Integer 
+    -capacidadMaletero : Double 
+    -tieneAireAcondicinado : Boolean 
+    -tieneCamaraReversa : Boolean 
+    -numeroBolsasAire : Integer
+    -tieneABS : Boolean
+
+}
+
+class Bus{
+    -numeroPasajeros : Integer 
+    -numeroPuertas : Integer
+    -capacidadMaletero : Double
+    -tieneAireAcondicinado : Boolean 
+    -tieneCamaraReversa : Boolean 
+    -numeroBolsasAire : Integer 
+    -tieneABS : Boolean 
+    -numeroEjes : Integer
+    -numeroSalidasEmergencia : Integer
+}
+
+class Camion{
+    -capacidadCarga : Double
+    -tieneAireAcondicinado : Boolean 
+    -tieneFrenosAire : Boolean
+    -tieneABS : Boolean 
+    -numeroEjes : Integer
+    -tipoCamión : String
+
+}
+
+Concesionario "1" *-- "*" Usuario : +listaUsuarios
+Concesionario "1" *-- "*" Transaccion : +listaTransacciones
+Concesionario "1" *-- "*" Cliente : +listaClientes
+Concesionario  "1" o-- "*" Vehiculo : +listaVehiculos
+Transaccion  "1" o-- "*" DetalleTransaccion : +listaDetalleTransacciones
+DetalleTransaccion -> TipoTransaccion
+Sedan --|> Vehiculo
+Deportivo --|> Vehiculo
+Camioneta --|> Vehiculo
+PickUp --|> Vehiculo
+Van --|> Vehiculo
+Bus --|> Vehiculo
+Camion --|> Vehiculo
+Usuario <|-- Cliente
+Usuario <|-- Empleado
+Empleado <|- Administrador
+Combustible -> TipoCombustible
+Vehiculo --> TipoCambio
+Vehiculo --> Combustible
+Empleado ..|> CompraVentaVehiculo
+Cliente ..|> CompraVentaVehiculo
 @enduml

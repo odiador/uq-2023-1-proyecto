@@ -128,7 +128,7 @@ class Sedan {
 
 class Deportivo {
     - numeroCaballosFuerza : Integer
-    - TiempoAlcanza100Kmh : Integer
+    - tiempoAlcanza100Kmh : Integer
 }
 
 class Camioneta {

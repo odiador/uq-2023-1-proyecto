@@ -1,14 +1,15 @@
 @startuml Hola
 
+skinparam style strictuml
+skinparam ArrowThickness 2
+skinparam Linetype ortho
+
 skinparam Class {
     FontSize 15
     BorderColor Black
     BackgroundColor Lavender
     BorderThickness 3
 
-}
-skinparam Arrow{
-    Thickness 2
 }
 
 interface CompraVentaVehiculo <<interface>> {
@@ -32,7 +33,7 @@ class Transaccion {
     -codigo : String
     +agregarDetalleTransaccion(TipoTransaccion)
 }
-enum TipoTransaccion {
+enum TipoTransaccion <<enumration>> {
     VENTA
     ALQUILER
     COMPRA
@@ -44,16 +45,13 @@ class DetalleTransaccion {
 }
 
 
-abstract class Usuario {
+abstract class Usuario  <<abstract>> {
     - nombre : String
     - id : String
 }
 
 class Cliente {
-    +venderVehiculo()
-    +comprarVehiculo()
-    +alquilarVehiculo()
-
+    + alquilarVehiculo()
 }
 
 class Empleado {
@@ -74,122 +72,134 @@ class Administrador {
 
 }
 
-abstract class Combustible {
+abstract class Combustible <<abstract>> {
     'Si ninguno es null, significa que es eléctrico
     'Como el tipo de variable es con mayús, es un objeto
     'por los que puede dar null
-    -autonomiaCargaCompleta : Double
-    -tiempoDemoraCarga : Double
+    - autonomiaCargaCompleta : Double
+    - tiempoDemoraCarga : Double
     'si ninguno es null, significa que es hibrido
-    -esEnchufable : Boolean
-    -esHibridoLigero : Boolean
-    +Combustible(TipoCombustible)
-    +Combustible(TipoCombustible, Boolean, Boolean)
-    +Combustible(TipoCombustible, Double, Double)
-    +esElectrico()
-    +esHibrido()
+    - esEnchufable : Boolean
+    - esHibridoLigero : Boolean
+    + Combustible(TipoCombustible)
+    + Combustible(TipoCombustible, Boolean, Boolean)
+    + Combustible(TipoCombustible, Double, Double)
+    + esElectrico()
+    + esHibrido()
 }
 
-enum TipoCombustible {
+enum TipoCombustible <<enumration>> {
     GASOLINA
     DIESEL
     ELECTRICO
     HIBRIDO
 }
 
-abstract class Vehiculo {
-    -marca : String
-    -modelo : String
-    -cilindraje: Double
-    -velocidadMaxima : Double
-    
+abstract class Vehiculo <<abstract>> {
+    - marca : String
+    - modelo : String
+    - cilindraje: Double
+    - velocidadMaxima : Double
+
 }
 
-abstract class Automovil{
-    -numeroPasajeros : Integer
-    -numeroBolsasAire : Integer
-    -numeroPuertas : Integer
+abstract class Automovil <<abstract>> {
+    - numeroPasajeros : Integer
+    - numeroBolsasAire : Integer
+    - numeroPuertas : Integer
 }
 
-enum EstadoVehiculo{
+enum EstadoVehiculo <<enumration>>{
     NUEVO
     USADO
 }
 
-enum TipoCambio{
+enum TipoCambio <<enumration>> {
     MANUAL
     AUTOMATICO
 }
 
 class Sedan {
-    -tieneVelocidadCrucero : Boolean
-    -tieneSensorColision : Boolean
-    -tieneSensorTrafico : Boolean
-    -tieneAsistentePermanencia : Boolean
+    - tieneVelocidadCrucero : Boolean
+    - tieneSensorColision : Boolean
+    - tieneSensorTrafico : Boolean
+    - tieneAsistentePermanencia : Boolean
 }
 
-class Deportivo{
-    -numeroCaballosFuerza : Integer
-    -TiempoAlcanza100Kmh : Integer
+class Deportivo {
+    - numeroCaballosFuerza : Integer
+    - TiempoAlcanza100Kmh : Integer
 }
 
-class Camioneta{
-    -es4x4 : Boolean
+class Camioneta {
+    - es4x4 : Boolean
 }
 
-class PickUp{
-    -es4x4 : Boolean
-    -capacidadCajaCarga : Double
-
-}
-abstract class Familiar{
-    -tieneAireAcondicinado : Boolean 
-    -tieneCamaraReversa : Boolean 
-    -tieneABS : Boolean 
+class PickUp {
+    - es4x4 : Boolean
+    - capacidadCajaCarga : Double
 }
 
-class Van{
-    -capacidadMaletero : Double 
+abstract class Familiar <<abstract>> {
+    - tieneAireAcondicinado : Boolean
+    - tieneCamaraReversa : Boolean
+    - tieneABS : Boolean
 }
 
-class Bus{
-    -numeroEjes : Integer
-    -numeroSalidasEmergencia : Integer
+class Van {
+    - capacidadMaletero : Double
 }
 
-class Camion{
-    -capacidadCarga : Double
-    -tieneAireAcondicinado : Boolean 
-    -tieneFrenosAire : Boolean
-    -tieneABS : Boolean 
-    -numeroEjes : Integer
-    -tipoCamion : String
+class Bus {
+    - numeroEjes : Integer
+    - numeroSalidasEmergencia : Integer
 }
+
+class Camion {
+    - capacidadCarga : Double
+    - tieneAireAcondicinado : Boolean
+    - tieneFrenosAire : Boolean
+    - tieneABS : Boolean
+    - numeroEjes : Integer
+    - tipoCamion : String
+}
+
 class Moto {
 }
+
+'Concesionario
 Concesionario "1" *--> "*" Usuario : -listaUsuarios
 Concesionario "1" *--> "*" Transaccion : -listaTransacciones
 Concesionario "1" *--> "*" Cliente : -listaClientes
 Concesionario  "1" o--> "*" Vehiculo : -listaVehiculos
 Transaccion  "1  '" o--> "*" DetalleTransaccion : -  listaDetalleTransacciones
+'Transaccion
 DetalleTransaccion "1"--> TipoTransaccion : - tipo
-Vehiculo "1"--> EstadoVehiculo : - estado
-Deportivo --|> Automovil
-Automovil --|> Vehiculo
+
+'Vehiculos
+Vehiculo "1" --> TipoCambio : - tipo
+Vehiculo "1" -down-> Combustible : - combustible
+Vehiculo "1" --> EstadoVehiculo : - estado
+Combustible "1" --> TipoCombustible : -tipo
+
+Automovil -right-|> Vehiculo
 Moto --|> Vehiculo
-Camioneta --|> Sedan
-PickUp --|> Familiar
+Camion -down-|> Vehiculo
+
+Deportivo -up-|> Automovil
 Familiar --|> Automovil
-Bus --|> Van
-Sedan --|> Van
-Van --|> Familiar
-Camion --|> Vehiculo
-Usuario <|-- Cliente
-Usuario <|-- Empleado
-Empleado <|- Administrador
-Combustible "1" --> TipoCombustible : - tipo
-Vehiculo "1"--> TipoCambio : - tipo
-Vehiculo "1"--> Combustible : - combustible
-Empleado ..|> CompraVentaVehiculo
-Cliente ..|> CompraVentaVehiculo
+Camioneta -up-|> Sedan
+PickUp -left-|> Familiar
+Van -right-|> Familiar
+Bus -up-|> Van
+Sedan -up-|> Van
+
+'Usuarios
+Cliente -down-|> Usuario
+Empleado -down-|> Usuario
+Administrador -down-|> Empleado
+Administrador "1" o-down- "*" Empleado : -listaEmpleados
+Empleado .down.|> CompraVentaVehiculo
+Cliente .down.|> CompraVentaVehiculo
+
 @enduml

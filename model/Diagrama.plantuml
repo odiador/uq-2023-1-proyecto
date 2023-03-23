@@ -33,7 +33,7 @@ class Transaccion {
     -codigo : String
     +agregarDetalleTransaccion(TipoTransaccion)
 }
-enum TipoTransaccion <<enumration>> {
+enum TipoTransaccion <<enumeration>> {
     VENTA
     ALQUILER
     COMPRA
@@ -88,7 +88,7 @@ abstract class Combustible <<abstract>> {
     + esHibrido()
 }
 
-enum TipoCombustible <<enumration>> {
+enum TipoCombustible <<enumeration>> {
     GASOLINA
     DIESEL
     ELECTRICO
@@ -109,12 +109,12 @@ abstract class Automovil <<abstract>> {
     - numeroPuertas : Integer
 }
 
-enum EstadoVehiculo <<enumration>>{
+enum EstadoVehiculo <<enumeration>>{
     NUEVO
     USADO
 }
 
-enum TipoCambio <<enumration>> {
+enum TipoCambio <<enumeration>> {
     MANUAL
     AUTOMATICO
 }

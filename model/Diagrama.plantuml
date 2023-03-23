@@ -18,7 +18,6 @@ interface CompraVentaVehiculo <<interface>> {
 class Concesionario {
     -nombre : String
     -direccion : String
-    -direccion : String
 
     +registrarVehiculo()
     +venderVehiculo()
@@ -31,7 +30,7 @@ class Concesionario {
 
 class Transaccion {
     -codigo : String
-    agregarDetalleTransaccion(TipoTransaccion)
+    +agregarDetalleTransaccion(TipoTransaccion)
 }
 enum TipoTransaccion {
     VENTA

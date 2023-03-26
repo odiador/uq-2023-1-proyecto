@@ -1,7 +1,7 @@
 package co.edu.uniquindio.concesionarioCarros.model;
 
 public class Bus extends Van {
-    //ATRIBUTOS
+    // ATRIBUTOS
     private Integer numeroEjes;
     private Integer numeroSalidasEmergencia;
 
@@ -26,7 +26,7 @@ public class Bus extends Van {
      * 
      * @param numeroEjes
      */
-    public void setNumeroEjes(Integer numeroEjes) {
+    public void setNumeroEjes(final Integer numeroEjes) {
         this.numeroEjes = numeroEjes;
     }
 
@@ -44,7 +44,7 @@ public class Bus extends Van {
      * 
      * @param numeroSalidasEmergencia
      */
-    public void setNumeroSalidasEmergencia(Integer numeroSalidasEmergencia) {
+    public void setNumeroSalidasEmergencia(final Integer numeroSalidasEmergencia) {
         this.numeroSalidasEmergencia = numeroSalidasEmergencia;
     }
 

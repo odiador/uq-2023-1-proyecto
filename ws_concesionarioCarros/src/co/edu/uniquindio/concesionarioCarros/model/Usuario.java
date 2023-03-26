@@ -11,9 +11,9 @@ public abstract class Usuario {
     public Usuario() {
     }
 
-    
     /**
      * Este metodo obtiene el nombre del usuario
+     * 
      * @return nombre
      */
     public String getNombre() {
@@ -21,15 +21,17 @@ public abstract class Usuario {
     }
 
     /**
-     * Este metodo cambia el nombre del usuario 
+     * Este metodo cambia el nombre del usuario
+     * 
      * @param nombre
      */
-    public void setNombre(String nombre) {
+    public void setNombre(final String nombre) {
         this.nombre = nombre;
     }
 
     /**
      * Este metodo obtiene la identificacion del usuario
+     * 
      * @return id
      */
     public String getId() {
@@ -37,10 +39,11 @@ public abstract class Usuario {
     }
 
     /**
-     * Este metodo cambia la identificacion del usuario 
+     * Este metodo cambia la identificacion del usuario
+     * 
      * @param id
      */
-    public void setId(String id) {
+    public void setId(final String id) {
         this.id = id;
     }
 

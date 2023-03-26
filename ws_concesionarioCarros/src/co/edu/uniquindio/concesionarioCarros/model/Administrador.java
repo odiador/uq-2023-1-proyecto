@@ -3,13 +3,13 @@ package co.edu.uniquindio.concesionarioCarros.model;
 public class Administrador extends Empleado {
 
     /**
-     *Este es el metodo constructor de la clase
+     * Este es el metodo constructor de la clase
      */
     public Administrador() {
     }
 
     /**
-     * Este metodo registra un empleado 
+     * Este metodo registra un empleado
      */
     public void registrarEmpleado() {
 

@@ -1,6 +1,6 @@
 package co.edu.uniquindio.concesionarioCarros.model;
 
-public class Cliente extends Usuario implements CompraVentaVehiculo {
+public class Cliente extends Usuario implements PuedeTenerVehiculo {
 
     /**
      * Este el constructor de la clase
@@ -13,7 +13,7 @@ public class Cliente extends Usuario implements CompraVentaVehiculo {
     }
 
     @Override
-    public void comprarVehiculo() {
+    public void comprarVehiculo(Vehiculo vehiculo) {
     }
 
     /**

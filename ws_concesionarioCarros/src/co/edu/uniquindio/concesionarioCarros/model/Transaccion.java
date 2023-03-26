@@ -7,31 +7,58 @@ public class Transaccion {
     private String codigo;
     private List<DetalleTransaccion> listaDetalleTransacciones;
 
+    /**
+     * 
+     */
     public Transaccion() {
     }
 
-    public Transaccion(String codigo) {
+    /**
+     * 
+     * @param codigo
+     */
+    public Transaccion(final String codigo) {
         this.codigo = codigo;
         this.listaDetalleTransacciones = new ArrayList<DetalleTransaccion>();
     }
 
+    /**
+     * 
+     * @return
+     */
     public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    /**
+     * 
+     * @param codigo
+     */
+    public void setCodigo(final String codigo) {
         this.codigo = codigo;
     }
 
+    /**
+     * 
+     * @return
+     */
     public List<DetalleTransaccion> getListaDetalleTransacciones() {
         return listaDetalleTransacciones;
     }
 
-    public void setListaDetalleTransacciones(List<DetalleTransaccion> listaDetalleTransacciones) {
+    /**
+     * 
+     * @param listaDetalleTransacciones
+     */
+    public void setListaDetalleTransacciones(final List<DetalleTransaccion> listaDetalleTransacciones) {
         this.listaDetalleTransacciones = listaDetalleTransacciones;
     }
 
-    public void agregarDetalleTransaccion(TipoTransaccion tipo) {
+    /**
+     * 
+     * @param tipo
+     */
+    public void agregarDetalleTransaccion(final TipoTransaccion tipo) {
 
     }
 }

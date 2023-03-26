@@ -6,38 +6,73 @@ public class Sedan extends Van {
     private Boolean tieneSensorTrafico;
     private Boolean tieneAsistentePermanencia;
 
+    /**
+     * 
+     */
     public Sedan() {
     }
 
+    /**
+     * 
+     * @return
+     */
     public Boolean getTieneVelocidadCrucero() {
         return tieneVelocidadCrucero;
     }
 
-    public void setTieneVelocidadCrucero(Boolean tieneVelocidadCrucero) {
+    /**
+     * 
+     * @param tieneVelocidadCrucero
+     */
+    public void setTieneVelocidadCrucero(final Boolean tieneVelocidadCrucero) {
         this.tieneVelocidadCrucero = tieneVelocidadCrucero;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Boolean getTieneSensorColision() {
         return tieneSensorColision;
     }
 
-    public void setTieneSensorColision(Boolean tieneSensorColision) {
+    /**
+     * 
+     * @param tieneSensorColision
+     */
+    public void setTieneSensorColision(final Boolean tieneSensorColision) {
         this.tieneSensorColision = tieneSensorColision;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Boolean getTieneSensorTrafico() {
         return tieneSensorTrafico;
     }
 
-    public void setTieneSensorTrafico(Boolean tieneSensorTrafico) {
+    /**
+     * 
+     * @param tieneSensorTrafico
+     */
+    public void setTieneSensorTrafico(final Boolean tieneSensorTrafico) {
         this.tieneSensorTrafico = tieneSensorTrafico;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Boolean getTieneAsistentePermanencia() {
         return tieneAsistentePermanencia;
     }
 
-    public void setTieneAsistentePermanencia(Boolean tieneAsistentePermanencia) {
+    /**
+     * 
+     * @param tieneAsistentePermanencia
+     */
+    public void setTieneAsistentePermanencia(final Boolean tieneAsistentePermanencia) {
         this.tieneAsistentePermanencia = tieneAsistentePermanencia;
     }
 

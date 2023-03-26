@@ -5,30 +5,57 @@ public abstract class Familiar {
     private Boolean tieneCamaraReversa;
     private Boolean tieneABS;
 
+    /**
+     * 
+     */
     public Familiar() {
     }
 
+    /**
+     * 
+     * @return
+     */
     public Boolean getTieneAireAcondicionado() {
         return tieneAireAcondicionado;
     }
 
-    public void setTieneAireAcondicionado(Boolean tieneAireAcondicionado) {
+    /**
+     * 
+     * @param tieneAireAcondicionado
+     */
+    public void setTieneAireAcondicionado(final Boolean tieneAireAcondicionado) {
         this.tieneAireAcondicionado = tieneAireAcondicionado;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Boolean getTieneCamaraReversa() {
         return tieneCamaraReversa;
     }
 
-    public void setTieneCamaraReversa(Boolean tieneCamaraReversa) {
+    /**
+     * 
+     * @param tieneCamaraReversa
+     */
+    public void setTieneCamaraReversa(final Boolean tieneCamaraReversa) {
         this.tieneCamaraReversa = tieneCamaraReversa;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Boolean getTieneABS() {
         return tieneABS;
     }
 
-    public void setTieneABS(Boolean tieneABS) {
+    /**
+     * 
+     * @param tieneABS
+     */
+    public void setTieneABS(final Boolean tieneABS) {
         this.tieneABS = tieneABS;
     }
 

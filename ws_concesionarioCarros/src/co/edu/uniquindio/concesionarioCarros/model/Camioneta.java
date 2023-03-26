@@ -1,16 +1,16 @@
 package co.edu.uniquindio.concesionarioCarros.model;
 
 public class Camioneta extends Sedan {
-    
-    //ATRIBUTOS
+
+    // ATRIBUTOS
     private Boolean es4x4;
 
-    /** 
+    /**
      * Cntr etodo constructor de la clase
      */
     public Camioneta() {
-    }     
-    
+    }
+
     /**
      * Obtiene si la camioneta es 4x4 o no
      * 
@@ -25,7 +25,7 @@ public class Camioneta extends Sedan {
      * 
      * @param
      */
-    public void setEs4x4(Boolean es4x4) {
+    public void setEs4x4(final Boolean es4x4) {
         this.es4x4 = es4x4;
     }
 

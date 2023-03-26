@@ -5,22 +5,45 @@ public class Hibrido extends Combustible {
     private Boolean esEnchufable;
     private Boolean esHibridoLigero;
 
-    public Hibrido(Boolean esEnchufable, Boolean esHibridoLigero){
+    /**
+     * 
+     * @param esEnchufable
+     * @param esHibridoLigero
+     */
+    public Hibrido(final Boolean esEnchufable, final Boolean esHibridoLigero) {
         this.esHibridoLigero = esHibridoLigero;
         this.esEnchufable = esEnchufable;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Boolean getEsHibridoLigero() {
         return esHibridoLigero;
     }
-    public void setHibridoLigero(Boolean esHibridoLigero){
+
+    /**
+     * 
+     * @param esHibridoLigero
+     */
+    public void setHibridoLigero(final Boolean esHibridoLigero) {
         this.esHibridoLigero = esHibridoLigero;
     }
 
-    public Boolean getEsEnchufable(){
+    /**
+     * 
+     * @return
+     */
+    public Boolean getEsEnchufable() {
         return esEnchufable;
     }
-    public void setEsEnchufable(Boolean esEnchufable){
+
+    /**
+     * 
+     * @param esEnchufable
+     */
+    public void setEsEnchufable(final Boolean esEnchufable) {
         this.esEnchufable = esEnchufable;
     }
 }

@@ -2,7 +2,7 @@ package co.edu.uniquindio.concesionarioCarros.model;
 
 public class Camion extends Vehiculo {
 
-    //ATRIBUTOS
+    // ATRIBUTOS
 
     private Double capacidadCarga;
     private Boolean tieneAireAcondicionado;
@@ -31,7 +31,7 @@ public class Camion extends Vehiculo {
      * 
      * @param capacidadCarga
      */
-    public void setCapacidadCarga(Double capacidadCarga) {
+    public void setCapacidadCarga(final Double capacidadCarga) {
         this.capacidadCarga = capacidadCarga;
     }
 
@@ -49,7 +49,7 @@ public class Camion extends Vehiculo {
      * 
      * @param tieneAireAcondicionado
      */
-    public void setTieneAireAcondicionado(Boolean tieneAireAcondicionado) {
+    public void setTieneAireAcondicionado(final Boolean tieneAireAcondicionado) {
         this.tieneAireAcondicionado = tieneAireAcondicionado;
     }
 
@@ -67,7 +67,7 @@ public class Camion extends Vehiculo {
      * 
      * @param tieneFrenosAire
      */
-    public void setTieneFrenosAire(Boolean tieneFrenosAire) {
+    public void setTieneFrenosAire(final Boolean tieneFrenosAire) {
         this.tieneFrenosAire = tieneFrenosAire;
     }
 
@@ -85,7 +85,7 @@ public class Camion extends Vehiculo {
      * 
      * @param tieneABS
      */
-    public void setTieneABS(Boolean tieneABS) {
+    public void setTieneABS(final Boolean tieneABS) {
         this.tieneABS = tieneABS;
     }
 
@@ -103,7 +103,7 @@ public class Camion extends Vehiculo {
      * 
      * @param numeroEjes
      */
-    public void setNumeroEjes(Integer numeroEjes) {
+    public void setNumeroEjes(final Integer numeroEjes) {
         this.numeroEjes = numeroEjes;
     }
 
@@ -121,7 +121,7 @@ public class Camion extends Vehiculo {
      * 
      * @param tipoCamion
      */
-    public void setTipoCamion(String tipoCamion) {
+    public void setTipoCamion(final String tipoCamion) {
         this.tipoCamion = tipoCamion;
     }
 

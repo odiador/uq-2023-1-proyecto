@@ -2,13 +2,13 @@ package co.edu.uniquindio.concesionarioCarros.model;
 
 public class Automovil extends Vehiculo {
 
-    //ATRIBUTOS
+    // ATRIBUTOS
     private Integer numeroPasajeros;
     private Integer numeroBolsasAire;
     private Integer numeroPuertas;
 
     /**
-     * El constructor de la clase 
+     * El constructor de la clase
      */
     public Automovil() {
     }
@@ -27,7 +27,7 @@ public class Automovil extends Vehiculo {
      * 
      * @param numeroPasajeros
      */
-    public void setNumeroPasajeros(Integer numeroPasajeros) {
+    public void setNumeroPasajeros(final Integer numeroPasajeros) {
         this.numeroPasajeros = numeroPasajeros;
     }
 
@@ -45,7 +45,7 @@ public class Automovil extends Vehiculo {
      * 
      * @param numeroBolsasAire
      */
-    public void setNumeroBolsasAire(Integer numeroBolsasAire) {
+    public void setNumeroBolsasAire(final Integer numeroBolsasAire) {
         this.numeroBolsasAire = numeroBolsasAire;
     }
 
@@ -63,7 +63,7 @@ public class Automovil extends Vehiculo {
      * 
      * @param numeroPuertas
      */
-    public void setNumeroPuertas(Integer numeroPuertas) {
+    public void setNumeroPuertas(final Integer numeroPuertas) {
         this.numeroPuertas = numeroPuertas;
     }
 

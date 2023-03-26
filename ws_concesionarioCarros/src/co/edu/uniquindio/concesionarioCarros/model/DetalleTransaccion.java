@@ -5,30 +5,57 @@ public class DetalleTransaccion {
     private String codigoTransaccion;
     private TipoTransaccion tipo;
 
+    /**
+     * 
+     */
     public DetalleTransaccion() {
     }
 
+    /**
+     * 
+     * @return
+     */
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
 
-    public void setVehiculo(Vehiculo vehiculo) {
+    /**
+     * 
+     * @param vehiculo
+     */
+    public void setVehiculo(final Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
 
+    /**
+     * 
+     * @return
+     */
     public String getCodigoTransaccion() {
         return codigoTransaccion;
     }
 
-    public void setCodigoTransaccion(String codigoTransaccion) {
+    /**
+     * 
+     * @param codigoTransaccion
+     */
+    public void setCodigoTransaccion(final String codigoTransaccion) {
         this.codigoTransaccion = codigoTransaccion;
     }
 
+    /**
+     * 
+     * @return
+     */
     public TipoTransaccion getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoTransaccion tipo) {
+    /**
+     * 
+     * @param tipo
+     */
+    public void setTipo(final TipoTransaccion tipo) {
         this.tipo = tipo;
     }
 

@@ -9,29 +9,28 @@ skinparam Class {
     BorderColor Black
     BackgroundColor Lavender
     BorderThickness 3
-
 }
 
 interface CompraVentaVehiculo <<interface>> {
-    +venderVehiculo()
-    +comprarVehiculo()
+    + <i>venderVehiculo()
+    + <i>comprarVehiculo()
 }
 class Concesionario {
-    -nombre : String
-    -direccion : String
+    - nombre : String
+    - direccion : String
 
-    +registrarVehiculo()
-    +venderVehiculo()
-    +agregarTransaccion()
-    +agregarDetalleTransaccion()
-    +generarReporte()
-    +agregarFoto()
-    +enviarEmailRecuperacion()
+    + registrarVehiculo()
+    + venderVehiculo()
+    + agregarTransaccion()
+    + agregarDetalleTransaccion()
+    + generarReporte()
+    + agregarFoto()
+    + enviarEmailRecuperacion()
 }
 
 class Transaccion {
-    -codigo : String
-    +agregarDetalleTransaccion(TipoTransaccion)
+    - codigo : String
+    + agregarDetalleTransaccion(TipoTransaccion)
 }
 enum TipoTransaccion <<enumeration>> {
     VENTA
@@ -40,7 +39,7 @@ enum TipoTransaccion <<enumeration>> {
 }
 class DetalleTransaccion {
     - vehiculo : Vehiculo
-    -codigoTransaccion : String
+    - codigoTransaccion : String
 
 }
 
@@ -82,12 +81,10 @@ class Diesel {
 }
 
 class Electrico {
-    + Electrico(autonomiaCargaCompleta: Double, tiempoDemoraCarga: Double)
     - autonomiaCargaCompleta : Double
     - tiempoDemoraCarga : Double
 }
 class Hibrido {
-    + Hibrido()
     - esEnchufable : Boolean
     - esHibridoLigero : Boolean
 }
@@ -97,7 +94,6 @@ abstract class Vehiculo <<abstract>> {
     - modelo : String
     - cilindraje: Double
     - velocidadMaxima : Double
-
 }
 
 abstract class Automovil <<abstract>> {
@@ -165,10 +161,10 @@ class Moto {
 }
 
 'Concesionario
-Concesionario "1" *--> "*" Usuario : -listaUsuarios
-Concesionario "1" *--> "*" Transaccion : -listaTransacciones
-Concesionario "1" *--> "*" Cliente : -listaClientes
-Concesionario  "1" o--> "*" Vehiculo : -listaVehiculos
+Concesionario "1" *--> "*" Usuario : - listaUsuarios
+Concesionario "1" *--> "*" Transaccion : - listaTransacciones
+Concesionario "1" *--> "*" Cliente : - listaClientes
+Concesionario  "1" o--> "*" Vehiculo : - listaVehiculos
 Transaccion  "1  '" o--> "*" DetalleTransaccion : -  listaDetalleTransacciones
 'Transaccion
 DetalleTransaccion "1"--> TipoTransaccion : - tipo

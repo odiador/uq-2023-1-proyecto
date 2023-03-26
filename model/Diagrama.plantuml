@@ -73,26 +73,23 @@ class Administrador {
 }
 
 abstract class Combustible <<abstract>> {
-    'Si ninguno es null, significa que es eléctrico
-    'Como el tipo de variable es con mayús, es un objeto
-    'por los que puede dar null
-    - autonomiaCargaCompleta : Double
-    - tiempoDemoraCarga : Double
-    'si ninguno es null, significa que es hibrido
-    - esEnchufable : Boolean
-    - esHibridoLigero : Boolean
-    + Combustible(TipoCombustible)
-    + Combustible(TipoCombustible, Boolean, Boolean)
-    + Combustible(TipoCombustible, Double, Double)
-    + esElectrico()
-    + esHibrido()
 }
 
-enum TipoCombustible <<enumeration>> {
-    GASOLINA
-    DIESEL
-    ELECTRICO
-    HIBRIDO
+class Gasolina {
+}
+
+class Diesel {
+}
+
+class Electrico {
+    + Electrico(autonomiaCargaCompleta: Double, tiempoDemoraCarga: Double)
+    - autonomiaCargaCompleta : Double
+    - tiempoDemoraCarga : Double
+}
+class Hibrido {
+    + Hibrido()
+    - esEnchufable : Boolean
+    - esHibridoLigero : Boolean
 }
 
 abstract class Vehiculo <<abstract>> {
@@ -175,12 +172,15 @@ Concesionario  "1" o--> "*" Vehiculo : -listaVehiculos
 Transaccion  "1  '" o--> "*" DetalleTransaccion : -  listaDetalleTransacciones
 'Transaccion
 DetalleTransaccion "1"--> TipoTransaccion : - tipo
-
+'Gasolina
+Electrico -up-|> Combustible
+Hibrido -up-|> Combustible
+Gasolina -up-|> Combustible
+Diesel -up-|> Combustible
 'Vehiculos
 Vehiculo "1" --> TipoCambio : - tipo
 Vehiculo "1" -down-> Combustible : - combustible
 Vehiculo "1" --> EstadoVehiculo : - estado
-Combustible "1" --> TipoCombustible : -tipo
 
 Automovil -right-|> Vehiculo
 Moto --|> Vehiculo

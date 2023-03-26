@@ -192,6 +192,7 @@ Bus -up-|> Van
 Sedan -up-|> Van
 
 'Usuarios
+Usuario  "1" o--> "*" Vehiculo : - listaVehiculos
 Cliente -down-|> Usuario
 Empleado -down-|> Usuario
 Administrador -down-|> Empleado

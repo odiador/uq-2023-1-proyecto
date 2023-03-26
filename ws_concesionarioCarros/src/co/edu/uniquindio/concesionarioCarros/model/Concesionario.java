@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Concesionario {
+
+    //ATRIBUTOS
     private String nombre;
     private String direccion;
     private List<Vehiculo> listaVehiculos;
@@ -11,9 +13,15 @@ public class Concesionario {
     private List<Cliente> listaClientes;
     private List<Transaccion> listaTransacciones;
 
+    /**
+     * Es el metodo constructor vacio de la clase
+     */
     public Concesionario() {
     }
 
+    /**
+     * Es el metodo constructor de la clase
+     */
     public Concesionario(String nombre, String direccion) {
         this.nombre = nombre;
         this.direccion = direccion;
@@ -23,26 +31,43 @@ public class Concesionario {
         this.listaTransacciones = new ArrayList<Transaccion>();
     }
 
+    /**
+     * 
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * 
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * 
+     */
     public String getDireccion() {
         return direccion;
     }
 
+    /**
+     * 
+     */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
+    /**
+     * 
+     */
     public List<Vehiculo> getListaVehiculos() {
         return listaVehiculos;
     }
 
+    
     public void setListaVehiculos(List<Vehiculo> listaVehiculos) {
         this.listaVehiculos = listaVehiculos;
     }

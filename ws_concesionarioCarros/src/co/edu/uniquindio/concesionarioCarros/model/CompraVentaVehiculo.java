@@ -5,10 +5,10 @@ public interface CompraVentaVehiculo {
     /**
      * Permite verder un vehiculo
      */
-    void venderVehiculo();
+    public void venderVehiculo();
 
     /**
      *  Permite comprar un vehiculo
      */
-    void comprarVehiculo();
+    public void comprarVehiculo();
 }

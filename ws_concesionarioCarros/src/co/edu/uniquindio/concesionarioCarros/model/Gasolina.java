@@ -1,5 +1,4 @@
 package co.edu.uniquindio.concesionarioCarros.model;
 
-public abstract class Combustible {
-
+public class Gasolina extends Combustible {
 }

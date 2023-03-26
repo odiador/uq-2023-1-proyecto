@@ -11,7 +11,7 @@ skinparam Class {
     BorderThickness 3
 }
 
-interface CompraVentaVehiculo <<interface>> {
+interface PuedeTenerVehiculo <<interface>> {
     + <i>venderVehiculo()
     + <i>comprarVehiculo()
 }
@@ -196,7 +196,7 @@ Cliente -down-|> Usuario
 Empleado -down-|> Usuario
 Administrador -down-|> Empleado
 Administrador "1" o-down- "*" Empleado : -listaEmpleados
-Empleado .down.|> CompraVentaVehiculo
-Cliente .down.|> CompraVentaVehiculo
+Empleado .down.|> PuedeTenerVehiculo
+Cliente .down.|> PuedeTenerVehiculo
 
 @enduml

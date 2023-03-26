@@ -90,6 +90,7 @@ class Hibrido {
 }
 
 abstract class Vehiculo <<abstract>> {
+    - placa : String
     - marca : String
     - modelo : String
     - cilindraje: Double

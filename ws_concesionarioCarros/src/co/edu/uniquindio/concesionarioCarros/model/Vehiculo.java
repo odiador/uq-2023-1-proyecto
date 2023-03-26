@@ -1,6 +1,8 @@
 package co.edu.uniquindio.concesionarioCarros.model;
 
 public abstract class Vehiculo {
+    private String placa;
+
     private String marca;
     private String modelo;
     private Double cilindraje;
@@ -9,63 +11,144 @@ public abstract class Vehiculo {
     private EstadoVehiculo estado;
     private TipoCambio tipo;
 
-    public Vehiculo() {
+    /**
+     * 
+     * @param placa
+     * @param marca
+     * @param modelo
+     * @param cilindraje
+     * @param velocidadMaxima
+     * @param estado
+     * @param tipo
+     */
+    public Vehiculo(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+            EstadoVehiculo estado, TipoCambio tipo) {
 
     }
 
+    /**
+     * @return
+     */
+    public String getPlaca() {
+        return placa;
+    }
+
+    /**
+     * @param placa
+     */
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    /**
+     * 
+     * @return
+     */
     public String getMarca() {
         return marca;
     }
 
-    public void setMarca(String marca) {
+    /**
+     * 
+     * @param marca
+     */
+    public void setMarca(final String marca) {
         this.marca = marca;
     }
 
+    /**
+     * 
+     * @return
+     */
     public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
+    /**
+     * 
+     * @param modelo
+     */
+    public void setModelo(final String modelo) {
         this.modelo = modelo;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Double getCilindraje() {
         return cilindraje;
     }
 
-    public void setCilindraje(Double cilindraje) {
+    /**
+     * 
+     * @param cilindraje
+     */
+    public void setCilindraje(final Double cilindraje) {
         this.cilindraje = cilindraje;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Double getVelocidadMaxima() {
         return velocidadMaxima;
     }
 
-    public void setVelocidadMaxima(Double velocidadMaxima) {
+    /**
+     * 
+     * @param velocidadMaxima
+     */
+    public void setVelocidadMaxima(final Double velocidadMaxima) {
         this.velocidadMaxima = velocidadMaxima;
     }
 
+    /**
+     * 
+     * @return
+     */
     public Combustible getCombustible() {
         return combustible;
     }
 
-    public void setCombustible(Combustible combustible) {
+    /**
+     * 
+     * @param combustible
+     */
+    public void setCombustible(final Combustible combustible) {
         this.combustible = combustible;
     }
 
+    /**
+     * 
+     * @return
+     */
     public EstadoVehiculo getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoVehiculo estado) {
+    /**
+     * 
+     * @param estado
+     */
+    public void setEstado(final EstadoVehiculo estado) {
         this.estado = estado;
     }
 
+    /**
+     * 
+     * @return
+     */
     public TipoCambio getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoCambio tipo) {
+    /**
+     * 
+     * @param tipo
+     */
+    public void setTipo(final TipoCambio tipo) {
         this.tipo = tipo;
     }
 

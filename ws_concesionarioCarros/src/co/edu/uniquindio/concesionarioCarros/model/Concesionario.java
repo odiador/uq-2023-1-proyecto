@@ -169,12 +169,11 @@ public class Concesionario implements PuedeTenerVehiculo {
     }
 
     @Override
-    public void venderVehiculo() {
-
+    public void venderVehiculo(String placa) {
     }
 
     @Override
-    public void comprarVehiculo() {
+    public void comprarVehiculo(Vehiculo vehiculo) {
     }
 
 }

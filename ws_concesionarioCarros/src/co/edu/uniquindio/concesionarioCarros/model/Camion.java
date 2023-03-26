@@ -12,9 +12,33 @@ public class Camion extends Vehiculo {
     private String tipoCamion; // El tipo de tipoCamion es provicional. Deberia ser un Enum
 
     /**
-     * Constructor de la clase
+     * Es el constructor de la clase camión
+     * 
+     * @param placa
+     * @param marca
+     * @param modelo
+     * @param cilindraje
+     * @param velocidadMaxima
+     * @param estado
+     * @param tipo
+     * @param capacidadCarga
+     * @param tieneAireAcondicionado
+     * @param tieneFrenosAire
+     * @param numeroEjes
+     * @param tieneABS
+     * @param tipoCamion
      */
-    public Camion() {
+    public Camion(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+            EstadoVehiculo estado, TipoCambio tipo, Double capacidadCarga, Boolean tieneAireAcondicionado,
+            Boolean tieneFrenosAire, Integer numeroEjes, Boolean tieneABS, String tipoCamion) {
+        super(placa, marca, modelo, cilindraje, velocidadMaxima, estado, tipo);
+
+        this.capacidadCarga = capacidadCarga;
+        this.tieneAireAcondicionado = tieneAireAcondicionado;
+        this.tieneFrenosAire = tieneFrenosAire;
+        this.numeroEjes = numeroEjes;
+        this.tieneABS = tieneABS;
+        this.tipoCamion = tipoCamion;
     }
 
     /**

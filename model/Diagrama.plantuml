@@ -12,8 +12,8 @@ skinparam Class {
 }
 
 interface PuedeTenerVehiculo <<interface>> {
-    + <i>venderVehiculo()
-    + <i>comprarVehiculo()
+    + <i>venderVehiculo(placa: String)
+    + <i>comprarVehiculo(vehiculo: Vehiculo)
 }
 class Concesionario {
     - nombre : String
@@ -196,7 +196,7 @@ Cliente -down-|> Usuario
 Empleado -down-|> Usuario
 Administrador -down-|> Empleado
 Administrador "1" o-down- "*" Empleado : -listaEmpleados
-Empleado .down.|> PuedeTenerVehiculo
+Concesionario .down.|> PuedeTenerVehiculo
 Cliente .down.|> PuedeTenerVehiculo
 
 @enduml

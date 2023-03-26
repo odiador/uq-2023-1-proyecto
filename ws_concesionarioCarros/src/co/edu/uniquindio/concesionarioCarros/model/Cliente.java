@@ -9,18 +9,18 @@ public class Cliente extends Usuario implements PuedeTenerVehiculo {
     }
 
     @Override
-    public void venderVehiculo() {
-    }
-
-    @Override
     public void comprarVehiculo(Vehiculo vehiculo) {
     }
 
     /**
-     * Se encarga de alquilar el vehiculo
+     * Alquila un vehiculo por medio de la placa
      */
-    public void alquilarVehiculo() {
+    public void alquilarVehiculo(String placa) {
 
+    }
+
+    @Override
+    public void venderVehiculo(String placa) {
     }
 
 }

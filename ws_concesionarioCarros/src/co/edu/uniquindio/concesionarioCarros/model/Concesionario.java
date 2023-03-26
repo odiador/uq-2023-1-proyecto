@@ -3,9 +3,9 @@ package co.edu.uniquindio.concesionarioCarros.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Concesionario {
+public class Concesionario implements PuedeTenerVehiculo {
 
-    //ATRIBUTOS
+    // ATRIBUTOS
     private String nombre;
     private String direccion;
     private List<Vehiculo> listaVehiculos;
@@ -22,7 +22,7 @@ public class Concesionario {
     /**
      * Es el metodo constructor de la clase
      */
-    public Concesionario(String nombre, String direccion) {
+    public Concesionario(final String nombre, final String direccion) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.listaVehiculos = new ArrayList<Vehiculo>();
@@ -42,12 +42,13 @@ public class Concesionario {
      * 
      * @param nombre
      */
-    public void setNombre(String nombre) {
+    public void setNombre(final String nombre) {
         this.nombre = nombre;
     }
 
     /**
      * 
+     * @return
      */
     public String getDireccion() {
         return direccion;
@@ -55,73 +56,125 @@ public class Concesionario {
 
     /**
      * 
+     * @param direccion
      */
-    public void setDireccion(String direccion) {
+    public void setDireccion(final String direccion) {
         this.direccion = direccion;
     }
 
     /**
      * 
+     * @return
      */
     public List<Vehiculo> getListaVehiculos() {
         return listaVehiculos;
     }
 
-    
-    public void setListaVehiculos(List<Vehiculo> listaVehiculos) {
+    /**
+     * 
+     * @param listaVehiculos
+     */
+    public void setListaVehiculos(final List<Vehiculo> listaVehiculos) {
         this.listaVehiculos = listaVehiculos;
     }
 
+    /**
+     * 
+     * @return
+     */
     public List<Usuario> getListaUsuarios() {
         return listaUsuarios;
     }
 
-    public void setListaUsuarios(List<Usuario> listaUsuarios) {
+    /**
+     * 
+     * @param listaUsuarios
+     */
+    public void setListaUsuarios(final List<Usuario> listaUsuarios) {
         this.listaUsuarios = listaUsuarios;
     }
 
+    /**
+     * 
+     * @return
+     */
     public List<Cliente> getListaClientes() {
         return listaClientes;
     }
 
-    public void setListaClientes(List<Cliente> listaClientes) {
+    /**
+     * 
+     * @param listaClientes
+     */
+    public void setListaClientes(final List<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
     }
 
+    /**
+     * 
+     * @return
+     */
     public List<Transaccion> getListaTransacciones() {
         return listaTransacciones;
     }
 
-    public void setListaTransacciones(List<Transaccion> listaTransacciones) {
+    /**
+     * 
+     * @param listaTransacciones
+     */
+    public void setListaTransacciones(final List<Transaccion> listaTransacciones) {
         this.listaTransacciones = listaTransacciones;
     }
 
+    /**
+     * 
+     */
     public void registrarVehiculo() {
 
     }
 
-    public void venderVehiculo() {
-
-    }
-
+    /**
+     * 
+     */
     public void agregarTransaccion() {
 
     }
 
+    /**
+     * 
+     */
     public void agregarDetalleTransaccion() {
 
     }
 
+    /**
+     * 
+     */
     public void generarReporte() {
 
     }
 
+    /**
+     * 
+     */
     public void agregarFoto() {
 
     }
 
+    /**
+     * 
+     */
     public void enviarEmailRecuperacion() {
 
+    }
+
+    @Override
+    public void venderVehiculo() {
+
+    }
+
+    @Override
+    public void comprarVehiculo() {
     }
 
 }

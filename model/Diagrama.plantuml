@@ -163,41 +163,43 @@ class Moto {
 
 'Concesionario
 Concesionario "1" *--> "*" Usuario : - listaUsuarios
-Concesionario "1" *--> "*" Transaccion : - listaTransacciones
+Concesionario "1" *-> "*" Transaccion : - listaTransacciones
 Concesionario "1" *--> "*" Cliente : - listaClientes
 Concesionario  "1" o--> "*" Vehiculo : - listaVehiculos
 Transaccion  "1  '" o--> "*" DetalleTransaccion : -  listaDetalleTransacciones
 'Transaccion
 DetalleTransaccion "1"--> TipoTransaccion : - tipo
-'Gasolina
-Electrico -up-|> Combustible
-Hibrido -up-|> Combustible
-Gasolina -up-|> Combustible
-Diesel -up-|> Combustible
-'Vehiculos
-Vehiculo "1" --> TipoCambio : - tipo
-Vehiculo "1" -down-> Combustible : - combustible
-Vehiculo "1" --> EstadoVehiculo : - estado
 
-Automovil -right-|> Vehiculo
+'Gasolina
+Hibrido -up-|> Combustible
+Gasolina -left-|> Combustible
+Electrico -right-|> Combustible
+Diesel -down-|> Combustible
+
+'Vehiculos
+Vehiculo "1" -right-> TipoCambio : - tipo
+Vehiculo "1" -down-> Combustible : - combustible
+Vehiculo "1" -left-> EstadoVehiculo : - estado
+
+Automovil -left-|> Vehiculo
 Moto --|> Vehiculo
 Camion -down-|> Vehiculo
 
 Deportivo -up-|> Automovil
-Familiar --|> Automovil
-Camioneta -up-|> Sedan
+Familiar -down-|> Automovil
+Camioneta -down-|> Sedan
 PickUp -left-|> Familiar
 Van -right-|> Familiar
-Bus -up-|> Van
-Sedan -up-|> Van
+Bus -down-|> Van
+Sedan -down-|> Van
 
 'Usuarios
 Usuario  "1" o--> "*" Vehiculo : - listaVehiculos
+Administrador "1" o-down- "*" Empleado : -listaEmpleados
 Cliente -down-|> Usuario
 Empleado -down-|> Usuario
 Administrador -down-|> Empleado
-Administrador "1" o-down- "*" Empleado : -listaEmpleados
-Concesionario .down.|> PuedeTenerVehiculo
-Cliente .down.|> PuedeTenerVehiculo
+Concesionario .left.|> PuedeTenerVehiculo
+Cliente .left.|> PuedeTenerVehiculo
 
 @enduml

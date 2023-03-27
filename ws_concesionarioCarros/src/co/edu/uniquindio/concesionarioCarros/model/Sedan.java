@@ -1,15 +1,42 @@
 package co.edu.uniquindio.concesionarioCarros.model;
 
 public class Sedan extends Van {
+
     private Boolean tieneVelocidadCrucero;
     private Boolean tieneSensorColision;
     private Boolean tieneSensorTrafico;
     private Boolean tieneAsistentePermanencia;
 
     /**
+     * Es el constructor del Sedan
      * 
+     * @param placa
+     * @param marca
+     * @param modelo
+     * @param cilindraje
+     * @param velocidadMaxima
+     * @param estado
+     * @param tipo
+     * @param tieneAireAcondicionado
+     * @param tieneCamaraReversa
+     * @param tieneABS
+     * @param capacidadMaletero
+     * @param tieneVelocidadCrucero
+     * @param tieneSensorColision
+     * @param tieneSensorTrafico
+     * @param tieneAsistentePermanencia
      */
-    public Sedan() {
+    public Sedan(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+            EstadoVehiculo estado, TipoCambio tipo, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
+            Boolean tieneABS, Double capacidadMaletero, Boolean tieneVelocidadCrucero, Boolean tieneSensorColision,
+            Boolean tieneSensorTrafico, Boolean tieneAsistentePermanencia) {
+        super(placa, marca, modelo, cilindraje, velocidadMaxima, estado, tipo, tieneAireAcondicionado,
+                tieneCamaraReversa,
+                tieneABS, capacidadMaletero);
+        this.tieneVelocidadCrucero = tieneVelocidadCrucero;
+        this.tieneSensorColision = tieneSensorColision;
+        this.tieneSensorTrafico = tieneSensorTrafico;
+        this.tieneAsistentePermanencia = tieneAsistentePermanencia;
     }
 
     /**

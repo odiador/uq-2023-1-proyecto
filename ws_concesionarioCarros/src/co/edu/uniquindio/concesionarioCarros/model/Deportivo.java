@@ -1,13 +1,28 @@
 package co.edu.uniquindio.concesionarioCarros.model;
 
-public class Deportivo {
+public class Deportivo extends Automovil {
+
     private Integer numeroCaballosFuerza;
     private Integer tiempoAlcanza100Kmh; // podria ser Double por los segundos
 
     /**
+     * Es el constructor del Deportivo
      * 
+     * @param placa
+     * @param marca
+     * @param modelo
+     * @param cilindraje
+     * @param velocidadMaxima
+     * @param estado
+     * @param tipo
+     * @param numeroCaballosFuerza
+     * @param tiempoAlcanza100Kmh
      */
-    public Deportivo() {
+    public Deportivo(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+            EstadoVehiculo estado, TipoCambio tipo, Integer numeroCaballosFuerza, Integer tiempoAlcanza100Kmh) {
+        super(placa, marca, modelo, cilindraje, velocidadMaxima, estado, tipo);
+        this.numeroCaballosFuerza = numeroCaballosFuerza;
+        this.tiempoAlcanza100Kmh = tiempoAlcanza100Kmh;
     }
 
     /**

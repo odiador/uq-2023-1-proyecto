@@ -2,7 +2,6 @@ package co.edu.uniquindio.concesionarioCarros.model;
 
 public abstract class Vehiculo {
     private String placa;
-
     private String marca;
     private String modelo;
     private Double cilindraje;
@@ -12,18 +11,28 @@ public abstract class Vehiculo {
     private TipoCambio tipo;
 
     /**
+     * Es el constructor de la clase Vehiculo
      * 
      * @param placa
      * @param marca
      * @param modelo
      * @param cilindraje
      * @param velocidadMaxima
+     * @param combustible
      * @param estado
      * @param tipo
      */
     public Vehiculo(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+            Combustible combustible,
             EstadoVehiculo estado, TipoCambio tipo) {
-
+        this.placa = placa;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.cilindraje = cilindraje;
+        this.velocidadMaxima = velocidadMaxima;
+        this.combustible = combustible;
+        this.estado = estado;
+        this.tipo = tipo;
     }
 
     /**

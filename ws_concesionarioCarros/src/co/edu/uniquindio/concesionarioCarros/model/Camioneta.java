@@ -12,8 +12,12 @@ public class Camioneta extends Sedan {
      * @param modelo
      * @param cilindraje
      * @param velocidadMaxima
+     * @param combustible
      * @param estado
      * @param tipo
+     * @param numeroPasajeros
+     * @param numeroBolsasAire
+     * @param numeroPuertas
      * @param tieneAireAcondicionado
      * @param tieneCamaraReversa
      * @param tieneABS
@@ -25,13 +29,15 @@ public class Camioneta extends Sedan {
      * @param es4x4
      */
     public Camioneta(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-            EstadoVehiculo estado, TipoCambio tipo, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
+            Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+            Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
             Boolean tieneABS, Double capacidadMaletero, Boolean tieneVelocidadCrucero, Boolean tieneSensorColision,
             Boolean tieneSensorTrafico, Boolean tieneAsistentePermanencia, Boolean es4x4) {
-        super(placa, marca, modelo, cilindraje, velocidadMaxima, estado, tipo, tieneAireAcondicionado,
-                tieneCamaraReversa,
-                tieneABS, capacidadMaletero, tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico,
-                tieneAsistentePermanencia);
+        super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+                numeroBolsasAire,
+                numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, capacidadMaletero,
+                tieneVelocidadCrucero,
+                tieneSensorColision, tieneSensorTrafico, tieneAsistentePermanencia);
         this.es4x4 = es4x4;
     }
 

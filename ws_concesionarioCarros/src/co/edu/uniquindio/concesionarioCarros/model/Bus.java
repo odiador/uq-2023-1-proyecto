@@ -1,6 +1,7 @@
 package co.edu.uniquindio.concesionarioCarros.model;
 
 public class Bus extends Van {
+
     // ATRIBUTOS
     private Integer numeroEjes;
     private Integer numeroSalidasEmergencia;
@@ -13,8 +14,12 @@ public class Bus extends Van {
      * @param modelo
      * @param cilindraje
      * @param velocidadMaxima
+     * @param combustible
      * @param estado
      * @param tipo
+     * @param numeroPasajeros
+     * @param numeroBolsasAire
+     * @param numeroPuertas
      * @param tieneAireAcondicionado
      * @param tieneCamaraReversa
      * @param tieneABS
@@ -23,11 +28,12 @@ public class Bus extends Van {
      * @param numeroSalidasEmergencia
      */
     public Bus(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-            EstadoVehiculo estado, TipoCambio tipo, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
+            Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+            Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
             Boolean tieneABS, Double capacidadMaletero, Integer numeroEjes, Integer numeroSalidasEmergencia) {
-        super(placa, marca, modelo, cilindraje, velocidadMaxima, estado, tipo, tieneAireAcondicionado,
-                tieneCamaraReversa,
-                tieneABS, capacidadMaletero);
+        super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+                numeroBolsasAire,
+                numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, capacidadMaletero);
         this.numeroEjes = numeroEjes;
         this.numeroSalidasEmergencia = numeroSalidasEmergencia;
     }

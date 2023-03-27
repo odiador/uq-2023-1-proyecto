@@ -14,16 +14,23 @@ public abstract class Familiar extends Automovil {
      * @param modelo
      * @param cilindraje
      * @param velocidadMaxima
+     * @param combustible
      * @param estado
      * @param tipo
+     * @param numeroPasajeros
+     * @param numeroBolsasAire
+     * @param numeroPuertas
      * @param tieneAireAcondicionado
      * @param tieneCamaraReversa
      * @param tieneABS
      */
     public Familiar(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-            EstadoVehiculo estado, TipoCambio tipo, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
+            Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+            Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
             Boolean tieneABS) {
-        super(placa, marca, modelo, cilindraje, velocidadMaxima, estado, tipo);
+        super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+                numeroBolsasAire,
+                numeroPuertas);
         this.tieneAireAcondicionado = tieneAireAcondicionado;
         this.tieneCamaraReversa = tieneCamaraReversa;
         this.tieneABS = tieneABS;

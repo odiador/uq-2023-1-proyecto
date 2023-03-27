@@ -19,6 +19,7 @@ public class Camion extends Vehiculo {
      * @param modelo
      * @param cilindraje
      * @param velocidadMaxima
+     * @param combustible
      * @param estado
      * @param tipo
      * @param capacidadCarga
@@ -29,9 +30,10 @@ public class Camion extends Vehiculo {
      * @param tipoCamion
      */
     public Camion(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+            Combustible combustible,
             EstadoVehiculo estado, TipoCambio tipo, Double capacidadCarga, Boolean tieneAireAcondicionado,
             Boolean tieneFrenosAire, Integer numeroEjes, Boolean tieneABS, String tipoCamion) {
-        super(placa, marca, modelo, cilindraje, velocidadMaxima, estado, tipo);
+        super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 
         this.capacidadCarga = capacidadCarga;
         this.tieneAireAcondicionado = tieneAireAcondicionado;

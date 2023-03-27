@@ -14,12 +14,17 @@ public class Automovil extends Vehiculo {
      * @param modelo
      * @param cilindraje
      * @param velocidadMaxima
+     * @param combustible
      * @param estado
      * @param tipo
      */
     public Automovil(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-            EstadoVehiculo estado, TipoCambio tipo) {
-        super(placa, marca, modelo, cilindraje, velocidadMaxima, estado, tipo);
+            Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+            Integer numeroBolsasAire, Integer numeroPuertas) {
+        super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+        this.numeroPasajeros = numeroPasajeros;
+        this.numeroBolsasAire = numeroBolsasAire;
+        this.numeroPuertas = numeroPuertas;
     }
 
     /**

@@ -13,14 +13,22 @@ public class Deportivo extends Automovil {
      * @param modelo
      * @param cilindraje
      * @param velocidadMaxima
+     * @param combustible
      * @param estado
      * @param tipo
+     * @param numeroPasajeros
+     * @param numeroBolsasAire
+     * @param numeroPuertas
      * @param numeroCaballosFuerza
      * @param tiempoAlcanza100Kmh
      */
     public Deportivo(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-            EstadoVehiculo estado, TipoCambio tipo, Integer numeroCaballosFuerza, Integer tiempoAlcanza100Kmh) {
-        super(placa, marca, modelo, cilindraje, velocidadMaxima, estado, tipo);
+            Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+            Integer numeroBolsasAire, Integer numeroPuertas, Integer numeroCaballosFuerza,
+            Integer tiempoAlcanza100Kmh) {
+        super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+                numeroBolsasAire,
+                numeroPuertas);
         this.numeroCaballosFuerza = numeroCaballosFuerza;
         this.tiempoAlcanza100Kmh = tiempoAlcanza100Kmh;
     }

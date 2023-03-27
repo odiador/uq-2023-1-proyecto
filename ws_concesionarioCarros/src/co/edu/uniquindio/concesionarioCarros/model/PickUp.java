@@ -2,9 +2,6 @@ package co.edu.uniquindio.concesionarioCarros.model;
 
 public class PickUp extends Familiar {
 
-    private Boolean es4x4;
-    private Double capacidadCajaCarga;
-
     /**
      * Es el constructor de la PickUp
      * 
@@ -13,8 +10,12 @@ public class PickUp extends Familiar {
      * @param modelo
      * @param cilindraje
      * @param velocidadMaxima
+     * @param combustible
      * @param estado
      * @param tipo
+     * @param numeroPasajeros
+     * @param numeroBolsasAire
+     * @param numeroPuertas
      * @param tieneAireAcondicionado
      * @param tieneCamaraReversa
      * @param tieneABS
@@ -22,14 +23,18 @@ public class PickUp extends Familiar {
      * @param capacidadCajaCarga
      */
     public PickUp(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-            EstadoVehiculo estado, TipoCambio tipo, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
+            Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+            Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
             Boolean tieneABS, Boolean es4x4, Double capacidadCajaCarga) {
-        super(placa, marca, modelo, cilindraje, velocidadMaxima, estado, tipo, tieneAireAcondicionado,
-                tieneCamaraReversa,
-                tieneABS);
+        super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+                numeroBolsasAire,
+                numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS);
         this.es4x4 = es4x4;
         this.capacidadCajaCarga = capacidadCajaCarga;
     }
+
+    private Boolean es4x4;
+    private Double capacidadCajaCarga;
 
     /**
      * 

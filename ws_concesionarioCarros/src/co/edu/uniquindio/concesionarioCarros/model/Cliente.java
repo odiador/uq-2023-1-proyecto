@@ -3,9 +3,13 @@ package co.edu.uniquindio.concesionarioCarros.model;
 public class Cliente extends Usuario implements PuedeTenerVehiculo {
 
     /**
-     * Este el constructor de la clase
+     * Este el constructor de la clase Cliente
+     * 
+     * @param nombre
+     * @param id
      */
-    public Cliente() {
+    public Cliente(String nombre, String id) {
+        super(nombre, id);
     }
 
     @Override

@@ -3,9 +3,14 @@ package co.edu.uniquindio.concesionarioCarros.model;
 public class Administrador extends Empleado {
 
     /**
-     * Este es el metodo constructor de la clase
+     * Este es el metodo constructor de la clase Administrador
+     * 
+     * @param nombre
+     * @param id
      */
-    public Administrador() {
+    public Administrador(String nombre, String id) {
+        super(nombre, id);
+
     }
 
     /**

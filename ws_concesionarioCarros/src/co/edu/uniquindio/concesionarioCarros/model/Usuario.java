@@ -7,8 +7,13 @@ public abstract class Usuario {
 
     /**
      * Este es el metodo constructor de la clase usuario
+     * 
+     * @param nombre
+     * @param id
      */
-    public Usuario() {
+    public Usuario(String nombre, String id) {
+        this.nombre = nombre;
+        this.id = id;
     }
 
     /**

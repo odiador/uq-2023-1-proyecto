@@ -33,6 +33,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 
     /**
      * 
+     * @return
      */
     public String getNombre() {
         return nombre;

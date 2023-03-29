@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.m2e.Maven2LaunchConfigurationType">
+    <booleanAttribute key="M2_BATCH" value="false"/>
+    <stringAttribute key="M2_GOALS" value="-U archetype:generate"/>
+    <listAttribute key="M2_PROPERTIES">
+        <listEntry value="javafx-version=13"/>
+        <listEntry value="javafx-maven-plugin-version=0.0.6"/>
+        <listEntry value="add-debug-configuration=N"/>
+        <listEntry value="archetypeGroupId=org.openjfx"/>
+        <listEntry value="archetypeArtifactId=javafx-archetype-simple"/>
+        <listEntry value="archetypeVersion=0.0.6"/>
+        <listEntry value="groupId=co.edu.uniquindio"/>
+        <listEntry value="artifactId=carrouq"/>
+        <listEntry value="version=0.0.1-SNAPSHOT"/>
+        <listEntry value="package=co.edu.uniquindio.carrouq"/>
+        <listEntry value="outputDirectory=C:\Users\juanp\OneDrive\Documentos\miCarroUq\workspace"/>
+    </listAttribute>
+    <booleanAttribute key="M2_SAVE_BEFORE_LAUNCH" value="false"/>
+    <booleanAttribute key="org.eclipse.debug.ui.private" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="C:\Users\juanp\AppData\Local\Temp\m2e-archetypeGenerator14405833706655179683"/>
+</launchConfiguration>

@@ -398,3 +398,34 @@
 2023-03-28 22:20:08,594 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\miCarroUq\workspace\carrouq\src\main\resources
 2023-03-28 22:20:08,595 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2023-03-28 22:20:08,595 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\miCarroUq\workspace\carrouq\src\test\resources
+2023-03-28 23:00:12,072 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-03-28 23:00:45,877 [Worker-12: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2023-03-28 23:00:46,322 [Worker-12: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: co.edu.uniquindio:carrouq:0.0.1-SNAPSHOT @ C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\pom.xml.
+2023-03-28 23:00:46,487 [Worker-12: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /carrouq/src/main/java
+2023-03-28 23:00:46,497 [Worker-12: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /carrouq/src/test/java
+2023-03-28 23:00:46,859 [Worker-12: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 1 poms: local refresh takes 0.00 sec, refresh facades takes 0.00 sec, update config takes 0.00 sec 
+2023-03-28 23:00:47,257 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-03-28 23:00:47,257 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\src\main\resources
+2023-03-28 23:00:47,259 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-03-28 23:00:47,259 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\src\test\resources
+2023-03-28 23:01:37,528 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-03-28 23:02:08,744 [Worker-36: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2023-03-28 23:02:09,124 [Worker-36: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: co.edu.uniquindio:carrouq:0.0.1-SNAPSHOT @ C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\pom.xml.
+2023-03-28 23:02:09,296 [Worker-36: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /carrouq/src/main/java
+2023-03-28 23:02:09,296 [Worker-36: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /carrouq/src/test/java
+2023-03-28 23:02:09,625 [Worker-36: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed for 1 poms: local refresh takes 0.00 sec, refresh facades takes 0.00 sec, update config takes 0.00 sec 
+2023-03-28 23:02:10,036 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-03-28 23:02:10,037 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\src\main\resources
+2023-03-28 23:02:10,041 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-03-28 23:02:10,041 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\src\test\resources
+2023-03-28 23:02:23,099 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-03-28 23:02:23,099 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\src\main\resources
+2023-03-28 23:02:23,100 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-03-28 23:02:23,101 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\src\test\resources
+2023-03-28 23:02:31,067 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-03-28 23:02:31,068 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\src\main\resources
+2023-03-28 23:02:31,069 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-03-28 23:02:31,069 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\src\test\resources
+2023-03-28 23:03:02,044 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-03-28 23:03:02,044 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\juanp\OneDrive\Documentos\proyectoProg2\workspace\carrouq\src\main\resources
+2023-03-28 23:03:02,045 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.

@@ -1,4 +1,4 @@
-package co.edu.uniquindio.carrouq.model;
+package co.edu.uniquindio.concesionariouq.model;
 
 //ATRIBUTOS
 public abstract class Usuario {

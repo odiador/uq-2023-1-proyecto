@@ -1,4 +1,4 @@
-package co.edu.uniquindio.carrouq.model;
+package co.edu.uniquindio.concesionariouq.model;
 
 import java.util.ArrayList;
 import java.util.List;

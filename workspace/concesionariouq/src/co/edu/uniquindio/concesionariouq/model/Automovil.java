@@ -1,4 +1,4 @@
-package co.edu.uniquindio.carrouq.model;
+package co.edu.uniquindio.concesionariouq.model;
 
 public class Automovil extends Vehiculo {
 
@@ -8,7 +8,7 @@ public class Automovil extends Vehiculo {
 	private Integer numeroPuertas;
 
 	/**
-	 * 
+	 *
 	 * @param placa
 	 * @param marca
 	 * @param modelo
@@ -29,7 +29,7 @@ public class Automovil extends Vehiculo {
 
 	/**
 	 * Obtiene el numero de pasajeros
-	 * 
+	 *
 	 * @return numeroPasajeros
 	 */
 	public Integer getNumeroPasajeros() {
@@ -38,7 +38,7 @@ public class Automovil extends Vehiculo {
 
 	/**
 	 * Cambia el numero de pasajeros
-	 * 
+	 *
 	 * @param numeroPasajeros
 	 */
 	public void setNumeroPasajeros(final Integer numeroPasajeros) {
@@ -47,7 +47,7 @@ public class Automovil extends Vehiculo {
 
 	/**
 	 * Obiene el numero de bolsas de aire
-	 * 
+	 *
 	 * @return numeroBolsasAire
 	 */
 	public Integer getNumeroBolsasAire() {
@@ -56,7 +56,7 @@ public class Automovil extends Vehiculo {
 
 	/**
 	 * Cambia el numero de bolsas de aire
-	 * 
+	 *
 	 * @param numeroBolsasAire
 	 */
 	public void setNumeroBolsasAire(final Integer numeroBolsasAire) {
@@ -65,7 +65,7 @@ public class Automovil extends Vehiculo {
 
 	/**
 	 * Obtiene el numero de puertas
-	 * 
+	 *
 	 * @return numeroPuertas
 	 */
 	public Integer getNumeroPuertas() {
@@ -74,7 +74,7 @@ public class Automovil extends Vehiculo {
 
 	/**
 	 * Cambia el numero de puertas
-	 * 
+	 *
 	 * @param numeroPuertas
 	 */
 	public void setNumeroPuertas(final Integer numeroPuertas) {

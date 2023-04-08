@@ -33,15 +33,17 @@ public class Deportivo extends Automovil {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Obtiene el numero de caballos de fuerza del deportivo 
+	 *
+	 * @return numeroCaballosFuerza
 	 */
 	public Integer getNumeroCaballosFuerza() {
 		return numeroCaballosFuerza;
 	}
 
 	/**
-	 * 
+	 * Cambia el numero de caballos de fuerza del deportivo
+	 *
 	 * @param numeroCaballosFuerza
 	 */
 	public void setNumeroCaballosFuerza(final Integer numeroCaballosFuerza) {
@@ -49,7 +51,8 @@ public class Deportivo extends Automovil {
 	}
 
 	/**
-	 * 
+	 * Obtiene el tiempo en el que el deportivo alcanza los 100 Kmh 
+	 *
 	 * @return
 	 */
 	public Integer getTiempoAlcanza100Kmh() {

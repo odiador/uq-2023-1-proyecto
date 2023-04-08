@@ -32,15 +32,17 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 * 
-	 * @return
+	 *  Obtiene el nombre del concesionario
+	 *
+	 * @return nombre
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 
 	/**
-	 * 
+	 * Cambia el nombre del concesionario
+	 *
 	 * @param nombre
 	 */
 	public void setNombre(final String nombre) {
@@ -48,15 +50,18 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Obtiene la direccion del concesionario
+	 *
+	 * @return direccion
 	 */
 	public String getDireccion() {
 		return direccion;
 	}
 
+
 	/**
-	 * 
+	 * Cambia la direccion del concesionario
+	 *
 	 * @param direccion
 	 */
 	public void setDireccion(final String direccion) {
@@ -64,15 +69,17 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Obtiene la lista de vehiculos del concesionario
+	 *
+	 * @return listaVehiculos
 	 */
 	public List<Vehiculo> getListaVehiculos() {
 		return listaVehiculos;
 	}
 
 	/**
-	 * 
+	 * Cambia la lista de vehiculos del concesionario
+	 *
 	 * @param listaVehiculos
 	 */
 	public void setListaVehiculos(final List<Vehiculo> listaVehiculos) {
@@ -80,7 +87,8 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 * 
+	 * Obtiene la lista de usuarios del concesionario
+	 *
 	 * @return
 	 */
 	public List<Usuario> getListaUsuarios() {
@@ -88,7 +96,8 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 * 
+	 * Cambia la lista de usuarios del concesionario
+	 *
 	 * @param listaUsuarios
 	 */
 	public void setListaUsuarios(final List<Usuario> listaUsuarios) {
@@ -96,7 +105,8 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 * 
+	 *  Obtiene la lista de clientes del concesionario
+	 *
 	 * @return
 	 */
 	public List<Cliente> getListaClientes() {
@@ -104,7 +114,8 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 * 
+	 * Cambia la lista de usuarios del concesionario
+	 *
 	 * @param listaClientes
 	 */
 	public void setListaClientes(final List<Cliente> listaClientes) {
@@ -112,7 +123,8 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 * 
+	 *  Obtiene la lista de transacciones del concesionario
+	 *
 	 * @return
 	 */
 	public List<Transaccion> getListaTransacciones() {
@@ -120,7 +132,8 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 * 
+	 *  Cambia la lista de transacciones del concesionario
+	 *
 	 * @param listaTransacciones
 	 */
 	public void setListaTransacciones(final List<Transaccion> listaTransacciones) {
@@ -128,42 +141,48 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 * 
+	 *  Registra un vehiculo al concesionario
+	 *
 	 */
 	public void registrarVehiculo() {
 
 	}
 
 	/**
-	 * 
+	 * Agrega una transaccion al concesionario
+	 *
 	 */
 	public void agregarTransaccion() {
 
 	}
 
 	/**
-	 * 
+	 *  Agrega detalle a una transaccion del concesionario
+	 *
 	 */
 	public void agregarDetalleTransaccion() {
 
 	}
 
 	/**
-	 * 
+	 *  Generar reporte al concesionario
+	 *
 	 */
 	public void generarReporte() {
 
 	}
 
 	/**
-	 * 
+	 * Agrega foto al concesionario
+	 *
 	 */
 	public void agregarFoto() {
 
 	}
 
 	/**
-	 * 
+	 *  Envia email de recuperacion al concesionario
+	 *
 	 */
 	public void enviarEmailRecuperacion() {
 

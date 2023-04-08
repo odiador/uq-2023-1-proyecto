@@ -3,6 +3,8 @@ package co.edu.uniquindio.concesionariouq.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
+
 public class Concesionario implements PuedeTenerVehiculo {
 
 	// ATRIBUTOS
@@ -32,7 +34,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 *  Obtiene el nombre del concesionario
+	 * Obtiene el nombre del concesionario
 	 *
 	 * @return nombre
 	 */
@@ -57,7 +59,6 @@ public class Concesionario implements PuedeTenerVehiculo {
 	public String getDireccion() {
 		return direccion;
 	}
-
 
 	/**
 	 * Cambia la direccion del concesionario
@@ -105,7 +106,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 *  Obtiene la lista de clientes del concesionario
+	 * Obtiene la lista de clientes del concesionario
 	 *
 	 * @return
 	 */
@@ -123,7 +124,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 *  Obtiene la lista de transacciones del concesionario
+	 * Obtiene la lista de transacciones del concesionario
 	 *
 	 * @return
 	 */
@@ -132,7 +133,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 *  Cambia la lista de transacciones del concesionario
+	 * Cambia la lista de transacciones del concesionario
 	 *
 	 * @param listaTransacciones
 	 */
@@ -141,11 +142,18 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 *  Registra un vehiculo al concesionario
+	 * Registra un vehiculo al concesionario
 	 *
 	 */
-	public void registrarVehiculo() {
+	public void registrarVehiculo(String placa) {
 
+	}
+
+	public Vehiculo buscarVehiculo(String placa) {
+		int i = 0;
+		while (i < listaVehiculos.size() && !listaVehiculos.get(i).getPlaca().equals(placa))
+			i++;
+		return i < listaVehiculos.size() ? listaVehiculos.get(i) : null;
 	}
 
 	/**
@@ -157,7 +165,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 *  Agrega detalle a una transaccion del concesionario
+	 * Agrega detalle a una transaccion del concesionario
 	 *
 	 */
 	public void agregarDetalleTransaccion() {
@@ -165,7 +173,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 *  Generar reporte al concesionario
+	 * Generar reporte al concesionario
 	 *
 	 */
 	public void generarReporte() {
@@ -181,7 +189,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	/**
-	 *  Envia email de recuperacion al concesionario
+	 * Envia email de recuperacion al concesionario
 	 *
 	 */
 	public void enviarEmailRecuperacion() {
@@ -194,6 +202,43 @@ public class Concesionario implements PuedeTenerVehiculo {
 
 	@Override
 	public void comprarVehiculo(Vehiculo vehiculo) {
+	}
+
+	public void agregarBus(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
+			Boolean tieneABS, Double capacidadMaletero, Integer numeroEjes, Integer numeroSalidasEmergencia) {
+
+	}
+
+	public Usuario buscarUsuario(String identificacion) {
+		for (Usuario usuario : listaUsuarios) {
+			if (usuario.getId().equals(identificacion))
+				return usuario;
+		}
+		return null;
+	}
+
+	public Usuario buscarUsuario(String identificacion, String contrasena) {
+		for (Usuario usuario : listaUsuarios) {
+			if (usuario.getId().equals(identificacion) && usuario.getContrasena().equals(contrasena))
+				return usuario;
+		}
+		return null;
+	}
+
+	public boolean validarUsuario(String identificacion) {
+		return buscarUsuario(identificacion) != null;
+	}
+
+	public boolean validarUsuario(String identificacion, String contrasena) {
+		return buscarUsuario(identificacion, contrasena) != null;
+	}
+
+	public void agregarAdmin(String nombre, String id, String contrasena, String email) throws ConcesionarioException {
+		if (!validarUsuario(id))
+			listaUsuarios.add(new Administrador(nombre, id, contrasena, email));
+		throw new ConcesionarioException("El administrador ya se ecuentra agregado");
 	}
 
 }

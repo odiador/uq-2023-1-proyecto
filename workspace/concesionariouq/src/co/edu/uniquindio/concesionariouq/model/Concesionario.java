@@ -34,7 +34,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	/**
 	 *  Obtiene el nombre del concesionario
 	 *
-	 * @return
+	 * @return nombre
 	 */
 	public String getNombre() {
 		return nombre;
@@ -52,11 +52,12 @@ public class Concesionario implements PuedeTenerVehiculo {
 	/**
 	 * Obtiene la direccion del concesionario
 	 *
-	 * @return
+	 * @return direccion
 	 */
 	public String getDireccion() {
 		return direccion;
 	}
+
 
 	/**
 	 * Cambia la direccion del concesionario
@@ -70,7 +71,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	/**
 	 * Obtiene la lista de vehiculos del concesionario
 	 *
-	 * @return
+	 * @return listaVehiculos
 	 */
 	public List<Vehiculo> getListaVehiculos() {
 		return listaVehiculos;

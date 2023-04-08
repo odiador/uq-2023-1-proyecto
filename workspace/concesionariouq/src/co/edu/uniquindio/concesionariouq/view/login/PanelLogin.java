@@ -28,6 +28,8 @@ public class PanelLogin extends BorderPane {
 		box.getChildren().add(btnEntrar);
 		box.getChildren().add(btnOlvidaste);
 		setCenter(box);
+		
+		btnEntrar.setStyle("-fx-text-fill: red;");
 		btnEntrar.setOnMouseReleased(
 				e -> ControlLogin.entrar(stage, tfIdentificacion.getText(), tfContrasena.getText()));
 	}

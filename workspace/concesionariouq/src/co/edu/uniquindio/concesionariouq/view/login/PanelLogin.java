@@ -9,15 +9,22 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class PanelLogin extends BorderPane {
+	private Stage stage;
+
 	public PanelLogin(Stage stage) {
+		this.stage = stage;
+		initComp();
+	}
+
+	private void initComp() {
 		VBox box = new VBox(20);
 		TextField tfIdentificacion = new TextField("");
 		PasswordField tfContrasena = new PasswordField();
 		Label btnEntrar = new Label("Entrar");
-		Label btnOlvidaste = new Label("¿Olvidaste tu contraseña?");
+		Label btnOlvidaste = new Label("Â¿Olvidaste tu contraseÃ±a?");
 
-		box.getChildren().add(UtilPane.generarHBox("Escribe tu identificación:", tfIdentificacion));
-		box.getChildren().add(UtilPane.generarHBox("Escribe tu contraseña:", tfContrasena));
+		box.getChildren().add(UtilPane.generarHBox("Escribe tu identificaciÃ³n:", tfIdentificacion));
+		box.getChildren().add(UtilPane.generarHBox("Escribe tu contraseÃ±a:", tfContrasena));
 		box.getChildren().add(btnEntrar);
 		box.getChildren().add(btnOlvidaste);
 		setCenter(box);

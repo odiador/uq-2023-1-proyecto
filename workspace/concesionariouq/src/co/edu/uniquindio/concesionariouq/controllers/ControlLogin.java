@@ -15,7 +15,7 @@ public class ControlLogin {
 		}
 		SerializedData data = new SerializedData();
 		Concesionario concesionario = data.getConcesionario();
-		stage.setScene(new EscenaPrincipal(stage));
+		stage.setScene(new EscenaPrincipal(stage, concesionario.buscarUsuario(identificacion, contrasena)));
 	}
 
 }

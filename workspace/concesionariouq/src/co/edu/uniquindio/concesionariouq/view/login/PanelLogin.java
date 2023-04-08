@@ -1,5 +1,6 @@
 package co.edu.uniquindio.concesionariouq.view.login;
 
+import co.edu.uniquindio.concesionariouq.controllers.ControlLogin;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -20,5 +21,7 @@ public class PanelLogin extends BorderPane {
 		box.getChildren().add(btnEntrar);
 		box.getChildren().add(btnOlvidaste);
 		setCenter(box);
+		btnEntrar.setOnMouseReleased(
+				e -> ControlLogin.entrar(stage, tfIdentificacion.getText(), tfContrasena.getText()));
 	}
 }

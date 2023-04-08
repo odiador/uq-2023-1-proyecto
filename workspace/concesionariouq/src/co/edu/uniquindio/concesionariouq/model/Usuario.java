@@ -1,9 +1,13 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
+
 //ATRIBUTOS
 public abstract class Usuario {
 	private String nombre;
 	private String id;
+	private String contrasena;
+	private String email;
 
 	/**
 	 * Este es el metodo constructor de la clase usuario
@@ -11,9 +15,10 @@ public abstract class Usuario {
 	 * @param nombre
 	 * @param id
 	 */
-	public Usuario(String nombre, String id) {
+	public Usuario(String nombre, String id, String contrasena, String email) {
 		this.nombre = nombre;
 		this.id = id;
+		this.contrasena = contrasena;
 	}
 
 	/**
@@ -50,6 +55,16 @@ public abstract class Usuario {
 	 */
 	public void setId(final String id) {
 		this.id = id;
+	}
+
+	public abstract OpcionesMenu[] obtenerOpcionesDisponibles();
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 }

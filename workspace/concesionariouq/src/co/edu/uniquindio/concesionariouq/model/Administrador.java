@@ -1,5 +1,11 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
+
 public class Administrador extends Empleado {
 
 	/**
@@ -8,8 +14,8 @@ public class Administrador extends Empleado {
 	 * @param nombre
 	 * @param id
 	 */
-	public Administrador(String nombre, String id) {
-		super(nombre, id);
+	public Administrador(String nombre, String id, String contrasena, String email) {
+		super(nombre, id, contrasena, email);
 
 	}
 
@@ -53,6 +59,18 @@ public class Administrador extends Empleado {
 	 */
 	public void recuperarContrasena() {
 
+	}
+
+	@Override
+	public OpcionesMenu[] obtenerOpcionesDisponibles() {
+		ArrayList<OpcionesMenu> listaOpciones = new ArrayList<OpcionesMenu>(
+				Arrays.asList(super.obtenerOpcionesDisponibles()));
+		listaOpciones.add(OpcionesMenu.ACTUALIZAR_CLIENTE);
+		listaOpciones.add(OpcionesMenu.ACTUALIZAR_VEHICULO);
+		listaOpciones.add(OpcionesMenu.AGREGAR_CLIENTE);
+		listaOpciones.add(OpcionesMenu.ELIMINAR_CLIENTE);
+		Collections.sort(listaOpciones, OpcionesMenu::compararPorPrioridad);
+		return (OpcionesMenu[]) listaOpciones.toArray(new OpcionesMenu[listaOpciones.size()]);
 	}
 
 }

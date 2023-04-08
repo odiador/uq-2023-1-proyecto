@@ -1,5 +1,10 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
+import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
+
 public class Cliente extends Usuario implements PuedeTenerVehiculo {
 
 	/**
@@ -8,8 +13,8 @@ public class Cliente extends Usuario implements PuedeTenerVehiculo {
 	 * @param nombre
 	 * @param id
 	 */
-	public Cliente(String nombre, String id) {
-		super(nombre, id);
+	public Cliente(String nombre, String id, String contrasena, String email) {
+		super(nombre, id, contrasena, email);
 	}
 
 	@Override
@@ -25,6 +30,18 @@ public class Cliente extends Usuario implements PuedeTenerVehiculo {
 
 	@Override
 	public void venderVehiculo(String placa) {
+	}
+
+	@Override
+	public OpcionesMenu[] obtenerOpcionesDisponibles() {
+		ArrayList<OpcionesMenu> listaAux = new ArrayList<OpcionesMenu>();
+		listaAux.add(OpcionesMenu.COMPRAR_VEHICULO);
+		listaAux.add(OpcionesMenu.VENDER_VEHICULO);
+		listaAux.add(OpcionesMenu.CAMBIAR_CONTRASENA);
+		listaAux.add(OpcionesMenu.ACTUALIZAR_INFO);
+		listaAux.add(OpcionesMenu.ACERCA_DE);
+		Collections.sort(listaAux, OpcionesMenu::compararPorPrioridad);
+		return (OpcionesMenu[]) listaAux.toArray(new OpcionesMenu[listaAux.size()]);
 	}
 
 }

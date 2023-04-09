@@ -1,4 +1,4 @@
-package application;
+package co.edu.uniquindio.concesionariouq.application;
 
 import co.edu.uniquindio.concesionariouq.model.Cliente;
 import co.edu.uniquindio.concesionariouq.view.principal.EscenaPrincipal;

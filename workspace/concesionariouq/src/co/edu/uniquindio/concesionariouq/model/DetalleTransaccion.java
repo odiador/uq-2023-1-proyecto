@@ -1,25 +1,31 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 public class DetalleTransaccion {
+	
+	//ATRIBUTOS
 	private Vehiculo vehiculo;
 	private String codigoTransaccion;
 	private TipoTransaccion tipo;
 
 	/**
-	 * 
+	 * Este es el contructor vacio de la clase
 	 */
 	public DetalleTransaccion() {
 	}
 
+	
+	
 	/**
+	 * Obtiene el vehiculo del detalle de transaccion
 	 * 
-	 * @return
+	 * @return vehiculo
 	 */
 	public Vehiculo getVehiculo() {
 		return vehiculo;
 	}
 
 	/**
+	 * Cambia el vehiculo del detalle de transaccion
 	 * 
 	 * @param vehiculo
 	 */
@@ -28,14 +34,16 @@ public class DetalleTransaccion {
 	}
 
 	/**
+	 * Obtiene el codigo de transaccion
 	 * 
-	 * @return
+	 * @return codigoTransaccion
 	 */
 	public String getCodigoTransaccion() {
 		return codigoTransaccion;
 	}
 
 	/**
+	 * Cambia el codigo de transaccion
 	 * 
 	 * @param codigoTransaccion
 	 */
@@ -43,15 +51,18 @@ public class DetalleTransaccion {
 		this.codigoTransaccion = codigoTransaccion;
 	}
 
+	
 	/**
+	 * Obtiene el tipo de transaccion
 	 * 
-	 * @return
+	 * @return tipo
 	 */
 	public TipoTransaccion getTipo() {
 		return tipo;
 	}
 
 	/**
+	 * Cambia el tipo de transaccion
 	 * 
 	 * @param tipo
 	 */

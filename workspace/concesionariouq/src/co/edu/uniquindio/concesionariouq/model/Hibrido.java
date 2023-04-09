@@ -2,10 +2,12 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Hibrido extends Combustible {
 
+	//ATRIBUTOS
 	private Boolean esEnchufable;
 	private Boolean esHibridoLigero;
 
 	/**
+	 * Este es el constructor principal de la clase
 	 * 
 	 * @param esEnchufable
 	 * @param esHibridoLigero
@@ -16,14 +18,16 @@ public class Hibrido extends Combustible {
 	}
 
 	/**
+	 * Obtiene la opcion si el hibrido es ligero o no lo es
 	 * 
-	 * @return
+	 * @return esHibridoLigero
 	 */
 	public Boolean getEsHibridoLigero() {
 		return esHibridoLigero;
 	}
 
 	/**
+	 * Cambia la opcion si el hibrido es ligero o no lo es 
 	 * 
 	 * @param esHibridoLigero
 	 */
@@ -32,14 +36,16 @@ public class Hibrido extends Combustible {
 	}
 
 	/**
+	 * Obtiene la opcion si el hibrido es enchufable o no
 	 * 
-	 * @return
+	 * @return esEnchufable
 	 */
 	public Boolean getEsEnchufable() {
 		return esEnchufable;
 	}
 
 	/**
+	 * Cambia la opcion si el hibrido es enchufable o no
 	 * 
 	 * @param esEnchufable
 	 */

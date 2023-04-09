@@ -1,6 +1,9 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 public abstract class Vehiculo {
+	
+	//ATRIBUTOS
+	
 	private String placa;
 	private String marca;
 	private String modelo;
@@ -35,13 +38,17 @@ public abstract class Vehiculo {
 	}
 
 	/**
-	 * @return
+	 * Obtiene la placa del vehiculo
+	 * 
+	 * @return placa
 	 */
 	public String getPlaca() {
 		return placa;
 	}
 
 	/**
+	 * Cambia la placa del vehiculo
+	 * 
 	 * @param placa
 	 */
 	public void setPlaca(String placa) {
@@ -49,14 +56,16 @@ public abstract class Vehiculo {
 	}
 
 	/**
+	 * Obtiene la marca del vehiculo
 	 * 
-	 * @return
+	 * @return marca
 	 */
 	public String getMarca() {
 		return marca;
 	}
 
 	/**
+	 * Cambia la marca de vehiculo
 	 * 
 	 * @param marca
 	 */
@@ -65,14 +74,16 @@ public abstract class Vehiculo {
 	}
 
 	/**
+	 * Obtiene el modelo del vehiculo
 	 * 
-	 * @return
+	 * @return modelo
 	 */
 	public String getModelo() {
 		return modelo;
 	}
 
 	/**
+	 *Cambia el modelo del vehiculo
 	 * 
 	 * @param modelo
 	 */
@@ -81,14 +92,16 @@ public abstract class Vehiculo {
 	}
 
 	/**
+	 * Obtiene el cilindraje del vehiculo
 	 * 
-	 * @return
+	 * @return cilindraje
 	 */
 	public Double getCilindraje() {
 		return cilindraje;
 	}
 
 	/**
+	 * Cambia el cilindraje del vehiculo
 	 * 
 	 * @param cilindraje
 	 */
@@ -97,14 +110,16 @@ public abstract class Vehiculo {
 	}
 
 	/**
+	 * Obtiene la velocidad maxima del vehiclo
 	 * 
-	 * @return
+	 * @return velocidadMaxima
 	 */
 	public Double getVelocidadMaxima() {
 		return velocidadMaxima;
 	}
 
 	/**
+	 * Cambia la velocidad maxima del vehiculo
 	 * 
 	 * @param velocidadMaxima
 	 */
@@ -113,14 +128,16 @@ public abstract class Vehiculo {
 	}
 
 	/**
+	 * Obtiene el combustible del vehiculo
 	 * 
-	 * @return
+	 * @return combustible
 	 */
 	public Combustible getCombustible() {
 		return combustible;
 	}
 
 	/**
+	 * Cambia el tipo de combustible del vehiculo
 	 * 
 	 * @param combustible
 	 */
@@ -129,14 +146,16 @@ public abstract class Vehiculo {
 	}
 
 	/**
+	 * Obtiene el estado del vehiculo
 	 * 
-	 * @return
+	 * @return estado
 	 */
 	public EstadoVehiculo getEstado() {
 		return estado;
 	}
 
 	/**
+	 * Cambia el estado del vehiculo
 	 * 
 	 * @param estado
 	 */
@@ -145,14 +164,16 @@ public abstract class Vehiculo {
 	}
 
 	/**
+	 * Obtiene el tipo de vehiculo
 	 * 
-	 * @return
+	 * @return tipo
 	 */
 	public TipoCambio getTipo() {
 		return tipo;
 	}
 
 	/**
+	 * Cambia el tipo de vehiculo
 	 * 
 	 * @param tipo
 	 */

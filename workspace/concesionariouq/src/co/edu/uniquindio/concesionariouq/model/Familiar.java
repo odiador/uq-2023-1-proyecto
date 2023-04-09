@@ -2,6 +2,7 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public abstract class Familiar extends Automovil {
 
+	//ATRIBUTOS
 	private Boolean tieneAireAcondicionado;
 	private Boolean tieneCamaraReversa;
 	private Boolean tieneABS;
@@ -36,14 +37,16 @@ public abstract class Familiar extends Automovil {
 	}
 
 	/**
+	 * Obtiene la opcion si el familiar tiene aire acondicionado o no lo tiene
 	 * 
-	 * @return
+	 * @return tieneAireAcondicionado
 	 */
 	public Boolean getTieneAireAcondicionado() {
 		return tieneAireAcondicionado;
 	}
 
 	/**
+	 * Cambia la opcion si el familiar tiene aire acondicionado o no lo tiene
 	 * 
 	 * @param tieneAireAcondicionado
 	 */
@@ -52,14 +55,16 @@ public abstract class Familiar extends Automovil {
 	}
 
 	/**
+	 * Obtiene la opcion si el familiar tiene camara reversa o no lo tiene
 	 * 
-	 * @return
+	 * @return tieneCamaraReversa
 	 */
 	public Boolean getTieneCamaraReversa() {
 		return tieneCamaraReversa;
 	}
 
 	/**
+	 * Cambia la opcion si el familiar tiene camara reversa o no lo tiene
 	 * 
 	 * @param tieneCamaraReversa
 	 */
@@ -68,14 +73,16 @@ public abstract class Familiar extends Automovil {
 	}
 
 	/**
+	 * Obtiene la opcion si el familiar tiene ABS o no lo tiene
 	 * 
-	 * @return
+	 * @return Obtiene la opcion si el familiar tiene ABS o no lo tiene
 	 */
 	public Boolean getTieneABS() {
 		return tieneABS;
 	}
 
 	/**
+	 * Cambia la opcion si el familiar tiene ABS o no lo tiene
 	 * 
 	 * @param tieneABS
 	 */

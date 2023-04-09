@@ -56,13 +56,30 @@ public abstract class Usuario {
 	public void setId(final String id) {
 		this.id = id;
 	}
-
+	
+	
+	/**
+	 * Este metodo obtiene las opciones disponible del usuario
+	 * 
+	 * @return
+	 */
 	public abstract OpcionesMenu[] obtenerOpcionesDisponibles();
 
+	
+	/**
+	 * Obtiene la contraseña del usuario
+	 * 
+	 * @return contrasena
+	 */
 	public String getContrasena() {
 		return contrasena;
 	}
 
+	/**
+	 * Cambia la contraseña del usuario
+	 * 
+	 * @param contrasena
+	 */
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}

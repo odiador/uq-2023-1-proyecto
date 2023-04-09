@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Transaccion {
+	
+	//ATRIBUTOS
 	private String codigo;
 	private List<DetalleTransaccion> listaDetalleTransacciones;
 
 	/**
+	 * Este es el constructor vacio de la clase
 	 * 
 	 */
 	public Transaccion() {
 	}
 
 	/**
+	 * Este es el constructor principal de la clase
 	 * 
 	 * @param codigo
 	 */
@@ -23,14 +27,16 @@ public class Transaccion {
 	}
 
 	/**
+	 * Obtiene el codigo de la Transaccion
 	 * 
-	 * @return
+	 * @return codigo
 	 */
 	public String getCodigo() {
 		return codigo;
 	}
 
 	/**
+	 * Cambia el codigo de la Transaccion
 	 * 
 	 * @param codigo
 	 */
@@ -39,14 +45,16 @@ public class Transaccion {
 	}
 
 	/**
+	 * Obtiene la lista de los detalles de las transacciones
 	 * 
-	 * @return
+	 * @return listaDetalleTransacciones
 	 */
 	public List<DetalleTransaccion> getListaDetalleTransacciones() {
 		return listaDetalleTransacciones;
 	}
 
 	/**
+	 * Cambia la lista de los detalles de las transacciones
 	 * 
 	 * @param listaDetalleTransacciones
 	 */
@@ -55,6 +63,7 @@ public class Transaccion {
 	}
 
 	/**
+	 *  Agrega un detalle a la transaccion
 	 * 
 	 * @param tipo
 	 */

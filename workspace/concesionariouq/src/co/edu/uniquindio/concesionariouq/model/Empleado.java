@@ -7,6 +7,7 @@ import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
 public class Empleado extends Usuario {
 
 	/**
+	 * Este es el constructor principal de la clase
 	 * 
 	 * @param nombre
 	 * @param id

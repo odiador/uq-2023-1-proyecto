@@ -14,7 +14,7 @@ public class MenuPrincipalIzq extends BorderPane {
 
 	private void initComp() {
 		MenuOpcionesIzq menuOpcionesIzq = new MenuOpcionesIzq(comunicacion);
-		setBottom(menuOpcionesIzq);
+		setCenter(menuOpcionesIzq);
 	}
 
 }

@@ -2,8 +2,6 @@ package co.edu.uniquindio.concesionariouq.model;
 
 import java.util.ArrayList;
 
-import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
-
 public class Empleado extends Usuario {
 
 	private boolean estaActivo = true;
@@ -20,14 +18,14 @@ public class Empleado extends Usuario {
 	}
 
 	@Override
-	public OpcionesMenu[] obtenerOpcionesDisponibles() {
-		ArrayList<OpcionesMenu> listaAux = new ArrayList<OpcionesMenu>();
-		listaAux.add(OpcionesMenu.COMPRAR_VEHICULO);
-		listaAux.add(OpcionesMenu.VENDER_VEHICULO);
-		listaAux.add(OpcionesMenu.CAMBIAR_CONTRASENA);
-		listaAux.add(OpcionesMenu.ACTUALIZAR_INFO);
-		listaAux.add(OpcionesMenu.ACERCA_DE);
-		return (OpcionesMenu[]) listaAux.toArray(new OpcionesMenu[listaAux.size()]);
+	public OpcionMenu[] obtenerOpcionesDisponibles() {
+		ArrayList<OpcionMenu> listaAux = new ArrayList<OpcionMenu>();
+		listaAux.add(OpcionMenu.COMPRAR_VEHICULO);
+		listaAux.add(OpcionMenu.VENDER_VEHICULO);
+		listaAux.add(OpcionMenu.CAMBIAR_CONTRASENA);
+		listaAux.add(OpcionMenu.ACTUALIZAR_INFO);
+		listaAux.add(OpcionMenu.ACERCA_DE);
+		return (OpcionMenu[]) listaAux.toArray(new OpcionMenu[listaAux.size()]);
 	}
 
 	public boolean isActivo() {

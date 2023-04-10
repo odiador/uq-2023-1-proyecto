@@ -1,15 +1,15 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
+import co.edu.uniquindio.concesionariouq.model.OpcionMenu;
 import co.edu.uniquindio.concesionariouq.model.Usuario;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarCliente;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarVehiculo;
 import co.edu.uniquindio.concesionariouq.view.principal.MenuPrincipal;
-import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
 
 public class ControlMenu {
 
 	public static void actualizarVista(MenuPrincipal menuPrincipal, Usuario usuario, String msg) {
-		OpcionesMenu valorOpcion = OpcionesMenu.obtenerValorOpcion(msg);
+		OpcionMenu valorOpcion = OpcionMenu.obtenerValorOpcion(msg);
 		if (valorOpcion == null)
 			return;
 		System.out.println(valorOpcion.getText());

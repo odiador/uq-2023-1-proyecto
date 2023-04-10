@@ -1,6 +1,6 @@
-package co.edu.uniquindio.concesionariouq.view.principal;
+package co.edu.uniquindio.concesionariouq.model;
 
-public enum OpcionesMenu {
+public enum OpcionMenu {
 	AGREGAR_VEHICULO("Agregar Vehiculo", 1), AGREGAR_CLIENTE("Agregar Cliente", 2),
 	COMPRAR_VEHICULO("Comprar Vehiculo", 3), ALQUILAR_VEHICULO("Alquilar Vehiculo", 4),
 	ELIMINAR_CLIENTE("Eliminar cliente", 5), ELIMINAR_VEHICULO("Eliminar Vehiculo", 6),
@@ -12,7 +12,7 @@ public enum OpcionesMenu {
 	private String text;
 	private int orden;
 
-	private OpcionesMenu(String text, int orden) {
+	private OpcionMenu(String text, int orden) {
 		this.text = text;
 		this.orden = orden;
 	}
@@ -25,13 +25,13 @@ public enum OpcionesMenu {
 		return orden;
 	}
 
-	public int compararPorPrioridad(OpcionesMenu opt) {
+	public int compararPorPrioridad(OpcionMenu opt) {
 		return orden - opt.orden;
 	}
 
-	public static OpcionesMenu obtenerValorOpcion(String text) {
-		OpcionesMenu[] arr = OpcionesMenu.values();
-		for (OpcionesMenu opcionesMenu : arr)
+	public static OpcionMenu obtenerValorOpcion(String text) {
+		OpcionMenu[] arr = OpcionMenu.values();
+		for (OpcionMenu opcionesMenu : arr)
 			if (opcionesMenu.getText().equals(text))
 				return opcionesMenu;
 

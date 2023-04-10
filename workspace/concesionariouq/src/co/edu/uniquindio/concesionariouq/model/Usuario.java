@@ -1,7 +1,5 @@
 package co.edu.uniquindio.concesionariouq.model;
 
-import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
-
 //ATRIBUTOS
 public abstract class Usuario {
 	private final String id;
@@ -47,7 +45,7 @@ public abstract class Usuario {
 	 * 
 	 * @return
 	 */
-	public abstract OpcionesMenu[] obtenerOpcionesDisponibles();
+	public abstract OpcionMenu[] obtenerOpcionesDisponibles();
 
 	/**
 	 * Obtiene la contraseña del usuario

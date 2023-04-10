@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
-import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
 
 public class Administrador extends Empleado {
 
@@ -90,15 +89,15 @@ public class Administrador extends Empleado {
 	}
 
 	@Override
-	public OpcionesMenu[] obtenerOpcionesDisponibles() {
-		ArrayList<OpcionesMenu> listaOpciones = new ArrayList<OpcionesMenu>(
+	public OpcionMenu[] obtenerOpcionesDisponibles() {
+		ArrayList<OpcionMenu> listaOpciones = new ArrayList<OpcionMenu>(
 				Arrays.asList(super.obtenerOpcionesDisponibles()));
-		listaOpciones.add(OpcionesMenu.ACTUALIZAR_CLIENTE);
-		listaOpciones.add(OpcionesMenu.ACTUALIZAR_VEHICULO);
-		listaOpciones.add(OpcionesMenu.AGREGAR_CLIENTE);
-		listaOpciones.add(OpcionesMenu.ELIMINAR_CLIENTE);
-		Collections.sort(listaOpciones, OpcionesMenu::compararPorPrioridad);
-		return (OpcionesMenu[]) listaOpciones.toArray(new OpcionesMenu[listaOpciones.size()]);
+		listaOpciones.add(OpcionMenu.ACTUALIZAR_CLIENTE);
+		listaOpciones.add(OpcionMenu.ACTUALIZAR_VEHICULO);
+		listaOpciones.add(OpcionMenu.AGREGAR_CLIENTE);
+		listaOpciones.add(OpcionMenu.ELIMINAR_CLIENTE);
+		Collections.sort(listaOpciones, OpcionMenu::compararPorPrioridad);
+		return (OpcionMenu[]) listaOpciones.toArray(new OpcionMenu[listaOpciones.size()]);
 	}
 
 	public HashMap<String, Empleado> getListaEmpleados() {

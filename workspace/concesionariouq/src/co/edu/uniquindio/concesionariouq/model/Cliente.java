@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
-import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
 
 public class Cliente extends Usuario {
 	private HashMap<String, Vehiculo> listaVehiculos;
@@ -30,15 +29,15 @@ public class Cliente extends Usuario {
 	}
 
 	@Override
-	public OpcionesMenu[] obtenerOpcionesDisponibles() {
-		ArrayList<OpcionesMenu> listaAux = new ArrayList<OpcionesMenu>();
-		listaAux.add(OpcionesMenu.COMPRAR_VEHICULO);
-		listaAux.add(OpcionesMenu.VENDER_VEHICULO);
-		listaAux.add(OpcionesMenu.CAMBIAR_CONTRASENA);
-		listaAux.add(OpcionesMenu.ACTUALIZAR_INFO);
-		listaAux.add(OpcionesMenu.ACERCA_DE);
-		Collections.sort(listaAux, OpcionesMenu::compararPorPrioridad);
-		return (OpcionesMenu[]) listaAux.toArray(new OpcionesMenu[listaAux.size()]);
+	public OpcionMenu[] obtenerOpcionesDisponibles() {
+		ArrayList<OpcionMenu> listaAux = new ArrayList<OpcionMenu>();
+		listaAux.add(OpcionMenu.COMPRAR_VEHICULO);
+		listaAux.add(OpcionMenu.VENDER_VEHICULO);
+		listaAux.add(OpcionMenu.CAMBIAR_CONTRASENA);
+		listaAux.add(OpcionMenu.ACTUALIZAR_INFO);
+		listaAux.add(OpcionMenu.ACERCA_DE);
+		Collections.sort(listaAux, OpcionMenu::compararPorPrioridad);
+		return (OpcionMenu[]) listaAux.toArray(new OpcionMenu[listaAux.size()]);
 	}
 
 	public void agregarVehiculo(String placa, Vehiculo vehiculo) throws ConcesionarioException {

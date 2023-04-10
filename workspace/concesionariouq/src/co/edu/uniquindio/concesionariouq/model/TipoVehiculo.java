@@ -1,26 +1,17 @@
 package co.edu.uniquindio.concesionariouq.model;
 
-import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
-
 public enum TipoVehiculo {
 	// TIPOS DE VEHICULO
-	
-	BUS("Bus"), 
-	CAMION("Camion"), 
-	CAMIONETA("Camioneta"), 
-	DEPORTIVO("Deportivo"), 
-	FAMILIAR("Familiar"), 
-	MOTO("Moto"),
-	PICKUP("PickUp"), 
-	SEDAN("Sendan"), VAN("Van");
+
+	BUS("Bus"), CAMION("Camion"), CAMIONETA("Camioneta"), DEPORTIVO("Deportivo"), FAMILIAR("Familiar"), MOTO("Moto"),
+	PICKUP("PickUp"), SEDAN("Sendan"), VAN("Van");
 
 	private final String tipo;
 
 	private TipoVehiculo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	
+
 	/**
 	 * Obtiene una lista con los valores que puede tener el tipo del vehiculo
 	 * 
@@ -43,9 +34,9 @@ public enum TipoVehiculo {
 		return tipo;
 	}
 
-	
 	/**
-	 * Obtiene un valor de la lista con los valores que puede tener el tipo del vehiculo
+	 * Obtiene un valor de la lista con los valores que puede tener el tipo del
+	 * vehiculo
 	 */
 	public static TipoVehiculo obtenerValorTipo(String tipo) {
 		TipoVehiculo[] arr = TipoVehiculo.values();

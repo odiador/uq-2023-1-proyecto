@@ -32,18 +32,25 @@ public class PickUp extends Familiar {
 		this.capacidadCajaCarga = capacidadCajaCarga;
 	}
 
+	
+	/**
+	 * Determina si el Pickup es 4x4 o no lo es
+	 */
 	private Boolean es4x4;
+	
 	private Double capacidadCajaCarga;
 
 	/**
+	 * Obtiene la opcion de que el Pickup es 4x4 o no lo es
 	 * 
-	 * @return
+	 * @return es4x4
 	 */
 	public Boolean getEs4x4() {
 		return es4x4;
 	}
 
 	/**
+	 * Cambia la opcion de que el Pickup es 4x4 o no lo es
 	 * 
 	 * @param es4x4
 	 */
@@ -52,14 +59,16 @@ public class PickUp extends Familiar {
 	}
 
 	/**
+	 * Obtiene la capacidad de la caja de carga del PickUp
 	 * 
-	 * @return
+	 * @return capacidadCajaCarga
 	 */
 	public Double getCapacidadCajaCarga() {
 		return capacidadCajaCarga;
 	}
 
 	/**
+	 * Cambia la capacidad de la caja de carga del PickUp
 	 * 
 	 * @param capacidadCajaCarga
 	 */

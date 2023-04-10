@@ -60,6 +60,7 @@ public class Deportivo extends Automovil {
 	}
 
 	/**
+	 * Cambia el tiempo en el que el deportivo alcanza los 100 Kmh
 	 * 
 	 * @param tiempoAlcanza100Kmh
 	 */

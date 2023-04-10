@@ -5,6 +5,7 @@ public class Electrico extends Combustible {
 	private Double tiempoDemoraCarga;
 
 	/**
+	 * Este es el constructor principal de la clase
 	 * 
 	 * @param autonomiaCargaCompleta
 	 * @param tiempoDemoraCarga
@@ -15,6 +16,7 @@ public class Electrico extends Combustible {
 	}
 
 	/**
+	 * Cambia la automonia de carga completa
 	 * 
 	 * @param autonomiaCargaCompleta
 	 */
@@ -23,14 +25,16 @@ public class Electrico extends Combustible {
 	}
 
 	/**
+	 * Obtiene la automonia de carga completa
 	 * 
-	 * @return
+	 * @return autonomiaCargaCompleta
 	 */
 	public Double getAutonomiaCargaCompleta() {
 		return autonomiaCargaCompleta;
 	}
 
 	/**
+	 * Cambia el tiempo de demora de carga del electrico
 	 * 
 	 * @param tiempoDemoraCarga
 	 */
@@ -39,8 +43,9 @@ public class Electrico extends Combustible {
 	}
 
 	/**
+	 * Obtiene el tiempo de demora de carga del electrico
 	 * 
-	 * @return
+	 * @return tiempoDemoraCarga
 	 */
 	public Double getTiempoDemoraCarga() {
 		return tiempoDemoraCarga;

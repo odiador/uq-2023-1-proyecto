@@ -2,6 +2,8 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Sedan extends Van {
 
+	//ATRIBUTOS
+	
 	private Boolean tieneVelocidadCrucero;
 	private Boolean tieneSensorColision;
 	private Boolean tieneSensorTrafico;
@@ -45,14 +47,16 @@ public class Sedan extends Van {
 	}
 
 	/**
+	 * Obtiene la velocidad crucero del Sedan
 	 * 
-	 * @return
+	 * @return tieneVelocidadCrucero
 	 */
 	public Boolean getTieneVelocidadCrucero() {
 		return tieneVelocidadCrucero;
 	}
 
 	/**
+	 * Cambia la velocidad crucero del Sedan
 	 * 
 	 * @param tieneVelocidadCrucero
 	 */
@@ -61,14 +65,16 @@ public class Sedan extends Van {
 	}
 
 	/**
+	 * Obtiene  la opcion si el sedan tiene o no tiene el sensor colision
 	 * 
-	 * @return
+	 * @return tieneSensorColision
 	 */
 	public Boolean getTieneSensorColision() {
 		return tieneSensorColision;
 	}
 
 	/**
+	 * Cambia la opcion si el sedan tiene o no tiene el sensor colision
 	 * 
 	 * @param tieneSensorColision
 	 */
@@ -77,14 +83,16 @@ public class Sedan extends Van {
 	}
 
 	/**
+	 * Obtiene la opcion si el sedan tiene o no tiene sensor de trafico
 	 * 
-	 * @return
+	 * @return tieneSensorTrafico
 	 */
 	public Boolean getTieneSensorTrafico() {
 		return tieneSensorTrafico;
 	}
 
 	/**
+	 * Cambia la opcion si el sedan tiene o no tiene sensor de trafico
 	 * 
 	 * @param tieneSensorTrafico
 	 */
@@ -93,14 +101,16 @@ public class Sedan extends Van {
 	}
 
 	/**
+	 * Obtiene la opcion si el sedan tiene o no tiene asistente de permanencia
 	 * 
-	 * @return
+	 * @return tieneAsistentePermanencia
 	 */
 	public Boolean getTieneAsistentePermanencia() {
 		return tieneAsistentePermanencia;
 	}
 
 	/**
+	 * Cambia la opcion si el sedan tiene o no tiene asistente de permanencia
 	 * 
 	 * @param tieneAsistentePermanencia
 	 */

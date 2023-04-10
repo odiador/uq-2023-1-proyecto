@@ -41,7 +41,7 @@ public class Administrador extends Empleado {
 	}
 
 	/**
-	 * Este metodo bloquea aun empleado
+	 * Este metodo bloquea a un empleado
 	 */
 	public void bloquearEmpleado() {
 

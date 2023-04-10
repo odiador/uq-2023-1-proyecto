@@ -3,9 +3,15 @@ package co.edu.uniquindio.concesionariouq.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import co.edu.uniquindio.concesionariouq.exceptions.ClienteNoEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
+import co.edu.uniquindio.concesionariouq.exceptions.LoginFailedException;
+import co.edu.uniquindio.concesionariouq.exceptions.TransaccionYaExisteException;
+import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEsClienteException;
+import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
+import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
-public class Concesionario {
+public class Concesionario implements PuedeTenerVehiculos {
 
 	// ATRIBUTOS
 	private String nombre;
@@ -75,7 +81,7 @@ public class Concesionario {
 	 * Agrega una transaccion al concesionario
 	 *
 	 */
-	public void agregarTransaccion(String codigo) throws ConcesionarioException {
+	public void agregarTransaccion(String codigo) throws TransaccionYaExisteException {
 		throwIfTransaccionExist(codigo);
 		listaTransacciones.put(codigo, new Transaccion(codigo));
 	}
@@ -94,11 +100,11 @@ public class Concesionario {
 	 * Muestra un error en caso de que la transaccion ya exista
 	 * 
 	 * @param codigo
-	 * @throws ConcesionarioException
+	 * @throws TransaccionYaExisteException
 	 */
-	private void throwIfTransaccionExist(String codigo) throws ConcesionarioException {
+	private void throwIfTransaccionExist(String codigo) throws TransaccionYaExisteException {
 		if (validarTransaccion(codigo))
-			throw new ConcesionarioException("La transaccion ya existe");
+			throw new TransaccionYaExisteException("La transaccion ya existe");
 	}
 
 	/**
@@ -107,7 +113,7 @@ public class Concesionario {
 	 * @param codigo
 	 * @throws ConcesionarioException
 	 */
-	public void eliminarTransaccion(String codigo) throws ConcesionarioException {
+	public void eliminarTransaccion(String codigo) throws TransaccionYaExisteException {
 		throwIfTransaccionExist(codigo);
 		listaTransacciones.remove(codigo);
 	}
@@ -156,15 +162,18 @@ public class Concesionario {
 	}
 
 	/**
+	 * Vende un vehiculo a un usuario
 	 * 
 	 * @param placa
-	 * @throws ConcesionarioException
+	 * @throws VehiculoYaExisteExceptio
+	 * @throws VehiculoNoExisteException
 	 */
-	public void venderVehiculoaUsuario(String idCliente, String placa) throws ConcesionarioException {
+	public void venderVehiculoaUsuario(String idCliente, String placa)
+			throws VehiculoNoExisteException, VehiculoYaExisteException {
 		Cliente usuario = (Cliente) buscarUsuario(idCliente);
 		Vehiculo vehiculo = buscarVehiculo(placa);
-		eliminarVehiculo(placa);
-		usuario.agregarVehiculo(placa, vehiculo);
+		eliminarVehiculo(vehiculo);
+		usuario.agregarVehiculo(vehiculo);
 	}
 
 	/**
@@ -172,14 +181,17 @@ public class Concesionario {
 	 * Elimina el cliente
 	 * 
 	 * @param placa
+	 * @throws ClienteNoEncontradoException
 	 * @throws ConcesionarioException
+	 * @throws UsuarioNoEsClienteException
 	 */
-	public void venderVehiculoaConcesionario(String idCliente, String placa) throws ConcesionarioException {
+	public void venderVehiculoaConcesionario(String idCliente, String placa)
+			throws ConcesionarioException, ClienteNoEncontradoException, UsuarioNoEsClienteException {
 		Usuario buscarUsuario = buscarUsuario(idCliente);
 		if (buscarUsuario == null)
-			throw new ConcesionarioException("El usuario no fue encontrado");
+			throw new ClienteNoEncontradoException("El usuario no fue encontrado");
 		if (!(buscarUsuario instanceof Cliente))
-			throw new ConcesionarioException("El usuario encontrado no es un cliente");
+			throw new UsuarioNoEsClienteException("El usuario encontrado no es un cliente");
 
 		((Cliente) buscarUsuario).eliminarVehiculo(placa);
 	}
@@ -247,6 +259,20 @@ public class Concesionario {
 		if (usuario != null && usuario.getContrasena().equals(contrasena))
 			return usuario;
 		return null;
+	}
+
+	/**
+	 * Intenta hacer login al usuario, si no se puede marca una excepcion
+	 * 
+	 * @param contrasena
+	 * @param identificacion
+	 * @throws LoginFailedException 
+	 */
+	public void hacerLogin(String identificacion, String contrasena) throws LoginFailedException {
+		if (buscarUsuario(identificacion, contrasena) == null) {
+			throw new LoginFailedException(
+					"La id o contraseña especificada no coinciden con tus datos, intenta nuevamente");
+		}
 	}
 
 	/**
@@ -539,9 +565,23 @@ public class Concesionario {
 	 * @param placa
 	 * @throws ConcesionarioException
 	 */
-	public void eliminarVehiculo(String placa) throws ConcesionarioException {
+	public void eliminarVehiculo(String placa) throws VehiculoNoExisteException {
 		if (!validarVehiculo(placa))
-			throw new ConcesionarioException("El vehiculo con la placa " + placa + " no existe");
+			throw new VehiculoNoExisteException("El vehiculo con la placa " + placa + " no existe");
 		listaVehiculos.remove(placa);
+	}
+
+	@Override
+	public void agregarVehiculo(Vehiculo vehiculo) throws VehiculoNoExisteException {
+		if (validarVehiculo(vehiculo.getPlaca()))
+			throw new VehiculoNoExisteException("El vehiculo con la placa " + vehiculo.getPlaca() + " no existe");
+		listaVehiculos.remove(vehiculo.getPlaca());
+	}
+
+	@Override
+	public void eliminarVehiculo(Vehiculo vehiculo) throws VehiculoNoExisteException {
+		if (!validarVehiculo(vehiculo.getPlaca()))
+			throw new VehiculoNoExisteException("El vehiculo con la placa " + vehiculo.getPlaca() + " no existe");
+		listaVehiculos.remove(vehiculo.getPlaca());
 	}
 }

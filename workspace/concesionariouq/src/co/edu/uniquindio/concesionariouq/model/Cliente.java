@@ -5,8 +5,10 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
+import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
+import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
-public class Cliente extends Usuario {
+public class Cliente extends Usuario implements PuedeTenerVehiculos{
 	private HashMap<String, Vehiculo> listaVehiculos;
 
 	/**
@@ -40,20 +42,15 @@ public class Cliente extends Usuario {
 		return (OpcionMenu[]) listaAux.toArray(new OpcionMenu[listaAux.size()]);
 	}
 
-	public void agregarVehiculo(String placa, Vehiculo vehiculo) throws ConcesionarioException {
-		throwIfVehiculoExist(placa);
-		listaVehiculos.put(placa, vehiculo);
-	}
-
 	/**
 	 * Automatiza la verificacion de vehiculos
 	 * 
 	 * @param placa
-	 * @throws ConcesionarioException
+	 * @throws VehiculoYaExisteException 
 	 */
-	public void throwIfVehiculoExist(String placa) throws ConcesionarioException {
+	public void throwIfVehiculoExist(String placa) throws VehiculoYaExisteException {
 		if (validarVehiculo(placa))
-			throw new ConcesionarioException("El vehiculo con la placa " + placa + " ya existe");
+			throw new VehiculoYaExisteException("El vehiculo con la placa " + placa + " ya existe");
 	}
 
 	private boolean validarVehiculo(String placa) {
@@ -67,6 +64,18 @@ public class Cliente extends Usuario {
 	public void eliminarVehiculo(String placa) throws ConcesionarioException {
 		if (listaVehiculos.remove(placa) == null)
 			throw new ConcesionarioException("No se pudo encontrar el vehiculo en el cliente");
+	}
+
+	@Override
+	public void agregarVehiculo(Vehiculo vehiculo) throws VehiculoYaExisteException {
+		throwIfVehiculoExist(vehiculo.getPlaca());
+		listaVehiculos.put(vehiculo.getPlaca(), vehiculo);
+	}
+
+	@Override
+	public void eliminarVehiculo(Vehiculo vehiculo) throws VehiculoNoExisteException {
+		if (listaVehiculos.remove(vehiculo.getPlaca()) == null)
+			throw new VehiculoNoExisteException("No se pudo encontrar el vehiculo en el cliente");
 	}
 
 }

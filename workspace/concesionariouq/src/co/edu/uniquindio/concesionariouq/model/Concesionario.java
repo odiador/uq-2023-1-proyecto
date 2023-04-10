@@ -1,19 +1,18 @@
 package co.edu.uniquindio.concesionariouq.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
 
-public class Concesionario implements PuedeTenerVehiculo {
+public class Concesionario {
 
 	// ATRIBUTOS
 	private String nombre;
 	private String direccion;
-	private List<Vehiculo> listaVehiculos;
-	private List<Usuario> listaUsuarios;
-	private List<Cliente> listaClientes;
-	private List<Transaccion> listaTransacciones;
+	private Map<String, Vehiculo> listaVehiculos;
+	private Map<String, Usuario> listaUsuarios;
+	private Map<String, Transaccion> listaTransacciones;
 
 	/**
 	 * Es el metodo constructor vacio de la clase
@@ -27,10 +26,9 @@ public class Concesionario implements PuedeTenerVehiculo {
 	public Concesionario(final String nombre, final String direccion) {
 		this.nombre = nombre;
 		this.direccion = direccion;
-		this.listaVehiculos = new ArrayList<Vehiculo>();
-		this.listaUsuarios = new ArrayList<Usuario>();
-		this.listaClientes = new ArrayList<Cliente>();
-		this.listaTransacciones = new ArrayList<Transaccion>();
+		this.listaVehiculos = new HashMap<String, Vehiculo>();
+		this.listaUsuarios = new HashMap<String, Usuario>();
+		this.listaTransacciones = new HashMap<String, Transaccion>();
 	}
 
 	/**
@@ -69,83 +67,8 @@ public class Concesionario implements PuedeTenerVehiculo {
 		this.direccion = direccion;
 	}
 
-	/**
-	 * Obtiene la lista de vehiculos del concesionario
-	 *
-	 * @return listaVehiculos
-	 */
-	public List<Vehiculo> getListaVehiculos() {
-		return listaVehiculos;
-	}
-
-	/**
-	 * Cambia la lista de vehiculos del concesionario
-	 *
-	 * @param listaVehiculos
-	 */
-	public void setListaVehiculos(final List<Vehiculo> listaVehiculos) {
-		this.listaVehiculos = listaVehiculos;
-	}
-
-	/**
-	 * Obtiene la lista de usuarios del concesionario
-	 *
-	 * @return
-	 */
-	public List<Usuario> getListaUsuarios() {
-		return listaUsuarios;
-	}
-
-	/**
-	 * Cambia la lista de usuarios del concesionario
-	 *
-	 * @param listaUsuarios
-	 */
-	public void setListaUsuarios(final List<Usuario> listaUsuarios) {
-		this.listaUsuarios = listaUsuarios;
-	}
-
-	/**
-	 * Obtiene la lista de clientes del concesionario
-	 *
-	 * @return
-	 */
-	public List<Cliente> getListaClientes() {
-		return listaClientes;
-	}
-
-	/**
-	 * Cambia la lista de usuarios del concesionario
-	 *
-	 * @param listaClientes
-	 */
-	public void setListaClientes(final List<Cliente> listaClientes) {
-		this.listaClientes = listaClientes;
-	}
-
-	/**
-	 * Obtiene la lista de transacciones del concesionario
-	 *
-	 * @return
-	 */
-	public List<Transaccion> getListaTransacciones() {
-		return listaTransacciones;
-	}
-
-	/**
-	 * Cambia la lista de transacciones del concesionario
-	 *
-	 * @param listaTransacciones
-	 */
-	public void setListaTransacciones(final List<Transaccion> listaTransacciones) {
-		this.listaTransacciones = listaTransacciones;
-	}
-
 	public Vehiculo buscarVehiculo(String placa) {
-		int i = 0;
-		while (i < listaVehiculos.size() && !listaVehiculos.get(i).getPlaca().equals(placa))
-			i++;
-		return i < listaVehiculos.size() ? listaVehiculos.get(i) : null;
+		return listaVehiculos.getOrDefault(placa, null);
 	}
 
 	/**
@@ -154,14 +77,14 @@ public class Concesionario implements PuedeTenerVehiculo {
 	 */
 	public void agregarTransaccion(String codigo) throws ConcesionarioException {
 		throwIfTransaccionExist(codigo);
-		listaTransacciones.add(new Transaccion(codigo));
+		listaTransacciones.put(codigo, new Transaccion(codigo));
 	}
 
 	/**
 	 * Valida si una transaccion existe o no a partir de su código
 	 * 
 	 * @param codigo
-	 * @return 
+	 * @return
 	 */
 	private boolean validarTransaccion(String codigo) {
 		return buscarTransaccion(codigo) != null;
@@ -186,7 +109,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	 */
 	public void eliminarTransaccion(String codigo) throws ConcesionarioException {
 		throwIfTransaccionExist(codigo);
-		listaTransacciones.remove(buscarTransaccion(codigo));
+		listaTransacciones.remove(codigo);
 	}
 
 	/**
@@ -205,11 +128,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	}
 
 	public Transaccion buscarTransaccion(String codigoTransaccion) {
-		for (Transaccion transaccion : listaTransacciones)
-			if (transaccion.getCodigo().equals(codigoTransaccion))
-				return transaccion;
-
-		return null;
+		return listaTransacciones.getOrDefault(codigoTransaccion, null);
 	}
 
 	/**
@@ -236,11 +155,35 @@ public class Concesionario implements PuedeTenerVehiculo {
 
 	}
 
-	@Override
-	public void venderVehiculo(String placa) {
+	/**
+	 * 
+	 * @param placa
+	 * @throws ConcesionarioException
+	 */
+	public void venderVehiculoaUsuario(String idCliente, String placa) throws ConcesionarioException {
+		Cliente usuario = (Cliente) buscarUsuario(idCliente);
+		Vehiculo vehiculo = buscarVehiculo(placa);
+		eliminarVehiculo(placa);
+		usuario.agregarVehiculo(placa, vehiculo);
 	}
 
-	@Override
+	/**
+	 * 
+	 * Elimina el cliente
+	 * 
+	 * @param placa
+	 * @throws ConcesionarioException
+	 */
+	public void venderVehiculoaConcesionario(String idCliente, String placa) throws ConcesionarioException {
+		Usuario buscarUsuario = buscarUsuario(idCliente);
+		if (buscarUsuario == null)
+			throw new ConcesionarioException("El usuario no fue encontrado");
+		if (!(buscarUsuario instanceof Cliente))
+			throw new ConcesionarioException("El usuario encontrado no es un cliente");
+
+		((Cliente) buscarUsuario).eliminarVehiculo(placa);
+	}
+
 	public void comprarVehiculo(Vehiculo vehiculo) {
 	}
 
@@ -275,7 +218,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 		Bus bus = new Bus(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
 				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
 				capacidadMaletero, numeroEjes, numeroSalidasEmergencia);
-		listaVehiculos.add(bus);
+		listaVehiculos.put(placa, bus);
 	}
 
 	private boolean validarVehiculo(String placa) {
@@ -289,11 +232,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 	 * @return
 	 */
 	public Usuario buscarUsuario(String identificacion) {
-		for (Usuario usuario : listaUsuarios) {
-			if (usuario.getId().equals(identificacion))
-				return usuario;
-		}
-		return null;
+		return listaUsuarios.getOrDefault(identificacion, null);
 	}
 
 	/**
@@ -304,10 +243,9 @@ public class Concesionario implements PuedeTenerVehiculo {
 	 * @return
 	 */
 	public Usuario buscarUsuario(String identificacion, String contrasena) {
-		for (Usuario usuario : listaUsuarios) {
-			if (usuario.getId().equals(identificacion) && usuario.getContrasena().equals(contrasena))
-				return usuario;
-		}
+		Usuario usuario = buscarUsuario(identificacion);
+		if (usuario != null && usuario.getContrasena().equals(contrasena))
+			return usuario;
 		return null;
 	}
 
@@ -341,10 +279,29 @@ public class Concesionario implements PuedeTenerVehiculo {
 	 * @param email
 	 * @throws ConcesionarioException
 	 */
-	public void agregarAdmin(String nombre, String id, String contrasena, String email) throws ConcesionarioException {
+	public void agregarAdministrador(String nombre, String id, String contrasena, String email)
+			throws ConcesionarioException {
 		if (validarUsuario(id))
-			throw new ConcesionarioException("El administrador ya se encuentra agregado");
-		listaUsuarios.add(new Administrador(nombre, id, contrasena, email));
+			throw new ConcesionarioException("El usuario ya se encuentra agregado");
+		Administrador administrador = new Administrador(id, nombre, contrasena, email);
+		listaUsuarios.put(id, administrador);
+	}
+
+	public void agregarEmpleado(String nombre, String id, String contrasena, String email)
+			throws ConcesionarioException {
+		if (validarUsuario(id))
+			throw new ConcesionarioException("El usuario ya se encuentra agregado");
+		Empleado empleado = new Empleado(id, nombre, contrasena, email);
+		listaUsuarios.put(id, empleado);
+	}
+
+	public void agregarCliente(String nombre, String id, String contrasena, String email)
+			throws ConcesionarioException {
+		if (validarUsuario(id))
+			throw new ConcesionarioException("El usuario ya se encuentra agregado");
+		Cliente cliente = new Cliente(id, nombre, contrasena, email);
+		listaUsuarios.put(id, cliente);
+
 	}
 
 	/**
@@ -373,7 +330,7 @@ public class Concesionario implements PuedeTenerVehiculo {
 		throwIfVehiculoExist(placa);
 		Camion camion = new Camion(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo,
 				capacidadCarga, tieneAireAcondicionado, tieneFrenosAire, numeroEjes, tieneABS, tipoCamion);
-		listaVehiculos.add(camion);
+		listaVehiculos.put(placa, camion);
 
 	}
 
@@ -420,10 +377,11 @@ public class Concesionario implements PuedeTenerVehiculo {
 			Boolean tieneSensorTrafico, Boolean tieneAsistentePermanencia, Boolean es4x4)
 			throws ConcesionarioException {
 		throwIfVehiculoExist(placa);
-		listaVehiculos.add(new Camioneta(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo,
-				numeroPasajeros, numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
-				capacidadMaletero, tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico,
-				tieneAsistentePermanencia, es4x4));
+		Camioneta camioneta = new Camioneta(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado,
+				tipo, numeroPasajeros, numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa,
+				tieneABS, capacidadMaletero, tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico,
+				tieneAsistentePermanencia, es4x4);
+		listaVehiculos.put(placa, camioneta);
 	}
 
 	/**
@@ -449,8 +407,9 @@ public class Concesionario implements PuedeTenerVehiculo {
 			Integer numeroBolsasAire, Integer numeroPuertas, Integer numeroCaballosFuerza, Integer tiempoAlcanza100Kmh)
 			throws ConcesionarioException {
 		throwIfVehiculoExist(placa);
-		listaVehiculos.add(new Deportivo(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo,
-				numeroPasajeros, numeroBolsasAire, numeroPuertas, numeroCaballosFuerza, tiempoAlcanza100Kmh));
+		Deportivo deportivo = new Deportivo(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado,
+				tipo, numeroPasajeros, numeroBolsasAire, numeroPuertas, numeroCaballosFuerza, tiempoAlcanza100Kmh);
+		listaVehiculos.put(placa, deportivo);
 	}
 
 	/**
@@ -469,7 +428,8 @@ public class Concesionario implements PuedeTenerVehiculo {
 	public void agregarMoto(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo) throws ConcesionarioException {
 		throwIfVehiculoExist(placa);
-		listaVehiculos.add(new Moto(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo));
+		listaVehiculos.put(placa,
+				new Moto(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo));
 	}
 
 	/**
@@ -498,9 +458,10 @@ public class Concesionario implements PuedeTenerVehiculo {
 			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
 			Boolean tieneABS, Boolean es4x4, Double capacidadCajaCarga) throws ConcesionarioException {
 		throwIfVehiculoExist(placa);
-		listaVehiculos.add(new PickUp(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo,
+		PickUp pickUp = new PickUp(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo,
 				numeroPasajeros, numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
-				es4x4, capacidadCajaCarga));
+				es4x4, capacidadCajaCarga);
+		listaVehiculos.put(placa, pickUp);
 	}
 
 	/**
@@ -533,10 +494,11 @@ public class Concesionario implements PuedeTenerVehiculo {
 			Boolean tieneABS, Double capacidadMaletero, Boolean tieneVelocidadCrucero, Boolean tieneSensorColision,
 			Boolean tieneSensorTrafico, Boolean tieneAsistentePermanencia) throws ConcesionarioException {
 		throwIfVehiculoExist(placa);
-		listaVehiculos.add(new Sedan(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo,
+		Sedan sedan = new Sedan(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo,
 				numeroPasajeros, numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
 				capacidadMaletero, tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico,
-				tieneAsistentePermanencia));
+				tieneAsistentePermanencia);
+		listaVehiculos.put(placa, sedan);
 	}
 
 	/**
@@ -564,22 +526,22 @@ public class Concesionario implements PuedeTenerVehiculo {
 			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
 			Boolean tieneABS, Double capacidadMaletero) throws ConcesionarioException {
 		throwIfVehiculoExist(placa);
-		listaVehiculos.add(new Van(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo,
-				numeroPasajeros, numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
-				capacidadMaletero));
+		Van van = new Van(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
+				capacidadMaletero);
+		listaVehiculos.put(placa, van);
 	}
 
 	/**
-	 * Elimina un vehículo por medio de la placa, si no se encuentra se muestra una
+	 * Elimina un vehiculo por medio de la placa, si no se encuentra se muestra una
 	 * excepcion
 	 * 
 	 * @param placa
 	 * @throws ConcesionarioException
 	 */
 	public void eliminarVehiculo(String placa) throws ConcesionarioException {
-		Vehiculo vehiculoEncontrado = buscarVehiculo(placa);
-		if (vehiculoEncontrado == null)
+		if (!validarVehiculo(placa))
 			throw new ConcesionarioException("El vehiculo con la placa " + placa + " no existe");
-		listaVehiculos.remove(vehiculoEncontrado);
+		listaVehiculos.remove(placa);
 	}
 }

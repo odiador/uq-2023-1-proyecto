@@ -32,12 +32,11 @@ public class PickUp extends Familiar {
 		this.capacidadCajaCarga = capacidadCajaCarga;
 	}
 
-	
 	/**
 	 * Determina si el Pickup es 4x4 o no lo es
 	 */
 	private Boolean es4x4;
-	
+
 	private Double capacidadCajaCarga;
 
 	/**

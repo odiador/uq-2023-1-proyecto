@@ -1,10 +1,10 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 public abstract class Vehiculo {
-	
-	//ATRIBUTOS
-	
-	private String placa;
+
+	// ATRIBUTOS
+
+	private final String placa;
 	private String marca;
 	private String modelo;
 	private Double cilindraje;
@@ -38,24 +38,6 @@ public abstract class Vehiculo {
 	}
 
 	/**
-	 * Obtiene la placa del vehiculo
-	 * 
-	 * @return placa
-	 */
-	public String getPlaca() {
-		return placa;
-	}
-
-	/**
-	 * Cambia la placa del vehiculo
-	 * 
-	 * @param placa
-	 */
-	public void setPlaca(String placa) {
-		this.placa = placa;
-	}
-
-	/**
 	 * Obtiene la marca del vehiculo
 	 * 
 	 * @return marca
@@ -83,7 +65,7 @@ public abstract class Vehiculo {
 	}
 
 	/**
-	 *Cambia el modelo del vehiculo
+	 * Cambia el modelo del vehiculo
 	 * 
 	 * @param modelo
 	 */
@@ -179,6 +161,15 @@ public abstract class Vehiculo {
 	 */
 	public void setTipo(final TipoCambio tipo) {
 		this.tipo = tipo;
+	}
+
+	/**
+	 * Obtiene la placa del vehículo
+	 * 
+	 * @return
+	 */
+	public String getPlaca() {
+		return placa;
 	}
 
 }

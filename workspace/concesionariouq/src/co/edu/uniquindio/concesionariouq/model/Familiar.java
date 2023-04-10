@@ -2,7 +2,7 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public abstract class Familiar extends Automovil {
 
-	//ATRIBUTOS
+	// ATRIBUTOS
 	private Boolean tieneAireAcondicionado;
 	private Boolean tieneCamaraReversa;
 	private Boolean tieneABS;

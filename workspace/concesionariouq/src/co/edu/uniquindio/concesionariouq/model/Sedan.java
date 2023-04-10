@@ -2,8 +2,8 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Sedan extends Van {
 
-	//ATRIBUTOS
-	
+	// ATRIBUTOS
+
 	private Boolean tieneVelocidadCrucero;
 	private Boolean tieneSensorColision;
 	private Boolean tieneSensorTrafico;
@@ -65,7 +65,7 @@ public class Sedan extends Van {
 	}
 
 	/**
-	 * Obtiene  la opcion si el sedan tiene o no tiene el sensor colision
+	 * Obtiene la opcion si el sedan tiene o no tiene el sensor colision
 	 * 
 	 * @return tieneSensorColision
 	 */

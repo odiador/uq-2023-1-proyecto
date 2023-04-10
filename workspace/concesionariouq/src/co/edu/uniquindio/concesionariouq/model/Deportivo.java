@@ -33,7 +33,7 @@ public class Deportivo extends Automovil {
 	}
 
 	/**
-	 * Obtiene el numero de caballos de fuerza del deportivo 
+	 * Obtiene el numero de caballos de fuerza del deportivo
 	 *
 	 * @return numeroCaballosFuerza
 	 */
@@ -51,7 +51,7 @@ public class Deportivo extends Automovil {
 	}
 
 	/**
-	 * Obtiene el tiempo en el que el deportivo alcanza los 100 Kmh 
+	 * Obtiene el tiempo en el que el deportivo alcanza los 100 Kmh
 	 *
 	 * @return
 	 */

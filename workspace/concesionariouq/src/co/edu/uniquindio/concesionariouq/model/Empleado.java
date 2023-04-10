@@ -10,11 +10,11 @@ public class Empleado extends Usuario {
 	 * Este es el constructor principal de la clase
 	 * 
 	 * @param nombre
-	 * @param id
 	 * @param contrasena
+	 * @param email
 	 */
-	public Empleado(String nombre, String id, String contrasena, String email) {
-		super(nombre, id, contrasena, email);
+	public Empleado(String id, String nombre, String contrasena, String email) {
+		super(id, nombre, contrasena, email);
 	}
 
 	@Override

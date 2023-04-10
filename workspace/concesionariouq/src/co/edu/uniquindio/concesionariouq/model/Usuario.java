@@ -4,21 +4,24 @@ import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
 
 //ATRIBUTOS
 public abstract class Usuario {
+	private final String id;
 	private String nombre;
-	private String id;
 	private String contrasena;
 	private String email;
 
 	/**
 	 * Este es el metodo constructor de la clase usuario
 	 * 
-	 * @param nombre
 	 * @param id
+	 * @param nombre
+	 * @param contrasena
+	 * @param email
 	 */
-	public Usuario(String nombre, String id, String contrasena, String email) {
-		this.nombre = nombre;
+	public Usuario(String id,String nombre, String contrasena, String email) {
 		this.id = id;
+		this.nombre = nombre;
 		this.contrasena = contrasena;
+		this.setEmail(email);
 	}
 
 	/**
@@ -40,32 +43,12 @@ public abstract class Usuario {
 	}
 
 	/**
-	 * Este metodo obtiene la identificacion del usuario
-	 * 
-	 * @return id
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * Este metodo cambia la identificacion del usuario
-	 * 
-	 * @param id
-	 */
-	public void setId(final String id) {
-		this.id = id;
-	}
-	
-	
-	/**
 	 * Este metodo obtiene las opciones disponible del usuario
 	 * 
 	 * @return
 	 */
 	public abstract OpcionesMenu[] obtenerOpcionesDisponibles();
 
-	
 	/**
 	 * Obtiene la contraseña del usuario
 	 * 
@@ -82,6 +65,18 @@ public abstract class Usuario {
 	 */
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 }

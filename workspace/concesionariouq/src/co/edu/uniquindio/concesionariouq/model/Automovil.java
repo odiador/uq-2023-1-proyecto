@@ -8,6 +8,7 @@ public class Automovil extends Vehiculo {
 	private Integer numeroPuertas;
 
 	/**
+	 * Es el constructor del automovil
 	 *
 	 * @param placa
 	 * @param marca

@@ -2,7 +2,7 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Van extends Familiar {
 
-	//ATRIBUTOS
+	// ATRIBUTOS
 	private Double capacidadMaletero;
 
 	/**
@@ -34,7 +34,7 @@ public class Van extends Familiar {
 	}
 
 	/**
-	 *  Obtiene la capacidad del maletero del Van
+	 * Obtiene la capacidad del maletero del Van
 	 * 
 	 * @return capacidadMaletero
 	 */

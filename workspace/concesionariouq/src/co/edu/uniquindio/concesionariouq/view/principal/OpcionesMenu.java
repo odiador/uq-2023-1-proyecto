@@ -6,7 +6,8 @@ public enum OpcionesMenu {
 	ELIMINAR_CLIENTE("Eliminar cliente", 5), ELIMINAR_VEHICULO("Eliminar Vehiculo", 6),
 	ACTUALIZAR_VEHICULO("Actualizar Vehiculo", 7), ACTUALIZAR_CLIENTE("Actualizar Vliente", 8),
 	VENDER_VEHICULO("Vender Vehiculo", 9), GENERAR_REPORTE("Generar Reporte", 10),
-	ACTUALIZAR_INFO("Actualizar Info", 11), CAMBIAR_CONTRASENA("Cambiar Contraseña", 12), ACERCA_DE("Acerca de", 13);
+	ACTUALIZAR_INFO("Actualizar Info", 11), CAMBIAR_CONTRASENA("Cambiar Contraseña", 12),
+	ESTAS_BLOQUEADO("Estas bloqueado", 13), ACERCA_DE("Acerca de", 14);
 
 	private String text;
 	private int orden;

@@ -6,6 +6,8 @@ import co.edu.uniquindio.concesionariouq.view.principal.OpcionesMenu;
 
 public class Empleado extends Usuario {
 
+	private boolean estaActivo = true;
+
 	/**
 	 * Este es el constructor principal de la clase
 	 * 
@@ -26,5 +28,13 @@ public class Empleado extends Usuario {
 		listaAux.add(OpcionesMenu.ACTUALIZAR_INFO);
 		listaAux.add(OpcionesMenu.ACERCA_DE);
 		return (OpcionesMenu[]) listaAux.toArray(new OpcionesMenu[listaAux.size()]);
+	}
+
+	public boolean isActivo() {
+		return estaActivo;
+	}
+
+	public void setIsActivo(boolean estaActivo) {
+		this.estaActivo = estaActivo;
 	}
 }

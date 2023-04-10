@@ -43,7 +43,7 @@ public class Administrador extends Empleado {
 	/**
 	 * Este metodo elimina un empleado
 	 */
-	public void eliminarEmpleado(String id)throws ConcesionarioException {
+	public void eliminarEmpleado(String id) throws ConcesionarioException {
 		if (!validarEmpleado(id))
 			throw new ConcesionarioException("El empleado no se encuentra trabajando para el admin");
 		listaEmpleados.remove(id);
@@ -52,9 +52,10 @@ public class Administrador extends Empleado {
 	/**
 	 * Este metodo actualiza un empleado
 	 */
-	public void actualizarEmpleado(Empleado empleado) throws ConncesionarioException{
-		if(!validarEmpleado(empleado.getId())) throw new ConcesionarioException("El empleado no se encuentra trabajando para el admin");
-			
+	public void actualizarEmpleado(Empleado empleado) throws ConcesionarioException {
+		if (!validarEmpleado(empleado.getId()))
+			throw new ConcesionarioException("El empleado no se encuentra trabajando para el admin");
+		listaEmpleados.get(empleado.getId());
 	}
 
 	/**

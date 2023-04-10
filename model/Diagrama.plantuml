@@ -47,10 +47,14 @@ class DetalleTransaccion {
 abstract class Usuario  <<abstract>> {
     - nombre : String
     - id : String
+    - contrasena : String
+    - email : String
+    +<i>obtenerOpcionesDiponibles</i>()
 }
 
 class Cliente {
     + alquilarVehiculo()
+    +obtenerOpcionesDiponibles()
 }
 
 class Empleado {
@@ -59,6 +63,7 @@ class Empleado {
     + venderVehiculo()
     + comprarVehiculo()
     + agregarTransaccion()
+    +obtenerOpcionesDiponibles()
 }
 
 class Administrador {
@@ -68,7 +73,12 @@ class Administrador {
     + bloquearEmpleado()
     + generarReporte()
     + recuperarContrasena()
+    +obtenerOpcionesDiponibles()
 
+}
+
+class UsuarioCompleto{
+    +obtenerOpcionesDiponibles()
 }
 
 abstract class Combustible <<abstract>> {
@@ -201,5 +211,6 @@ Empleado -down-|> Usuario
 Administrador -down-|> Empleado
 Concesionario .left.|> PuedeTenerVehiculo
 Cliente .left.|> PuedeTenerVehiculo
+UsuarioCompleto -|> Usuario 
 
 @enduml

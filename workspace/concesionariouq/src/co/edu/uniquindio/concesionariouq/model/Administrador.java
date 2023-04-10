@@ -51,18 +51,28 @@ public class Administrador extends Empleado {
 
 	/**
 	 * Este metodo actualiza un empleado
+	 * 
+	 * @param empleado
+	 * @throws ConcesionarioException
 	 */
 	public void actualizarEmpleado(Empleado empleado) throws ConcesionarioException {
 		if (!validarEmpleado(empleado.getId()))
 			throw new ConcesionarioException("El empleado no se encuentra trabajando para el admin");
-		listaEmpleados.get(empleado.getId());
+		listaEmpleados.put(empleado.getId(), empleado);
 	}
 
 	/**
 	 * Este metodo bloquea a un empleado
+	 * 
+	 * @param id
+	 * @throws ConcesionarioException
 	 */
-	public void bloquearEmpleado() {
-
+	public void bloquearEmpleado(String id) throws ConcesionarioException {
+		if (!validarEmpleado(id))
+			throw new ConcesionarioException("El empleado no fue encontrado");
+		Empleado empleado = listaEmpleados.get(id);
+		empleado.setIsActivo(false);
+		actualizarEmpleado(empleado);
 	}
 
 	/**

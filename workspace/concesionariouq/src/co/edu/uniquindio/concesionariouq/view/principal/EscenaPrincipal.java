@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class EscenaPrincipal extends Scene {
 
 	public EscenaPrincipal(Stage stage, Usuario usuario) {
-		super(new MenuPrincipal(stage, usuario), 1000, 800);
+		super(new MenuPrincipal(stage, usuario), 600, 500);
 
 	}
 

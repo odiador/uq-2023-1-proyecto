@@ -1,19 +1,39 @@
 #menu-opciones-izq {
-	-fx-background-color: gray;	
+	-fx-background-color: #000099;	
+}
+#centered-box {
+	-fx-alignment: center;
 }
 .boton-menu {
 	-fx-max-width: 1000000.0;
+	-fx-font-weight: bold;
 	-fx-alignment: center;
 	-fx-padding: 1.0em;
 	-fx-font-size: 1.0em;
-	-fx-border-color: black;
-	-fx-border-wight: 0.1em;
+	-fx-text-fill: white;
 
 }
+#btn-case {
+	-fx-background-color: #2C8FDE;
+}
+#btn {
+	-fx-ellipsis-string: "";
+	-fx-alignment: center;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-font-size: 20.0;
+	-fx-max-width: 1000000.0;
+	-fx-max-height: 1000000.0;
+}
+#btn:hover {
+	-fx-background-color: rgb(0.0,0.0,0.0,0.15);
+}
+#btn:pressed {
+	-fx-background-color: rgb(0.0,0.0,0.0,0.3);
+}
+
 .boton-menu:hover {
 	-fx-background-color: rgb(0.0,0.0,0.0,0.2);
-	-fx-font-size: 1.1em;
-	-fx-text-fill: white;
 }
 .boton-menu:pressed {
 	-fx-background-color: rgb(0.0,0.0,0.0,0.3);

@@ -15,15 +15,14 @@ public class MenuOpcionesIzq extends VBox {
 
 	private void initComp() {
 		setId("menu-opciones-izq");
-		OpcionMenu[] opciones = OpcionMenu.values();
-		for (int i = 0; i < opciones.length; i++) {
-			Label boton = new Label(opciones[i].getText());
-			boton.getStyleClass().add("boton-menu");
-			this.getChildren().add(boton);
-			boton.setOnMouseReleased(evento -> {
-				comunicacion.botonIzqPresionado(((Label) evento.getSource()).getText());
-			});
-		}
+		OpcionMenu[] opciones = OpcionMenu
+				.values();/*
+							 * for (int i = 0; i < opciones.length; i++) { Label boton = new
+							 * Label(opciones[i].getText()); boton.getStyleClass().add("boton-menu");
+							 * this.getChildren().add(boton); boton.setOnMouseReleased(evento -> {
+							 * comunicacion.botonIzqPresionado(((Label) evento.getSource()).getText()); });
+							 * }
+							 */
 	}
 
 }

@@ -7,6 +7,7 @@ import co.edu.uniquindio.concesionariouq.model.Combustible;
 import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.Boton;
+import co.edu.uniquindio.concesionariouq.util.Utility;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -63,6 +64,12 @@ public class PanelAgregarCamion extends PanelConVolver {
 		box.getChildren().add(generarHBox("El vehiculo tiene frenos ABS ?", cbTieneABS));
 		box.getChildren().add(generarHBox("Ingrese el tipo de camion", tfTipoCamion));
 
+		Utility.setMaximumTextLength(tfPlaca, 6);
+		Utility.setAsNumberTextfield(tfModelo);
+		Utility.setAsNumberTextfield(tfCilindraje);
+		Utility.setAsNumberTextfield(tfVelocidadMax);
+		Utility.setAsNumberTextfield(tfCCarga);
+		Utility.setAsNumberTextfield(tfNEjes);
 		cbEstadoVechiculo.setItems(FXCollections.observableArrayList(EstadoVehiculo.getTextValues()));
 		cbTipoCambio.setItems(FXCollections.observableArrayList(TipoCambio.getTextValues()));
 
@@ -71,7 +78,7 @@ public class PanelAgregarCamion extends PanelConVolver {
 		HBox hbox = new HBox();
 		Boton botonVolver = new Boton("Volver", eventoVolver);
 		Boton botonAgregar = new Boton("Aceptar", e -> {
-			ControlVehiculos.agregarCamion(tfPlaca.getText().trim(), tfMarca.getText().trim(),
+			ControlVehiculos.agregarCamion(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(),
 					tfModelo.getText().trim(), tfCilindraje.getText().trim(), tfVelocidadMax.getText().trim(),
 					combustible, cbEstadoVechiculo.getValue(), cbTipoCambio.getValue(), tfCCarga.getText().trim(),
 					cbTieneAire.isSelected(), cbTieneFrenosAire.isSelected(), tfNEjes.getText().trim(),

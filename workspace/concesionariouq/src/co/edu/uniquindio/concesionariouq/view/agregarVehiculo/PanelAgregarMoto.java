@@ -7,6 +7,7 @@ import co.edu.uniquindio.concesionariouq.model.Combustible;
 import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.Boton;
+import co.edu.uniquindio.concesionariouq.util.Utility;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -53,6 +54,10 @@ public class PanelAgregarMoto extends PanelConVolver {
 		vBox.getChildren().add(generarHBox("Elige el tipo de cambio", cbTipoCambio));
 		vBox.getChildren().add(generarHBox("Elige el combustible", botonCombustible));
 
+		Utility.setMaximumTextLength(tfPlaca, 6);
+		Utility.setAsNumberTextfield(tfModelo);
+		Utility.setAsNumberTextfield(tfCilindraje);
+		Utility.setAsNumberTextfield(tfVelMaxima);
 		cbEstadoVechiculo.setItems(FXCollections.observableArrayList(EstadoVehiculo.getTextValues()));
 		cbTipoCambio.setItems(FXCollections.observableArrayList(TipoCambio.getTextValues()));
 
@@ -61,8 +66,8 @@ public class PanelAgregarMoto extends PanelConVolver {
 		HBox hbox = new HBox();
 		Boton botonVolver = new Boton("Volver", eventoVolver);
 		Boton botonAgregar = new Boton("Aceptar", e -> {
-			ControlVehiculos.agregarMoto(tfPlaca.getText(), tfMarca.getText(), tfModelo.getText(),
-					tfCilindraje.getText(), tfVelMaxima.getText(), cbEstadoVechiculo.getValue(),
+			ControlVehiculos.agregarMoto(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(), tfModelo.getText().trim(),
+					tfCilindraje.getText().trim(), tfVelMaxima.getText().trim(), cbEstadoVechiculo.getValue(),
 					cbTipoCambio.getValue(), combustible);
 		});
 		hbox.getChildren().add(botonVolver);

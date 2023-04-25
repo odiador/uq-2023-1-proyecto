@@ -7,12 +7,14 @@ import co.edu.uniquindio.concesionariouq.model.Combustible;
 import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.Boton;
+import co.edu.uniquindio.concesionariouq.util.Utility;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -75,15 +77,26 @@ public class PanelAgregarSedan extends PanelConVolver {
 		box.getChildren().add(generarHBox("El vehiculo tiene sensor de trafico ?", cbTieneTrafico));
 		box.getChildren().add(generarHBox("El vehiculo tiene asistente de permanencia ?", cbTieneAsistente));
 
+		Utility.setMaximumTextLength(tfPlaca, 6);
+		Utility.setAsNumberTextfield(tfModelo);
+		Utility.setAsNumberTextfield(tfCilindraje);
+		Utility.setAsNumberTextfield(tfVelocidadMax);
+		Utility.setAsNumberTextfield(tfCMaletero);
 		cbEstadoVechiculo.setItems(FXCollections.observableArrayList(EstadoVehiculo.getTextValues()));
 		cbTipoCambio.setItems(FXCollections.observableArrayList(TipoCambio.getTextValues()));
+		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
+		SpinnerValueFactory<Integer> valueFactory2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
+		SpinnerValueFactory<Integer> valueFactory3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
+		tfNPasajeros.setValueFactory(valueFactory);
+		tfNBolsasAire.setValueFactory(valueFactory2);
+		tfNPuertas.setValueFactory(valueFactory3);
 
 		setCenter(box);
 		box.setId("centered-box");
 		HBox hbox = new HBox();
 		Boton botonVolver = new Boton("Volver", eventoVolver);
 		Boton botonAgregar = new Boton("Aceptar", e -> {
-			ControlVehiculos.agregarSedan(tfPlaca.getText().trim(), tfMarca.getText().trim(), tfModelo.getText().trim(),
+			ControlVehiculos.agregarSedan(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(), tfModelo.getText().trim(),
 					tfCilindraje.getText().trim(), tfVelocidadMax.getText().trim(), combustible,
 					cbEstadoVechiculo.getValue(), cbTipoCambio.getValue(), tfNPasajeros.getValue().toString(),
 					tfNBolsasAire.getValue().toString(), tfNPuertas.getValue().toString(), cbTieneAire.isSelected(),

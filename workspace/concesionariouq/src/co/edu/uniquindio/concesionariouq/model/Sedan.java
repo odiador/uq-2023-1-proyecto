@@ -83,7 +83,7 @@ public class Sedan extends Van {
 	}
 
 	/**
-	 * Obtiene la opcion si el sedan tiene o no tiene sensor de trafico
+	 * Obtiene un booleano si tiene o no tiene sensor de trafico
 	 * 
 	 * @return tieneSensorTrafico
 	 */

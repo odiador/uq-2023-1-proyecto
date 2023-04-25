@@ -3,7 +3,7 @@ package co.edu.uniquindio.concesionariouq.model;
 public enum TipoVehiculo {
 	// TIPOS DE VEHICULO
 
-	BUS("Bus"), CAMION("Camion"), CAMIONETA("Camioneta"), DEPORTIVO("Deportivo"), FAMILIAR("Familiar"), MOTO("Moto"),
+	BUS("Bus"), CAMION("Camion"), CAMIONETA("Camioneta"), DEPORTIVO("Deportivo"), MOTO("Moto"),
 	PICKUP("PickUp"), SEDAN("Sendan"), VAN("Van");
 
 	private final String tipo;

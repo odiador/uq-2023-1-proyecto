@@ -18,7 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-public class PanelAgregarMoto extends BorderPane {
+public class PanelAgregarMoto extends PanelConVolver {
 
 	private EventHandler<? super MouseEvent> eventoVolver;
 	private Combustible combustible;
@@ -28,8 +28,9 @@ public class PanelAgregarMoto extends BorderPane {
 		initComponents();
 
 	}
-
-	private void initComponents() {
+	
+	@Override
+	public void initComponents() {
 		VBox vBox = new VBox(20);
 		TextField tfPlaca = new TextField();
 		TextField tfMarca = new TextField();

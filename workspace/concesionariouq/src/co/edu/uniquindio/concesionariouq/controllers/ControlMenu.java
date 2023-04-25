@@ -6,6 +6,7 @@ import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarCliente;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarVehiculo;
 import co.edu.uniquindio.concesionariouq.view.principal.MenuPrincipal;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class ControlMenu {
 
@@ -18,6 +19,7 @@ public class ControlMenu {
 			menuPrincipal.setCenter(new PanelAgregarCliente(menuPrincipal.getStage()));
 			break;
 		case AGREGAR_VEHICULO:
+			((Stage) menuPrincipal.getScene().getWindow()).setTitle("Agregar Vehiculo | Concesionario UQ");
 			menuPrincipal.setCenter(new PanelAgregarVehiculo());
 			break;
 		default:

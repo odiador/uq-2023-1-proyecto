@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class PanelAgregarVehiculo extends BorderPane {
 
@@ -23,6 +24,7 @@ public class PanelAgregarVehiculo extends BorderPane {
 		Boton botonAgregar = new Boton("Agregar", evento -> {
 			ControlVehiculos.irAgregarVehiculo(this, comboTipoVehiculo.getValue(), e -> {
 				initComp();
+				((Stage) getScene().getWindow()).setTitle("Agregar Vehiculo | Concesionario UQ");
 			});
 		});
 		box.setId("centered-box");

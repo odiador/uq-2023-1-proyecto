@@ -9,45 +9,40 @@ import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.Boton;
 import co.edu.uniquindio.concesionariouq.util.Utility;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class PanelAgregarDeportivo extends PanelConVolver {
-	private EventHandler<? super MouseEvent> eventoVolver;
 	private Combustible combustible;
-
-	public PanelAgregarDeportivo(EventHandler<? super MouseEvent> eventoVolver) {
-		this.eventoVolver = eventoVolver;
-		initComponents();
-	}
+	private VBox box;
+	private TextField tfPlaca, tfMarca, tfModelo, tfCilindraje, tfVelocidadMax, tfNCaballos, tfAlcanza100;
+	private Boton botonCombustible;
+	private ComboBox<String> cbEstadoVechiculo, cbTipoCambio;
+	private Spinner<Integer> tfNPasajeros, tfNBolsasAire, tfNPuertas;
 
 	@Override
 	public void initComponents() {
 
-		VBox box = new VBox();
-		TextField tfPlaca = new TextField();
-		TextField tfMarca = new TextField();
-		TextField tfModelo = new TextField();
-		TextField tfCilindraje = new TextField();
-		TextField tfVelocidadMax = new TextField();
-		Boton botonCombustible = new Boton("Combustible", e -> {
+		box = new VBox();
+		tfPlaca = new TextField();
+		tfMarca = new TextField();
+		tfModelo = new TextField();
+		tfCilindraje = new TextField();
+		tfVelocidadMax = new TextField();
+		botonCombustible = new Boton("Combustible", e -> {
 			ControlVehiculos.irACambiarCombustible(this, combustible);
 		});
-		ComboBox<String> cbEstadoVechiculo = new ComboBox<String>();
-		ComboBox<String> cbTipoCambio = new ComboBox<String>();
-		Spinner<Integer> tfNPasajeros = new Spinner<Integer>();
-		Spinner<Integer> tfNBolsasAire = new Spinner<Integer>();
-		Spinner<Integer> tfNPuertas = new Spinner<Integer>();
-		TextField tfNCaballos = new TextField();
-		TextField tfAlcanza100 = new TextField();
+		cbEstadoVechiculo = new ComboBox<String>();
+		cbTipoCambio = new ComboBox<String>();
+		tfNPasajeros = new Spinner<Integer>();
+		tfNBolsasAire = new Spinner<Integer>();
+		tfNPuertas = new Spinner<Integer>();
+		tfNCaballos = new TextField();
+		tfAlcanza100 = new TextField();
 
 		box.getChildren().add(generarHBox("Ingresa la placa del vehiculo", tfPlaca));
 		box.getChildren().add(generarHBox("Ingresa la marca del vehiculo", tfMarca));
@@ -79,23 +74,15 @@ public class PanelAgregarDeportivo extends PanelConVolver {
 		tfNPuertas.setValueFactory(valueFactory3);
 		setCenter(box);
 		box.setId("centered-box");
-		HBox hbox = new HBox();
-		Boton botonVolver = new Boton("Volver", eventoVolver);
-		Boton botonAgregar = new Boton("Aceptar", e -> {
-			ControlVehiculos.agregarDeportivo(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(),
-					tfModelo.getText().trim(), tfCilindraje.getText().trim(), tfVelocidadMax.getText().trim(),
-					combustible, cbEstadoVechiculo.getValue().toString(), cbTipoCambio.getValue().toString(),
-					tfNPasajeros.getValue().toString(), tfNBolsasAire.getValue().toString(),
-					tfNPuertas.getValue().toString(), tfNCaballos.getText().trim(), tfAlcanza100.getText().trim());
-		});
-		hbox.getChildren().add(botonVolver);
-		hbox.getChildren().add(botonAgregar);
+	}
 
-		HBox.setMargin(botonAgregar, new Insets(0, 20, 20, 0));
-		HBox.setMargin(botonVolver, new Insets(0, 20, 20, 20));
+	@Override
+	public void handle(MouseEvent event) {
 
-		HBox.setHgrow(botonVolver, Priority.ALWAYS);
-		HBox.setHgrow(botonAgregar, Priority.ALWAYS);
-		setBottom(hbox);
+		ControlVehiculos.agregarDeportivo(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(),
+				tfModelo.getText().trim(), tfCilindraje.getText().trim(), tfVelocidadMax.getText().trim(), combustible,
+				cbEstadoVechiculo.getValue().toString(), cbTipoCambio.getValue().toString(),
+				tfNPasajeros.getValue().toString(), tfNBolsasAire.getValue().toString(),
+				tfNPuertas.getValue().toString(), tfNCaballos.getText().trim(), tfAlcanza100.getText().trim());
 	}
 }

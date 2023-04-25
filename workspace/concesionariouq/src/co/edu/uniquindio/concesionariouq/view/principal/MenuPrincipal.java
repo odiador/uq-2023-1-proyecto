@@ -22,7 +22,6 @@ public class MenuPrincipal extends BorderPane {
 		};
 		menuPrincipalIzq = new MenuPrincipalIzq(stage, usuario, listener);
 		setLeft(menuPrincipalIzq);
-		listener.botonIzqPresionado(usuario.obtenerOpcionesDisponibles()[0].getText());
 	}
 
 	public Stage getStage() {

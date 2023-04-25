@@ -9,51 +9,47 @@ import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.Boton;
 import co.edu.uniquindio.concesionariouq.util.Utility;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class PanelAgregarBus extends PanelConVolver {
 
-	private EventHandler<? super MouseEvent> eventoVolver;
 	private Combustible combustible;
-
-	public PanelAgregarBus(EventHandler<? super MouseEvent> eventoVolver) {
-		this.eventoVolver = eventoVolver;
-		initComponents();
-	}
+	private VBox box;
+	private TextField tfPlaca, tfMarca, tfModelo, tfCilindraje, tfVelocidadMax, tfCMaletero, tfNEjes, tfNSalidas;
+	private ComboBox<String> cbEstadoVechiculo, cbTipoCambio;
+	private Boton botonCombustible;
+	private Spinner<Integer> tfNPasajeros, tfNBolsasAire, tfNPuertas;
+	private CheckBox cbTieneAire, cbTieneCamara, cbTieneABS;
 
 	@Override
 	public void initComponents() {
 
-		VBox box = new VBox(20);
-		TextField tfPlaca = new TextField();
-		TextField tfMarca = new TextField();
-		TextField tfModelo = new TextField();
-		TextField tfCilindraje = new TextField();
-		TextField tfVelocidadMax = new TextField();
-		ComboBox<String> cbEstadoVechiculo = new ComboBox<String>();
-		ComboBox<String> cbTipoCambio = new ComboBox<String>();
-		Boton botonCombustible = new Boton("Combustible", e -> {
+		box = new VBox(20);
+		tfPlaca = new TextField();
+		tfMarca = new TextField();
+		tfModelo = new TextField();
+		tfCilindraje = new TextField();
+		tfVelocidadMax = new TextField();
+		cbEstadoVechiculo = new ComboBox<String>();
+		cbTipoCambio = new ComboBox<String>();
+		botonCombustible = new Boton("Combustible", e -> {
 			ControlVehiculos.irACambiarCombustible(this, combustible);
 		});
-		Spinner<Integer> tfNPasajeros = new Spinner<Integer>();
-		Spinner<Integer> tfNBolsasAire = new Spinner<Integer>();
-		Spinner<Integer> tfNPuertas = new Spinner<Integer>();
-		CheckBox cbTieneAire = new CheckBox();
-		CheckBox cbTieneCamara = new CheckBox();
-		CheckBox cbTieneABS = new CheckBox();
-		TextField tfCMaletero = new TextField();
-		TextField tfNEjes = new TextField();
-		TextField tfNSalidas = new TextField();
+		tfNPasajeros = new Spinner<Integer>();
+		tfNBolsasAire = new Spinner<Integer>();
+		tfNPuertas = new Spinner<Integer>();
+		cbTieneAire = new CheckBox();
+		cbTieneCamara = new CheckBox();
+		cbTieneABS = new CheckBox();
+		tfCMaletero = new TextField();
+		tfNEjes = new TextField();
+		tfNSalidas = new TextField();
 
 		box.getChildren().add(generarHBox("Ingresa la placa del vehiculo", tfPlaca));
 		box.getChildren().add(generarHBox("Ingresa la marca del vehiculo", tfMarca));
@@ -91,26 +87,15 @@ public class PanelAgregarBus extends PanelConVolver {
 
 		setCenter(box);
 		box.setId("centered-box");
-		HBox hbox = new HBox();
-		Boton botonVolver = new Boton("Volver", eventoVolver);
-		Boton botonAgregar = new Boton("Aceptar", e -> {
-			ControlVehiculos.agregarBus(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(), tfModelo.getText().trim(),
-					tfCilindraje.getText().trim(), tfVelocidadMax.getText().trim(), combustible,
-					cbEstadoVechiculo.getValue(), cbTipoCambio.getValue(), tfNPasajeros.getValue().toString(),
-					tfNBolsasAire.getValue().toString(), tfNPuertas.getValue().toString(), cbTieneAire.isSelected(),
-					cbTieneCamara.isSelected(), cbTieneABS.isSelected(), tfCMaletero.getText().trim(),
-					tfNEjes.getText().trim(), tfNSalidas.getText().trim());
-		});
+	}
 
-		hbox.getChildren().add(botonVolver);
-		hbox.getChildren().add(botonAgregar);
-
-		HBox.setMargin(botonAgregar, new Insets(0, 20, 20, 0));
-		HBox.setMargin(botonVolver, new Insets(0, 20, 20, 20));
-
-		HBox.setHgrow(botonVolver, Priority.ALWAYS);
-		HBox.setHgrow(botonAgregar, Priority.ALWAYS);
-		setBottom(hbox);
-
+	@Override
+	public void handle(MouseEvent event) {
+		ControlVehiculos.agregarBus(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(),
+				tfModelo.getText().trim(), tfCilindraje.getText().trim(), tfVelocidadMax.getText().trim(), combustible,
+				cbEstadoVechiculo.getValue(), cbTipoCambio.getValue(), tfNPasajeros.getValue().toString(),
+				tfNBolsasAire.getValue().toString(), tfNPuertas.getValue().toString(), cbTieneAire.isSelected(),
+				cbTieneCamara.isSelected(), cbTieneABS.isSelected(), tfCMaletero.getText().trim(),
+				tfNEjes.getText().trim(), tfNSalidas.getText().trim());
 	}
 }

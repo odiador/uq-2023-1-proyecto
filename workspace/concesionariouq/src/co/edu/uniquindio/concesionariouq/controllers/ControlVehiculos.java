@@ -1,9 +1,8 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
 import co.edu.uniquindio.concesionariouq.model.Combustible;
-import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
-import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.model.TipoVehiculo;
+import co.edu.uniquindio.concesionariouq.util.Boton;
 import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelAgregarBus;
 import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelAgregarCamion;
 import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelAgregarCamioneta;
@@ -15,9 +14,14 @@ import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelAgregarVan;
 import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelConVolver;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarVehiculo;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
 
 public class ControlVehiculos {
 
@@ -40,44 +44,64 @@ public class ControlVehiculos {
 			return;
 		}
 
+		PanelConVolver panelConVolver;
 		switch (tipoVehiculo) {
 		case MOTO:
-			panelAgregarVehiculo.setBottom(null);
-			panelAgregarVehiculo.setCenter(new PanelAgregarMoto(eventoVolver));
+			panelConVolver = new PanelAgregarMoto();
 			break;
 		case BUS:
-			panelAgregarVehiculo.setBottom(null);
-			panelAgregarVehiculo.setCenter(new PanelAgregarBus(eventoVolver));
+			panelConVolver = new PanelAgregarBus();
 			break;
 		case CAMION:
-			panelAgregarVehiculo.setBottom(null);
-			panelAgregarVehiculo.setCenter(new PanelAgregarCamion(eventoVolver));
+			panelConVolver = new PanelAgregarCamion();
 			break;
 		case CAMIONETA:
-			panelAgregarVehiculo.setBottom(null);
-			panelAgregarVehiculo.setCenter(new PanelAgregarCamioneta(eventoVolver));
+			panelConVolver = new PanelAgregarCamioneta();
 			break;
 		case DEPORTIVO:
-			panelAgregarVehiculo.setBottom(null);
-			panelAgregarVehiculo.setCenter(new PanelAgregarDeportivo(eventoVolver));
+			panelConVolver = new PanelAgregarDeportivo();
 			break;
 		case PICKUP:
-			panelAgregarVehiculo.setBottom(null);
-			panelAgregarVehiculo.setCenter(new PanelAgregarPickUp(eventoVolver));
+			panelConVolver = new PanelAgregarPickUp();
 			break;
 		case SEDAN:
-			panelAgregarVehiculo.setBottom(null);
-			panelAgregarVehiculo.setCenter(new PanelAgregarSedan(eventoVolver));
+			panelConVolver = new PanelAgregarSedan();
 			break;
 		case VAN:
-			panelAgregarVehiculo.setBottom(null);
-			panelAgregarVehiculo.setCenter(new PanelAgregarVan(eventoVolver));
+			panelConVolver = new PanelAgregarVan();
 			break;
 
 		default:
-			new Alert(AlertType.WARNING, "No se ha implementado la opcion " + tipoVehiculo.getTipo()).show();
-			break;
+			String tipo = tipoVehiculo == null ? "?" : tipoVehiculo.getTipo();
+			new Alert(AlertType.WARNING, "No se ha implementado la opcion " + tipo).show();
+			return;
 		}
+
+		((Stage) panelAgregarVehiculo.getScene().getWindow())
+				.setTitle("Agregar " + opcionTipoVehiculo + " | Concesionario UQ");
+
+		HBox hbox = new HBox();
+		ScrollPane scrollPane = new ScrollPane(panelConVolver);
+		scrollPane.setId("centered-box");
+		scrollPane.setBorder(null);
+		scrollPane.setFitToHeight(true);
+		scrollPane.setFitToWidth(true);
+
+		Boton botonVolver = new Boton("Volver", eventoVolver);
+		Boton botonAgregar = new Boton("Agregar", panelConVolver);
+
+		hbox.getChildren().add(botonVolver);
+		hbox.getChildren().add(botonAgregar);
+
+		Insets insets = new Insets(10, 10, 10, 10);
+		HBox.setMargin(botonAgregar, insets);
+		HBox.setMargin(botonVolver, insets);
+
+		HBox.setHgrow(botonVolver, Priority.ALWAYS);
+		HBox.setHgrow(botonAgregar, Priority.ALWAYS);
+
+		panelAgregarVehiculo.setCenter(scrollPane);
+		panelAgregarVehiculo.setBottom(hbox);
 	}
 
 	public static void agregarBus(String placa, String marca, String modelo, String cilindraje, String velocidadMaxima,

@@ -9,38 +9,30 @@ import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.Boton;
 import co.edu.uniquindio.concesionariouq.util.Utility;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class PanelAgregarMoto extends PanelConVolver {
 
-	private EventHandler<? super MouseEvent> eventoVolver;
 	private Combustible combustible;
+	private VBox vBox;
+	private TextField tfPlaca, tfMarca, tfModelo, tfCilindraje, tfVelMaxima;
+	private ComboBox<String> cbEstadoVechiculo, cbTipoCambio;
+	private Boton botonCombustible;
 
-	public PanelAgregarMoto(EventHandler<? super MouseEvent> eventoVolver) {
-		this.eventoVolver = eventoVolver;
-		initComponents();
-
-	}
-	
 	@Override
 	public void initComponents() {
-		VBox vBox = new VBox(20);
-		TextField tfPlaca = new TextField();
-		TextField tfMarca = new TextField();
-		TextField tfModelo = new TextField();
-		TextField tfCilindraje = new TextField();
-		TextField tfVelMaxima = new TextField();
-		ComboBox<String> cbEstadoVechiculo = new ComboBox<String>();
-		ComboBox<String> cbTipoCambio = new ComboBox<String>();
-		Boton botonCombustible = new Boton("Combustible", e -> {
+		vBox = new VBox(20);
+		tfPlaca = new TextField();
+		tfMarca = new TextField();
+		tfModelo = new TextField();
+		tfCilindraje = new TextField();
+		tfVelMaxima = new TextField();
+		cbEstadoVechiculo = new ComboBox<String>();
+		cbTipoCambio = new ComboBox<String>();
+		botonCombustible = new Boton("Combustible", e -> {
 			ControlVehiculos.irACambiarCombustible(this, combustible);
 		});
 		botonCombustible.setStyle("-fx-pref-width: 400;");
@@ -63,21 +55,13 @@ public class PanelAgregarMoto extends PanelConVolver {
 
 		setCenter(vBox);
 		vBox.setId("centered-box");
-		HBox hbox = new HBox();
-		Boton botonVolver = new Boton("Volver", eventoVolver);
-		Boton botonAgregar = new Boton("Aceptar", e -> {
-			ControlVehiculos.agregarMoto(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(), tfModelo.getText().trim(),
-					tfCilindraje.getText().trim(), tfVelMaxima.getText().trim(), cbEstadoVechiculo.getValue(),
-					cbTipoCambio.getValue(), combustible);
-		});
-		hbox.getChildren().add(botonVolver);
-		hbox.getChildren().add(botonAgregar);
+		setId("centered-box");
+	}
 
-		HBox.setMargin(botonAgregar, new Insets(0, 20, 20, 0));
-		HBox.setMargin(botonVolver, new Insets(0, 20, 20, 20));
-
-		HBox.setHgrow(botonVolver, Priority.ALWAYS);
-		HBox.setHgrow(botonAgregar, Priority.ALWAYS);
-		setBottom(hbox);
+	@Override
+	public void handle(MouseEvent event) {
+		ControlVehiculos.agregarMoto(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(),
+				tfModelo.getText().trim(), tfCilindraje.getText().trim(), tfVelMaxima.getText().trim(),
+				cbEstadoVechiculo.getValue(), cbTipoCambio.getValue(), combustible);
 	}
 }

@@ -9,45 +9,40 @@ import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.Boton;
 import co.edu.uniquindio.concesionariouq.util.Utility;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class PanelAgregarCamion extends PanelConVolver {
-	private EventHandler<? super MouseEvent> eventoVolver;
 	private Combustible combustible;
-
-	public PanelAgregarCamion(EventHandler<? super MouseEvent> eventoVolver) {
-		this.eventoVolver = eventoVolver;
-		initComponents();
-	}
+	private VBox box;
+	private TextField tfPlaca, tfMarca, tfModelo, tfCilindraje, tfVelocidadMax, tfNEjes, tfTipoCamion, tfCCarga;
+	private Boton botonCombustible;
+	private ComboBox<String> cbEstadoVechiculo, cbTipoCambio;
+	private CheckBox cbTieneAire, cbTieneFrenosAire, cbTieneABS;
 
 	@Override
 	public void initComponents() {
 
-		VBox box = new VBox(20);
-		TextField tfPlaca = new TextField();
-		TextField tfMarca = new TextField();
-		TextField tfModelo = new TextField();
-		TextField tfCilindraje = new TextField();
-		TextField tfVelocidadMax = new TextField();
-		Boton botonCombustible = new Boton("Combustible", e -> {
+		box = new VBox(20);
+		tfPlaca = new TextField();
+		tfMarca = new TextField();
+		tfModelo = new TextField();
+		tfCilindraje = new TextField();
+		tfVelocidadMax = new TextField();
+		botonCombustible = new Boton("Combustible", e -> {
 			ControlVehiculos.irACambiarCombustible(this, combustible);
 		});
-		ComboBox<String> cbEstadoVechiculo = new ComboBox<String>();
-		ComboBox<String> cbTipoCambio = new ComboBox<String>();
-		TextField tfCCarga = new TextField();
-		CheckBox cbTieneAire = new CheckBox();
-		CheckBox cbTieneFrenosAire = new CheckBox();
-		TextField tfNEjes = new TextField();
-		CheckBox cbTieneABS = new CheckBox();
-		TextField tfTipoCamion = new TextField();
+		cbEstadoVechiculo = new ComboBox<String>();
+		cbTipoCambio = new ComboBox<String>();
+		tfCCarga = new TextField();
+		cbTieneAire = new CheckBox();
+		cbTieneFrenosAire = new CheckBox();
+		tfNEjes = new TextField();
+		cbTieneABS = new CheckBox();
+		tfTipoCamion = new TextField();
 
 		box.getChildren().add(generarHBox("Ingresa la placa del vehiculo", tfPlaca));
 		box.getChildren().add(generarHBox("Ingresa la marca del vehiculo", tfMarca));
@@ -75,24 +70,14 @@ public class PanelAgregarCamion extends PanelConVolver {
 
 		setCenter(box);
 		box.setId("centered-box");
-		HBox hbox = new HBox();
-		Boton botonVolver = new Boton("Volver", eventoVolver);
-		Boton botonAgregar = new Boton("Aceptar", e -> {
-			ControlVehiculos.agregarCamion(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(),
-					tfModelo.getText().trim(), tfCilindraje.getText().trim(), tfVelocidadMax.getText().trim(),
-					combustible, cbEstadoVechiculo.getValue(), cbTipoCambio.getValue(), tfCCarga.getText().trim(),
-					cbTieneAire.isSelected(), cbTieneFrenosAire.isSelected(), tfNEjes.getText().trim(),
-					cbTieneABS.isSelected(), tfTipoCamion.getText().trim());
-		});
-		hbox.getChildren().add(botonVolver);
-		hbox.getChildren().add(botonAgregar);
-
-		HBox.setMargin(botonAgregar, new Insets(0, 20, 20, 0));
-		HBox.setMargin(botonVolver, new Insets(0, 20, 20, 20));
-
-		HBox.setHgrow(botonVolver, Priority.ALWAYS);
-		HBox.setHgrow(botonAgregar, Priority.ALWAYS);
-		setBottom(hbox);
 	}
 
+	@Override
+	public void handle(MouseEvent event) {
+		ControlVehiculos.agregarCamion(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(),
+				tfModelo.getText().trim(), tfCilindraje.getText().trim(), tfVelocidadMax.getText().trim(), combustible,
+				cbEstadoVechiculo.getValue(), cbTipoCambio.getValue(), tfCCarga.getText().trim(),
+				cbTieneAire.isSelected(), cbTieneFrenosAire.isSelected(), tfNEjes.getText().trim(),
+				cbTieneABS.isSelected(), tfTipoCamion.getText().trim());
+	}
 }

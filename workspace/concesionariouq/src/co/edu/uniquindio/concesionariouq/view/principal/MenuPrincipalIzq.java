@@ -1,6 +1,7 @@
 package co.edu.uniquindio.concesionariouq.view.principal;
 
 import co.edu.uniquindio.concesionariouq.model.Usuario;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -13,8 +14,7 @@ public class MenuPrincipalIzq extends BorderPane {
 	}
 
 	private void initComp() {
-		MenuOpcionesIzq menuOpcionesIzq = new MenuOpcionesIzq(comunicacion);
-		setCenter(menuOpcionesIzq);
+		setCenter(new ScrollPane(new MenuOpcionesIzq(comunicacion)));
 	}
 
 }

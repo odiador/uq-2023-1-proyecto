@@ -9,48 +9,44 @@ import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.Boton;
 import co.edu.uniquindio.concesionariouq.util.Utility;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class PanelAgregarVan extends PanelConVolver {
 
 	private Combustible combustible;
-	private EventHandler<? super MouseEvent> eventoVolver;
-
-	public PanelAgregarVan(EventHandler<? super MouseEvent> eventoVolver) {
-		this.eventoVolver = eventoVolver;
-		initComponents();
-	}
+	private VBox box;
+	private TextField tfPlaca, tfMarca, tfModelo, tfCilindraje, tfVelocidadMax, tfCMaletero;
+	private Boton botonCombustible;
+	private ComboBox<String> cbEstadoVechiculo, cbTipoCambio;
+	private Spinner<Integer> tfNPasajeros, tfNPuertas, tfNBolsasAire;
+	private CheckBox cbTieneAire, cbTieneCamara, cbTieneABS;
 
 	@Override
 	public void initComponents() {
-		VBox box = new VBox(20);
-		TextField tfPlaca = new TextField();
-		TextField tfMarca = new TextField();
-		TextField tfModelo = new TextField();
-		TextField tfCilindraje = new TextField();
-		TextField tfVelocidadMax = new TextField();
-		Boton botonCombustible = new Boton("Combustible", e -> {
+		box = new VBox(20);
+		tfPlaca = new TextField();
+		tfMarca = new TextField();
+		tfModelo = new TextField();
+		tfCilindraje = new TextField();
+		tfVelocidadMax = new TextField();
+		botonCombustible = new Boton("Combustible", e -> {
 			ControlVehiculos.irACambiarCombustible(this, combustible);
 		});
-		ComboBox<String> cbEstadoVechiculo = new ComboBox<String>();
-		ComboBox<String> cbTipoCambio = new ComboBox<String>();
-		Spinner<Integer> tfNPasajeros = new Spinner<Integer>();
-		Spinner<Integer> tfNBolsasAire = new Spinner<Integer>();
-		Spinner<Integer> tfNPuertas = new Spinner<Integer>();
-		CheckBox cbTieneAire = new CheckBox();
-		CheckBox cbTieneCamara = new CheckBox();
-		CheckBox cbTieneABS = new CheckBox();
-		TextField tfCMaletero = new TextField();
+		cbEstadoVechiculo = new ComboBox<String>();
+		cbTipoCambio = new ComboBox<String>();
+		tfNPasajeros = new Spinner<Integer>();
+		tfNBolsasAire = new Spinner<Integer>();
+		tfNPuertas = new Spinner<Integer>();
+		cbTieneAire = new CheckBox();
+		cbTieneCamara = new CheckBox();
+		cbTieneABS = new CheckBox();
+		tfCMaletero = new TextField();
 
 		box.getChildren().add(generarHBox("Ingresa la placa del vehiculo", tfPlaca));
 		box.getChildren().add(generarHBox("Ingresa la marca del vehiculo", tfMarca));
@@ -84,24 +80,15 @@ public class PanelAgregarVan extends PanelConVolver {
 
 		setCenter(box);
 		box.setId("centered-box");
-		HBox hbox = new HBox();
-		Boton botonVolver = new Boton("Volver", eventoVolver);
-		Boton botonAgregar = new Boton("Aceptar", e -> {
-			ControlVehiculos.agregarVan(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(), tfModelo.getText().trim(),
-					tfCilindraje.getText().trim(), tfVelocidadMax.getText().trim(), combustible,
-					cbEstadoVechiculo.getValue(), cbTipoCambio.getValue(), tfNPasajeros.getValue().toString(),
-					tfNBolsasAire.getValue().toString(), tfNPuertas.getValue().toString(), cbTieneAire.isSelected(),
-					cbTieneCamara.isSelected(), cbTieneABS.isSelected(), tfCMaletero.getText().trim());
-		});
-		hbox.getChildren().add(botonVolver);
-		hbox.getChildren().add(botonAgregar);
+	}
 
-		HBox.setMargin(botonAgregar, new Insets(0, 20, 20, 0));
-		HBox.setMargin(botonVolver, new Insets(0, 20, 20, 20));
-
-		HBox.setHgrow(botonVolver, Priority.ALWAYS);
-		HBox.setHgrow(botonAgregar, Priority.ALWAYS);
-		setBottom(hbox);
+	@Override
+	public void handle(MouseEvent event) {
+		ControlVehiculos.agregarVan(tfPlaca.getText().trim().toUpperCase(), tfMarca.getText().trim(),
+				tfModelo.getText().trim(), tfCilindraje.getText().trim(), tfVelocidadMax.getText().trim(), combustible,
+				cbEstadoVechiculo.getValue(), cbTipoCambio.getValue(), tfNPasajeros.getValue().toString(),
+				tfNBolsasAire.getValue().toString(), tfNPuertas.getValue().toString(), cbTieneAire.isSelected(),
+				cbTieneCamara.isSelected(), cbTieneABS.isSelected(), tfCMaletero.getText().trim());
 	}
 
 }

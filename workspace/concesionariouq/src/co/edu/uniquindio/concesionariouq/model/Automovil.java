@@ -3,9 +3,9 @@ package co.edu.uniquindio.concesionariouq.model;
 public class Automovil extends Vehiculo {
 
 	// ATRIBUTOS
-	private Integer numeroPasajeros;
-	private Integer numeroBolsasAire;
-	private Integer numeroPuertas;
+	protected Integer numeroPasajeros;
+	protected Integer numeroBolsasAire;
+	protected Integer numeroPuertas;
 
 	/**
 	 * Es el constructor del automovil

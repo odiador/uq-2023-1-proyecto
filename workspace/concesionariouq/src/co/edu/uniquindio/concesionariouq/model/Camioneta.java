@@ -2,7 +2,7 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Camioneta extends Sedan {
 
-	private Boolean es4x4;
+	protected Boolean es4x4;
 
 	/**
 	 * Es el constructor de la clase Camioneta
@@ -57,6 +57,16 @@ public class Camioneta extends Sedan {
 	 */
 	public void setEs4x4(final Boolean es4x4) {
 		this.es4x4 = es4x4;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Camioneta [tieneVelocidadCrucero=%s, tieneSensorColision=%s, tieneSensorTrafico=%s, tieneAsistentePermanencia=%s, capacidadMaletero=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, es4x4=%s]",
+				tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico, tieneAsistentePermanencia,
+				capacidadMaletero, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado,
+				tipo, tipoVehiculo, es4x4);
 	}
 
 }

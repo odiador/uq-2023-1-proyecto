@@ -4,15 +4,15 @@ public abstract class Vehiculo {
 
 	// ATRIBUTOS
 
-	private final String placa;
-	private String marca;
-	private String modelo;
-	private Double cilindraje;
-	private Double velocidadMaxima;
-	private Combustible combustible;
-	private EstadoVehiculo estado;
-	private TipoCambio tipo;
-	private TipoVehiculo tipoVehiculo;
+	protected final String placa;
+	protected String marca;
+	protected String modelo;
+	protected Double cilindraje;
+	protected Double velocidadMaxima;
+	protected Combustible combustible;
+	protected EstadoVehiculo estado;
+	protected TipoCambio tipo;
+	protected TipoVehiculo tipoVehiculo;
 
 	/**
 	 * Es el constructor de la clase Vehiculo
@@ -278,6 +278,13 @@ public abstract class Vehiculo {
 
 	public boolean tieneCombustibleDiesel() {
 		return combustible instanceof Diesel;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Vehiculo [placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s]",
+				placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, tipoVehiculo);
 	}
 
 }

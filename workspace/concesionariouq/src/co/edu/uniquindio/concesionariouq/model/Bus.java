@@ -3,8 +3,8 @@ package co.edu.uniquindio.concesionariouq.model;
 public class Bus extends Van {
 
 	// ATRIBUTOS
-	private Integer numeroEjes;
-	private Integer numeroSalidasEmergencia;
+	protected Integer numeroEjes;
+	protected Integer numeroSalidasEmergencia;
 
 	/**
 	 * Es el constructor del Bus
@@ -73,6 +73,15 @@ public class Bus extends Van {
 	 */
 	public void setNumeroSalidasEmergencia(final Integer numeroSalidasEmergencia) {
 		this.numeroSalidasEmergencia = numeroSalidasEmergencia;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Bus [capacidadMaletero=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, numeroEjes=%s, numeroSalidasEmergencia=%s]",
+				capacidadMaletero, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado,
+				tipo, tipoVehiculo, numeroEjes, numeroSalidasEmergencia);
 	}
 
 }

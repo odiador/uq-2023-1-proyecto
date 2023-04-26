@@ -36,9 +36,9 @@ public class PickUp extends Familiar {
 	/**
 	 * Determina si el Pickup es 4x4 o no lo es
 	 */
-	private Boolean es4x4;
+	protected Boolean es4x4;
 
-	private Double capacidadCajaCarga;
+	protected Double capacidadCajaCarga;
 
 	/**
 	 * Obtiene la opcion de que el Pickup es 4x4 o no lo es
@@ -74,6 +74,15 @@ public class PickUp extends Familiar {
 	 */
 	public void setCapacidadCajaCarga(final Double capacidadCajaCarga) {
 		this.capacidadCajaCarga = capacidadCajaCarga;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"PickUp [tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, es4x4=%s, capacidadCajaCarga=%s]",
+				tieneAireAcondicionado, tieneCamaraReversa, tieneABS, numeroPasajeros, numeroBolsasAire, numeroPuertas,
+				placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, tipoVehiculo, es4x4,
+				capacidadCajaCarga);
 	}
 
 }

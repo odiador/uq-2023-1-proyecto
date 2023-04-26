@@ -20,4 +20,10 @@ public class Moto extends Vehiculo {
 		setTipoVehiculo(TipoVehiculo.MOTO);
 	}
 
+	@Override
+	public String toString() {
+		return String.format(
+				"Moto [placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s]",
+				placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, tipoVehiculo);
+	}
 }

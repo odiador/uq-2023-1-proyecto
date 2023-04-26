@@ -2,8 +2,8 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Deportivo extends Automovil {
 
-	private Integer numeroCaballosFuerza;
-	private Integer tiempoAlcanza100Kmh; // podria ser Double por los segundos
+	protected Integer numeroCaballosFuerza;
+	protected Integer tiempoAlcanza100Kmh; // podria ser Double por los segundos
 
 	/**
 	 * Es el constructor del Deportivo
@@ -67,6 +67,14 @@ public class Deportivo extends Automovil {
 	 */
 	public void setTiempoAlcanza100Kmh(final Integer tiempoAlcanza100Kmh) {
 		this.tiempoAlcanza100Kmh = tiempoAlcanza100Kmh;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Deportivo [numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, numeroCaballosFuerza=%s, tiempoAlcanza100Kmh=%s]",
+				numeroPasajeros, numeroBolsasAire, numeroPuertas, placa, marca, modelo, cilindraje, velocidadMaxima,
+				combustible, estado, tipo, tipoVehiculo, numeroCaballosFuerza, tiempoAlcanza100Kmh);
 	}
 
 }

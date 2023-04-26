@@ -3,9 +3,9 @@ package co.edu.uniquindio.concesionariouq.model;
 public abstract class Familiar extends Automovil {
 
 	// ATRIBUTOS
-	private Boolean tieneAireAcondicionado;
-	private Boolean tieneCamaraReversa;
-	private Boolean tieneABS;
+	protected Boolean tieneAireAcondicionado;
+	protected Boolean tieneCamaraReversa;
+	protected Boolean tieneABS;
 
 	/**
 	 * Es el constructor del automovil familiar
@@ -89,5 +89,14 @@ public abstract class Familiar extends Automovil {
 	public void setTieneABS(final Boolean tieneABS) {
 		this.tieneABS = tieneABS;
 	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Familiar [cilindraje=%s, combustible=%s, estado=%s, marca=%s, modelo=%s, numeroBolsasAire=%s, numeroPasajeros=%s, numeroPuertas=%s, placa=%s, tipo=%s, tipoVehiculo=%s, velocidadMaxima=%s, tieneABS=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s]",
+				cilindraje, combustible, estado, marca, modelo, numeroBolsasAire, numeroPasajeros, numeroPuertas, placa,
+				tipo, tipoVehiculo, velocidadMaxima, tieneABS, tieneAireAcondicionado, tieneCamaraReversa);
+	}
+	
 
 }

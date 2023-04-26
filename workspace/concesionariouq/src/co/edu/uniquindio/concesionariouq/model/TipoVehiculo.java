@@ -3,8 +3,8 @@ package co.edu.uniquindio.concesionariouq.model;
 public enum TipoVehiculo {
 	// TIPOS DE VEHICULO
 
-	BUS("Bus"), CAMION("Camion"), CAMIONETA("Camioneta"), DEPORTIVO("Deportivo"), MOTO("Moto"),
-	PICKUP("PickUp"), SEDAN("Sendan"), VAN("Van");
+	BUS("Bus"), CAMION("Camion"), CAMIONETA("Camioneta"), DEPORTIVO("Deportivo"), MOTO("Moto"), PICKUP("PickUp"),
+	SEDAN("Sendan"), VAN("Van");
 
 	private final String tipo;
 
@@ -37,6 +37,9 @@ public enum TipoVehiculo {
 	/**
 	 * Obtiene un valor de la lista con los valores que puede tener el tipo del
 	 * vehiculo
+	 * 
+	 * @param tipo
+	 * @return
 	 */
 	public static TipoVehiculo obtenerValorTipo(String tipo) {
 		TipoVehiculo[] arr = TipoVehiculo.values();

@@ -266,7 +266,7 @@ public class Concesionario implements PuedeTenerVehiculos {
 	 * 
 	 * @param contrasena
 	 * @param identificacion
-	 * @throws LoginFailedException 
+	 * @throws LoginFailedException
 	 */
 	public void hacerLogin(String identificacion, String contrasena) throws LoginFailedException {
 		if (buscarUsuario(identificacion, contrasena) == null) {

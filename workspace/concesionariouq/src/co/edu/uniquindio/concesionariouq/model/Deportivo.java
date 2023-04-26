@@ -30,6 +30,7 @@ public class Deportivo extends Automovil {
 				numeroBolsasAire, numeroPuertas);
 		this.numeroCaballosFuerza = numeroCaballosFuerza;
 		this.tiempoAlcanza100Kmh = tiempoAlcanza100Kmh;
+		setTipoVehiculo(TipoVehiculo.DEPORTIVO);
 	}
 
 	/**

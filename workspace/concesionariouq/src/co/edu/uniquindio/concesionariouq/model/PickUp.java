@@ -30,6 +30,7 @@ public class PickUp extends Familiar {
 				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS);
 		this.es4x4 = es4x4;
 		this.capacidadCajaCarga = capacidadCajaCarga;
+		setTipoVehiculo(TipoVehiculo.PICKUP);
 	}
 
 	/**

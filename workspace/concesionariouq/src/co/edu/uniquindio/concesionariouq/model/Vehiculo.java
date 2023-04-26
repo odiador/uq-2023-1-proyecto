@@ -12,10 +12,12 @@ public abstract class Vehiculo {
 	private Combustible combustible;
 	private EstadoVehiculo estado;
 	private TipoCambio tipo;
+	private TipoVehiculo tipoVehiculo;
 
 	/**
 	 * Es el constructor de la clase Vehiculo
 	 * 
+	 * @param tipoVehiculo
 	 * @param placa
 	 * @param marca
 	 * @param modelo
@@ -170,6 +172,112 @@ public abstract class Vehiculo {
 	 */
 	public String getPlaca() {
 		return placa;
+	}
+
+	public TipoVehiculo getTipoVehiculo() {
+		return tipoVehiculo;
+	}
+
+	public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
+		this.tipoVehiculo = tipoVehiculo;
+	}
+
+	/**
+	 * Determina si la placa del vehiculo termina con una cadena especifica
+	 * 
+	 * @param cadena
+	 * @return
+	 */
+	public boolean placaTerminaCon(String cadena) {
+		return placa.endsWith(cadena);
+	}
+
+	/**
+	 * Determina si la placa del vehiculo empieza con una cadena especifica
+	 * 
+	 * @param cadena
+	 * @return
+	 */
+	public boolean placaEmpiezaCon(String cadena) {
+		return placa.startsWith(cadena);
+	}
+
+	/**
+	 * Determina si el cilindraje esta en un rango determinado
+	 * 
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public boolean cilindrajeEnRango(double min, double max) {
+		return cilindrajeMayorQue(min) && cilindrajeMenorQue(max);
+	}
+
+	/**
+	 * Determina si el cilindraje es mayor a un rango determinado
+	 * 
+	 * @param val
+	 * @return
+	 */
+	public boolean cilindrajeMayorQue(double val) {
+		return cilindraje > val;
+	}
+
+	/**
+	 * Determina si el cilindraje es menor a un rango determinado
+	 * 
+	 * @param val
+	 * @return
+	 */
+	public boolean cilindrajeMenorQue(double val) {
+		return cilindraje < val;
+	}
+
+	/**
+	 * Determina si la velocidad maxima esta en un rango determinado
+	 * 
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public boolean velocidadMaximaRango(double min, double max) {
+		return velocidadMaximaMayorQue(min) && velocidadMaximaMenorQue(max);
+	}
+
+	/**
+	 * Determina si la velocidad maxima es menor que un valor
+	 * 
+	 * @param val
+	 * @return
+	 */
+	public boolean velocidadMaximaMenorQue(double val) {
+		return velocidadMaxima < val;
+	}
+
+	/**
+	 * Determina si la velocidad maxima es mayor que un valor
+	 * 
+	 * @param val
+	 * @return
+	 */
+	public boolean velocidadMaximaMayorQue(double val) {
+		return velocidadMaxima > val;
+	}
+
+	public boolean tieneCombustibleGasolina() {
+		return combustible instanceof Gasolina;
+	}
+
+	public boolean tieneCombustibleEletrico() {
+		return combustible instanceof Electrico;
+	}
+
+	public boolean tieneCombustibleHibrido() {
+		return combustible instanceof Hibrido;
+	}
+
+	public boolean tieneCombustibleDiesel() {
+		return combustible instanceof Diesel;
 	}
 
 }

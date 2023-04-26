@@ -31,6 +31,7 @@ public class Van extends Familiar {
 		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
 				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS);
 		this.capacidadMaletero = capacidadMaletero;
+		setTipoVehiculo(TipoVehiculo.VAN);
 	}
 
 	/**

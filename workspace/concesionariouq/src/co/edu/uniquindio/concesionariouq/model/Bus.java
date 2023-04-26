@@ -36,6 +36,7 @@ public class Bus extends Van {
 				capacidadMaletero);
 		this.numeroEjes = numeroEjes;
 		this.numeroSalidasEmergencia = numeroSalidasEmergencia;
+		setTipoVehiculo(TipoVehiculo.BUS);
 	}
 
 	/**

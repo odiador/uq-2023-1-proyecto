@@ -44,6 +44,7 @@ public class Sedan extends Van {
 		this.tieneSensorColision = tieneSensorColision;
 		this.tieneSensorTrafico = tieneSensorTrafico;
 		this.tieneAsistentePermanencia = tieneAsistentePermanencia;
+		setTipoVehiculo(TipoVehiculo.SEDAN);
 	}
 
 	/**

@@ -38,6 +38,7 @@ public class Camioneta extends Sedan {
 				capacidadMaletero, tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico,
 				tieneAsistentePermanencia);
 		this.es4x4 = es4x4;
+		setTipoVehiculo(TipoVehiculo.CAMIONETA);
 	}
 
 	/**

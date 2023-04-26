@@ -41,6 +41,7 @@ public class Camion extends Vehiculo {
 		this.numeroEjes = numeroEjes;
 		this.tieneABS = tieneABS;
 		this.tipoCamion = tipoCamion;
+		setTipoVehiculo(TipoVehiculo.CAMION);
 	}
 
 	/**

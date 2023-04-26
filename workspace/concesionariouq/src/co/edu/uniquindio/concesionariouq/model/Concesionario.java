@@ -1,7 +1,11 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import co.edu.uniquindio.concesionariouq.exceptions.ClienteNoEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
@@ -583,5 +587,19 @@ public class Concesionario implements PuedeTenerVehiculos {
 		if (!validarVehiculo(vehiculo.getPlaca()))
 			throw new VehiculoNoExisteException("El vehiculo con la placa " + vehiculo.getPlaca() + " no existe");
 		listaVehiculos.remove(vehiculo.getPlaca());
+	}
+
+	/**
+	 * Lista los vehiculos del concesionario, como la lista de vehiculos es en
+	 * realidad un map, toca convertirlo a un set, y luego hacer un map para cambiar
+	 * el tipo de variable a vehiculo
+	 * 
+	 * @return
+	 */
+	public List<Vehiculo> listarVehiculos() {
+		return listaVehiculos.entrySet().stream()
+				.map((Function<? super Entry<String, Vehiculo>, ? extends Vehiculo>) mapper -> {
+					return mapper.getValue();
+				}).collect(Collectors.toList());
 	}
 }

@@ -13,6 +13,7 @@ import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelAgregarSedan;
 import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelAgregarVan;
 import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelConVolver;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarVehiculo;
+import co.edu.uniquindio.concesionariouq.view.menu.PanelCombustible;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
@@ -25,22 +26,12 @@ import javafx.stage.Stage;
 
 public class ControlVehiculos {
 
-	public static void agregarMoto(String string, String string2, String string3, String string4, String string5,
-			String string6, String string7, Combustible combustible) {
-
-		new Alert(AlertType.CONFIRMATION, "Moto Agregada").show();
-	}
-
-	public static void irACambiarCombustible(PanelConVolver panel, Combustible combustible) {
-
-	}
-
 	public static void irAgregarVehiculo(PanelAgregarVehiculo panelAgregarVehiculo, String opcionTipoVehiculo,
 			EventHandler<? super MouseEvent> eventoVolver) {
 		TipoVehiculo tipoVehiculo = TipoVehiculo.obtenerValorTipo(opcionTipoVehiculo);
 		if (tipoVehiculo == null) {
 			new Alert(AlertType.WARNING, "No se ha encontrado la opcion").show();
-			panelAgregarVehiculo.initComp();
+			panelAgregarVehiculo.initComponents();
 			return;
 		}
 
@@ -152,6 +143,18 @@ public class ControlVehiculos {
 			Boolean tieneAireAcondicionado, Boolean tieneFrenosAire, String numeroEjes, Boolean tieneABS,
 			String tipoCamion) {
 
+	}
+	
+	public static void agregarMoto(String string, String string2, String string3, String string4, String string5,
+			String string6, String string7, Combustible combustible) {
+
+		new Alert(AlertType.CONFIRMATION, "Moto Agregada").show();
+	}
+	
+	public static void irACambiarCombustible(PanelConVolver panel, Combustible combustible) {
+		PanelConVolver panelConVolver = new PanelCombustible();
+		panelConVolver.initComponents();
+		panel.setCenter(panelConVolver);
 	}
 
 }

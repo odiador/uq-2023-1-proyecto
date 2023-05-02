@@ -14,7 +14,9 @@ public class MenuPrincipalIzq extends BorderPane {
 	}
 
 	private void initComp() {
-		setCenter(new ScrollPane(new MenuOpcionesIzq(comunicacion)));
+		ScrollPane scroll = new ScrollPane(new MenuOpcionesIzq(comunicacion));
+		scroll.setStyle("");
+		setCenter(scroll);
 	}
 
 }

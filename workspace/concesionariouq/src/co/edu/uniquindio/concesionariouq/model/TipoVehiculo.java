@@ -4,7 +4,7 @@ public enum TipoVehiculo {
 	// TIPOS DE VEHICULO
 
 	BUS("Bus"), CAMION("Camion"), CAMIONETA("Camioneta"), DEPORTIVO("Deportivo"), MOTO("Moto"), PICKUP("PickUp"),
-	SEDAN("Sendan"), VAN("Van");
+	SEDAN("Sedan"), VAN("Van");
 
 	private final String tipo;
 

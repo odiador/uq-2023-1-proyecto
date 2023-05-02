@@ -94,7 +94,7 @@ public class Administrador extends Empleado {
 				Arrays.asList(super.obtenerOpcionesDisponibles()));
 		listaOpciones.add(OpcionMenu.ACTUALIZAR_CLIENTE);
 		listaOpciones.add(OpcionMenu.ACTUALIZAR_VEHICULO);
-		listaOpciones.add(OpcionMenu.AGREGAR_CLIENTE);
+		listaOpciones.add(OpcionMenu.AGREGAR);
 		listaOpciones.add(OpcionMenu.ELIMINAR_CLIENTE);
 		Collections.sort(listaOpciones, OpcionMenu::compararPorPrioridad);
 		return (OpcionMenu[]) listaOpciones.toArray(new OpcionMenu[listaOpciones.size()]);

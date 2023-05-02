@@ -2,7 +2,9 @@ package co.edu.uniquindio.concesionariouq.controllers;
 
 import co.edu.uniquindio.concesionariouq.model.OpcionMenu;
 import co.edu.uniquindio.concesionariouq.model.Usuario;
+import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregar;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarCliente;
+import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarUsuario;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarVehiculo;
 import co.edu.uniquindio.concesionariouq.view.principal.MenuPrincipal;
 import javafx.scene.control.Label;
@@ -15,13 +17,14 @@ public class ControlMenu {
 		if (valorOpcion == null)
 			return;
 		switch (valorOpcion) {
-		case AGREGAR_CLIENTE:
-			menuPrincipal.setCenter(new PanelAgregarCliente(menuPrincipal.getStage()));
+		case AGREGAR:
+			menuPrincipal.setCenter(new PanelAgregar());
 			break;
+		/*
 		case AGREGAR_VEHICULO:
 			((Stage) menuPrincipal.getScene().getWindow()).setTitle("Agregar Vehiculo | Concesionario UQ");
 			menuPrincipal.setCenter(new PanelAgregarVehiculo());
-			break;
+			break; */
 		default:
 			menuPrincipal.setCenter(new Label("Coming soon"));
 			break;

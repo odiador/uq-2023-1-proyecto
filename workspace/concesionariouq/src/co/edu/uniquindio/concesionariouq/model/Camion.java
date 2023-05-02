@@ -4,12 +4,12 @@ public class Camion extends Vehiculo {
 
 	// ATRIBUTOS
 
-	private Double capacidadCarga;
-	private Boolean tieneAireAcondicionado;
-	private Boolean tieneFrenosAire;
-	private Boolean tieneABS;
-	private Integer numeroEjes;
-	private String tipoCamion; // El tipo de tipoCamion es provicional. Deberia ser un Enum
+	protected Double capacidadCarga;
+	protected Boolean tieneAireAcondicionado;
+	protected Boolean tieneFrenosAire;
+	protected Boolean tieneABS;
+	protected Integer numeroEjes;
+	protected String tipoCamion; // El tipo de tipoCamion es provicional. Deberia ser un Enum
 
 	/**
 	 * Es el constructor de la clase camión
@@ -152,4 +152,11 @@ public class Camion extends Vehiculo {
 		this.tipoCamion = tipoCamion;
 	}
 
+	@Override
+	public String toString() {
+		return String.format(
+				"Camion [placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, capacidadCarga=%s, tieneAireAcondicionado=%s, tieneFrenosAire=%s, tieneABS=%s, numeroEjes=%s, tipoCamion=%s]",
+				placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, tipoVehiculo,
+				capacidadCarga, tieneAireAcondicionado, tieneFrenosAire, tieneABS, numeroEjes, tipoCamion);
+	}
 }

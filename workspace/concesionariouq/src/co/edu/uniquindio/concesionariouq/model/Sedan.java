@@ -4,10 +4,10 @@ public class Sedan extends Van {
 
 	// ATRIBUTOS
 
-	private Boolean tieneVelocidadCrucero;
-	private Boolean tieneSensorColision;
-	private Boolean tieneSensorTrafico;
-	private Boolean tieneAsistentePermanencia;
+	protected Boolean tieneVelocidadCrucero;
+	protected Boolean tieneSensorColision;
+	protected Boolean tieneSensorTrafico;
+	protected Boolean tieneAsistentePermanencia;
 
 	/**
 	 * Es el constructor del Sedan
@@ -117,6 +117,16 @@ public class Sedan extends Van {
 	 */
 	public void setTieneAsistentePermanencia(final Boolean tieneAsistentePermanencia) {
 		this.tieneAsistentePermanencia = tieneAsistentePermanencia;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Sedan [capacidadMaletero=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, tieneVelocidadCrucero=%s, tieneSensorColision=%s, tieneSensorTrafico=%s, tieneAsistentePermanencia=%s]",
+				capacidadMaletero, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado,
+				tipo, tipoVehiculo, tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico,
+				tieneAsistentePermanencia);
 	}
 
 }

@@ -3,9 +3,9 @@ package co.edu.uniquindio.concesionariouq.view.menu;
 import java.util.Arrays;
 
 import co.edu.uniquindio.concesionariouq.controllers.ControlCombustible;
+import co.edu.uniquindio.concesionariouq.model.Combustible;
 import co.edu.uniquindio.concesionariouq.util.PanelConVolver;
 import co.edu.uniquindio.concesionariouq.util.Utility;
-import co.edu.uniquindio.concesionariouq.model.Combustible;
 import javafx.collections.FXCollections;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -14,7 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 public class PanelCombustible extends PanelConVolver {
-	private Combustible combustible;
 	private ComboBox<String> cbCombustible;
 	private CheckBox checkHibridoEnchufado;
 	private CheckBox checkHibridoLigero;
@@ -23,9 +22,6 @@ public class PanelCombustible extends PanelConVolver {
 
 	@Override
 	public void handle(MouseEvent arg0) {
-		ControlCombustible.irCombustibles(this, getAccessibleHelp(), e -> {
-			initComponents();
-		});
 	}
 
 	@Override
@@ -61,10 +57,6 @@ public class PanelCombustible extends PanelConVolver {
 		checkHibridoLigero = new CheckBox();
 		return ControlCombustible.obtenerCombustible(cbCombustible.getValue(), txtElectricoAutonomia.getText(),
 				txtElectricoTiempoCarga.getText(), checkHibridoEnchufado.isSelected(), checkHibridoLigero.isSelected());
-	}
-
-	public void setCombustible(Combustible combustible) {
-		this.combustible = combustible;
 	}
 
 	public void mostrarCamposElectricos() {

@@ -22,7 +22,7 @@ public class Main extends Application {
 			escenaPrincipal.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			escenaTabla.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
-			primaryStage.setScene(escenaTabla);
+			primaryStage.setScene(escenaPrincipal);
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

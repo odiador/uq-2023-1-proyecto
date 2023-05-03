@@ -1,7 +1,5 @@
 package co.edu.uniquindio.concesionariouq.view.menu;
 
-import co.edu.uniquindio.concesionariouq.model.TipoVehiculo;
-
 public enum TipoAgregacion {
 	VEHICULO("Vehiculo"), USUARIO("Usuario");
 	

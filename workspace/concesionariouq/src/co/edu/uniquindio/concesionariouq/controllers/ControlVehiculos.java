@@ -144,13 +144,13 @@ public class ControlVehiculos {
 			String tipoCamion) {
 
 	}
-	
+
 	public static void agregarMoto(String string, String string2, String string3, String string4, String string5,
 			String string6, String string7, Combustible combustible) {
 
 		new Alert(AlertType.CONFIRMATION, "Moto Agregada").show();
 	}
-	
+
 	public static void irACambiarCombustible(PanelConVolver panel, Combustible combustible) {
 		PanelConVolver panelConVolver = new PanelCombustible();
 		panelConVolver.initComponents();

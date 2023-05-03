@@ -69,7 +69,7 @@ public class ControlVehiculos {
 		}
 
 		((Stage) panelAgregarVehiculo.getScene().getWindow())
-				.setTitle("Agregar " + opcionTipoVehiculo + " | Concesionario UQ");
+				.setTitle("Agregación de " + opcionTipoVehiculo + " | Concesionario UQ");
 
 		HBox hbox = new HBox();
 		ScrollPane scrollPane = new ScrollPane(panelConVolver);

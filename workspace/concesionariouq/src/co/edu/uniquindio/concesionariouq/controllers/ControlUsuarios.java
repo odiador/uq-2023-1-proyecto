@@ -46,7 +46,7 @@ public class ControlUsuarios {
 		}
 
 		((Stage) panelAgregarUsuario.getScene().getWindow())
-				.setTitle("Agregar " + opcionTipoUsuario + " | Concesionario UQ");
+				.setTitle("Agregación de " + opcionTipoUsuario + " | Concesionario UQ");
 
 		HBox hbox = new HBox();
 		ScrollPane scrollPane = new ScrollPane(panelConVolver);

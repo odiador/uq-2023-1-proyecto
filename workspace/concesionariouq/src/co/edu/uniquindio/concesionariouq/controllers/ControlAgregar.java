@@ -43,7 +43,7 @@ public class ControlAgregar {
 		}
 
 		((Stage) panel.getScene().getWindow())
-				.setTitle("Agregar " + tipoAgregacion + " | Concesionario UQ");
+				.setTitle("Adición de " + tipoAgregacion + " | Concesionario UQ");
 
 		HBox hbox = new HBox();
 		ScrollPane scrollPane = new ScrollPane(panelConVolver);

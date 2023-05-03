@@ -4,7 +4,7 @@ import static co.edu.uniquindio.concesionariouq.util.Utility.generarHBox;
 
 import co.edu.uniquindio.concesionariouq.controllers.ControlAgregar;
 import co.edu.uniquindio.concesionariouq.util.Boton;
-import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelConVolver;
+import co.edu.uniquindio.concesionariouq.util.PanelConVolver;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 

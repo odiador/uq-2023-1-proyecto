@@ -2,12 +2,11 @@ package co.edu.uniquindio.concesionariouq.controllers;
 
 import co.edu.uniquindio.concesionariouq.exceptions.CampoException;
 import co.edu.uniquindio.concesionariouq.model.Combustible;
-import co.edu.uniquindio.concesionariouq.util.Utility;
-import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelConVolver;
+import co.edu.uniquindio.concesionariouq.util.PanelConVolver;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelCombustible;
 import co.edu.uniquindio.concesionariouq.view.menu.TipoCombustible;
 import javafx.event.EventHandler;
-import javafx.scene.input.*;
+import javafx.scene.input.MouseEvent;
 
 public class ControlCombustible {
 	public static void irACambiarCombustible(PanelConVolver panel, Combustible combustible,

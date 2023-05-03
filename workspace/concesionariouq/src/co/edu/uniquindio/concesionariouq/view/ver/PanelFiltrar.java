@@ -15,11 +15,13 @@ import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.model.TipoVehiculo;
 import co.edu.uniquindio.concesionariouq.util.Boton;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public class PanelFiltrar extends BorderPane {
-	public PanelFiltrar() {
+	public PanelFiltrar(EventHandler<? super MouseEvent> eventoVolver) {
 		Boton botonCombustible = new Boton("Filtrar Combustible", easad -> {
 			setCenter(new PanelFiltroCombustible());
 		});
@@ -70,5 +72,6 @@ public class PanelFiltrar extends BorderPane {
 
 		vbox.setId("centered-box");
 		setCenter(vbox);
+		setBottom(new Boton("Volver", eventoVolver));
 	}
 }

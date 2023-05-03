@@ -1,7 +1,7 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
 import co.edu.uniquindio.concesionariouq.util.Boton;
-import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelConVolver;
+import co.edu.uniquindio.concesionariouq.util.PanelConVolver;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregar;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarUsuario;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarVehiculo;

@@ -1,3 +1,16 @@
+
+#raiz {
+	-fx-background-color: #444444;
+}
+.root {
+	-fx-background-color: #444444;
+}
+.check-box {
+	-fx-text-fill: white;
+}
+.label {
+	-fx-text-fill: white;
+}
 #menu-opciones-izq {
 	-fx-background-color: #000099;	
 }
@@ -14,7 +27,7 @@
 
 }
 #btn-case {
-	-fx-background-color: #2C8FDE;
+	-fx-background-color: #000000;
 }
 #btn {
 	-fx-ellipsis-string: "";
@@ -26,15 +39,15 @@
 	-fx-max-height: 1000000.0;
 }
 #btn:hover {
-	-fx-background-color: rgb(0.0,0.0,0.0,0.15);
+	-fx-background-color: rgb(255.0,255.0,255.0,0.1);
 }
 #btn:pressed {
-	-fx-background-color: rgb(0.0,0.0,0.0,0.3);
+	-fx-background-color: rgb(255.0,255.0,255.0,0.2);
 }
 
 .boton-menu:hover {
-	-fx-background-color: rgb(0.0,0.0,0.0,0.2);
+	-fx-background-color: rgb(255.0,255.0,255.0,0.2);
 }
 .boton-menu:pressed {
-	-fx-background-color: rgb(0.0,0.0,0.0,0.3);
+	-fx-background-color: rgb(255.0,255.0,255.0,0.3);
 }

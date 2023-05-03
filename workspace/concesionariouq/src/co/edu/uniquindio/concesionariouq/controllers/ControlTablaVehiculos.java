@@ -21,13 +21,18 @@ public class ControlTablaVehiculos {
 		panelVerVehiculos.setBottom(botonVolver);
 	}
 
-	public static void irAFiltrar(PanelVerVehiculos panelVerVehiculos) {
-		panelVerVehiculos.setCenter(new PanelFiltrar());
-		Boton botonVolver = new Boton("Volver", e -> {
-			panelVerVehiculos.initComponents();
-		});
-		panelVerVehiculos.setBottom(botonVolver);
+	public static void irAFiltrar(PanelVerFiltros panelVerFiltros) {
+		panelVerFiltros.setCenter(new PanelFiltrar(e -> {
+			panelVerFiltros.initComponents();
+		}));
+		panelVerFiltros.setTop(null);
+		panelVerFiltros.setBottom(null);
+	}
 
+	public static void irVerFiltros(PanelVerVehiculos panelVerVehiculos) {
+		panelVerVehiculos.setCenter(new PanelVerFiltros(e -> {
+			panelVerVehiculos.initComponents();
+		}));
 	}
 
 	public static Callback<CellDataFeatures<Vehiculo, String>, ObservableValue<String>> obtenerCallbackPlaca() {
@@ -62,14 +67,6 @@ public class ControlTablaVehiculos {
 
 	public static Callback<CellDataFeatures<Vehiculo, String>, ObservableValue<String>> obtenerCallbackTipoCambios() {
 		return data -> new ReadOnlyStringWrapper(data.getValue().getTipo().getText());
-	}
-
-	public static void irVerFiltros(PanelVerVehiculos panelVerVehiculos) {
-		panelVerVehiculos.setCenter(new PanelVerFiltros());
-		Boton botonVolver = new Boton("Volver", e -> {
-			panelVerVehiculos.initComponents();
-		});
-		panelVerVehiculos.setBottom(botonVolver);
 	}
 
 }

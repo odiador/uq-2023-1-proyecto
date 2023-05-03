@@ -1,6 +1,5 @@
 package co.edu.uniquindio.concesionariouq.view.ver;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.uniquindio.concesionariouq.controllers.ControlTablaVehiculos;
@@ -13,13 +12,11 @@ import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 import co.edu.uniquindio.concesionariouq.util.Boton;
 import co.edu.uniquindio.concesionariouq.util.ProjectUtility;
-import co.edu.uniquindio.concesionariouq.util.Relacion;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public class PanelVerVehiculos extends BorderPane {
 	public static List<Vehiculo> listaVehiculos = listar();
-	public static ArrayList<Relacion<String, String>> filtros = new ArrayList<>();
 
 	public PanelVerVehiculos() {
 		initComponents();
@@ -31,7 +28,7 @@ public class PanelVerVehiculos extends BorderPane {
 	 * 
 	 * @return
 	 */
-	private static List<Vehiculo> listar() {
+	public static List<Vehiculo> listar() {
 		Concesionario concesionario = new Concesionario("Nombre", "id");
 		try {
 			concesionario.agregarMoto("AAAA", "mazda", "2020", 200d, 200d, new Gasolina(), EstadoVehiculo.NUEVO,
@@ -54,20 +51,16 @@ public class PanelVerVehiculos extends BorderPane {
 		Boton botonIr = new Boton("Ir", e -> {
 			ControlTablaVehiculos.irATabla(this);
 		});
-		Boton botonFiltrar = new Boton("Filtrar...", e -> {
-			ControlTablaVehiculos.irAFiltrar(this);
-		});
 		Boton botonVerFiltros = new Boton("Ver Filtros", e -> {
 			ControlTablaVehiculos.irVerFiltros(this);
 		});
 		Boton botonQuitarFiltros = new Boton("Quitar Filtros", e -> {
 			listaVehiculos = listar();
-			filtros.clear();
+			PanelVerFiltros.filtros.clear();
 			ProjectUtility.mostrarConfirmacion("Los filtros han sido eliminados");
 		});
 		vbox.setId("centered-box");
 		vbox.getChildren().add(botonIr);
-		vbox.getChildren().add(botonFiltrar);
 		vbox.getChildren().add(botonVerFiltros);
 		vbox.getChildren().add(botonQuitarFiltros);
 		setCenter(vbox);

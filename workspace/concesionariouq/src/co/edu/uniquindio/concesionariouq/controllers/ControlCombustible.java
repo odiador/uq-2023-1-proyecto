@@ -2,8 +2,11 @@ package co.edu.uniquindio.concesionariouq.controllers;
 
 import co.edu.uniquindio.concesionariouq.exceptions.CampoException;
 import co.edu.uniquindio.concesionariouq.model.Combustible;
+import co.edu.uniquindio.concesionariouq.model.Diesel;
+import co.edu.uniquindio.concesionariouq.model.Electrico;
+import co.edu.uniquindio.concesionariouq.model.Gasolina;
+import co.edu.uniquindio.concesionariouq.model.Hibrido;
 import co.edu.uniquindio.concesionariouq.util.Boton;
-import co.edu.uniquindio.concesionariouq.util.Utility;
 import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelConVolver;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelCombustible;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelElectrico;
@@ -12,7 +15,7 @@ import co.edu.uniquindio.concesionariouq.view.menu.TipoCombustible;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
@@ -30,6 +33,17 @@ public class ControlCombustible {
 		if (tipoCombustible == null) {
 			throw new CampoException("Recuerda llenar todos los campos");
 		}
+		switch (tipoCombustible) {
+		case ELECTRICO:
+			panelCombustible.mostrarCamposElectricos();
+			break;
+		case HIBRIDO:
+			panelCombustible.mostrarCamposHibridos();
+			break;
+		default:
+			panelCombustible.comboInicial();
+			break;
+		}
 
 	}
 
@@ -41,19 +55,21 @@ public class ControlCombustible {
 		}
 	}
 
-	public static void irCombustibles(PanelConVolver panel, String valorCombustible, EventHandler<? super MouseEvent> eventoVolver) {
+	public static void irCombustibles(PanelConVolver panel, String valorCombustible,
+			EventHandler<? super MouseEvent> eventoVolver) {
 		TipoCombustible tipoCombustible = TipoCombustible.getTipo(valorCombustible);
 		PanelConVolver panelConVolver = null;
 
 		switch (tipoCombustible) {
 		case ELECTRICO:
 			panelConVolver = new PanelElectrico();
+			panel.setCenter(panelConVolver);
 			break;
 		case HIBRIDO:
 			panelConVolver = new PanelHibrido();
 			break;
 		case DIESEL:
-			
+
 			break;
 		case GASOLINA:
 
@@ -63,8 +79,7 @@ public class ControlCombustible {
 			break;
 		}
 
-		((Stage) panel.getScene().getWindow())
-				.setTitle("Agregar " + valorCombustible + " | Concesionario UQ");
+		((Stage) panel.getScene().getWindow()).setTitle("Agregar " + valorCombustible + " | Concesionario UQ");
 
 		HBox hbox = new HBox();
 		ScrollPane scrollPane = new ScrollPane(panelConVolver);
@@ -88,5 +103,25 @@ public class ControlCombustible {
 
 		panel.setCenter(scrollPane);
 		panel.setBottom(hbox);
+	}
+
+	public static Combustible obtenerCombustible(String tipoCombustibleString, String autonomiaElectricoString,
+			String tiempoElectricoString, boolean esHibridoEnchufable, boolean esHibridoLigero) {
+		TipoCombustible tipoCombustible = TipoCombustible.getTipo(tipoCombustibleString);
+		if (tipoCombustible == null)
+			return null;
+		switch (tipoCombustible) {
+		case DIESEL:
+			return new Diesel();
+		case ELECTRICO:
+			double autonomia = Double.parseDouble(autonomiaElectricoString);
+			double tiempo = Double.parseDouble(tiempoElectricoString);
+			return new Electrico(autonomia, tiempo);
+		case GASOLINA:
+			return new Gasolina();
+		case HIBRIDO:
+			return new Hibrido(esHibridoEnchufable, esHibridoLigero);
+		}
+		return null;
 	}
 }

@@ -2,6 +2,7 @@ package co.edu.uniquindio.concesionariouq.view.ver;
 
 import co.edu.uniquindio.concesionariouq.controllers.ControlFiltroView;
 import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
+import co.edu.uniquindio.concesionariouq.model.TipoFiltro;
 import co.edu.uniquindio.concesionariouq.util.Boton;
 import co.edu.uniquindio.concesionariouq.util.Utility;
 import javafx.collections.FXCollections;
@@ -14,7 +15,7 @@ public class PanelFiltrarEstado extends BorderPane {
 		ComboBox<String> estados = new ComboBox<>();
 		estados.setItems(FXCollections.observableArrayList(EstadoVehiculo.getTextValues()));
 		Boton botonFiltrar = new Boton("Filtrar", ev -> {
-			ControlFiltroView.filtrarEstado(estados.getValue());
+			ControlFiltroView.agregarFiltro(TipoFiltro.ESTADO_VEHICULO, estados.getValue());
 		});
 		VBox vbox = new VBox(20);
 		vbox.getChildren().add(Utility.generarHBox("Elige el estado del vehiculo", estados));

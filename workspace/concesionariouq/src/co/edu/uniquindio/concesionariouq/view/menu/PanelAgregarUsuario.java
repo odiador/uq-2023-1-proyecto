@@ -1,11 +1,8 @@
 package co.edu.uniquindio.concesionariouq.view.menu;
 
-import co.edu.uniquindio.concesionariouq.controllers.ControlAgregar;
 import co.edu.uniquindio.concesionariouq.controllers.ControlUsuarios;
-import co.edu.uniquindio.concesionariouq.controllers.ControlVehiculos;
-import co.edu.uniquindio.concesionariouq.model.TipoVehiculo;
 import co.edu.uniquindio.concesionariouq.util.Boton;
-import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelConVolver;
+import co.edu.uniquindio.concesionariouq.util.PanelConVolver;
 import co.edu.uniquindio.concesionariouq.view.login.UtilPane;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
@@ -17,7 +14,6 @@ public class PanelAgregarUsuario extends PanelConVolver{
 
 	@Override
 	public void handle(MouseEvent event) {
-		// TODO Auto-generated method stub
 		
 	}
 

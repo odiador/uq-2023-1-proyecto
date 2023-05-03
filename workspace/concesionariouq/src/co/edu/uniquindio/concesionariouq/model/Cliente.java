@@ -8,7 +8,7 @@ import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
-public class Cliente extends Usuario implements PuedeTenerVehiculos{
+public class Cliente extends Usuario implements Negociable {
 	private HashMap<String, Vehiculo> listaVehiculos;
 
 	/**
@@ -46,7 +46,7 @@ public class Cliente extends Usuario implements PuedeTenerVehiculos{
 	 * Automatiza la verificacion de vehiculos
 	 * 
 	 * @param placa
-	 * @throws VehiculoYaExisteException 
+	 * @throws VehiculoYaExisteException
 	 */
 	public void throwIfVehiculoExist(String placa) throws VehiculoYaExisteException {
 		if (validarVehiculo(placa))

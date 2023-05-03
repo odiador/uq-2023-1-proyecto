@@ -2,8 +2,8 @@ package co.edu.uniquindio.concesionariouq.view.menu;
 
 import static co.edu.uniquindio.concesionariouq.util.Utility.generarHBox;
 
+import co.edu.uniquindio.concesionariouq.util.PanelConVolver;
 import co.edu.uniquindio.concesionariouq.util.Utility;
-import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelConVolver;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;

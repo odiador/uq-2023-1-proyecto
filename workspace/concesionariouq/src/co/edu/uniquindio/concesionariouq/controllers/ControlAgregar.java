@@ -1,7 +1,7 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
 import co.edu.uniquindio.concesionariouq.util.Boton;
-import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelConVolver;
+import co.edu.uniquindio.concesionariouq.util.PanelConVolver;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregar;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarUsuario;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarVehiculo;
@@ -43,7 +43,7 @@ public class ControlAgregar {
 		}
 
 		((Stage) panel.getScene().getWindow())
-				.setTitle("Agregar " + tipoAgregacion + " | Concesionario UQ");
+				.setTitle("Adición de " + tipoAgregacion + " | Concesionario UQ");
 
 		HBox hbox = new HBox();
 		ScrollPane scrollPane = new ScrollPane(panelConVolver);

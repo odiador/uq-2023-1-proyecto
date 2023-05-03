@@ -3,9 +3,9 @@ package co.edu.uniquindio.concesionariouq.view.menu;
 import java.util.Arrays;
 
 import co.edu.uniquindio.concesionariouq.controllers.ControlCombustible;
-import co.edu.uniquindio.concesionariouq.model.Combustible;
+import co.edu.uniquindio.concesionariouq.util.PanelConVolver;
 import co.edu.uniquindio.concesionariouq.util.Utility;
-import co.edu.uniquindio.concesionariouq.view.agregarVehiculo.PanelConVolver;
+import co.edu.uniquindio.concesionariouq.model.Combustible;
 import javafx.collections.FXCollections;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -26,7 +26,6 @@ public class PanelCombustible extends PanelConVolver {
 		ControlCombustible.irCombustibles(this, getAccessibleHelp(), e -> {
 			initComponents();
 		});
-
 	}
 
 	@Override

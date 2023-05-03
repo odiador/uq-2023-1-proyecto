@@ -1,26 +1,65 @@
 package co.edu.uniquindio.concesionariouq.view.ver;
 
-import co.edu.uniquindio.concesionariouq.controllers.ControlTablaFiltros;
+import java.util.ArrayList;
+
+import co.edu.uniquindio.concesionariouq.controllers.ControlTablaVehiculos;
+import co.edu.uniquindio.concesionariouq.model.TipoFiltro;
+import co.edu.uniquindio.concesionariouq.util.Boton;
 import co.edu.uniquindio.concesionariouq.util.Relacion;
-import javafx.collections.FXCollections;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.event.EventHandler;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 public class PanelVerFiltros extends BorderPane {
-	public PanelVerFiltros() {
-		TableView<Relacion<String, String>> tablaFiltros = new TableView<>();
-		TableColumn<Relacion<String, String>, String> colTipo = new TableColumn<Relacion<String, String>, String>(
-				"Tipo de Filtro");
-		TableColumn<Relacion<String, String>, String> colFiltro = new TableColumn<Relacion<String, String>, String>(
-				"Filtro");
+	private EventHandler<? super MouseEvent> eventoVolver;
+	public static final ArrayList<Relacion<TipoFiltro, String>> filtros = new ArrayList<Relacion<TipoFiltro, String>>();
 
-		tablaFiltros.getColumns().add(colTipo);
-		tablaFiltros.getColumns().add(colFiltro);
+	public PanelVerFiltros(EventHandler<? super MouseEvent> eventoVolver) {
+		this.eventoVolver = eventoVolver;
+		initComponents();
+	}
 
-		colTipo.setCellValueFactory(ControlTablaFiltros.obtenerCallbackTipo());
-		colFiltro.setCellValueFactory(ControlTablaFiltros.obtenerCallbackFiltro());
-		tablaFiltros.setItems(FXCollections.observableArrayList(PanelVerVehiculos.filtros));
-		setCenter(tablaFiltros);
+	public void initComponents() {
+		generarTabla();
+		generarBotones();
+		generarParteInferior();
+	}
+
+	private void generarParteInferior() {
+		setBottom(new Boton("Volver", eventoVolver));
+	}
+
+	private void generarTabla() {
+		VBox vbox = new VBox(20);
+		vbox.setId("centered-box");
+
+		if (filtros.size() == 0) {
+			setCenter(new Label("No hay Filtros"));
+			return;
+		}
+
+		for (Relacion<TipoFiltro, String> relacion : filtros) {
+			String cadFiltro = "Filtro por " + relacion.getValor1().getText() + " " + relacion.getValor2();
+			vbox.getChildren().add(new CheckBox(cadFiltro));
+		}
+		setCenter(vbox);
+	}
+
+	private void generarBotones() {
+
+		Boton botonEliminarFiltro = new Boton("Eliminar Seleccionados", e -> {
+
+		});
+		Boton botonAgregarFiltro = new Boton("Agregar Filtro", e -> {
+			ControlTablaVehiculos.irAFiltrar(this);
+		});
+		HBox.setHgrow(botonAgregarFiltro, Priority.ALWAYS);
+		HBox.setHgrow(botonEliminarFiltro, Priority.ALWAYS);
+		setTop(new HBox(botonAgregarFiltro, botonEliminarFiltro));
 	}
 }

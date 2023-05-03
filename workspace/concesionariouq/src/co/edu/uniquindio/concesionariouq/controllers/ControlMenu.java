@@ -3,12 +3,8 @@ package co.edu.uniquindio.concesionariouq.controllers;
 import co.edu.uniquindio.concesionariouq.model.OpcionMenu;
 import co.edu.uniquindio.concesionariouq.model.Usuario;
 import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregar;
-import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarCliente;
-import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarUsuario;
-import co.edu.uniquindio.concesionariouq.view.menu.PanelAgregarVehiculo;
 import co.edu.uniquindio.concesionariouq.view.principal.MenuPrincipal;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 public class ControlMenu {
 

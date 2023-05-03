@@ -15,7 +15,7 @@ import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEsClienteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
-public class Concesionario implements PuedeTenerVehiculos {
+public class Concesionario implements Negociable {
 
 	// ATRIBUTOS
 	private String nombre;

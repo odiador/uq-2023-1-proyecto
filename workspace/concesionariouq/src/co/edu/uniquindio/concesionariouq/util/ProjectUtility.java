@@ -12,13 +12,6 @@ import javafx.scene.control.Alert.AlertType;
 
 public class ProjectUtility {
 
-	public static void main(String[] args) throws MessagingException, IOException {
-		File file = new File("Reporte de Vehiculos.pdf");
-		enviarCorreoReporte("juanito.amador.roa@gmail.com", "Amador", "Reporte de Vehiculos",
-				"de cilindraje, placa, tipo de vehiculo", file);
-		file.delete();
-	}
-
 	public static void mostrarAdvertencia(String msg) {
 		new Alert(AlertType.WARNING, msg).show();
 	}

@@ -1,7 +1,11 @@
 package co.edu.uniquindio.concesionariouq.tests;
 
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
+
+import javax.mail.MessagingException;
 
 import org.junit.Test;
 
@@ -17,6 +21,7 @@ import co.edu.uniquindio.concesionariouq.model.Gasolina;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 import co.edu.uniquindio.concesionariouq.util.PdfUtility;
+import co.edu.uniquindio.concesionariouq.util.ProjectUtility;
 
 public class TestPdfs {
 	@Test
@@ -34,6 +39,14 @@ public class TestPdfs {
 				TipoCambio.AUTOMATICO);
 		System.out.println(concesionario.listarVehiculos());
 		generarPdf("Reporte de Vehiculos", concesionario.listarVehiculos());
+	}
+
+	@Test
+	public void sendMailPdf() throws MessagingException, IOException {
+		File file = new File("Reporte de Vehiculos.pdf");
+		ProjectUtility.enviarCorreoReporte("juanito.amador.roa@gmail.com", "Amador", "Reporte de Vehiculos",
+				"de cilindraje, placa, tipo de vehiculo", file);
+		file.delete();
 	}
 
 	private static void generarPdf(String titulo, List<Vehiculo> listaVehiculos) {

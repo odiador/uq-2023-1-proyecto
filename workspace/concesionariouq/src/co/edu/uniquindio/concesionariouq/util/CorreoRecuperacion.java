@@ -17,40 +17,15 @@ public class CorreoRecuperacion extends MimeMessage {
 		setFrom(new InternetAddress(mailFrom));
 		setSubject("¿Olvidaste tu contrasena? | ConcesionarioUQ");
 
-		StringBuilder header = generarHeader();
-		StringBuilder imgConcesionario = generarHeaderImagenConcesionario();
+		StringBuilder header = MailUtility.generarHeader("¿Olvidaste tu contraseña?");
+		StringBuilder imgConcesionario = MailUtility.generarHeaderImagenConcesionario();
 		StringBuilder sbMsg1Solicitud = generarMensaje1Cuerpo(nombre);
 		StringBuilder sbMsg2TablaCodigo = generarMensajeCodigo(codigo);
 		StringBuilder sbMsg3Instrucciones = generarMensaje2Cuerpo();
-		StringBuilder sbMsg4Final = generarFooter();
+		StringBuilder sbMsg4Final = MailUtility.generarFooter();
 
-		setContent(new MultiMsg(header, imgConcesionario, sbMsg1Solicitud, sbMsg2TablaCodigo, sbMsg3Instrucciones,
+		setContent(new MailUtility.MultiMsg(header, imgConcesionario, sbMsg1Solicitud, sbMsg2TablaCodigo, sbMsg3Instrucciones,
 				sbMsg4Final));
-	}
-
-	private static StringBuilder generarHeader() {
-		StringBuilder header = new StringBuilder();
-		header.append("<center>");
-		header.append("<h1 style=\"font-family:'Open Sans',sans-serif;font-size:30px;\">");
-		header.append("¿Olvidaste tu contraseña?");
-		header.append("</h1>");
-		header.append("</center>");
-		return header;
-	}
-
-	private static StringBuilder generarHeaderImagenConcesionario() {
-		StringBuilder imgConcesionario = new StringBuilder();
-		imgConcesionario.append("<center>");
-		imgConcesionario.append("	<img ");
-		imgConcesionario.append("src=\"https://i.ibb.co/7y9XhLN/Logo-concesionariouq.png\" ");
-		imgConcesionario.append("alt=\"Logo-concesionariouq\" ");
-		imgConcesionario.append("border=\"0\" ");
-		imgConcesionario.append("style=");
-		imgConcesionario.append("\"width: 20vw; ");
-		imgConcesionario.append("min-width: 330px;");
-		imgConcesionario.append("\">");
-		imgConcesionario.append("</center>");
-		return imgConcesionario;
 	}
 
 	private static StringBuilder generarMensaje1Cuerpo(String nombre) {
@@ -93,17 +68,6 @@ public class CorreoRecuperacion extends MimeMessage {
 		}
 	}
 
-	private static StringBuilder generarFooter() {
-		StringBuilder sbMsg4Final = new StringBuilder();
-		sbMsg4Final.append("<p style=\"font-family:'Open Sans',sans-serif;font-size:15px;\">");
-		sbMsg4Final.append("<br>Atentamente,");
-		sbMsg4Final.append("<br>");
-		sbMsg4Final.append("<br><i>Equipo Amador, Perdomo y Valencia</i>");
-		sbMsg4Final.append("<br><b>ConcesionarioUQ</b>");
-		sbMsg4Final.append("</p>");
-		return sbMsg4Final;
-	}
-
 	private static StringBuilder generarMensaje2Cuerpo() {
 		StringBuilder sbMsg3Instrucciones = new StringBuilder();
 		sbMsg3Instrucciones.append("<p style=\"font-family:'Open Sans',sans-serif;font-size:15px;\">");
@@ -112,5 +76,4 @@ public class CorreoRecuperacion extends MimeMessage {
 		sbMsg3Instrucciones.append("</p>");
 		return sbMsg3Instrucciones;
 	}
-
 }

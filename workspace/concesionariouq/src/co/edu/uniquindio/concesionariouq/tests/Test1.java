@@ -1,8 +1,5 @@
 package co.edu.uniquindio.concesionariouq.tests;
 
-import static co.edu.uniquindio.concesionariouq.controllers.ControlFiltros.filtrarListaVehiculosGasolina;
-import static co.edu.uniquindio.concesionariouq.controllers.ControlFiltros.filtrarListaVehiculosPlacaEmpezando;
-import static co.edu.uniquindio.concesionariouq.controllers.ControlFiltros.filtrarListaVehiculosTipo;
 
 import java.util.List;
 
@@ -41,15 +38,7 @@ public class Test1 {
 	public void testFiltros() throws ConcesionarioException {
 		List<? extends Vehiculo> lista = concesionario.listarVehiculos();
 		lista.stream().map(v -> v.getTipoVehiculo().getTipo() + " [" + v.getPlaca() + "]").forEach(System.out::println);
-		try {
-			lista = filtrarListaVehiculosTipo(lista, TipoVehiculo.MOTO);
-			lista = filtrarListaVehiculosGasolina(lista);
-			lista = filtrarListaVehiculosPlacaEmpezando(lista, "AAA");
-		} catch (FiltroException e) {
-			return;
-		}
 		System.err.println("----------------");
-		lista.stream().map(v -> v.getTipoVehiculo().getTipo() + " [" + v.getPlaca() + "]").forEach(System.out::println);
 	}
 
 }

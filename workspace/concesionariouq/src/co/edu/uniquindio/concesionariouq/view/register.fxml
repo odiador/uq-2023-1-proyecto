@@ -6,15 +6,15 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@sources/registerStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@sources/registerStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.concesionariouq.controllers.RegistroController">
    <top>
       <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../../../../../resources/images/logo.png" />
+            <Image url="@../../../../../resources/images/Logo%20fondo%20oscuro.png" />
          </image></ImageView>
    </top>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" centerShape="false" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label id="titulo" styleClass="texto" stylesheets="@sources/registerStyle.css" text="Registro de Usuario Carro UQ" />
             <BorderPane prefHeight="200.0" prefWidth="200.0">
@@ -36,32 +36,32 @@
                         <Label styleClass="texto" stylesheets="@sources/registerStyle.css" text="Nombre:" GridPane.rowIndex="1" />
                         <Label styleClass="texto" stylesheets="@sources/registerStyle.css" text="Email" GridPane.rowIndex="2" />
                         <Label styleClass="texto" stylesheets="@sources/registerStyle.css" text="Contraseña:" GridPane.rowIndex="3" />
-                        <TextField GridPane.columnIndex="1">
+                        <TextField fx:id="txtId" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets right="20.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets right="20.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets right="20.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TextField fx:id="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets right="20.0" />
                            </GridPane.margin>
                         </TextField>
                         <Label styleClass="texto" text="Cual es el nombre de tu madre:" GridPane.rowIndex="4" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <TextField fx:id="txtRespuesta" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets right="20.0" />
                            </GridPane.margin>
                         </TextField>
+                        <PasswordField fx:id="txtContrasena" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="20.0" />
+                           </GridPane.margin>
+                        </PasswordField>
                      </children>
                   </GridPane>
                </center>
@@ -69,4 +69,24 @@
          </children>
       </VBox>
    </center>
+   <bottom>
+      <VBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Hyperlink fx:id="link" text="Ya tienes una cuenta? Inicia sesion aqui." underline="true" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+               <children>
+                  <Button fx:id="btnVolver" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="botones" stylesheets="@sources/registerStyle.css" text="Volver" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnRegistrar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="botones" stylesheets="@sources/registerStyle.css" text="Registrar" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
 </BorderPane>

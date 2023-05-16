@@ -21,6 +21,7 @@ public class Cliente extends Usuario implements Negociable {
 	 */
 	public Cliente(String id, String nombre, String contrasena, String email) {
 		super(id, nombre, contrasena, email);
+		
 		this.listaVehiculos = new HashMap<String, Vehiculo>();
 	}
 

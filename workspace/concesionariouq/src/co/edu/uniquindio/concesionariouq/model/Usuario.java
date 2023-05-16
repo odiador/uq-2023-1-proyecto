@@ -7,6 +7,7 @@ public abstract class Usuario {
 	private String contrasena;
 	private String email;
 	private String respuestaDeSeguridad;
+	private TipoUsuario tipoUsuario;
 
 	/**
 	 * Este es el metodo constructor de la clase usuario
@@ -15,12 +16,14 @@ public abstract class Usuario {
 	 * @param nombre
 	 * @param contrasena
 	 * @param email
+	 * @param tipo
 	 */
 	public Usuario(String id,String nombre, String contrasena, String email) {
 		this.id = id;
 		this.nombre = nombre;
 		this.contrasena = contrasena;
 		this.setEmail(email);
+		this.tipoUsuario = TipoUsuario.CLIENTE;
 	}
 
 	/**

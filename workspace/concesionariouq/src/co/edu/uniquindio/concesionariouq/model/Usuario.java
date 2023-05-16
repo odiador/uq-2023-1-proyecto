@@ -6,6 +6,7 @@ public abstract class Usuario {
 	private String nombre;
 	private String contrasena;
 	private String email;
+	private String respuestaDeSeguridad;
 
 	/**
 	 * Este es el metodo constructor de la clase usuario
@@ -75,6 +76,14 @@ public abstract class Usuario {
 
 	public String getId() {
 		return id;
+	}
+
+	public String getRespuestaDeSeguridad() {
+		return respuestaDeSeguridad;
+	}
+
+	public void setRespuestaDeSeguridad(String respuestaDeSeguridad) {
+		this.respuestaDeSeguridad = respuestaDeSeguridad;
 	}
 
 }

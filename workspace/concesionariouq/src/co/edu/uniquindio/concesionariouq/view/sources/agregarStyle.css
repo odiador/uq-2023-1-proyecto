@@ -1,0 +1,7 @@
+.btnsAgregar{
+	-fx-background-color: #3C3C3C;
+	-fx-font-weight: bold;
+	-fx-text-fill: white;
+	-fx-background-radius: 0;
+	-fx-font-size: 2em;
+}

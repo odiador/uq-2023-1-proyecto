@@ -1,0 +1,32 @@
+#root{
+	-fx-background-color: #FFFFFF;
+}
+
+#panelIzq{
+	-fx-background-color: #3C3C3C;
+}
+.btnsPrincipales{
+	-fx-background-color: #3C3C3C;
+	-fx-font-weight: bold;
+	-fx-text-fill: white;
+	-fx-background-radius: 0;
+	-fx-font-size: 2em;
+}
+
+.btnsPrincipales:hover{
+	-fx-background-color: #808080;
+}
+
+.btnsPrincipales:pressed{
+	-fx-background-color: green;
+}
+
+#imgEmployee{
+	-fx-border-color: #3C3C3C;
+	-fx-background-color: #3C3C3C;
+	-fx-border-width: 1em;
+}
+
+#imgLogo{
+	-fx-background-color: #3C3C3C;
+}

@@ -1,4 +1,11 @@
 package co.edu.uniquindio.concesionariouq.model;
 
-public abstract class Combustible {
+import java.io.Serializable;
+
+public abstract class Combustible implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 }

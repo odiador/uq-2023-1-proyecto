@@ -1,7 +1,13 @@
 package co.edu.uniquindio.concesionariouq.model;
 
-public class DetalleTransaccion {
+import java.io.Serializable;
 
+public class DetalleTransaccion implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// ATRIBUTOS
 	private Vehiculo vehiculo;
 	private String codigoTransaccion;

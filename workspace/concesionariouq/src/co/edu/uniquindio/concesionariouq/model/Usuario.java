@@ -1,7 +1,13 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.io.Serializable;
+
 //ATRIBUTOS
-public abstract class Usuario {
+public abstract class Usuario implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final String id;
 	private String nombre;
 	private String contrasena;
@@ -23,7 +29,7 @@ public abstract class Usuario {
 		this.nombre = nombre;
 		this.contrasena = contrasena;
 		this.setEmail(email);
-		this.tipoUsuario = TipoUsuario.CLIENTE;
+		this.setTipoUsuario(TipoUsuario.CLIENTE);
 	}
 
 	/**
@@ -87,6 +93,14 @@ public abstract class Usuario {
 
 	public void setRespuestaDeSeguridad(String respuestaDeSeguridad) {
 		this.respuestaDeSeguridad = respuestaDeSeguridad;
+	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 }

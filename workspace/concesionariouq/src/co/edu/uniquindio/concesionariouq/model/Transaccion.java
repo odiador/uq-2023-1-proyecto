@@ -1,12 +1,17 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
 
-public class Transaccion {
+public class Transaccion implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// ATRIBUTOS
 	private String codigo;
 	private List<DetalleTransaccion> listaDetalleTransacciones;

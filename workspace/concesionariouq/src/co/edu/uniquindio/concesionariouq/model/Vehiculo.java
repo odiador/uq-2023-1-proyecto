@@ -1,7 +1,13 @@
 package co.edu.uniquindio.concesionariouq.model;
 
-public abstract class Vehiculo {
+import java.io.Serializable;
 
+public abstract class Vehiculo implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// ATRIBUTOS
 
 	protected final String placa;

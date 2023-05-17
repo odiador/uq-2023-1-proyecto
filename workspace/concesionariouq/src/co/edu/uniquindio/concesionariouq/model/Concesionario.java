@@ -1,5 +1,6 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,8 +16,12 @@ import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEsClienteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
-public class Concesionario implements Negociable {
+public class Concesionario implements Negociable, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// ATRIBUTOS
 	private String nombre;
 	private String direccion;

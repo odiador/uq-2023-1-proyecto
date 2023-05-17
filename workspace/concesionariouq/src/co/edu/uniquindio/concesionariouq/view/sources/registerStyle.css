@@ -14,3 +14,9 @@
 
 #container{
 }
+
+.botones{
+	-fx-background-radius: 0;
+	-fx-font-weight: bold;
+	-fx-font-size: 1.2em;
+}

@@ -59,6 +59,7 @@ public class RegistroController {
 			Stage stage = (Stage) mainPane.getScene().getWindow();
 			stage.setScene(new Scene(loader.load(), 600, 440));
 			controller.getTxtIdentificacion().setText(txtId.getText());
+			stage.centerOnScreen();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

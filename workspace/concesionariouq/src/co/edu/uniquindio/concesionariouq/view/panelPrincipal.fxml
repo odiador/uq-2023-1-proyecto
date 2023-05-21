@@ -15,7 +15,7 @@
 
 <SplitPane id="root" fx:id="mainPane" dividerPositions="0.18923933209647495" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@sources/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <items>
-      <BorderPane id="panelIzq" fx:id="menuPane" maxWidth="200.0" minWidth="50.0" onMouseEntered="#extenderMenuEvent" onMouseExited="#contraerMenuEvent" prefWidth="200.0">
+      <BorderPane id="panelIzq" fx:id="menuPane" maxWidth="200.0" minWidth="50.0" onMouseEntered="#extenderMenuEvent" onMouseExited="#contraerMenuEvent" prefWidth="200.0" SplitPane.resizableWithParent="false">
          <center>
             <VBox id="panelIzq" alignment="TOP_CENTER" minWidth="50.0" stylesheets="@sources/application.css" BorderPane.alignment="CENTER">
                <children>

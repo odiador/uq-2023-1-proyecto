@@ -1,46 +1,74 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class RegistroController {
 
-    @FXML
-    private ResourceBundle resources;
+	@FXML
+	private BorderPane mainPane;
 
-    @FXML
-    private URL location;
+	@FXML
+	private TextField txtId;
 
-    @FXML
-    private TextField txtId;
+	@FXML
+	private TextField txtNombre;
 
-    @FXML
-    private TextField txtNombre;
+	@FXML
+	private PasswordField txtContrasena;
 
-    @FXML
-    private Button btnVolver;
+	@FXML
+	private Hyperlink link;
 
-    @FXML
-    private PasswordField txtContrasena;
+	@FXML
+	private TextField txtRespuesta;
 
-    @FXML
-    private Hyperlink link;
+	@FXML
+	private TextField txtEmail;
 
-    @FXML
-    private TextField txtRespuesta;
+	@FXML
+	void volverEvent(ActionEvent event) {
+		irIniciarSesionAction();
+	}
 
-    @FXML
-    private TextField txtEmail;
+	@FXML
+	void registrarEvent(ActionEvent event) {
 
-    @FXML
-    private Button btnRegistrar;
+	}
 
-    @FXML
-    void initialize() {
-    }
+	@FXML
+	void irIniciarSesionEvent(ActionEvent event) {
+		irIniciarSesionAction();
+	}
+
+	private void irIniciarSesionAction() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../view/login.fxml"));
+		LoginPageController controller = new LoginPageController();
+		loader.setController(controller);
+		try {
+			Stage stage = (Stage) mainPane.getScene().getWindow();
+			stage.setScene(new Scene(loader.load(), 600, 440));
+			controller.getTxtIdentificacion().setText(txtId.getText());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @return the txtId
+	 */
+	public TextField getTxtId() {
+		return txtId;
+	}
+
 }

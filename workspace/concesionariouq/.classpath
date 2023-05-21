@@ -11,7 +11,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="src/resources/drivers/itext5-itextpdf-5.5.12.jar"/>
 	<classpathentry kind="lib" path="src/resources/drivers/mysql-connector-j-8.0.31.jar"/>
-	<classpathentry kind="lib" path="C:/Users/juanp/Documents/uq-2023-1-proyecto/workspace/concesionariouq/src/resources/drivers/javax.mail.jar"/>
 	<classpathentry kind="lib" path="src/resources/drivers/javax.mail.jar"/>
 	<classpathentry kind="lib" path="src/resources/drivers/activation-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>

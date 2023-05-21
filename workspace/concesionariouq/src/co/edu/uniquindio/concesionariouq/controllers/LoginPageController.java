@@ -29,6 +29,10 @@ public class LoginPageController {
 
 	@FXML
 	void registrarEvent(ActionEvent event) {
+		registrarAction();
+	}
+
+	private void registrarAction() {
 		FXMLLoader loader = new FXMLLoader();
 		RegistroController controller = new RegistroController();
 		loader.setController(controller);
@@ -38,6 +42,7 @@ public class LoginPageController {
 			Scene scene = new Scene(loader.load(), 600, 420);
 			controller.getTxtId().setText(getTxtIdentificacion().getText());
 			stage.setScene(scene);
+			stage.centerOnScreen();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -45,6 +50,10 @@ public class LoginPageController {
 
 	@FXML
 	void loginEvent(ActionEvent event) {
+		loginAction();
+	}
+
+	private void loginAction() {
 		FXMLLoader loader = new FXMLLoader();
 		MenuPrincipalController controller = new MenuPrincipalController(
 				new Empleado("10", "Juan", "1234", "juanm.amadorr@uqvirtual.edu.co"));
@@ -55,15 +64,21 @@ public class LoginPageController {
 			Scene scene = new Scene(loader.load(), 1280, 720);
 			controller.updateNameField();
 			stage.setScene(scene);
+			stage.setMinWidth(760);
+			stage.setMinHeight(500);
+			stage.centerOnScreen();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@FXML
 	void cerrarEvent(ActionEvent event) {
+		cerrarAction();
+	}
 
+	private void cerrarAction() {
+		((Stage) mainPane.getScene().getWindow()).close();
 	}
 
 	@FXML

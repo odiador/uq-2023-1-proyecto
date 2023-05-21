@@ -7,13 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
-import co.edu.uniquindio.concesionariouq.exceptions.FiltroException;
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
 import co.edu.uniquindio.concesionariouq.model.Diesel;
 import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.Gasolina;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
-import co.edu.uniquindio.concesionariouq.model.TipoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 
 public class Test1 {

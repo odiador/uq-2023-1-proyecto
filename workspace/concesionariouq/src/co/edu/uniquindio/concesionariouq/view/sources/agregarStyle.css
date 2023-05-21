@@ -1,7 +1,29 @@
-.btnsAgregar{
-	-fx-background-color: #3C3C3C;
-	-fx-font-weight: bold;
+#root{
+	-fx-background-color: black;
+}
+
+.texto{
 	-fx-text-fill: white;
+	-fx-font-weight: bold;
+}
+
+#titulo{
+	-fx-font-size: 2em;
+}
+
+#description{
+	-fx-font-size: 1.5em;
+}
+
+.btnsAgregar{
+	-fx-background-color: white;
+	-fx-font-weight: bold;
 	-fx-background-radius: 0;
 	-fx-font-size: 2em;
+	-fx-effect: dropshadow(gaussian, crimson, 1em, 0.3, 0.0, 0.0);
+	
+}
+
+.btnsAgregar:hover{
+	-fx-effect: dropshadow(gaussian, crimson, 1em, 0.4, 0.0, 0.0);
 }

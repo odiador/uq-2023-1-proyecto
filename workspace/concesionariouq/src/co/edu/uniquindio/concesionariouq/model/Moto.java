@@ -3,6 +3,11 @@ package co.edu.uniquindio.concesionariouq.model;
 public class Moto extends Vehiculo {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Este es el constructor principal de la clase
 	 * 
 	 * @param placa

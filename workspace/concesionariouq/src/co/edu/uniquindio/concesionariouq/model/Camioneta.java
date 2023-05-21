@@ -2,6 +2,10 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Camioneta extends Sedan {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected Boolean es4x4;
 
 	/**

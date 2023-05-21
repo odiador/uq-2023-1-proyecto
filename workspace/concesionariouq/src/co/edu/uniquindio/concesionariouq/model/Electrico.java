@@ -1,6 +1,10 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 public class Electrico extends Combustible {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Double autonomiaCargaCompleta;
 	private Double tiempoDemoraCarga;
 

@@ -133,13 +133,12 @@ public class Concesionario implements Negociable, Serializable {
 	 * @throws ConcesionarioException
 	 *
 	 */
-	public void agregarDetalleTransaccion(String codigoTransaccion, String codigoDetalle, Vehiculo vehiculo,
-			TipoTransaccion tipo) throws ConcesionarioException {
+	public void agregarDetalleTransaccion(String codigoTransaccion, String codigoDetalle, Vehiculo vehiculo) throws ConcesionarioException {
 		Transaccion transaccion = buscarTransaccion(codigoTransaccion);
 		if (transaccion == null)
 			throw new ConcesionarioException("El detalle de la transaccion no fue encontrado");
 
-		transaccion.agregarDetalleTransaccion(vehiculo, codigoTransaccion, tipo);
+		transaccion.agregarDetalleTransaccion(vehiculo, codigoTransaccion);
 	}
 
 	public Transaccion buscarTransaccion(String codigoTransaccion) {

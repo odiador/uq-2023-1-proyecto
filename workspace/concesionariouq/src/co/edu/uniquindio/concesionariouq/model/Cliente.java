@@ -1,7 +1,5 @@
 package co.edu.uniquindio.concesionariouq.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
@@ -9,6 +7,10 @@ import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
 public class Cliente extends Usuario implements Negociable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private HashMap<String, Vehiculo> listaVehiculos;
 
 	/**
@@ -21,26 +23,8 @@ public class Cliente extends Usuario implements Negociable {
 	 */
 	public Cliente(String id, String nombre, String contrasena, String email) {
 		super(id, nombre, contrasena, email);
-		
+
 		this.listaVehiculos = new HashMap<String, Vehiculo>();
-	}
-
-	/**
-	 * Alquila un vehiculo por medio de la placa
-	 */
-	public void alquilarVehiculo(String placa) {
-	}
-
-	@Override
-	public OpcionMenu[] obtenerOpcionesDisponibles() {
-		ArrayList<OpcionMenu> listaAux = new ArrayList<OpcionMenu>();
-		listaAux.add(OpcionMenu.COMPRAR_VEHICULO);
-		listaAux.add(OpcionMenu.VENDER_VEHICULO);
-		listaAux.add(OpcionMenu.CAMBIAR_CONTRASENA);
-		listaAux.add(OpcionMenu.ACTUALIZAR_INFO);
-		listaAux.add(OpcionMenu.ACERCA_DE);
-		Collections.sort(listaAux, OpcionMenu::compararPorPrioridad);
-		return (OpcionMenu[]) listaAux.toArray(new OpcionMenu[listaAux.size()]);
 	}
 
 	/**

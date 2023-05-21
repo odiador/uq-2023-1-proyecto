@@ -2,6 +2,10 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Sedan extends Van {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// ATRIBUTOS
 
 	protected Boolean tieneVelocidadCrucero;

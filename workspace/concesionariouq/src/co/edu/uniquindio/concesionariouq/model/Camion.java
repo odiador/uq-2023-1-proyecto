@@ -4,6 +4,10 @@ public class Camion extends Vehiculo {
 
 	// ATRIBUTOS
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected Double capacidadCarga;
 	protected Boolean tieneAireAcondicionado;
 	protected Boolean tieneFrenosAire;

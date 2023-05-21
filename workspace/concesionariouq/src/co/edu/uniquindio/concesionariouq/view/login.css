@@ -3,13 +3,16 @@
 }
 .label {
 	-fx-text-fill: white;
+	-fx-font-weight: bold;
 }
 .button {
 	-fx-background-color: white;
-	-fx-effect: innershadow(gaussian, rgba(0.0, 0.0, 0.0, 0.3), 10.0, 0.5, 0.0, 0.0);
+	-fx-effect: dropshadow(gaussian, crimson, 1em, 0.3, 0.0, 0.0);
+	-fx-font-weight: bold;
 }
 .button:hover {
 	-fx-background-color: #d6d6d6;
+	-fx-effect: dropshadow(gaussian, crimson, 1em, 0.4, 0.0, 0.0);
 }
 .button:pressed {
 	-fx-background-color: #b9b9b9; 

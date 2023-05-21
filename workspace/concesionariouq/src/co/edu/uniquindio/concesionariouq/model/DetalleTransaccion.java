@@ -2,7 +2,7 @@ package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
 
-public class DetalleTransaccion implements Serializable{
+public class DetalleTransaccion implements Serializable {
 
 	/**
 	 * 
@@ -11,7 +11,6 @@ public class DetalleTransaccion implements Serializable{
 	// ATRIBUTOS
 	private Vehiculo vehiculo;
 	private String codigoTransaccion;
-	private TipoTransaccion tipo;
 
 	/**
 	 * Este es el contructor vacio de la clase
@@ -26,11 +25,10 @@ public class DetalleTransaccion implements Serializable{
 	 * @param codigoTransaccion
 	 * @param tipo
 	 */
-	public DetalleTransaccion(Vehiculo vehiculo, String codigoTransaccion, TipoTransaccion tipo) {
+	public DetalleTransaccion(Vehiculo vehiculo, String codigoTransaccion) {
 		super();
 		this.vehiculo = vehiculo;
 		this.codigoTransaccion = codigoTransaccion;
-		this.tipo = tipo;
 	}
 
 	/**
@@ -67,24 +65,6 @@ public class DetalleTransaccion implements Serializable{
 	 */
 	public void setCodigoTransaccion(final String codigoTransaccion) {
 		this.codigoTransaccion = codigoTransaccion;
-	}
-
-	/**
-	 * Obtiene el tipo de transaccion
-	 * 
-	 * @return tipo
-	 */
-	public TipoTransaccion getTipo() {
-		return tipo;
-	}
-
-	/**
-	 * Cambia el tipo de transaccion
-	 * 
-	 * @param tipo
-	 */
-	public void setTipo(final TipoTransaccion tipo) {
-		this.tipo = tipo;
 	}
 
 }

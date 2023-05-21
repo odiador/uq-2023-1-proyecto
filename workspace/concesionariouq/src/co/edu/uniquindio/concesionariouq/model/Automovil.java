@@ -2,6 +2,10 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Automovil extends Vehiculo {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// ATRIBUTOS
 	protected Integer numeroPasajeros;
 	protected Integer numeroBolsasAire;

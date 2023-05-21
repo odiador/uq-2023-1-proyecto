@@ -2,6 +2,10 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Van extends Familiar {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// ATRIBUTOS
 	protected Double capacidadMaletero;
 

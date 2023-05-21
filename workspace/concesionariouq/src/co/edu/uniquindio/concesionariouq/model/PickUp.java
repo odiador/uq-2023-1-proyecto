@@ -3,6 +3,11 @@ package co.edu.uniquindio.concesionariouq.model;
 public class PickUp extends Familiar {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Es el constructor de la PickUp
 	 * 
 	 * @param placa

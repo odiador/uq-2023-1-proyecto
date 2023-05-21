@@ -2,6 +2,10 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Hibrido extends Combustible {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//ATRIBUTOS
 	private Boolean esEnchufable;
 	private Boolean esHibridoLigero;

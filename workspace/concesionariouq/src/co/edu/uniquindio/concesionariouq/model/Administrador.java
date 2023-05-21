@@ -1,14 +1,15 @@
 package co.edu.uniquindio.concesionariouq.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
 
 public class Administrador extends Empleado {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private HashMap<String, Empleado> listaEmpleados;
 
 	/**
@@ -86,18 +87,6 @@ public class Administrador extends Empleado {
 	 */
 	public void recuperarContrasena() {
 
-	}
-
-	@Override
-	public OpcionMenu[] obtenerOpcionesDisponibles() {
-		ArrayList<OpcionMenu> listaOpciones = new ArrayList<OpcionMenu>(
-				Arrays.asList(super.obtenerOpcionesDisponibles()));
-		listaOpciones.add(OpcionMenu.ACTUALIZAR_CLIENTE);
-		listaOpciones.add(OpcionMenu.ACTUALIZAR_VEHICULO);
-		listaOpciones.add(OpcionMenu.AGREGAR);
-		listaOpciones.add(OpcionMenu.ELIMINAR_CLIENTE);
-		Collections.sort(listaOpciones, OpcionMenu::compararPorPrioridad);
-		return (OpcionMenu[]) listaOpciones.toArray(new OpcionMenu[listaOpciones.size()]);
 	}
 
 	public HashMap<String, Empleado> getListaEmpleados() {

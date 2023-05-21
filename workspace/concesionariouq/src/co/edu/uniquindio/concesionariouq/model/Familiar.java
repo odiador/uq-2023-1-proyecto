@@ -2,6 +2,10 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public abstract class Familiar extends Automovil {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// ATRIBUTOS
 	protected Boolean tieneAireAcondicionado;
 	protected Boolean tieneCamaraReversa;

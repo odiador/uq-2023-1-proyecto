@@ -51,13 +51,6 @@ public abstract class Usuario implements Serializable{
 	}
 
 	/**
-	 * Este metodo obtiene las opciones disponible del usuario
-	 * 
-	 * @return
-	 */
-	public abstract OpcionMenu[] obtenerOpcionesDisponibles();
-
-	/**
 	 * Obtiene la contraseña del usuario
 	 * 
 	 * @return contrasena

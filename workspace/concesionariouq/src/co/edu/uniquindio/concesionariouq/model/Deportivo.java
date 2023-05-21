@@ -2,6 +2,10 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Deportivo extends Automovil {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected Integer numeroCaballosFuerza;
 	protected Integer tiempoAlcanza100Kmh; // podria ser Double por los segundos
 

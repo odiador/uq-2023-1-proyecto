@@ -75,11 +75,11 @@ public class Transaccion implements Serializable{
 	 * @param tipo
 	 * @throws ConcesionarioException
 	 */
-	public void agregarDetalleTransaccion(Vehiculo vehiculo, String codigoTransaccion, TipoTransaccion tipo)
+	public void agregarDetalleTransaccion(Vehiculo vehiculo, String codigoTransaccion)
 			throws ConcesionarioException {
 		if (validarDetalleTransaccion(codigo))
 			throw new ConcesionarioException("El detalle de la transacción ya se encuentra, elige otro código");
-		listaDetalleTransacciones.add(new DetalleTransaccion(vehiculo, codigoTransaccion, tipo));
+		listaDetalleTransacciones.add(new DetalleTransaccion(vehiculo, codigoTransaccion));
 	}
 
 	/**

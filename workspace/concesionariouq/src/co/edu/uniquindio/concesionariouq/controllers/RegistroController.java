@@ -35,6 +35,17 @@ public class RegistroController {
 	@FXML
 	private TextField txtEmail;
 
+	private String id;
+
+	public RegistroController(String id) {
+		this.id = id;
+	}
+
+	@FXML
+	void initialize() {
+		txtId.setText(id == null ? "" : id);
+	}
+
 	@FXML
 	void volverEvent(ActionEvent event) {
 		irIniciarSesionAction();
@@ -53,12 +64,11 @@ public class RegistroController {
 	private void irIniciarSesionAction() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../view/login.fxml"));
-		LoginPageController controller = new LoginPageController();
+		LoginPageController controller = new LoginPageController(txtId.getText());
 		loader.setController(controller);
 		try {
 			Stage stage = (Stage) mainPane.getScene().getWindow();
 			stage.setScene(new Scene(loader.load(), 600, 440));
-			controller.getTxtIdentificacion().setText(txtId.getText());
 			stage.centerOnScreen();
 		} catch (IOException e) {
 			e.printStackTrace();

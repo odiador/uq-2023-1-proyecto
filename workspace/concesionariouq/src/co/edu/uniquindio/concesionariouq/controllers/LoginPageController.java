@@ -2,7 +2,7 @@ package co.edu.uniquindio.concesionariouq.controllers;
 
 import java.io.IOException;
 
-import co.edu.uniquindio.concesionariouq.model.Empleado;
+import co.edu.uniquindio.concesionariouq.model.Dueno;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +22,8 @@ public class LoginPageController {
 	@FXML
 	private TextField txtIdentificacion;
 
+	private String id;
+
 	@FXML
 	void contrasenaOlvidadaEvent(ActionEvent event) {
 
@@ -34,13 +36,13 @@ public class LoginPageController {
 
 	private void registrarAction() {
 		FXMLLoader loader = new FXMLLoader();
-		RegistroController controller = new RegistroController();
+		RegistroController controller = new RegistroController(txtIdentificacion.getText());
 		loader.setController(controller);
 		loader.setLocation(getClass().getResource("../view/register.fxml"));
 		Stage stage = (Stage) mainPane.getScene().getWindow();
 		try {
 			Scene scene = new Scene(loader.load(), 600, 420);
-			controller.getTxtId().setText(getTxtIdentificacion().getText());
+			controller.getTxtId().setText(txtIdentificacion.getText());
 			stage.setScene(scene);
 			stage.centerOnScreen();
 		} catch (IOException e) {
@@ -56,7 +58,7 @@ public class LoginPageController {
 	private void loginAction() {
 		FXMLLoader loader = new FXMLLoader();
 		MenuPrincipalController controller = new MenuPrincipalController(
-				new Empleado("10", "Juan", "1234", "juanm.amadorr@uqvirtual.edu.co"));
+				new Dueno("10", "Juan", "1234", "juanm.amadorr@uqvirtual.edu.co"));
 		loader.setController(controller);
 		loader.setLocation(getClass().getResource("../view/panelPrincipal.fxml"));
 		try {
@@ -65,7 +67,7 @@ public class LoginPageController {
 			controller.updateNameField();
 			stage.setScene(scene);
 			stage.setMinWidth(760);
-			stage.setMinHeight(500);
+			stage.setMinHeight(760);
 			stage.centerOnScreen();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -83,13 +85,14 @@ public class LoginPageController {
 
 	@FXML
 	void initialize() {
-
+		txtIdentificacion.setText(id == null ? "" : id);
 	}
 
-	/**
-	 * @return the txtIdentificacion
-	 */
-	public TextField getTxtIdentificacion() {
-		return txtIdentificacion;
+	public LoginPageController(String id) {
+		this.id = id;
 	}
+
+	public LoginPageController() {
+	}
+
 }

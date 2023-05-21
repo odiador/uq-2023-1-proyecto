@@ -2,6 +2,7 @@ package co.edu.uniquindio.concesionariouq.controllers;
 
 import java.io.IOException;
 
+import co.edu.uniquindio.concesionariouq.model.Empleado;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,6 +45,19 @@ public class LoginPageController {
 
 	@FXML
 	void loginEvent(ActionEvent event) {
+		FXMLLoader loader = new FXMLLoader();
+		MenuPrincipalController controller = new MenuPrincipalController(
+				new Empleado("10", "Juan", "1234", "juanm.amadorr@uqvirtual.edu.co"));
+		loader.setController(controller);
+		loader.setLocation(getClass().getResource("../view/panelPrincipal.fxml"));
+		try {
+			Stage stage = (Stage) mainPane.getScene().getWindow();
+			Scene scene = new Scene(loader.load(), 1280, 720);
+			controller.updateNameField();
+			stage.setScene(scene);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 

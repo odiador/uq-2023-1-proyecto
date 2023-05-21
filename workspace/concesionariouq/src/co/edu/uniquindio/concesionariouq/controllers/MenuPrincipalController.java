@@ -1,5 +1,6 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
+import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -39,6 +40,16 @@ public class MenuPrincipalController {
 	private Label labelNombre;
 
 	private boolean barraBloqueada;
+
+	private Empleado empleado;
+
+	public MenuPrincipalController(Empleado empleado) {
+		this.empleado = empleado;
+	}
+
+	public void updateNameField() {
+		labelNombre.setText(empleado.getNombre());
+	}
 
 	@FXML
 	void initialize() {

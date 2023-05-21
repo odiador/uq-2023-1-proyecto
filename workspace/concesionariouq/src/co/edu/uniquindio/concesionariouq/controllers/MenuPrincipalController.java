@@ -1,5 +1,7 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
+import java.io.IOException;
+
 import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import javafx.animation.KeyFrame;
@@ -7,6 +9,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -15,9 +18,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
 public class MenuPrincipalController {
+
+	@FXML
+	private HBox homePane;
+
 	@FXML
 	private ImageView imgLogo;
 
@@ -53,7 +61,7 @@ public class MenuPrincipalController {
 
 	@FXML
 	void initialize() {
-		imgLogo.fitWidthProperty().bind(menuPane.widthProperty().multiply(0.8));
+		imgLogo.fitHeightProperty().bind(menuPane.widthProperty().multiply(0.6));
 		imgUsuario.fitHeightProperty().bind(menuPane.widthProperty().subtract(15));
 	}
 
@@ -92,12 +100,33 @@ public class MenuPrincipalController {
 
 	@FXML
 	void agregarMenuEvent(ActionEvent event) {
+		agregarMenuAction();
+	}
 
+	private void agregarMenuAction() {
+		AgregarGeneralController controller = new AgregarGeneralController(contentPane, empleado);
+		cambiarContentPane("../view/panelAddDelete.fxml", controller);
+	}
+
+	private void cambiarContentPane(String ruta, Object controller) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource(ruta));
+		loader.setController(controller);
+		try {
+			contentPane.setCenter(loader.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
 	void eliminarEvent(ActionEvent event) {
+		eliminarAction();
+	}
 
+	private void eliminarAction() {
+		EliminarGeneralController controller = new EliminarGeneralController(contentPane, empleado);
+		cambiarContentPane("../view/panelAddDelete.fxml", controller);
 	}
 
 	@FXML
@@ -121,7 +150,41 @@ public class MenuPrincipalController {
 	}
 
 	@FXML
+	void homeEvent(MouseEvent event) {
+		homeAction();
+	}
+
+	private void homeAction() {
+		contentPane.setCenter(homePane);
+	}
+
+	@FXML
+	void homeEnteredEvent(MouseEvent event) {
+		homeEnteredAction();
+	}
+
+	private void homeEnteredAction() {
+		setLogoImage("/resources/images/Casa.png");
+	}
+	@FXML
+	void homeExitedEvent(MouseEvent event) {
+		homeExitedAction();
+	}
+
+	private void homeExitedAction() {
+		setLogoImage("/resources/images/Whitelogowoutbg.png");
+	}
+
+	private void setLogoImage(String route) {
+		imgLogo.setImage(new Image(route));
+	}
+
+	@FXML
 	void bloquearBarraEvent(ActionEvent event) {
+		bloquearBarraAction();
+	}
+
+	private void bloquearBarraAction() {
 		ButtonType btnExtendido = new ButtonType("Extendido");
 		ButtonType btnContraido = new ButtonType("Contraido");
 		ButtonType btnNo = new ButtonType("Quitar");
@@ -142,4 +205,5 @@ public class MenuPrincipalController {
 			contraerMenuAction();
 		}
 	}
+
 }

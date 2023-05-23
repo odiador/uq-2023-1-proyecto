@@ -1,12 +1,16 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
+import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
+import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
-public class Cliente extends Usuario implements Negociable {
+public class Cliente extends Usuario implements GestionableVehiculo {
 	/**
 	 * 
 	 */
@@ -20,47 +24,54 @@ public class Cliente extends Usuario implements Negociable {
 	 * @param nombre
 	 * @param contrasena
 	 * @param email
+	 * @param respuestaDeSeguridad
 	 */
-	public Cliente(String id, String nombre, String contrasena, String email) {
-		super(id, nombre, contrasena, email);
+	public Cliente(String id, String nombre, String contrasena, String email, String respuestaDeSeguridad) {
+		super(id, nombre, contrasena, email, respuestaDeSeguridad);
 
 		this.listaVehiculos = new HashMap<String, Vehiculo>();
 	}
 
-	/**
-	 * Automatiza la verificacion de vehiculos
-	 * 
-	 * @param placa
-	 * @throws VehiculoYaExisteException
-	 */
-	public void throwIfVehiculoExist(String placa) throws VehiculoYaExisteException {
-		if (validarVehiculo(placa))
-			throw new VehiculoYaExisteException("El vehiculo con la placa " + placa + " ya existe");
+	public boolean validarVehiculo(String id) {
+		return listaVehiculos.containsKey(id);
 	}
 
-	private boolean validarVehiculo(String placa) {
-		return listaVehiculos.containsKey(placa);
-	}
-
-	public Vehiculo buscarVehiculo(String placa) {
-		return listaVehiculos.getOrDefault(placa, null);
-	}
-
-	public void eliminarVehiculo(String placa) throws ConcesionarioException {
-		if (listaVehiculos.remove(placa) == null)
-			throw new ConcesionarioException("No se pudo encontrar el vehiculo en el cliente");
+	public Vehiculo buscarVehiculo(String id) {
+		return listaVehiculos.getOrDefault(id, null);
 	}
 
 	@Override
-	public void agregarVehiculo(Vehiculo vehiculo) throws VehiculoYaExisteException {
-		throwIfVehiculoExist(vehiculo.getPlaca());
-		listaVehiculos.put(vehiculo.getPlaca(), vehiculo);
+	public void agregarVehiculo(String id, Vehiculo vehiculo)
+			throws VehiculoYaExisteException, AtributosFaltantesException, NullException {
+		if (id == null)
+			throw new NullException("La identificacion enviada es null");
+		if (vehiculo == null)
+			throw new NullException("El vehiculo enviado es null");
+		if (!vehiculo.atributosLlenos())
+			throw new AtributosFaltantesException("El vehiculo enviado es null");
+		if (validarVehiculo(id))
+			throw new VehiculoYaExisteException("El vehiculo ya existe, no se puede agregar");
+
+		listaVehiculos.put(id, vehiculo);
 	}
 
 	@Override
-	public void eliminarVehiculo(Vehiculo vehiculo) throws VehiculoNoExisteException {
-		if (listaVehiculos.remove(vehiculo.getPlaca()) == null)
-			throw new VehiculoNoExisteException("No se pudo encontrar el vehiculo en el cliente");
+	public void eliminarVehiculo(String id) throws VehiculoNoExisteException, NullException {
+		if (id == null)
+			throw new NullException("La identificacion enviada es null");
+		if (!validarVehiculo(id))
+			throw new VehiculoNoExisteException("El vehiculo no existe, no se puede eliminar");
+		listaVehiculos.remove(id);
+	}
+
+	@Override
+	public List<Vehiculo> listarVehiculos() {
+		return listaVehiculos.entrySet().stream().map(Entry<String, Vehiculo>::getValue).collect(Collectors.toList());
+	}
+
+	@Override
+	public TipoUsuario getTipoUsuario() {
+		return TipoUsuario.CLIENTE;
 	}
 
 }

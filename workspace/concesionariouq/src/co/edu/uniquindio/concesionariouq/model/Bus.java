@@ -13,7 +13,6 @@ public class Bus extends Van {
 	/**
 	 * Es el constructor del Bus
 	 * 
-	 * @param placa
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -31,16 +30,19 @@ public class Bus extends Van {
 	 * @param numeroEjes
 	 * @param numeroSalidasEmergencia
 	 */
-	public Bus(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
-			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
-			Boolean tieneABS, Double capacidadMaletero, Integer numeroEjes, Integer numeroSalidasEmergencia) {
-		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
-				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
-				capacidadMaletero);
+	public Bus(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
+			EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros, Integer numeroBolsasAire,
+			Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa, Boolean tieneABS,
+			Double capacidadMaletero, Integer numeroEjes, Integer numeroSalidasEmergencia) {
+		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros, numeroBolsasAire,
+				numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, capacidadMaletero);
 		this.numeroEjes = numeroEjes;
 		this.numeroSalidasEmergencia = numeroSalidasEmergencia;
-		setTipoVehiculo(TipoVehiculo.BUS);
+	}
+
+	@Override
+	public boolean atributosLlenos() {
+		return super.atributosLlenos() && numeroEjes != null && numeroSalidasEmergencia != null;
 	}
 
 	/**
@@ -80,12 +82,17 @@ public class Bus extends Van {
 	}
 
 	@Override
+	public TipoVehiculo getTipoVehiculo() {
+		return TipoVehiculo.BUS;
+	}
+
+	@Override
 	public String toString() {
 		return String.format(
-				"Bus [capacidadMaletero=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, numeroEjes=%s, numeroSalidasEmergencia=%s]",
+				"Bus [capacidadMaletero=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroEjes=%s, numeroSalidasEmergencia=%s]",
 				capacidadMaletero, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, numeroPasajeros,
-				numeroBolsasAire, numeroPuertas, placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado,
-				tipo, tipoVehiculo, numeroEjes, numeroSalidasEmergencia);
+				numeroBolsasAire, numeroPuertas, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo,
+				numeroEjes, numeroSalidasEmergencia);
 	}
 
 }

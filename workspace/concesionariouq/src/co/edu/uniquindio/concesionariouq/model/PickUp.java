@@ -10,7 +10,6 @@ public class PickUp extends Familiar {
 	/**
 	 * Es el constructor de la PickUp
 	 * 
-	 * @param placa
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -27,15 +26,19 @@ public class PickUp extends Familiar {
 	 * @param es4x4
 	 * @param capacidadCajaCarga
 	 */
-	public PickUp(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
-			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
-			Boolean tieneABS, Boolean es4x4, Double capacidadCajaCarga) {
-		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
-				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS);
+	public PickUp(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
+			EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros, Integer numeroBolsasAire,
+			Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa, Boolean tieneABS,
+			Boolean es4x4, Double capacidadCajaCarga) {
+		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros, numeroBolsasAire,
+				numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS);
 		this.es4x4 = es4x4;
 		this.capacidadCajaCarga = capacidadCajaCarga;
-		setTipoVehiculo(TipoVehiculo.PICKUP);
+	}
+
+	@Override
+	public boolean atributosLlenos() {
+		return super.atributosLlenos() && es4x4 != null && capacidadCajaCarga != null;
 	}
 
 	/**
@@ -82,12 +85,16 @@ public class PickUp extends Familiar {
 	}
 
 	@Override
+	public TipoVehiculo getTipoVehiculo() {
+		return TipoVehiculo.PICKUP;
+	}
+
+	@Override
 	public String toString() {
 		return String.format(
-				"PickUp [tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, es4x4=%s, capacidadCajaCarga=%s]",
+				"PickUp [tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, es4x4=%s, capacidadCajaCarga=%s]",
 				tieneAireAcondicionado, tieneCamaraReversa, tieneABS, numeroPasajeros, numeroBolsasAire, numeroPuertas,
-				placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, tipoVehiculo, es4x4,
-				capacidadCajaCarga);
+				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, es4x4, capacidadCajaCarga);
 	}
 
 }

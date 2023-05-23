@@ -18,7 +18,6 @@ public class Camion extends Vehiculo {
 	/**
 	 * Es el constructor de la clase camión
 	 * 
-	 * @param placa
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -33,11 +32,10 @@ public class Camion extends Vehiculo {
 	 * @param tieneABS
 	 * @param tipoCamion
 	 */
-	public Camion(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Double capacidadCarga,
-			Boolean tieneAireAcondicionado, Boolean tieneFrenosAire, Integer numeroEjes, Boolean tieneABS,
-			String tipoCamion) {
-		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+	public Camion(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
+			EstadoVehiculo estado, TipoCambio tipo, Double capacidadCarga, Boolean tieneAireAcondicionado,
+			Boolean tieneFrenosAire, Integer numeroEjes, Boolean tieneABS, String tipoCamion) {
+		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 
 		this.capacidadCarga = capacidadCarga;
 		this.tieneAireAcondicionado = tieneAireAcondicionado;
@@ -45,7 +43,12 @@ public class Camion extends Vehiculo {
 		this.numeroEjes = numeroEjes;
 		this.tieneABS = tieneABS;
 		this.tipoCamion = tipoCamion;
-		setTipoVehiculo(TipoVehiculo.CAMION);
+	}
+
+	@Override
+	public boolean atributosLlenos() {
+		return super.atributosLlenos() && capacidadCarga != null && tieneAireAcondicionado != null
+				&& tieneFrenosAire != null && numeroEjes != null && tieneABS != null && tipoCamion != null;
 	}
 
 	/**
@@ -157,10 +160,16 @@ public class Camion extends Vehiculo {
 	}
 
 	@Override
+	public TipoVehiculo getTipoVehiculo() {
+		return TipoVehiculo.CAMION;
+	}
+
+	@Override
 	public String toString() {
 		return String.format(
-				"Camion [placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, capacidadCarga=%s, tieneAireAcondicionado=%s, tieneFrenosAire=%s, tieneABS=%s, numeroEjes=%s, tipoCamion=%s]",
-				placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, tipoVehiculo,
-				capacidadCarga, tieneAireAcondicionado, tieneFrenosAire, tieneABS, numeroEjes, tipoCamion);
+				"Camion [marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, capacidadCarga=%s, tieneAireAcondicionado=%s, tieneFrenosAire=%s, tieneABS=%s, numeroEjes=%s, tipoCamion=%s]",
+				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, capacidadCarga,
+				tieneAireAcondicionado, tieneFrenosAire, tieneABS, numeroEjes, tipoCamion);
 	}
+
 }

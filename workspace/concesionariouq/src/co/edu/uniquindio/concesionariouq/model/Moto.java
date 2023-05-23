@@ -8,9 +8,8 @@ public class Moto extends Vehiculo {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Este es el constructor principal de la clase
+	 * Este es el constructor principal de la clase {@link Moto}
 	 * 
-	 * @param placa
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -19,16 +18,20 @@ public class Moto extends Vehiculo {
 	 * @param estado
 	 * @param tipo
 	 */
-	public Moto(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo) {
-		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
-		setTipoVehiculo(TipoVehiculo.MOTO);
+	public Moto(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
+			EstadoVehiculo estado, TipoCambio tipo) {
+		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+	}
+
+	@Override
+	public TipoVehiculo getTipoVehiculo() {
+		return TipoVehiculo.MOTO;
 	}
 
 	@Override
 	public String toString() {
 		return String.format(
-				"Moto [placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s]",
-				placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, tipoVehiculo);
+				"Moto [marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s]",
+				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 	}
 }

@@ -14,7 +14,6 @@ public abstract class Familiar extends Automovil {
 	/**
 	 * Es el constructor del automovil familiar
 	 * 
-	 * @param placa
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -29,15 +28,20 @@ public abstract class Familiar extends Automovil {
 	 * @param tieneCamaraReversa
 	 * @param tieneABS
 	 */
-	public Familiar(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
-			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
-			Boolean tieneABS) {
-		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
-				numeroBolsasAire, numeroPuertas);
+	public Familiar(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
+			EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros, Integer numeroBolsasAire,
+			Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa, Boolean tieneABS) {
+		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros, numeroBolsasAire,
+				numeroPuertas);
 		this.tieneAireAcondicionado = tieneAireAcondicionado;
 		this.tieneCamaraReversa = tieneCamaraReversa;
 		this.tieneABS = tieneABS;
+	}
+
+	@Override
+	public boolean atributosLlenos() {
+		return super.atributosLlenos() && tieneAireAcondicionado != null && tieneCamaraReversa != null
+				&& tieneABS != null;
 	}
 
 	/**
@@ -97,10 +101,9 @@ public abstract class Familiar extends Automovil {
 	@Override
 	public String toString() {
 		return String.format(
-				"Familiar [cilindraje=%s, combustible=%s, estado=%s, marca=%s, modelo=%s, numeroBolsasAire=%s, numeroPasajeros=%s, numeroPuertas=%s, placa=%s, tipo=%s, tipoVehiculo=%s, velocidadMaxima=%s, tieneABS=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s]",
-				cilindraje, combustible, estado, marca, modelo, numeroBolsasAire, numeroPasajeros, numeroPuertas, placa,
-				tipo, tipoVehiculo, velocidadMaxima, tieneABS, tieneAireAcondicionado, tieneCamaraReversa);
+				"Familiar [cilindraje=%s, combustible=%s, estado=%s, marca=%s, modelo=%s, numeroBolsasAire=%s, numeroPasajeros=%s, numeroPuertas=%s, tipo=%s, velocidadMaxima=%s, tieneABS=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s]",
+				cilindraje, combustible, estado, marca, modelo, numeroBolsasAire, numeroPasajeros, numeroPuertas, tipo,
+				velocidadMaxima, tieneABS, tieneAireAcondicionado, tieneCamaraReversa);
 	}
-	
 
 }

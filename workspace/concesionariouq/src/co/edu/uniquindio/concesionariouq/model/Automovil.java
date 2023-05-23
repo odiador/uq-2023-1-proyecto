@@ -1,6 +1,6 @@
 package co.edu.uniquindio.concesionariouq.model;
 
-public class Automovil extends Vehiculo {
+public abstract class Automovil extends Vehiculo {
 
 	/**
 	 * 
@@ -14,7 +14,6 @@ public class Automovil extends Vehiculo {
 	/**
 	 * Es el constructor del automovil
 	 *
-	 * @param placa
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -23,13 +22,18 @@ public class Automovil extends Vehiculo {
 	 * @param estado
 	 * @param tipo
 	 */
-	public Automovil(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
-			Integer numeroBolsasAire, Integer numeroPuertas) {
-		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+	public Automovil(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
+			EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros, Integer numeroBolsasAire,
+			Integer numeroPuertas) {
+		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 		this.numeroPasajeros = numeroPasajeros;
 		this.numeroBolsasAire = numeroBolsasAire;
 		this.numeroPuertas = numeroPuertas;
+	}
+
+	@Override
+	public boolean atributosLlenos() {
+		return super.atributosLlenos() && numeroPasajeros != null && numeroBolsasAire != null && numeroPuertas != null;
 	}
 
 	/**
@@ -84,6 +88,14 @@ public class Automovil extends Vehiculo {
 	 */
 	public void setNumeroPuertas(final Integer numeroPuertas) {
 		this.numeroPuertas = numeroPuertas;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Automovil [marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s]",
+				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas);
 	}
 
 }

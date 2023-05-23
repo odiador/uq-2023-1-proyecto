@@ -2,7 +2,7 @@ package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
 
-public abstract class Vehiculo implements Serializable{
+public abstract class Vehiculo implements Serializable {
 
 	/**
 	 * 
@@ -10,7 +10,6 @@ public abstract class Vehiculo implements Serializable{
 	private static final long serialVersionUID = 1L;
 	// ATRIBUTOS
 
-	protected final String placa;
 	protected String marca;
 	protected String modelo;
 	protected Double cilindraje;
@@ -18,13 +17,10 @@ public abstract class Vehiculo implements Serializable{
 	protected Combustible combustible;
 	protected EstadoVehiculo estado;
 	protected TipoCambio tipo;
-	protected TipoVehiculo tipoVehiculo;
 
 	/**
-	 * Es el constructor de la clase Vehiculo
+	 * Es el constructor de la clase {@link Vehiculo}
 	 * 
-	 * @param tipoVehiculo
-	 * @param placa
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -33,9 +29,8 @@ public abstract class Vehiculo implements Serializable{
 	 * @param estado
 	 * @param tipo
 	 */
-	public Vehiculo(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo) {
-		this.placa = placa;
+	public Vehiculo(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
+			EstadoVehiculo estado, TipoCambio tipo) {
 		this.marca = marca;
 		this.modelo = modelo;
 		this.cilindraje = cilindraje;
@@ -43,6 +38,13 @@ public abstract class Vehiculo implements Serializable{
 		this.combustible = combustible;
 		this.estado = estado;
 		this.tipo = tipo;
+	}
+
+	public abstract TipoVehiculo getTipoVehiculo();
+
+	public boolean atributosLlenos() {
+		return marca != null && modelo != null && cilindraje != null && velocidadMaxima != null && combustible != null
+				&& estado != null && tipo != null;
 	}
 
 	/**
@@ -172,43 +174,6 @@ public abstract class Vehiculo implements Serializable{
 	}
 
 	/**
-	 * Obtiene la placa del vehículo
-	 * 
-	 * @return
-	 */
-	public String getPlaca() {
-		return placa;
-	}
-
-	public TipoVehiculo getTipoVehiculo() {
-		return tipoVehiculo;
-	}
-
-	public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
-		this.tipoVehiculo = tipoVehiculo;
-	}
-
-	/**
-	 * Determina si la placa del vehiculo termina con una cadena especifica
-	 * 
-	 * @param cadena
-	 * @return
-	 */
-	public boolean placaTerminaCon(String cadena) {
-		return placa.endsWith(cadena);
-	}
-
-	/**
-	 * Determina si la placa del vehiculo empieza con una cadena especifica
-	 * 
-	 * @param cadena
-	 * @return
-	 */
-	public boolean placaEmpiezaCon(String cadena) {
-		return placa.startsWith(cadena);
-	}
-
-	/**
 	 * Determina si el cilindraje esta en un rango determinado
 	 * 
 	 * @param min
@@ -270,27 +235,15 @@ public abstract class Vehiculo implements Serializable{
 		return velocidadMaxima > val;
 	}
 
-	public boolean tieneCombustibleGasolina() {
-		return combustible instanceof Gasolina;
-	}
-
-	public boolean tieneCombustibleEletrico() {
-		return combustible instanceof Electrico;
-	}
-
-	public boolean tieneCombustibleHibrido() {
-		return combustible instanceof Hibrido;
-	}
-
-	public boolean tieneCombustibleDiesel() {
-		return combustible instanceof Diesel;
+	public boolean tieneCombustible(TipoCombustible tipoCombustible) {
+		return combustible.getTipoCombustible() == tipoCombustible;
 	}
 
 	@Override
 	public String toString() {
 		return String.format(
-				"Vehiculo [placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s]",
-				placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, tipoVehiculo);
+				"Vehiculo [marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s]",
+				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 	}
 
 }

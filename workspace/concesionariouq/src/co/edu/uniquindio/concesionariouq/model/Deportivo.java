@@ -12,7 +12,6 @@ public class Deportivo extends Automovil {
 	/**
 	 * Es el constructor del Deportivo
 	 * 
-	 * @param placa
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -26,15 +25,18 @@ public class Deportivo extends Automovil {
 	 * @param numeroCaballosFuerza
 	 * @param tiempoAlcanza100Kmh
 	 */
-	public Deportivo(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
-			Integer numeroBolsasAire, Integer numeroPuertas, Integer numeroCaballosFuerza,
-			Integer tiempoAlcanza100Kmh) {
-		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
-				numeroBolsasAire, numeroPuertas);
+	public Deportivo(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
+			EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros, Integer numeroBolsasAire,
+			Integer numeroPuertas, Integer numeroCaballosFuerza, Integer tiempoAlcanza100Kmh) {
+		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros, numeroBolsasAire,
+				numeroPuertas);
 		this.numeroCaballosFuerza = numeroCaballosFuerza;
 		this.tiempoAlcanza100Kmh = tiempoAlcanza100Kmh;
-		setTipoVehiculo(TipoVehiculo.DEPORTIVO);
+	}
+
+	@Override
+	public boolean atributosLlenos() {
+		return super.atributosLlenos() && numeroCaballosFuerza != null && tiempoAlcanza100Kmh != null;
 	}
 
 	/**
@@ -74,11 +76,16 @@ public class Deportivo extends Automovil {
 	}
 
 	@Override
+	public TipoVehiculo getTipoVehiculo() {
+		return TipoVehiculo.DEPORTIVO;
+	}
+
+	@Override
 	public String toString() {
 		return String.format(
-				"Deportivo [numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, numeroCaballosFuerza=%s, tiempoAlcanza100Kmh=%s]",
-				numeroPasajeros, numeroBolsasAire, numeroPuertas, placa, marca, modelo, cilindraje, velocidadMaxima,
-				combustible, estado, tipo, tipoVehiculo, numeroCaballosFuerza, tiempoAlcanza100Kmh);
+				"Deportivo [numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroCaballosFuerza=%s, tiempoAlcanza100Kmh=%s]",
+				numeroPasajeros, numeroBolsasAire, numeroPuertas, marca, modelo, cilindraje, velocidadMaxima,
+				combustible, estado, tipo, numeroCaballosFuerza, tiempoAlcanza100Kmh);
 	}
 
 }

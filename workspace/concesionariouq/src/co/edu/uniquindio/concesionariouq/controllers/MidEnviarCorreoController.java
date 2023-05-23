@@ -23,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -40,14 +41,23 @@ public class MidEnviarCorreoController {
 	private VBox mainPane;
 
 	@FXML
+	private Button btnVolver;
+
+	@FXML
 	private Label lblDots;
 
 	@FXML
 	private Label labelEnviando;
 
 	@FXML
+	void volverEvent(ActionEvent event) {
+		volverAction();
+	}
+
+	@FXML
 	void initialize() {
 		ejecutarActualizacionDots();
+		ejecutarVisionBtnVolver();
 		initValues();
 		ejecutarHiloEnviarCodigo();
 	}
@@ -92,7 +102,9 @@ public class MidEnviarCorreoController {
 			ProjectUtility.enviarCorreoRecuperacion(usuario.getEmail(), usuario.getNombre(), code);
 			seHaTerminado.setValue(true);
 		} catch (MessagingException | IOException e) {
-			FxUtility.mostrarMensaje("Advertencia", "No se pudo enviar el correo", e.getMessage(), AlertType.ERROR);
+			Platform.runLater(() -> {
+				FxUtility.mostrarMensaje("Advertencia", "No se pudo enviar el correo", e.getMessage(), AlertType.ERROR);
+			});
 		}
 
 	}
@@ -101,6 +113,15 @@ public class MidEnviarCorreoController {
 		EventHandler<ActionEvent> evento = event -> actualizarDots();
 		Timeline lineActualizarPuntos = new Timeline(new KeyFrame(Duration.millis(150), evento));
 		lineActualizarPuntos.setCycleCount(-1);
+		lineActualizarPuntos.play();
+	}
+
+	private void ejecutarVisionBtnVolver() {
+		KeyValue value = new KeyValue(btnVolver.opacityProperty(), 1);
+		KeyFrame keyFrame = new KeyFrame(Duration.millis(1000), value);
+		Timeline lineActualizarPuntos = new Timeline(keyFrame);
+		lineActualizarPuntos.setDelay(Duration.seconds(5));
+		lineActualizarPuntos.setCycleCount(1);
 		lineActualizarPuntos.play();
 	}
 
@@ -121,6 +142,19 @@ public class MidEnviarCorreoController {
 	private void actualizarDots() {
 		lblDots.setText(
 				Stream.generate(() -> ".").limit((lblDots.getText().length() % 3) + 1).collect(Collectors.joining()));
+	}
+
+	private void volverAction() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setController(new LoginPageController(usuario.getId()));
+		loader.setLocation(getClass().getResource("../view/login.fxml"));
+		try {
+			Stage stage = (Stage) mainPane.getScene().getWindow();
+			stage.setScene(new Scene(loader.load()));
+			stage.centerOnScreen();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -50,7 +50,7 @@ public class PdfUtility {
 		Font font = new Font(FontFamily.HELVETICA, 10, FontStyle.BOLD.ordinal());
 		PdfPTable tabla = new PdfPTable(9);
 		tabla.addCell(new Phrase("Tipo de Vehiculo", font));
-		tabla.addCell(new Phrase("Placa", font));
+		tabla.addCell(new Phrase("ID", font));
 		tabla.addCell(new Phrase("Marca", font));
 		tabla.addCell(new Phrase("Modelo", font));
 		tabla.addCell(new Phrase("Cilindraje", font));
@@ -60,7 +60,7 @@ public class PdfUtility {
 		tabla.addCell(new Phrase("Tipo de Cambio", font));
 		listaVehiculos.entrySet().stream().forEach((Entry<String, Vehiculo> entrada) -> {
 			tabla.addCell(entrada.getValue().getTipoVehiculo().getTipo());
-			tabla.addCell(entrada.getKey());
+			tabla.addCell(entrada.getValue().getId());
 			tabla.addCell(entrada.getValue().getMarca());
 			tabla.addCell(entrada.getValue().getModelo());
 			tabla.addCell(entrada.getValue().getCilindraje().toString());

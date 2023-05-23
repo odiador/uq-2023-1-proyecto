@@ -6,12 +6,12 @@ public class Van extends Familiar {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	// ATRIBUTOS
 	protected Double capacidadMaletero;
 
 	/**
 	 * Es el constructor de la Van
 	 * 
+	 * @param id
 	 * @param placa
 	 * @param marca
 	 * @param modelo
@@ -28,12 +28,12 @@ public class Van extends Familiar {
 	 * @param tieneABS
 	 * @param capacidadMaletero
 	 */
-	public Van(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
-			EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros, Integer numeroBolsasAire,
-			Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa, Boolean tieneABS,
-			Double capacidadMaletero) {
-		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros, numeroBolsasAire,
-				numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS);
+	public Van(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
+			Boolean tieneABS, Double capacidadMaletero) {
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS);
 		this.capacidadMaletero = capacidadMaletero;
 	}
 
@@ -68,9 +68,10 @@ public class Van extends Familiar {
 	@Override
 	public String toString() {
 		return String.format(
-				"Van [tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, capacidadMaletero=%s]",
-				tieneAireAcondicionado, tieneCamaraReversa, tieneABS, numeroPasajeros, numeroBolsasAire, numeroPuertas,
-				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, capacidadMaletero);
+				"Van [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, capacidadMaletero=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
+				capacidadMaletero);
 	}
 
 }

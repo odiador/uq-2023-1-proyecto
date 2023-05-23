@@ -10,6 +10,7 @@ public class Moto extends Vehiculo {
 	/**
 	 * Este es el constructor principal de la clase {@link Moto}
 	 * 
+	 * @param id
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -18,9 +19,9 @@ public class Moto extends Vehiculo {
 	 * @param estado
 	 * @param tipo
 	 */
-	public Moto(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
-			EstadoVehiculo estado, TipoCambio tipo) {
-		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+	public Moto(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo) {
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 	}
 
 	@Override
@@ -31,7 +32,7 @@ public class Moto extends Vehiculo {
 	@Override
 	public String toString() {
 		return String.format(
-				"Moto [marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s]",
-				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+				"Moto [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 	}
 }

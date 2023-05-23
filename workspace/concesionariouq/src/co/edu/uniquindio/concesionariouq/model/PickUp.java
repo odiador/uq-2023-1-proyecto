@@ -8,8 +8,9 @@ public class PickUp extends Familiar {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Es el constructor de la PickUp
+	 * Es el constructor de la clase {@link PickUp}
 	 * 
+	 * @param id
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -26,12 +27,12 @@ public class PickUp extends Familiar {
 	 * @param es4x4
 	 * @param capacidadCajaCarga
 	 */
-	public PickUp(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
-			EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros, Integer numeroBolsasAire,
-			Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa, Boolean tieneABS,
-			Boolean es4x4, Double capacidadCajaCarga) {
-		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros, numeroBolsasAire,
-				numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS);
+	public PickUp(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
+			Boolean tieneABS, Boolean es4x4, Double capacidadCajaCarga) {
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS);
 		this.es4x4 = es4x4;
 		this.capacidadCajaCarga = capacidadCajaCarga;
 	}
@@ -92,9 +93,10 @@ public class PickUp extends Familiar {
 	@Override
 	public String toString() {
 		return String.format(
-				"PickUp [tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, es4x4=%s, capacidadCajaCarga=%s]",
-				tieneAireAcondicionado, tieneCamaraReversa, tieneABS, numeroPasajeros, numeroBolsasAire, numeroPuertas,
-				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, es4x4, capacidadCajaCarga);
+				"PickUp [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, es4x4=%s, capacidadCajaCarga=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, es4x4,
+				capacidadCajaCarga);
 	}
 
 }

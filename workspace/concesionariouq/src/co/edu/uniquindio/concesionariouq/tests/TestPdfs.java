@@ -30,16 +30,16 @@ public class TestPdfs {
 	@Test
 	public void testGenerarPdf() throws NullException, VehiculoYaExisteException {
 		Concesionario concesionario = new Concesionario("", "");
-		concesionario.agregarVehiculo("AAAA",
-				new Moto("mazda", "2020", 200d, 200d, new Gasolina(), EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
-		concesionario.agregarVehiculo("XG", new Deportivo("mazda", "2020", 200d, 200d, new Gasolina(),
-				EstadoVehiculo.NUEVO, TipoCambio.MANUAL, 5, 2, 3, 40, 4));
-		concesionario.agregarVehiculo("ASAAS",
-				new Moto("mazda", "2020", 200d, 200d, new Gasolina(), EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
-		concesionario.agregarVehiculo("AAAZ",
-				new Moto("mazda", "2020", 200d, 200d, new Diesel(), EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
-		concesionario.agregarVehiculo("AAAV",
-				new Moto("mazda", "2020", 200d, 200d, new Diesel(), EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+		concesionario.agregarVehiculo("AAAA", new Moto("AAAA", "mazda", "2020", 200d, 200d, new Gasolina(),
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+		concesionario.agregarVehiculo("XG", new Deportivo("XG", "mazda", "2020", 200d, 200d, new Gasolina(),
+				EstadoVehiculo.NUEVO, TipoCambio.MANUAL, 5, 2, 3, 40, 4d));
+		concesionario.agregarVehiculo("ASAAS", new Moto("ASAAS", "mazda", "2020", 200d, 200d, new Gasolina(),
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+		concesionario.agregarVehiculo("AAAZ", new Moto("AAAZ", "mazda", "2020", 200d, 200d, new Diesel(),
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+		concesionario.agregarVehiculo("AAAV", new Moto("AAAV", "mazda", "2020", 200d, 200d, new Diesel(),
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
 		System.out.println(concesionario.listarVehiculos());
 		generarPdf("Reporte de Vehiculos", concesionario.listarVehiculos());
 	}

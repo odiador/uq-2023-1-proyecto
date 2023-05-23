@@ -2,8 +2,6 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Camion extends Vehiculo {
 
-	// ATRIBUTOS
-
 	/**
 	 * 
 	 */
@@ -13,11 +11,12 @@ public class Camion extends Vehiculo {
 	protected Boolean tieneFrenosAire;
 	protected Boolean tieneABS;
 	protected Integer numeroEjes;
-	protected String tipoCamion; // El tipo de tipoCamion es provicional. Deberia ser un Enum
+	protected String tipoCamion;
 
 	/**
-	 * Es el constructor de la clase camión
+	 * Es el constructor de la clase {@link Camion}
 	 * 
+	 * @param id
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -32,11 +31,11 @@ public class Camion extends Vehiculo {
 	 * @param tieneABS
 	 * @param tipoCamion
 	 */
-	public Camion(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
-			EstadoVehiculo estado, TipoCambio tipo, Double capacidadCarga, Boolean tieneAireAcondicionado,
-			Boolean tieneFrenosAire, Integer numeroEjes, Boolean tieneABS, String tipoCamion) {
-		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
-
+	public Camion(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Double capacidadCarga,
+			Boolean tieneAireAcondicionado, Boolean tieneFrenosAire, Integer numeroEjes, Boolean tieneABS,
+			String tipoCamion) {
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 		this.capacidadCarga = capacidadCarga;
 		this.tieneAireAcondicionado = tieneAireAcondicionado;
 		this.tieneFrenosAire = tieneFrenosAire;
@@ -167,8 +166,8 @@ public class Camion extends Vehiculo {
 	@Override
 	public String toString() {
 		return String.format(
-				"Camion [marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, capacidadCarga=%s, tieneAireAcondicionado=%s, tieneFrenosAire=%s, tieneABS=%s, numeroEjes=%s, tipoCamion=%s]",
-				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, capacidadCarga,
+				"Camion [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, capacidadCarga=%s, tieneAireAcondicionado=%s, tieneFrenosAire=%s, tieneABS=%s, numeroEjes=%s, tipoCamion=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, capacidadCarga,
 				tieneAireAcondicionado, tieneFrenosAire, tieneABS, numeroEjes, tipoCamion);
 	}
 

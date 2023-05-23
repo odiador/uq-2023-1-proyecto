@@ -8,8 +8,8 @@ public abstract class Vehiculo implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	// ATRIBUTOS
 
+	protected String id;
 	protected String marca;
 	protected String modelo;
 	protected Double cilindraje;
@@ -29,8 +29,9 @@ public abstract class Vehiculo implements Serializable {
 	 * @param estado
 	 * @param tipo
 	 */
-	public Vehiculo(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
-			EstadoVehiculo estado, TipoCambio tipo) {
+	public Vehiculo(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo) {
+		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.cilindraje = cilindraje;
@@ -45,6 +46,24 @@ public abstract class Vehiculo implements Serializable {
 	public boolean atributosLlenos() {
 		return marca != null && modelo != null && cilindraje != null && velocidadMaxima != null && combustible != null
 				&& estado != null && tipo != null;
+	}
+
+	/**
+	 * Obtiene la identificacion del vehiculo
+	 * 
+	 * @return
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * Cambia la identificacion del vehiculo
+	 * 
+	 * @param id
+	 */
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	/**
@@ -240,10 +259,35 @@ public abstract class Vehiculo implements Serializable {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vehiculo other = (Vehiculo) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return String.format(
-				"Vehiculo [marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s]",
-				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+				"Vehiculo [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 	}
 
 }

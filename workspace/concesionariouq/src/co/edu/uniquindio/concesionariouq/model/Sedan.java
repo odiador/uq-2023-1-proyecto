@@ -14,8 +14,9 @@ public class Sedan extends Van {
 	protected Boolean tieneAsistentePermanencia;
 
 	/**
-	 * Es el constructor del Sedan
+	 * Es el constructor del {@link Sedan}
 	 * 
+	 * @param id
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -35,13 +36,14 @@ public class Sedan extends Van {
 	 * @param tieneSensorTrafico
 	 * @param tieneAsistentePermanencia
 	 */
-	public Sedan(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
-			EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros, Integer numeroBolsasAire,
-			Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa, Boolean tieneABS,
-			Double capacidadMaletero, Boolean tieneVelocidadCrucero, Boolean tieneSensorColision,
+	public Sedan(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
+			Boolean tieneABS, Double capacidadMaletero, Boolean tieneVelocidadCrucero, Boolean tieneSensorColision,
 			Boolean tieneSensorTrafico, Boolean tieneAsistentePermanencia) {
-		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros, numeroBolsasAire,
-				numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, capacidadMaletero);
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
+				capacidadMaletero);
 		this.tieneVelocidadCrucero = tieneVelocidadCrucero;
 		this.tieneSensorColision = tieneSensorColision;
 		this.tieneSensorTrafico = tieneSensorTrafico;
@@ -134,10 +136,11 @@ public class Sedan extends Van {
 	@Override
 	public String toString() {
 		return String.format(
-				"Sedan [capacidadMaletero=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tieneVelocidadCrucero=%s, tieneSensorColision=%s, tieneSensorTrafico=%s, tieneAsistentePermanencia=%s]",
-				capacidadMaletero, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, numeroPasajeros,
-				numeroBolsasAire, numeroPuertas, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo,
-				tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico, tieneAsistentePermanencia);
+				"Sedan [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, capacidadMaletero=%s, tieneVelocidadCrucero=%s, tieneSensorColision=%s, tieneSensorTrafico=%s, tieneAsistentePermanencia=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
+				capacidadMaletero, tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico,
+				tieneAsistentePermanencia);
 	}
 
 }

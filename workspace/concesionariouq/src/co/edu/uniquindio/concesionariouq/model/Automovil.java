@@ -6,14 +6,14 @@ public abstract class Automovil extends Vehiculo {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	// ATRIBUTOS
 	protected Integer numeroPasajeros;
 	protected Integer numeroBolsasAire;
 	protected Integer numeroPuertas;
 
 	/**
-	 * Es el constructor del automovil
-	 *
+	 * Es el constructor del {@link Automovil}
+	 * 
+	 * @param id
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -21,11 +21,14 @@ public abstract class Automovil extends Vehiculo {
 	 * @param combustible
 	 * @param estado
 	 * @param tipo
+	 * @param numeroPasajeros
+	 * @param numeroBolsasAire
+	 * @param numeroPuertas
 	 */
-	public Automovil(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
-			EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros, Integer numeroBolsasAire,
-			Integer numeroPuertas) {
-		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+	public Automovil(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+			Integer numeroBolsasAire, Integer numeroPuertas) {
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 		this.numeroPasajeros = numeroPasajeros;
 		this.numeroBolsasAire = numeroBolsasAire;
 		this.numeroPuertas = numeroPuertas;
@@ -93,8 +96,8 @@ public abstract class Automovil extends Vehiculo {
 	@Override
 	public String toString() {
 		return String.format(
-				"Automovil [marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s]",
-				marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				"Automovil [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
 				numeroBolsasAire, numeroPuertas);
 	}
 

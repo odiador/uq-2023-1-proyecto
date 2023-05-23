@@ -7,11 +7,12 @@ public class Deportivo extends Automovil {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected Integer numeroCaballosFuerza;
-	protected Integer tiempoAlcanza100Kmh; // podria ser Double por los segundos
+	protected Double tiempoAlcanza100Kmh;
 
 	/**
-	 * Es el constructor del Deportivo
+	 * Es el constructor de la clase {@link Deportivo}
 	 * 
+	 * @param id
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -25,11 +26,11 @@ public class Deportivo extends Automovil {
 	 * @param numeroCaballosFuerza
 	 * @param tiempoAlcanza100Kmh
 	 */
-	public Deportivo(String marca, String modelo, Double cilindraje, Double velocidadMaxima, Combustible combustible,
-			EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros, Integer numeroBolsasAire,
-			Integer numeroPuertas, Integer numeroCaballosFuerza, Integer tiempoAlcanza100Kmh) {
-		super(marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros, numeroBolsasAire,
-				numeroPuertas);
+	public Deportivo(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
+			Integer numeroBolsasAire, Integer numeroPuertas, Integer numeroCaballosFuerza, Double tiempoAlcanza100Kmh) {
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas);
 		this.numeroCaballosFuerza = numeroCaballosFuerza;
 		this.tiempoAlcanza100Kmh = tiempoAlcanza100Kmh;
 	}
@@ -62,7 +63,7 @@ public class Deportivo extends Automovil {
 	 *
 	 * @return
 	 */
-	public Integer getTiempoAlcanza100Kmh() {
+	public Double getTiempoAlcanza100Kmh() {
 		return tiempoAlcanza100Kmh;
 	}
 
@@ -71,7 +72,7 @@ public class Deportivo extends Automovil {
 	 * 
 	 * @param tiempoAlcanza100Kmh
 	 */
-	public void setTiempoAlcanza100Kmh(final Integer tiempoAlcanza100Kmh) {
+	public void setTiempoAlcanza100Kmh(final Double tiempoAlcanza100Kmh) {
 		this.tiempoAlcanza100Kmh = tiempoAlcanza100Kmh;
 	}
 
@@ -83,9 +84,9 @@ public class Deportivo extends Automovil {
 	@Override
 	public String toString() {
 		return String.format(
-				"Deportivo [numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroCaballosFuerza=%s, tiempoAlcanza100Kmh=%s]",
-				numeroPasajeros, numeroBolsasAire, numeroPuertas, marca, modelo, cilindraje, velocidadMaxima,
-				combustible, estado, tipo, numeroCaballosFuerza, tiempoAlcanza100Kmh);
+				"Deportivo [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, numeroCaballosFuerza=%s, tiempoAlcanza100Kmh=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, numeroCaballosFuerza, tiempoAlcanza100Kmh);
 	}
 
 }

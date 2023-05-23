@@ -2,35 +2,40 @@ package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
 
-//ATRIBUTOS
-public abstract class Usuario implements Serializable{
+/**
+ * Es la clase usuario, la cual tiene un nombre, email, contraseña, id y
+ * respuesta a una pregunta de seguridad
+ *
+ */
+public abstract class Usuario implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private final String id;
-	private String nombre;
-	private String contrasena;
-	private String email;
-	private String respuestaDeSeguridad;
-	private TipoUsuario tipoUsuario;
+	protected final String id;
+	protected String nombre;
+	protected String contrasena;
+	protected String email;
+	protected String respuestaDeSeguridad;
 
 	/**
-	 * Este es el metodo constructor de la clase usuario
+	 * Este es el metodo constructor de la clase {@link Usuario}
 	 * 
 	 * @param id
 	 * @param nombre
 	 * @param contrasena
 	 * @param email
-	 * @param tipo
+	 * @param respuestaDeSeguridad
 	 */
-	public Usuario(String id,String nombre, String contrasena, String email) {
+	public Usuario(String id, String nombre, String contrasena, String email, String respuestaDeSeguridad) {
 		this.id = id;
 		this.nombre = nombre;
 		this.contrasena = contrasena;
-		this.setEmail(email);
-		this.setTipoUsuario(TipoUsuario.CLIENTE);
+		this.email = email;
+		this.respuestaDeSeguridad = respuestaDeSeguridad;
 	}
+
+	public abstract TipoUsuario getTipoUsuario();
 
 	/**
 	 * Este metodo obtiene el nombre del usuario
@@ -86,14 +91,6 @@ public abstract class Usuario implements Serializable{
 
 	public void setRespuestaDeSeguridad(String respuestaDeSeguridad) {
 		this.respuestaDeSeguridad = respuestaDeSeguridad;
-	}
-
-	public TipoUsuario getTipoUsuario() {
-		return tipoUsuario;
-	}
-
-	public void setTipoUsuario(TipoUsuario tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
 	}
 
 }

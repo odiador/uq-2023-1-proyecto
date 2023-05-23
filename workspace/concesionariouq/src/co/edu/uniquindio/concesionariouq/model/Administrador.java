@@ -19,10 +19,16 @@ public class Administrador extends Empleado {
 	 * @param nombre
 	 * @param contrasena
 	 * @param email
+	 * @param respuestaDeSeguridad
 	 */
-	public Administrador(String id, String nombre, String contrasena, String email) {
-		super(id, nombre, contrasena, email);
+	public Administrador(String id, String nombre, String contrasena, String email, String respuestaDeSeguridad) {
+		super(id, nombre, contrasena, email, respuestaDeSeguridad);
 		this.listaEmpleados = new HashMap<String, Empleado>();
+	}
+
+	@Override
+	public TipoUsuario getTipoUsuario() {
+		return TipoUsuario.ADMIN;
 	}
 
 	/**

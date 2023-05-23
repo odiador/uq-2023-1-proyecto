@@ -19,6 +19,11 @@ public class Electrico extends Combustible {
 		this.tiempoDemoraCarga = tiempoDemoraCarga;
 	}
 
+	@Override
+	public boolean atributosLlenos() {
+		return autonomiaCargaCompleta != null && tiempoDemoraCarga != null;
+	}
+
 	/**
 	 * Cambia la automonia de carga completa
 	 * 
@@ -53,6 +58,17 @@ public class Electrico extends Combustible {
 	 */
 	public Double getTiempoDemoraCarga() {
 		return tiempoDemoraCarga;
+	}
+
+	@Override
+	public TipoCombustible getTipoCombustible() {
+		return TipoCombustible.ELECTRICO;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Electrico [autonomiaCargaCompleta=%s, tiempoDemoraCarga=%s]", autonomiaCargaCompleta,
+				tiempoDemoraCarga);
 	}
 
 }

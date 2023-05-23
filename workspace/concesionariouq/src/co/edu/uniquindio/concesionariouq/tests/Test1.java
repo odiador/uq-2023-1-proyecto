@@ -1,6 +1,5 @@
 package co.edu.uniquindio.concesionariouq.tests;
 
-
 import java.util.List;
 
 import org.junit.Before;
@@ -13,6 +12,7 @@ import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.Gasolina;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
+import co.edu.uniquindio.concesionariouq.util.Utility;
 
 public class Test1 {
 	Concesionario concesionario = new Concesionario("Nombre", "id");
@@ -37,6 +37,12 @@ public class Test1 {
 		List<? extends Vehiculo> lista = concesionario.listarVehiculos();
 		lista.stream().map(v -> v.getTipoVehiculo().getTipo() + " [" + v.getPlaca() + "]").forEach(System.out::println);
 		System.err.println("----------------");
+	}
+
+	@Test
+	public void testCodigoRandom() {
+		for (int i = 0; i < 100; i++)
+			System.out.println(Utility.crearCodigoRandomAlfaNumerico(6));
 	}
 
 }

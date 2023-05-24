@@ -1,6 +1,9 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
+import java.util.List;
+
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
+import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 
 public class ModelFactoryController {
 	
@@ -24,6 +27,10 @@ public class ModelFactoryController {
 
 	public void setConcesionario(Concesionario concesionario) {
 		this.concesionario = concesionario;
+	}
+	
+	public List<Vehiculo> listarVehiculo(){
+		return getConcesionario().listarVehiculos();
 	}
 	
 	

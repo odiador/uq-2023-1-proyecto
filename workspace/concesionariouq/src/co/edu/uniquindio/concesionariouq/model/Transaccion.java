@@ -29,6 +29,14 @@ public class Transaccion implements Serializable {
 		this.vehiculo = vehiculo;
 	}
 
+	public boolean atributosLlenos() {
+		return codigo != null && vehiculo != null;
+	}
+
+	public boolean tieneCodigo(String codigo) {
+		return this.codigo.equals(codigo);
+	}
+
 	/**
 	 * Obtiene el codigo de la Transaccion
 	 * 

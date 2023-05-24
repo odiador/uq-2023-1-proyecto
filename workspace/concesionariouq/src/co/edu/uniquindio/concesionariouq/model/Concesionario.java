@@ -1,11 +1,8 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,8 +26,8 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	private String nombre;
 	private String direccion;
 	private Set<Vehiculo> listaVehiculos;
-	private Map<String, Usuario> listaUsuarios;
-	private Map<String, Transaccion> listaTransacciones;
+	private Set<Usuario> listaUsuarios;
+	private Set<Transaccion> listaTransacciones;
 
 	/**
 	 * Es el metodo constructor vacio de la clase
@@ -45,8 +42,8 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.listaVehiculos = new HashSet<Vehiculo>();
-		this.listaUsuarios = new HashMap<String, Usuario>();
-		this.listaTransacciones = new HashMap<String, Transaccion>();
+		this.listaUsuarios = new HashSet<Usuario>();
+		this.listaTransacciones = new HashSet<Transaccion>();
 	}
 
 	@Override
@@ -78,9 +75,13 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	 * muestra una excepcion
 	 * 
 	 * @param id
+	 * @throws NullException
 	 * @throws ConcesionarioException
 	 */
-	public void eliminarVehiculo(String id) throws VehiculoNoExisteException {
+	@Override
+	public void eliminarVehiculo(String id) throws VehiculoNoExisteException, NullException {
+		if (id == null)
+			throw new NullException("La identificacion enviade es null");
 		Vehiculo vehiculo = buscarVehiculo(id);
 		if (vehiculo == null)
 			throw new VehiculoNoExisteException("El vehiculo con la placa " + id + " no existe");
@@ -99,45 +100,52 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	}
 
 	/**
-	 * Valida si una transaccion existe o no a partir de su código
-	 * 
-	 * @param id
+	 * Busca un usuario basandose en su identificacion
+	 *
+	 * @param identificacion
 	 * @return
 	 */
 	@Override
-	public boolean validarTransaccion(String id) {
-		return buscarTransaccion(id) != null;
-	}
-
-	@Override
-	public Transaccion buscarTransaccion(String id) {
-		return listaTransacciones.getOrDefault(id, null);
-	}
-
-	@Override
-	public void agregarTransaccion(Transaccion transaccion) throws TransaccionYaExisteException, NullException {
-		if (validarTransaccion(transaccion.getCodigo()))
-			throw new TransaccionYaExisteException("La transaccion ya existe");
-		listaTransacciones.put(transaccion.getCodigo(), transaccion);
+	public Usuario buscarUsuario(String identificacion) {
+		return listaUsuarios.stream().filter(usuario -> usuario.tieneId(identificacion)).findFirst().orElse(null);
 	}
 
 	/**
-	 * Elimina una transaccion, muestra un error si no se encuentra
 	 * 
-	 * @param codigo
-	 * @throws ConcesionarioException
+	 * @param identificacion
+	 * @return
 	 */
 	@Override
-	public void eliminarTransaccion(String codigo) throws TransaccionNoExisteException {
-		if (!validarTransaccion(codigo))
-			throw new TransaccionNoExisteException("La transaccion no existe, no se puede eliminar");
-		listaTransacciones.remove(codigo);
+	public boolean validarUsuario(String identificacion) {
+		return buscarUsuario(identificacion) != null;
 	}
 
 	@Override
-	public List<Transaccion> listarTransacciones() {
-		return listaTransacciones.entrySet().stream().map(Entry<String, Transaccion>::getValue)
-				.collect(Collectors.toList());
+	public void agregarUsuario(Usuario usuario)
+			throws UsuarioEncontradoException, NullException, AtributosFaltantesException {
+		if (usuario == null)
+			throw new NullException("El usuario enviado es null");
+		if (!usuario.atributosLlenos())
+			throw new AtributosFaltantesException("Al usuario le hacen falta atributos");
+		if (validarUsuario(usuario.getId()))
+			throw new UsuarioEncontradoException("El usuario ya se encuentra agregado");
+		listaUsuarios.add(usuario);
+
+	}
+
+	@Override
+	public void eliminarUsuario(String id) throws UsuarioNoEncontradoException, NullException {
+		if (id == null)
+			throw new NullException("La identificacion enviada es null");
+		Usuario usuario = buscarUsuario(id);
+		if (usuario == null)
+			throw new UsuarioNoEncontradoException("El usuario no fue encontrado, no se puede eliminar");
+		listaUsuarios.remove(usuario);
+	}
+
+	@Override
+	public List<Usuario> listarUsuarios() {
+		return listaUsuarios.stream().collect(Collectors.toList());
 	}
 
 	/**
@@ -161,56 +169,69 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	 * @param identificacion
 	 * @throws LoginFailedException
 	 * @return el usuario al obtenido al hacer login
+	 * @throws NullException
 	 */
-	public Usuario hacerLogin(String identificacion, String contrasena) throws LoginFailedException {
+	public Usuario hacerLogin(String identificacion, String contrasena) throws LoginFailedException, NullException {
+		if (identificacion == null)
+			throw new NullException("La identificacion enviada es null");
+		if (contrasena == null)
+			throw new NullException("La contrasena enviada es null");
 		Usuario usuario = buscarUsuarioLogin(identificacion, contrasena);
-		if (usuario == null) {
+		if (usuario == null)
 			throw new LoginFailedException(
 					"La id o contraseña especificada no coinciden con tus datos, intenta nuevamente");
-		}
+
 		return usuario;
 	}
 
-	/**
-	 * Busca un usuario basandose en su identificacion
-	 *
-	 * @param identificacion
-	 * @return
-	 */
-	public Usuario buscarUsuario(String identificacion) {
-		return listaUsuarios.getOrDefault(identificacion, null);
+	@Override
+	public Transaccion buscarTransaccion(String id) {
+		return listaTransacciones.stream().filter(transaccion -> transaccion.tieneCodigo(id)).findFirst().orElse(null);
 	}
 
 	/**
+	 * Valida si una transaccion existe o no a partir de su código
 	 * 
-	 * @param identificacion
+	 * @param id
 	 * @return
 	 */
-	public boolean validarUsuario(String identificacion) {
-		return buscarUsuario(identificacion) != null;
-	}
-
-	public void agregarUsuario(Usuario usuario) throws UsuarioEncontradoException, NullException {
-		if (usuario == null)
-			throw new NullException("El usuario enviado es null");
-		if (validarUsuario(usuario.getId()))
-			throw new UsuarioEncontradoException("El usuario ya se encuentra agregado");
-		listaUsuarios.put(usuario.getId(), usuario);
-
+	@Override
+	public boolean validarTransaccion(String id) {
+		return buscarTransaccion(id) != null;
 	}
 
 	@Override
-	public void eliminarUsuario(String id) throws UsuarioNoEncontradoException, NullException {
-		if (id == null)
-			throw new NullException("La identificacion enviada es null");
-		if (!validarUsuario(id))
-			throw new UsuarioNoEncontradoException("El usuario no fue encontrado, no se puede eliminar");
-		listaUsuarios.remove(id);
+	public void agregarTransaccion(Transaccion transaccion)
+			throws TransaccionYaExisteException, NullException, AtributosFaltantesException {
+		if (transaccion == null)
+			throw new NullException("La transaccion enviada es null");
+		if (!transaccion.atributosLlenos())
+			throw new AtributosFaltantesException("A la transaccion le hacen falta atributos");
+		if (validarTransaccion(transaccion.getCodigo()))
+			throw new TransaccionYaExisteException("La transaccion ya existe");
+		listaTransacciones.add(transaccion);
+	}
+
+	/**
+	 * Elimina una transaccion, muestra un error si no se encuentra
+	 * 
+	 * @param codigo
+	 * @throws NullException
+	 * @throws ConcesionarioException
+	 */
+	@Override
+	public void eliminarTransaccion(String codigo) throws TransaccionNoExisteException, NullException {
+		if (codigo == null)
+			throw new NullException("El codigo enviado es null");
+		Transaccion transaccion = buscarTransaccion(codigo);
+		if (transaccion == null)
+			throw new TransaccionNoExisteException("La transaccion no existe, no se puede eliminar");
+		listaTransacciones.remove(transaccion);
 	}
 
 	@Override
-	public List<Usuario> listarUsuarios() {
-		return listaUsuarios.entrySet().stream().map(Entry<String, Usuario>::getValue).collect(Collectors.toList());
+	public List<Transaccion> listarTransacciones() {
+		return listaTransacciones.stream().collect(Collectors.toList());
 	}
 
 	/**

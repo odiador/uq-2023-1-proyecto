@@ -13,7 +13,7 @@ import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.Gasolina;
 import co.edu.uniquindio.concesionariouq.model.Moto;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
-import co.edu.uniquindio.concesionariouq.util.Utility;
+import co.edu.uniquindio.concesionariouq.util.ProjectUtility;
 
 public class Test1 {
 	Concesionario concesionario = new Concesionario("Nombre", "id");
@@ -36,7 +36,7 @@ public class Test1 {
 	@Test
 	public void testCodigoRandom() {
 		for (int i = 0; i < 100; i++)
-			System.out.println(Utility.crearCodigoRandomAlfaNumerico(6));
+			System.out.println(ProjectUtility.crearCodigoRandomAlfaNumerico(6));
 	}
 
 }

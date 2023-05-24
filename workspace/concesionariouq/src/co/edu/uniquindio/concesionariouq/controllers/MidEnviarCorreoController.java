@@ -10,7 +10,6 @@ import javax.mail.MessagingException;
 import co.edu.uniquindio.concesionariouq.model.Usuario;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import co.edu.uniquindio.concesionariouq.util.ProjectUtility;
-import co.edu.uniquindio.concesionariouq.util.Utility;
 import co.edu.uniquindio.concesionariouq.util.ValorObservable;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -73,7 +72,7 @@ public class MidEnviarCorreoController {
 	}
 
 	private void initValues() {
-		code = Utility.crearCodigoRandomAlfaNumerico(6);
+		code = ProjectUtility.crearCodigoRandomAlfaNumerico(6);
 		seHaTerminado = new ValorObservable<Boolean>(false, (oldValue, newValue) -> {
 			Platform.runLater(() -> {
 				animarBox();

@@ -37,6 +37,14 @@ public abstract class Usuario implements Serializable {
 
 	public abstract TipoUsuario getTipoUsuario();
 
+	public boolean atributosLlenos() {
+		return id != null && nombre != null && contrasena != null && email != null && respuestaDeSeguridad != null;
+	}
+
+	public boolean tieneId(String id) {
+		return this.id.equals(id);
+	}
+
 	/**
 	 * Este metodo obtiene el nombre del usuario
 	 * 
@@ -91,6 +99,12 @@ public abstract class Usuario implements Serializable {
 
 	public void setRespuestaDeSeguridad(String respuestaDeSeguridad) {
 		this.respuestaDeSeguridad = respuestaDeSeguridad;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Usuario [id=%s, nombre=%s, contrasena=%s, email=%s, respuestaDeSeguridad=%s]", id, nombre,
+				contrasena, email, respuestaDeSeguridad);
 	}
 
 }

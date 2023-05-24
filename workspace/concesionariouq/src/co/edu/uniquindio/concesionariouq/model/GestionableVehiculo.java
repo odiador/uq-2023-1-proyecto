@@ -13,7 +13,7 @@ public interface GestionableVehiculo {
 			throws VehiculoYaExisteException, AtributosFaltantesException, NullException;
 
 	public void eliminarVehiculo(String id)
-			throws VehiculoNoExisteException, AtributosFaltantesException, NullException;
+			throws VehiculoNoExisteException, NullException;
 
 	public Vehiculo buscarVehiculo(String id);
 

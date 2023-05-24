@@ -2,11 +2,14 @@ package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 
+import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
 import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
 import co.edu.uniquindio.concesionariouq.exceptions.LoginFailedException;
 import co.edu.uniquindio.concesionariouq.exceptions.NullException;
@@ -23,10 +26,9 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	// ATRIBUTOS
 	private String nombre;
 	private String direccion;
-	private Map<String, Vehiculo> listaVehiculos;
+	private Set<Vehiculo> listaVehiculos;
 	private Map<String, Usuario> listaUsuarios;
 	private Map<String, Transaccion> listaTransacciones;
 
@@ -42,14 +44,14 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	public Concesionario(final String nombre, final String direccion) {
 		this.nombre = nombre;
 		this.direccion = direccion;
-		this.listaVehiculos = new HashMap<String, Vehiculo>();
+		this.listaVehiculos = new HashSet<Vehiculo>();
 		this.listaUsuarios = new HashMap<String, Usuario>();
 		this.listaTransacciones = new HashMap<String, Transaccion>();
 	}
 
 	@Override
 	public Vehiculo buscarVehiculo(String id) {
-		return listaVehiculos.getOrDefault(id, null);
+		return listaVehiculos.stream().filter(vehiculo -> vehiculo.tieneId(id)).findFirst().orElse(null);
 	}
 
 	@Override
@@ -58,14 +60,17 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	}
 
 	@Override
-	public void agregarVehiculo(String id, Vehiculo vehiculo) throws NullException, VehiculoYaExisteException {
+	public void agregarVehiculo(String id, Vehiculo vehiculo)
+			throws NullException, AtributosFaltantesException, VehiculoYaExisteException {
 		if (id == null)
 			throw new NullException("La identificacion enviada es null");
 		if (vehiculo == null)
 			throw new NullException("El vehiculo enviado es null");
+		if (!vehiculo.atributosLlenos())
+			throw new AtributosFaltantesException("Al vehiculo le hacen falta atributos por llenar");
 		if (validarVehiculo(id))
 			throw new VehiculoYaExisteException("El vehiculo con la identificacion " + id + " ya existe");
-		listaVehiculos.put(id, vehiculo);
+		listaVehiculos.add(vehiculo);
 	}
 
 	/**
@@ -76,21 +81,21 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	 * @throws ConcesionarioException
 	 */
 	public void eliminarVehiculo(String id) throws VehiculoNoExisteException {
-		if (!validarVehiculo(id))
+		Vehiculo vehiculo = buscarVehiculo(id);
+		if (vehiculo == null)
 			throw new VehiculoNoExisteException("El vehiculo con la placa " + id + " no existe");
-		listaVehiculos.remove(id);
+		listaVehiculos.remove(vehiculo);
 	}
 
 	/**
-	 * Lista los vehiculos del concesionario, como la lista de vehiculos es en
-	 * realidad un map, toca convertirlo a un set, y luego hacer un map para cambiar
-	 * el tipo de variable a vehiculo
+	 * Lista los vehiculos del concesionario, como es un set se pasa directamente a
+	 * una lista usando un stream
 	 * 
 	 * @return
 	 */
 	@Override
 	public List<Vehiculo> listarVehiculos() {
-		return listaVehiculos.entrySet().stream().map(Entry<String, Vehiculo>::getValue).collect(Collectors.toList());
+		return listaVehiculos.stream().collect(Collectors.toList());
 	}
 
 	/**
@@ -104,8 +109,9 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 		return buscarTransaccion(id) != null;
 	}
 
-	public Transaccion buscarTransaccion(String codigoTransaccion) {
-		return listaTransacciones.getOrDefault(codigoTransaccion, null);
+	@Override
+	public Transaccion buscarTransaccion(String id) {
+		return listaTransacciones.getOrDefault(id, null);
 	}
 
 	@Override
@@ -121,6 +127,7 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	 * @param codigo
 	 * @throws ConcesionarioException
 	 */
+	@Override
 	public void eliminarTransaccion(String codigo) throws TransaccionNoExisteException {
 		if (!validarTransaccion(codigo))
 			throw new TransaccionNoExisteException("La transaccion no existe, no se puede eliminar");

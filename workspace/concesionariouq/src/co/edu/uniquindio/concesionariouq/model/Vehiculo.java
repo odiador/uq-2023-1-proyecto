@@ -192,6 +192,10 @@ public abstract class Vehiculo implements Serializable {
 		this.tipo = tipo;
 	}
 
+	public boolean tieneId(String id) {
+		return this.id.equals(id);
+	}
+
 	/**
 	 * Determina si el cilindraje esta en un rango determinado
 	 * 

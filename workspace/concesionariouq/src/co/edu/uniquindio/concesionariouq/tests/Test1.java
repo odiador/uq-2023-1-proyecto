@@ -3,6 +3,7 @@ package co.edu.uniquindio.concesionariouq.tests;
 import org.junit.Before;
 import org.junit.Test;
 
+import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
 import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
@@ -18,7 +19,7 @@ public class Test1 {
 	Concesionario concesionario = new Concesionario("Nombre", "id");
 
 	@Before
-	public void test() throws NullException, VehiculoYaExisteException {
+	public void test() throws NullException, VehiculoYaExisteException, AtributosFaltantesException {
 		concesionario.agregarVehiculo("AAAA", new Moto("AAAA", "mazda", "2020", 200d, 200d, new Gasolina(),
 				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
 		concesionario.agregarVehiculo("XG", new Deportivo("XG", "mazda", "2020", 200d, 200d, new Gasolina(),

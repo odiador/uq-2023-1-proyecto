@@ -13,6 +13,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
 import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
@@ -28,7 +29,7 @@ import co.edu.uniquindio.concesionariouq.util.ProjectUtility;
 
 public class TestPdfs {
 	@Test
-	public void testGenerarPdf() throws NullException, VehiculoYaExisteException {
+	public void testGenerarPdf() throws NullException, VehiculoYaExisteException, AtributosFaltantesException {
 		Concesionario concesionario = new Concesionario("", "");
 		concesionario.agregarVehiculo("AAAA", new Moto("AAAA", "mazda", "2020", 200d, 200d, new Gasolina(),
 				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));

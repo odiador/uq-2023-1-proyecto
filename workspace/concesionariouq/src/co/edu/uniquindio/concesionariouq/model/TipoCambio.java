@@ -1,5 +1,10 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
 public enum TipoCambio {
 	MANUAL("Manual"), AUTOMATICO("Automatico");
 
@@ -44,5 +49,26 @@ public enum TipoCambio {
 
 		return null;
 
+	}
+	
+	/**
+	 * Retorna una lista con los valores String de cada tipo de cambio.
+	 * @return
+	 */
+	public static List<String> getTipos(){
+		List<String> tipos = new ArrayList<>();
+		for (TipoCambio tipo : getValues()) {
+			tipos.add(tipo.getText());
+		}
+		return tipos;
+	}
+	
+	/**
+	 * Retorna una lista con cada uno de los tipos de cambio.
+	 * @return
+	 */
+	public static List<TipoCambio> getValues(){
+		List<TipoCambio> lista = Arrays.asList(values());
+		return lista;
 	}
 }

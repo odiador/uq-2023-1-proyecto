@@ -20,16 +20,18 @@
          <center>
             <VBox id="panelIzq" alignment="TOP_CENTER" minWidth="50.0" stylesheets="@sources/application.css" BorderPane.alignment="CENTER">
                <children>
+                  <Separator prefWidth="200.0" />
+                  <Label text="Gestión de" textFill="WHITE" textOverrun="CLIP" />
                   <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#agregarMenuEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../resources/images/Agregar.png" />
                                  </image>
                               </ImageView>
-                              <Label ellipsisString="" text="Agregar" textFill="WHITE" textOverrun="CLIP" />
+                              <Label ellipsisString="" text="Vehiculos" textFill="WHITE" textOverrun="CLIP" />
                            </children>
                         </HBox>
                      </graphic>
@@ -38,12 +40,12 @@
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../resources/images/Eliminar.png" />
                                  </image>
                               </ImageView>
-                              <Label ellipsisString="" text="Eliminar" textFill="WHITE" textOverrun="CLIP" />
+                              <Label ellipsisString="" text="Empleados" textFill="WHITE" textOverrun="CLIP" />
                            </children>
                         </HBox>
                      </graphic>
@@ -52,12 +54,12 @@
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../resources/images/Vender.png" />
                                  </image>
                               </ImageView>
-                              <Label ellipsisString="" text="Vender" textFill="WHITE" textOverrun="CLIP" />
+                              <Label ellipsisString="" text="Clientes" textFill="WHITE" textOverrun="CLIP" />
                            </children>
                         </HBox>
                      </graphic>
@@ -66,12 +68,12 @@
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../resources/images/Comprar.png" />
                                  </image>
                               </ImageView>
-                              <Label ellipsisString="" text="Comprar" textFill="WHITE" textOverrun="CLIP" />
+                              <Label ellipsisString="" text="Reportes" textFill="WHITE" textOverrun="CLIP" />
                            </children>
                         </HBox>
                      </graphic>
@@ -80,7 +82,7 @@
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../resources/images/Alquilar.png" />
                                  </image>
@@ -94,7 +96,7 @@
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../resources/images/Reportes.png" />
                                  </image>
@@ -108,7 +110,7 @@
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fx:id="imgMenuBarra" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgMenuBarra" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../resources/images/Candado%20Libre.png" />
                                  </image>
@@ -139,6 +141,7 @@
          <bottom>
             <Pane styleClass="btnsPrincipales">
                <children>
+                  <Separator prefWidth="200.0" />
                   <ImageView fx:id="imgLogo" fitHeight="118.0" fitWidth="200.0" onMouseEntered="#homeEnteredEvent" onMouseExited="#homeExitedEvent" onMousePressed="#homeEvent" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
                         <Image url="@../../../../../resources/images/Whitelogowoutbg.png" />
@@ -155,7 +158,7 @@
          <center>
             <HBox fx:id="homePane" alignment="CENTER" style="-fx-background-color: white;">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                  <ImageView fx:id="imgLogoHome" fitHeight="200.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
                         <Image url="@../../../../../resources/images/logo.png" />
                      </image>

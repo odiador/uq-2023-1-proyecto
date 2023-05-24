@@ -4,8 +4,10 @@ import java.io.IOException;
 
 import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
+import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,6 +30,9 @@ public class MenuPrincipalController {
 
 	@FXML
 	private ImageView imgLogo;
+
+	@FXML
+	private ImageView imgLogoHome;
 
 	@FXML
 	private ImageView imgUsuario;
@@ -63,6 +68,26 @@ public class MenuPrincipalController {
 	void initialize() {
 		imgLogo.fitHeightProperty().bind(menuPane.widthProperty().multiply(0.6));
 		imgUsuario.fitHeightProperty().bind(menuPane.widthProperty().subtract(15));
+		crearAnimacionLogoHome();
+	}
+
+	private void crearAnimacionLogoHome() {
+		imgLogoHome.fitHeightProperty().set(200);
+		ScaleTransition transicion = new ScaleTransition(Duration.millis(5000), imgLogoHome);
+		transicion.setToX(1.2f);
+		transicion.setToY(1.2f);
+		Interpolator interpolation = new Interpolator() {
+
+			@Override
+			protected double curve(double t) {
+				return 0.5 * (1 - Math.cos(t * Math.PI));
+			}
+		};
+
+		transicion.setInterpolator(interpolation);
+		transicion.setCycleCount(-1);
+		transicion.setAutoReverse(true);
+		transicion.play();
 	}
 
 	@FXML
@@ -166,6 +191,7 @@ public class MenuPrincipalController {
 	private void homeEnteredAction() {
 		setLogoImage("/resources/images/Casa.png");
 	}
+
 	@FXML
 	void homeExitedEvent(MouseEvent event) {
 		homeExitedAction();

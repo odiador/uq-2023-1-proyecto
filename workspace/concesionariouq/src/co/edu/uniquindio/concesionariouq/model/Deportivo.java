@@ -7,12 +7,12 @@ public class Deportivo extends Automovil {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected Integer numeroCaballosFuerza;
-	protected Integer tiempoAlcanza100Kmh; // podria ser Double por los segundos
+	protected Double tiempoAlcanza100Kmh;
 
 	/**
-	 * Es el constructor del Deportivo
+	 * Es el constructor de la clase {@link Deportivo}
 	 * 
-	 * @param placa
+	 * @param id
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -26,15 +26,18 @@ public class Deportivo extends Automovil {
 	 * @param numeroCaballosFuerza
 	 * @param tiempoAlcanza100Kmh
 	 */
-	public Deportivo(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+	public Deportivo(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
-			Integer numeroBolsasAire, Integer numeroPuertas, Integer numeroCaballosFuerza,
-			Integer tiempoAlcanza100Kmh) {
-		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+			Integer numeroBolsasAire, Integer numeroPuertas, Integer numeroCaballosFuerza, Double tiempoAlcanza100Kmh) {
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
 				numeroBolsasAire, numeroPuertas);
 		this.numeroCaballosFuerza = numeroCaballosFuerza;
 		this.tiempoAlcanza100Kmh = tiempoAlcanza100Kmh;
-		setTipoVehiculo(TipoVehiculo.DEPORTIVO);
+	}
+
+	@Override
+	public boolean atributosLlenos() {
+		return super.atributosLlenos() && numeroCaballosFuerza != null && tiempoAlcanza100Kmh != null;
 	}
 
 	/**
@@ -60,7 +63,7 @@ public class Deportivo extends Automovil {
 	 *
 	 * @return
 	 */
-	public Integer getTiempoAlcanza100Kmh() {
+	public Double getTiempoAlcanza100Kmh() {
 		return tiempoAlcanza100Kmh;
 	}
 
@@ -69,16 +72,21 @@ public class Deportivo extends Automovil {
 	 * 
 	 * @param tiempoAlcanza100Kmh
 	 */
-	public void setTiempoAlcanza100Kmh(final Integer tiempoAlcanza100Kmh) {
+	public void setTiempoAlcanza100Kmh(final Double tiempoAlcanza100Kmh) {
 		this.tiempoAlcanza100Kmh = tiempoAlcanza100Kmh;
+	}
+
+	@Override
+	public TipoVehiculo getTipoVehiculo() {
+		return TipoVehiculo.DEPORTIVO;
 	}
 
 	@Override
 	public String toString() {
 		return String.format(
-				"Deportivo [numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, numeroCaballosFuerza=%s, tiempoAlcanza100Kmh=%s]",
-				numeroPasajeros, numeroBolsasAire, numeroPuertas, placa, marca, modelo, cilindraje, velocidadMaxima,
-				combustible, estado, tipo, tipoVehiculo, numeroCaballosFuerza, tiempoAlcanza100Kmh);
+				"Deportivo [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, numeroCaballosFuerza=%s, tiempoAlcanza100Kmh=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, numeroCaballosFuerza, tiempoAlcanza100Kmh);
 	}
 
 }

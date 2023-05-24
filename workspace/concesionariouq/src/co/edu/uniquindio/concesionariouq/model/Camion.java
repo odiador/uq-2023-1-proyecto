@@ -2,8 +2,6 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Camion extends Vehiculo {
 
-	// ATRIBUTOS
-
 	/**
 	 * 
 	 */
@@ -13,12 +11,12 @@ public class Camion extends Vehiculo {
 	protected Boolean tieneFrenosAire;
 	protected Boolean tieneABS;
 	protected Integer numeroEjes;
-	protected String tipoCamion; // El tipo de tipoCamion es provicional. Deberia ser un Enum
+	protected String tipoCamion;
 
 	/**
-	 * Es el constructor de la clase camión
+	 * Es el constructor de la clase {@link Camion}
 	 * 
-	 * @param placa
+	 * @param id
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -33,19 +31,23 @@ public class Camion extends Vehiculo {
 	 * @param tieneABS
 	 * @param tipoCamion
 	 */
-	public Camion(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+	public Camion(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Double capacidadCarga,
 			Boolean tieneAireAcondicionado, Boolean tieneFrenosAire, Integer numeroEjes, Boolean tieneABS,
 			String tipoCamion) {
-		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
-
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
 		this.capacidadCarga = capacidadCarga;
 		this.tieneAireAcondicionado = tieneAireAcondicionado;
 		this.tieneFrenosAire = tieneFrenosAire;
 		this.numeroEjes = numeroEjes;
 		this.tieneABS = tieneABS;
 		this.tipoCamion = tipoCamion;
-		setTipoVehiculo(TipoVehiculo.CAMION);
+	}
+
+	@Override
+	public boolean atributosLlenos() {
+		return super.atributosLlenos() && capacidadCarga != null && tieneAireAcondicionado != null
+				&& tieneFrenosAire != null && numeroEjes != null && tieneABS != null && tipoCamion != null;
 	}
 
 	/**
@@ -157,10 +159,16 @@ public class Camion extends Vehiculo {
 	}
 
 	@Override
+	public TipoVehiculo getTipoVehiculo() {
+		return TipoVehiculo.CAMION;
+	}
+
+	@Override
 	public String toString() {
 		return String.format(
-				"Camion [placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, capacidadCarga=%s, tieneAireAcondicionado=%s, tieneFrenosAire=%s, tieneABS=%s, numeroEjes=%s, tipoCamion=%s]",
-				placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, tipoVehiculo,
-				capacidadCarga, tieneAireAcondicionado, tieneFrenosAire, tieneABS, numeroEjes, tipoCamion);
+				"Camion [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, capacidadCarga=%s, tieneAireAcondicionado=%s, tieneFrenosAire=%s, tieneABS=%s, numeroEjes=%s, tipoCamion=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, capacidadCarga,
+				tieneAireAcondicionado, tieneFrenosAire, tieneABS, numeroEjes, tipoCamion);
 	}
+
 }

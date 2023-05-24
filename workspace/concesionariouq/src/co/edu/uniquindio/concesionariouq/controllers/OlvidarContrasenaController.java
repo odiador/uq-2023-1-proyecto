@@ -57,7 +57,7 @@ public class OlvidarContrasenaController {
 		FXMLLoader loader = new FXMLLoader();
 		String text = txtIdentificacion.getText();
 		MidEnviarCorreoController controller = new MidEnviarCorreoController(
-				new Cliente(text, text, text, "juanm.amadorr@uqvirtual.edu.co"));
+				new Cliente(text, text, text, "juanm.amadorr@uqvirtual.edu.co", ""));
 		loader.setLocation(getClass().getResource("../view/panelMidEnviarCorreo.fxml"));
 		loader.setController(controller);
 		try {

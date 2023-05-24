@@ -9,9 +9,9 @@ public class Camioneta extends Sedan {
 	protected Boolean es4x4;
 
 	/**
-	 * Es el constructor de la clase Camioneta
+	 * Es el constructor de la clase {@link Camioneta}
 	 * 
-	 * @param placa
+	 * @param id
 	 * @param marca
 	 * @param modelo
 	 * @param cilindraje
@@ -32,17 +32,21 @@ public class Camioneta extends Sedan {
 	 * @param tieneAsistentePermanencia
 	 * @param es4x4
 	 */
-	public Camioneta(String placa, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
+	public Camioneta(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
 			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
 			Boolean tieneABS, Double capacidadMaletero, Boolean tieneVelocidadCrucero, Boolean tieneSensorColision,
 			Boolean tieneSensorTrafico, Boolean tieneAsistentePermanencia, Boolean es4x4) {
-		super(placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
 				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
 				capacidadMaletero, tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico,
 				tieneAsistentePermanencia);
 		this.es4x4 = es4x4;
-		setTipoVehiculo(TipoVehiculo.CAMIONETA);
+	}
+
+	@Override
+	public boolean atributosLlenos() {
+		return super.atributosLlenos() && es4x4 != null;
 	}
 
 	/**
@@ -64,13 +68,17 @@ public class Camioneta extends Sedan {
 	}
 
 	@Override
-	public String toString() {
-		return String.format(
-				"Camioneta [tieneVelocidadCrucero=%s, tieneSensorColision=%s, tieneSensorTrafico=%s, tieneAsistentePermanencia=%s, capacidadMaletero=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, placa=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, tipoVehiculo=%s, es4x4=%s]",
-				tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico, tieneAsistentePermanencia,
-				capacidadMaletero, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, numeroPasajeros,
-				numeroBolsasAire, numeroPuertas, placa, marca, modelo, cilindraje, velocidadMaxima, combustible, estado,
-				tipo, tipoVehiculo, es4x4);
+	public TipoVehiculo getTipoVehiculo() {
+		return TipoVehiculo.CAMIONETA;
 	}
 
+	@Override
+	public String toString() {
+		return String.format(
+				"Camioneta [id=%s, marca=%s, modelo=%s, cilindraje=%s, velocidadMaxima=%s, combustible=%s, estado=%s, tipo=%s, numeroPasajeros=%s, numeroBolsasAire=%s, numeroPuertas=%s, tieneAireAcondicionado=%s, tieneCamaraReversa=%s, tieneABS=%s, capacidadMaletero=%s, tieneVelocidadCrucero=%s, tieneSensorColision=%s, tieneSensorTrafico=%s, tieneAsistentePermanencia=%s, es4x4=%s]",
+				id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
+				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
+				capacidadMaletero, tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico,
+				tieneAsistentePermanencia, es4x4);
+	}
 }

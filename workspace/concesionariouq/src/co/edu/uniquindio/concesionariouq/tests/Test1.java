@@ -1,42 +1,36 @@
 package co.edu.uniquindio.concesionariouq.tests;
 
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
+import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
+import co.edu.uniquindio.concesionariouq.exceptions.NullException;
+import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
+import co.edu.uniquindio.concesionariouq.model.Deportivo;
 import co.edu.uniquindio.concesionariouq.model.Diesel;
 import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.Gasolina;
+import co.edu.uniquindio.concesionariouq.model.Moto;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
-import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 import co.edu.uniquindio.concesionariouq.util.Utility;
 
 public class Test1 {
 	Concesionario concesionario = new Concesionario("Nombre", "id");
 
 	@Before
-	public void test() throws ConcesionarioException {
-		concesionario.agregarMoto("AAAA", "mazda", "2020", 200d, 200d, new Gasolina(), EstadoVehiculo.NUEVO,
-				TipoCambio.AUTOMATICO);
-		concesionario.agregarDeportivo("XG", "mazda", "2020", 1000d, 100d, new Gasolina(), EstadoVehiculo.NUEVO,
-				TipoCambio.MANUAL, 5, 2, 3, 40, 4);
-		concesionario.agregarMoto("ASAAS", "maxda", "2020", 200d, 200d, new Gasolina(), EstadoVehiculo.NUEVO,
-				TipoCambio.AUTOMATICO);
-		concesionario.agregarMoto("AAAV", "mazda", "2020", 200d, 200d, new Gasolina(), EstadoVehiculo.NUEVO,
-				TipoCambio.AUTOMATICO);
-		concesionario.agregarMoto("AAAZ", "mazda", "2020", 200d, 200d, new Diesel(), EstadoVehiculo.NUEVO,
-				TipoCambio.AUTOMATICO);
+	public void test() throws NullException, VehiculoYaExisteException, AtributosFaltantesException {
+		concesionario.agregarVehiculo("AAAA", new Moto("AAAA", "mazda", "2020", 200d, 200d, new Gasolina(),
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+		concesionario.agregarVehiculo("XG", new Deportivo("XG", "mazda", "2020", 200d, 200d, new Gasolina(),
+				EstadoVehiculo.NUEVO, TipoCambio.MANUAL, 5, 2, 3, 40, 4d));
+		concesionario.agregarVehiculo("ASAAS", new Moto("ASAAS", "mazda", "2020", 200d, 200d, new Gasolina(),
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+		concesionario.agregarVehiculo("AAAZ", new Moto("AAAZ", "mazda", "2020", 200d, 200d, new Diesel(),
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+		concesionario.agregarVehiculo("AAAV", new Moto("AAAV", "mazda", "2020", 200d, 200d, new Diesel(),
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
 		System.out.println(concesionario.listarVehiculos());
-	}
-
-	@Test
-	public void testFiltros() throws ConcesionarioException {
-		List<? extends Vehiculo> lista = concesionario.listarVehiculos();
-		lista.stream().map(v -> v.getTipoVehiculo().getTipo() + " [" + v.getPlaca() + "]").forEach(System.out::println);
-		System.err.println("----------------");
 	}
 
 	@Test

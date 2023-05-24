@@ -32,6 +32,11 @@ public class Cliente extends Usuario implements GestionableVehiculo {
 		this.listaVehiculos = new HashMap<String, Vehiculo>();
 	}
 
+	@Override
+	public boolean atributosLlenos() {
+		return super.atributosLlenos() && listaVehiculos != null;
+	}
+
 	public boolean validarVehiculo(String id) {
 		return listaVehiculos.containsKey(id);
 	}
@@ -72,6 +77,13 @@ public class Cliente extends Usuario implements GestionableVehiculo {
 	@Override
 	public TipoUsuario getTipoUsuario() {
 		return TipoUsuario.CLIENTE;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Cliente [id=%s, nombre=%s, contrasena=%s, email=%s, respuestaDeSeguridad=%s, listaVehiculos=%s]", id,
+				nombre, contrasena, email, respuestaDeSeguridad, listaVehiculos);
 	}
 
 }

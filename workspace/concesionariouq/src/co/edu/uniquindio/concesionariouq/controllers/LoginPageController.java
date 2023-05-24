@@ -87,7 +87,7 @@ public class LoginPageController {
 	private void loginAction() {
 		FXMLLoader loader = new FXMLLoader();
 		MenuPrincipalController controller = new MenuPrincipalController(
-				new Dueno("10", "Juan", "1234", "juanm.amadorr@uqvirtual.edu.co", ""));
+				new Dueno("10", "Juan", "1234", "juanm.amadorr@uqvirtual.edu.co", "", true));
 		loader.setController(controller);
 		loader.setLocation(getClass().getResource("../view/panelPrincipal.fxml"));
 		try {

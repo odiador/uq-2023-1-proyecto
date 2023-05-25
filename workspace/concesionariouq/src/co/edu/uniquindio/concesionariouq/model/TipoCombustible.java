@@ -1,5 +1,8 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum TipoCombustible {
 	ELECTRICO("Electrico"), GASOLINA("Gasolina"), HIBRIDO("Hibrido"), DIESEL("Diesel");
 
@@ -42,5 +45,14 @@ public enum TipoCombustible {
 			if (tipoCombustible.getText().equals(text))
 				return tipoCombustible;
 		return null;
+	}
+	
+	/**
+	 * Retorna una lista con cada uno de los tipos de gasofa.
+	 * @return
+	 */
+	public static List<TipoCombustible> getValues(){
+		List<TipoCombustible> lista = Arrays.asList(values());
+		return lista;
 	}
 }

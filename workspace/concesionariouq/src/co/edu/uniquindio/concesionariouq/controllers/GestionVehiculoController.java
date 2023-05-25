@@ -3,10 +3,10 @@ package co.edu.uniquindio.concesionariouq.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
+import co.edu.uniquindio.concesionariouq.model.TipoCombustible;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
-import co.edu.uniquindio.concesionariouq.view.clasificaciones.TipoCombustible;
-import co.edu.uniquindio.concesionariouq.view.clasificaciones.TipoEstado;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -46,7 +46,7 @@ public class GestionVehiculoController {
     private TableColumn<Vehiculo, String> colModelo;
 
     @FXML
-    private ComboBox<TipoEstado> cajaEstado;
+    private ComboBox<EstadoVehiculo> cajaEstado;
 
     @FXML
     private TableColumn<Vehiculo, String> colId;
@@ -85,7 +85,7 @@ public class GestionVehiculoController {
     void initialize() {
     	cajaCambios.setItems(FXCollections.observableList(TipoCambio.getValues()));
     	cajaCombustible.setItems(FXCollections.observableList(TipoCombustible.getValues()));
-    	cajaEstado.setItems(FXCollections.observableList(TipoEstado.getValues()));
+    	cajaEstado.setItems(FXCollections.observableList(EstadoVehiculo.getValues()));
     	
     	//colId.setCellValueFactory(e -> ReadOnlyStringWrapper(e.getValue().getI));
     	colMarca.setCellValueFactory(e ->new ReadOnlyStringWrapper(e.getValue().getMarca()));

@@ -117,7 +117,7 @@ public class MainControlller {
 
 	private void ejecutarAnimacionSalida() {
 		EventHandler<ActionEvent> evento = event -> irAMain();
-		new Timeline(new KeyFrame(Duration.millis(1500), evento)).play();
+		new Timeline(new KeyFrame(Duration.millis(100), evento)).play();
 	}
 
 	private void irAMain() {

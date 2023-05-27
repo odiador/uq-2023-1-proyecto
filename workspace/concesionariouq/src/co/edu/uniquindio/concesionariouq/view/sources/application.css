@@ -10,7 +10,7 @@
 	-fx-font-weight: bold;
 	-fx-text-fill: white;
 	-fx-background-radius: 0.0;
-	-fx-font-size: 1.2em;
+	-fx-font-size: 1.5em;
 }
 
 .btnsPrincipales:hover{
@@ -31,7 +31,12 @@
 	-fx-background-color: black;
 }
 
-.separator {
-	-fx-background-color: red;
-	-fx-background-radius: 2;
+.separator .line{
+	-fx-border-color: null;
+	-fx-background-color: #ce3126;
+	-fx-pref-height: 1;
+}
+.split-pane-divider {
+	-fx-background-color: #ce3126;
+	-fx-pref-width: 2;
 }

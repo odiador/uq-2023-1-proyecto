@@ -16,6 +16,7 @@ public class Main extends Application {
 			loader.setController(new MainControlller());
 			Scene scene = new Scene(loader.load(), 1000, 600);
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Concesionario UQ");
 			primaryStage.getIcons().add(new Image("/resources/images/Logo Window.png"));
 			primaryStage.show();
 		} catch (Exception e) {

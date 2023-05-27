@@ -15,6 +15,10 @@ public class ValorObservable<V> {
 		this(null, consumer);
 	}
 
+	public ValorObservable() {
+		this(null, null);
+	}
+
 	/**
 	 * @return the value
 	 */
@@ -28,6 +32,7 @@ public class ValorObservable<V> {
 	public void setValue(V value) {
 		V aux = this.value;
 		this.value = value;
-		consumer.accept(aux, this.value);
+		if (consumer != null)
+			consumer.accept(aux, this.value);
 	}
 }

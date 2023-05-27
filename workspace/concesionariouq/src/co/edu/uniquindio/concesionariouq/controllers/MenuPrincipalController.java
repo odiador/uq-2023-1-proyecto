@@ -4,44 +4,47 @@ import java.io.IOException;
 
 import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
+import co.edu.uniquindio.concesionariouq.util.ValorObservable;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 public class MenuPrincipalController {
 
 	@FXML
-	private HBox homePane;
-
-	@FXML
 	private ImageView imgLogo;
-
-	@FXML
-	private ImageView imgLogoHome;
 
 	@FXML
 	private ImageView imgUsuario;
 
 	@FXML
-	private ImageView imgMenuBarra;
+	private HBox homePane;
+
+	@FXML
+	private ImageView imgLogoHome;
 
 	@FXML
 	private BorderPane menuPane;
+
+	@FXML
+	private ImageView imgMenuBarra;
 
 	@FXML
 	private SplitPane mainPane;
@@ -52,9 +55,130 @@ public class MenuPrincipalController {
 	@FXML
 	private Label labelNombre;
 
+	@FXML
+	private ImageView imgDetalleEmpleado;
+
+	@FXML
+	private VBox boxDetalleEmpleado;
+
+	@FXML
+	void initialize() {
+		imgLogo.fitHeightProperty().bind(menuPane.widthProperty().subtract(15));
+		crearAnimacionLogoHome();
+		Interpolator interpolacion = new Interpolator() {
+
+			@Override
+			protected double curve(double t) {
+				return 0.6 * Math.sin(4.334 * t - 2.18) + 0.5;
+			}
+		};
+
+		transicion3 = new Timeline(new KeyFrame(Duration.millis(200)));
+		transition = new RotateTransition(Duration.millis(200), imgDetalleEmpleado);
+		transition.setInterpolator(interpolacion);
+
+		transicion2 = new ScaleTransition(Duration.millis(200), boxDetalleEmpleado);
+		estaActivada = new ValorObservable<>(false, (oldValue, newValue) -> {
+			transition.setToAngle(estaActivada.getValue() ? 0 : 180);
+			transicion2.setByY(estaActivada.getValue() ? 1 : -1);
+
+			transicion3 = new Timeline(new KeyFrame(Duration.millis(200),
+					new KeyValue(boxDetalleEmpleado.prefHeightProperty(), (estaActivada.getValue() ? 200 : 0))));
+			transicion3.setOnFinished(v -> status--);
+		});
+		transition.setOnFinished(v -> status--);
+		transicion2.setOnFinished(v -> status--);
+	}
+
+	@FXML
+	void accionarDetalleEvent(ActionEvent event) {
+		accionarDetalleEmpleado();
+	}
+
+	@FXML
+	void extenderMenuEvent(MouseEvent event) {
+		extenderMenuAction();
+	}
+
+	@FXML
+	void contraerMenuEvent(MouseEvent event) {
+		contraerMenuAction();
+	}
+
+	@FXML
+	void agregarMenuEvent(ActionEvent event) {
+		agregarMenuAction();
+	}
+
+	@FXML
+	void gestionVehiculosEvent(ActionEvent event) {
+		EliminarGeneralController controller = new EliminarGeneralController(contentPane, empleado);
+		cambiarContentPane("../view/panelAddDelete.fxml", controller);
+	}
+
+	@FXML
+	void gestionEmpleadosEvent(ActionEvent event) {
+
+	}
+
+	@FXML
+	void gestionClientesEvent(ActionEvent event) {
+
+	}
+
+	@FXML
+	void gestionReportesEvent(ActionEvent event) {
+
+	}
+
+	@FXML
+	void homeEvent(MouseEvent event) {
+		homeAction();
+	}
+
+	@FXML
+	void homeEnteredEvent(MouseEvent event) {
+		homeEnteredAction();
+	}
+
+	@FXML
+	void homeExitedEvent(MouseEvent event) {
+		homeExitedAction();
+	}
+
+	@FXML
+	void bloquearBarraEvent(ActionEvent event) {
+		bloquearBarraAction();
+	}
+
+	@FXML
+	void cambiarContrasenaEvent(ActionEvent event) {
+
+	}
+
+	@FXML
+	void cerrarSesionEvent(ActionEvent event) {
+
+	}
+
+	@FXML
+	void eliminarCuentaEvent(ActionEvent event) {
+
+	}
+
 	private boolean barraBloqueada;
 
 	private Empleado empleado;
+
+	private int status = 0;
+
+	private ValorObservable<Boolean> estaActivada;
+
+	private RotateTransition transition;
+
+	private ScaleTransition transicion2;
+
+	private Timeline transicion3;
 
 	public MenuPrincipalController(Empleado empleado) {
 		this.empleado = empleado;
@@ -62,13 +186,6 @@ public class MenuPrincipalController {
 
 	public void updateNameField() {
 		labelNombre.setText(empleado.getNombre());
-	}
-
-	@FXML
-	void initialize() {
-		imgLogo.fitHeightProperty().bind(menuPane.widthProperty().multiply(0.6));
-		imgUsuario.fitHeightProperty().bind(menuPane.widthProperty().subtract(15));
-		crearAnimacionLogoHome();
 	}
 
 	private void crearAnimacionLogoHome() {
@@ -90,11 +207,6 @@ public class MenuPrincipalController {
 		transicion.play();
 	}
 
-	@FXML
-	void extenderMenuEvent(MouseEvent event) {
-		extenderMenuAction();
-	}
-
 	private void extenderMenuAction() {
 		if (!barraBloqueada) {
 			cambiarMenuTam(1);
@@ -111,9 +223,14 @@ public class MenuPrincipalController {
 		});
 	}
 
-	@FXML
-	void contraerMenuEvent(MouseEvent event) {
-		contraerMenuAction();
+	public void accionarDetalleEmpleado() {
+		if (status <= 0) {
+			estaActivada.setValue(!estaActivada.getValue());
+			status = 3;
+			transicion3.play();
+			transicion2.play();
+			transition.play();
+		}
 	}
 
 	private void contraerMenuAction() {
@@ -121,11 +238,6 @@ public class MenuPrincipalController {
 			cambiarMenuTam(-1);
 			labelNombre.setVisible(false);
 		}
-	}
-
-	@FXML
-	void agregarMenuEvent(ActionEvent event) {
-		agregarMenuAction();
 	}
 
 	private void agregarMenuAction() {
@@ -144,57 +256,12 @@ public class MenuPrincipalController {
 		}
 	}
 
-	@FXML
-	void eliminarEvent(ActionEvent event) {
-		eliminarAction();
-	}
-
-	private void eliminarAction() {
-		EliminarGeneralController controller = new EliminarGeneralController(contentPane, empleado);
-		cambiarContentPane("../view/panelAddDelete.fxml", controller);
-	}
-
-	@FXML
-	void venderEvent(ActionEvent event) {
-
-	}
-
-	@FXML
-	void comprarEvent(ActionEvent event) {
-
-	}
-
-	@FXML
-	void alquilarEvent(ActionEvent event) {
-
-	}
-
-	@FXML
-	void reportesEvent(ActionEvent event) {
-
-	}
-
-	@FXML
-	void homeEvent(MouseEvent event) {
-		homeAction();
-	}
-
 	private void homeAction() {
 		contentPane.setCenter(homePane);
 	}
 
-	@FXML
-	void homeEnteredEvent(MouseEvent event) {
-		homeEnteredAction();
-	}
-
 	private void homeEnteredAction() {
 		setLogoImage("/resources/images/Casa.png");
-	}
-
-	@FXML
-	void homeExitedEvent(MouseEvent event) {
-		homeExitedAction();
 	}
 
 	private void homeExitedAction() {
@@ -203,11 +270,6 @@ public class MenuPrincipalController {
 
 	private void setLogoImage(String route) {
 		imgLogo.setImage(new Image(route));
-	}
-
-	@FXML
-	void bloquearBarraEvent(ActionEvent event) {
-		bloquearBarraAction();
 	}
 
 	private void bloquearBarraAction() {
@@ -231,5 +293,4 @@ public class MenuPrincipalController {
 			contraerMenuAction();
 		}
 	}
-
 }

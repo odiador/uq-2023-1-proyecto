@@ -22,16 +22,50 @@ public class LoginPageController {
 	@FXML
 	private TextField txtIdentificacion;
 
-	private String id;
-
 	@FXML
 	void contrasenaOlvidadaEvent(ActionEvent event) {
-
+		contrasenaOlvidadaAction();
 	}
 
 	@FXML
 	void registrarEvent(ActionEvent event) {
 		registrarAction();
+	}
+
+	@FXML
+	void loginEvent(ActionEvent event) {
+		loginAction();
+	}
+
+	@FXML
+	void cerrarEvent(ActionEvent event) {
+		cerrarAction();
+	}
+
+	@FXML
+	void initialize() {
+		txtIdentificacion.setText(id == null ? "" : id);
+	}
+
+	private String id;
+
+	public LoginPageController(String id) {
+		this.id = id;
+	}
+
+	public LoginPageController() {
+	}
+
+	private void contrasenaOlvidadaAction() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setController(new OlvidarContrasenaController(txtIdentificacion.getText()));
+		loader.setLocation(getClass().getResource("../view/panelCorreoRecuperacion.fxml"));
+		try {
+			Stage stage = (Stage) mainPane.getScene().getWindow();
+			stage.setScene(new Scene(loader.load()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void registrarAction() {
@@ -50,15 +84,10 @@ public class LoginPageController {
 		}
 	}
 
-	@FXML
-	void loginEvent(ActionEvent event) {
-		loginAction();
-	}
-
 	private void loginAction() {
 		FXMLLoader loader = new FXMLLoader();
 		MenuPrincipalController controller = new MenuPrincipalController(
-				new Dueno("10", "Juan", "1234", "juanm.amadorr@uqvirtual.edu.co"));
+				new Dueno("10", "Juan", "1234", "juanm.amadorr@uqvirtual.edu.co", "", true));
 		loader.setController(controller);
 		loader.setLocation(getClass().getResource("../view/panelPrincipal.fxml"));
 		try {
@@ -74,25 +103,8 @@ public class LoginPageController {
 		}
 	}
 
-	@FXML
-	void cerrarEvent(ActionEvent event) {
-		cerrarAction();
-	}
-
 	private void cerrarAction() {
 		((Stage) mainPane.getScene().getWindow()).close();
-	}
-
-	@FXML
-	void initialize() {
-		txtIdentificacion.setText(id == null ? "" : id);
-	}
-
-	public LoginPageController(String id) {
-		this.id = id;
-	}
-
-	public LoginPageController() {
 	}
 
 }

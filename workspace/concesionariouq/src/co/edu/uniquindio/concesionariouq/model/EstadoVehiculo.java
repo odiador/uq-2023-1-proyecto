@@ -1,5 +1,8 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum EstadoVehiculo {
 	NUEVO("Nuevo"), USADO("Usado");
 
@@ -43,5 +46,14 @@ public enum EstadoVehiculo {
 
 		return null;
 
+	}
+	
+	/**
+	 * Retorna una lista con cada uno de los tipos de estado.
+	 * @return
+	 */
+	public static List<EstadoVehiculo> getValues(){
+		List<EstadoVehiculo> lista = Arrays.asList(values());
+		return lista;
 	}
 }

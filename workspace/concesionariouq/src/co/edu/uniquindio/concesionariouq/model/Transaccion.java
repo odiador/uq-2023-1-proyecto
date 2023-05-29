@@ -1,20 +1,16 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import co.edu.uniquindio.concesionariouq.exceptions.ConcesionarioException;
-
-public class Transaccion implements Serializable{
+public class Transaccion implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	// ATRIBUTOS
+
 	private String codigo;
-	private List<DetalleTransaccion> listaDetalleTransacciones;
+	private Vehiculo vehiculo;
 
 	/**
 	 * Este es el constructor vacio de la clase
@@ -28,9 +24,17 @@ public class Transaccion implements Serializable{
 	 * 
 	 * @param codigo
 	 */
-	public Transaccion(final String codigo) {
+	public Transaccion(final String codigo, final Vehiculo vehiculo) {
 		this.codigo = codigo;
-		this.listaDetalleTransacciones = new ArrayList<DetalleTransaccion>();
+		this.vehiculo = vehiculo;
+	}
+
+	public boolean atributosLlenos() {
+		return codigo != null && vehiculo != null;
+	}
+
+	public boolean tieneCodigo(String codigo) {
+		return this.codigo.equals(codigo);
 	}
 
 	/**
@@ -52,62 +56,47 @@ public class Transaccion implements Serializable{
 	}
 
 	/**
-	 * Obtiene la lista de los detalles de las transacciones
-	 * 
-	 * @return listaDetalleTransacciones
+	 * @return the vehiculo
 	 */
-	public List<DetalleTransaccion> getListaDetalleTransacciones() {
-		return listaDetalleTransacciones;
+	public Vehiculo getVehiculo() {
+		return vehiculo;
 	}
 
 	/**
-	 * Cambia la lista de los detalles de las transacciones
-	 * 
-	 * @param listaDetalleTransacciones
+	 * @param vehiculo the vehiculo to set
 	 */
-	public void setListaDetalleTransacciones(final List<DetalleTransaccion> listaDetalleTransacciones) {
-		this.listaDetalleTransacciones = listaDetalleTransacciones;
+	public void setVehiculo(final Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
 	}
 
-	/**
-	 * Agrega un detalle a la transaccion, muestra un error si ya existe
-	 * 
-	 * @param tipo
-	 * @throws ConcesionarioException
-	 */
-	public void agregarDetalleTransaccion(Vehiculo vehiculo, String codigoTransaccion)
-			throws ConcesionarioException {
-		if (validarDetalleTransaccion(codigo))
-			throw new ConcesionarioException("El detalle de la transacción ya se encuentra, elige otro código");
-		listaDetalleTransacciones.add(new DetalleTransaccion(vehiculo, codigoTransaccion));
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
 	}
 
-	/**
-	 * Busca un detalle de transaccion, si no se encuentra se retorna un null
-	 * 
-	 * @param codigo
-	 * @return
-	 */
-	public DetalleTransaccion buscarDetalleTransaccion(String codigo) {
-		return listaDetalleTransacciones.stream().filter(detalle -> detalle.getCodigoTransaccion().equals(codigo))
-				.findFirst().orElse(null);
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Transaccion other = (Transaccion) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
 	}
 
-	/**
-	 * Elimina cada detalle de la transaccion
-	 */
-	public void eliminarCadaDetalle() {
-		listaDetalleTransacciones.clear();
+	@Override
+	public String toString() {
+		return String.format("Transaccion [codigo=%s, vehiculo=%s]", codigo, vehiculo);
 	}
 
-	/**
-	 * Valida si un detalle de transaccion existe, si no se encuentra retorna un
-	 * false
-	 * 
-	 * @param codigo
-	 * @return
-	 */
-	public boolean validarDetalleTransaccion(String codigo) {
-		return buscarDetalleTransaccion(codigo) != null;
-	}
 }

@@ -2,6 +2,7 @@ package co.edu.uniquindio.concesionariouq.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Properties;
 
 import javax.mail.MessagingException;
@@ -39,6 +40,16 @@ public class ProjectUtility {
 				MailUtility.generarSesion(MailUtility.MAILFROM, MailUtility.PASSWORD, prop), MailUtility.MAILFROM,
 				toMail, nombre, reporte, info, archivo);
 		Transport.send(mensajeCorreo);
+	}
+
+	public static String crearCodigoRandomAlfaNumerico(int tam) {
+		SecureRandom secureRandom = new SecureRandom();
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < tam; i++) {
+			final int num = secureRandom.nextInt('Z' - 'A' + 1 + 10);
+			builder.append(num < 10 ? num : String.valueOf((char) ('A' + num - 10)));
+		}
+		return builder.toString();
 	}
 
 }

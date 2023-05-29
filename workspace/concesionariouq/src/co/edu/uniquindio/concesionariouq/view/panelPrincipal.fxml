@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -14,89 +15,66 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane id="root" fx:id="mainPane" dividerPositions="0.18923933209647495" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@sources/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane id="root" fx:id="mainPane" dividerPositions="0.18923933209647495" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="panel-principal" stylesheets="@sources/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <items>
       <BorderPane id="panelIzq" fx:id="menuPane" maxWidth="200.0" minWidth="50.0" onMouseEntered="#extenderMenuEvent" onMouseExited="#contraerMenuEvent" prefWidth="200.0" SplitPane.resizableWithParent="false">
          <center>
             <VBox id="panelIzq" alignment="TOP_CENTER" minWidth="50.0" stylesheets="@sources/application.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#agregarMenuEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
+                  <Separator prefWidth="200.0" />
+                  <Label text="Gestión de" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#gestionVehiculosEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../resources/images/Agregar.png" />
+                                    <Image url="@../../../../../resources/images/vehiculo.png" />
                                  </image>
                               </ImageView>
-                              <Label ellipsisString="" text="Agregar" textFill="WHITE" textOverrun="CLIP" />
+                              <Label ellipsisString="" text="Vehiculos" textFill="WHITE" textOverrun="CLIP" />
                            </children>
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eliminarEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
+                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#gestionEmpleadosEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../resources/images/Eliminar.png" />
+                                    <Image url="@../../../../../resources/images/empleado.png" />
                                  </image>
                               </ImageView>
-                              <Label ellipsisString="" text="Eliminar" textFill="WHITE" textOverrun="CLIP" />
+                              <Label ellipsisString="" text="Empleados" textFill="WHITE" textOverrun="CLIP" />
                            </children>
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#venderEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
+                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#gestionClientesEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../resources/images/Vender.png" />
+                                    <Image url="@../../../../../resources/images/cliente.png" />
                                  </image>
                               </ImageView>
-                              <Label ellipsisString="" text="Vender" textFill="WHITE" textOverrun="CLIP" />
+                              <Label ellipsisString="" text="Clientes" textFill="WHITE" textOverrun="CLIP" />
                            </children>
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#comprarEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
+                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#gestionReportesEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../resources/images/Comprar.png" />
-                                 </image>
-                              </ImageView>
-                              <Label ellipsisString="" text="Comprar" textFill="WHITE" textOverrun="CLIP" />
-                           </children>
-                        </HBox>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#alquilarEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
-                     <graphic>
-                        <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
-                           <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../resources/images/Alquilar.png" />
-                                 </image>
-                              </ImageView>
-                              <Label ellipsisString="" text="Alquilar" textFill="WHITE" textOverrun="CLIP" />
-                           </children>
-                        </HBox>
-                     </graphic>
-                  </Button>
-                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#reportesEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
-                     <graphic>
-                        <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
-                           <children>
-                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../resources/images/Reportes.png" />
+                                    <Image url="@../../../../../resources/images/reportes.png" />
                                  </image>
                               </ImageView>
                               <Label ellipsisString="" text="Reportes" textFill="WHITE" textOverrun="CLIP" />
@@ -104,11 +82,17 @@
                         </HBox>
                      </graphic>
                   </Button>
+                  <Separator prefWidth="200.0" />
+                  <Label text="Bloqueo de" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
                   <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#bloquearBarraEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
                      <graphic>
                         <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
                            <children>
-                              <ImageView fx:id="imgMenuBarra" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgMenuBarra" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../../resources/images/Candado%20Libre.png" />
                                  </image>
@@ -124,12 +108,11 @@
          <top>
             <VBox alignment="CENTER" maxHeight="120.0" minHeight="120.0" prefHeight="120.0">
                <children>
-                  <ImageView fx:id="imgUsuario" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                  <ImageView fx:id="imgLogo" fitHeight="103.0" fitWidth="188.0" onMouseEntered="#homeEnteredEvent" onMouseExited="#homeExitedEvent" onMousePressed="#homeEvent" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../resources/images/UnknownPerson.png" />
+                        <Image url="@../../../../../resources/images/Whitelogowoutbg.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labelNombre" text="Nombre" textFill="WHITE" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -139,11 +122,7 @@
          <bottom>
             <Pane styleClass="btnsPrincipales">
                <children>
-                  <ImageView fx:id="imgLogo" fitHeight="118.0" fitWidth="200.0" onMouseEntered="#homeEnteredEvent" onMouseExited="#homeExitedEvent" onMousePressed="#homeEvent" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <image>
-                        <Image url="@../../../../../resources/images/Whitelogowoutbg.png" />
-                     </image>
-                  </ImageView>
+                  <Separator prefWidth="200.0" />
                </children>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -151,11 +130,11 @@
             </Pane>
          </bottom>
       </BorderPane>
-      <BorderPane fx:id="contentPane" prefHeight="200.0" prefWidth="200.0">
+      <BorderPane fx:id="contentPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
          <center>
             <HBox fx:id="homePane" alignment="CENTER" style="-fx-background-color: white;">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                  <ImageView fx:id="imgLogoHome" fitHeight="200.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
                         <Image url="@../../../../../resources/images/logo.png" />
                      </image>
@@ -165,6 +144,95 @@
                   </ImageView>
                </children>
             </HBox>
-         </center></BorderPane>
+         </center>
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <top>
+                  <BorderPane BorderPane.alignment="CENTER">
+                     <right>
+                        <Button mnemonicParsing="false" onAction="#accionarDetalleEvent" styleClass="btnsPrincipales" BorderPane.alignment="CENTER">
+                           <graphic>
+                              <ImageView fx:id="imgDetalleEmpleado" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                                 <image>
+                                    <Image url="@../../../../../resources/images/masDetalles.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </right>
+                     <center>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fx:id="imgUsuario" fitHeight="59.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../resources/images/UnknownPerson.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="labelNombre" maxWidth="680.0" prefHeight="31.0" prefWidth="680.0" text="Nombre" textFill="WHITE">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="5.0" left="30.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </center>
+                  </BorderPane>
+               </top>
+               <center>
+                  <VBox fx:id="boxDetalleEmpleado" maxHeight="1.7976931348623157E308" minHeight="0.0" prefHeight="0.0" scaleY="0.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cambiarContrasenaEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
+                           <graphic>
+                              <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
+                                 <children>
+                                    <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../resources/images/vehiculo.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label ellipsisString="" text="Cambiar Contraseña" textFill="WHITE" textOverrun="CLIP" />
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </Button>
+                        <Button alignment="CENTER" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eliminarCuentaEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
+                           <graphic>
+                              <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
+                                 <children>
+                                    <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../resources/images/vehiculo.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label ellipsisString="" text="Eliminar Cuenta" textFill="WHITE" textOverrun="CLIP" />
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </Button>
+                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cerrarSesionEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
+                           <graphic>
+                              <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
+                                 <children>
+                                    <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../resources/images/vehiculo.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label ellipsisString="" text="Cerrar Sesión" textFill="WHITE" textOverrun="CLIP" />
+                                 </children>
+                              </HBox>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </center>
+            </BorderPane>
+         </top></BorderPane>
    </items>
 </SplitPane>

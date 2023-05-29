@@ -6,7 +6,7 @@ public class Hibrido extends Combustible {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//ATRIBUTOS
+	// ATRIBUTOS
 	private Boolean esEnchufable;
 	private Boolean esHibridoLigero;
 
@@ -21,6 +21,11 @@ public class Hibrido extends Combustible {
 		this.esEnchufable = esEnchufable;
 	}
 
+	@Override
+	public boolean atributosLlenos() {
+		return esEnchufable != null && esEnchufable != null;
+	}
+
 	/**
 	 * Obtiene la opcion si el hibrido es ligero o no lo es
 	 * 
@@ -31,7 +36,7 @@ public class Hibrido extends Combustible {
 	}
 
 	/**
-	 * Cambia la opcion si el hibrido es ligero o no lo es 
+	 * Cambia la opcion si el hibrido es ligero o no lo es
 	 * 
 	 * @param esHibridoLigero
 	 */
@@ -56,4 +61,10 @@ public class Hibrido extends Combustible {
 	public void setEsEnchufable(final Boolean esEnchufable) {
 		this.esEnchufable = esEnchufable;
 	}
+
+	@Override
+	public TipoCombustible getTipoCombustible() {
+		return TipoCombustible.HIBRIDO;
+	}
+
 }

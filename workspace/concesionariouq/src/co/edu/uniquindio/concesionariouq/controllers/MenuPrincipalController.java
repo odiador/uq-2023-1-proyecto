@@ -116,7 +116,7 @@ public class MenuPrincipalController {
 
 	@FXML
 	void agregarMenuEvent(ActionEvent event) {
-		agregarMenuAction();
+
 	}
 
 	@FXML
@@ -240,12 +240,8 @@ public class MenuPrincipalController {
 			lblGestion.setVisible(false);
 			lblBloqueo.setVisible(false);
 		}
-	}
-
-	private void agregarMenuAction() {
-	}
-
-	public void cambiarContentPane(String ruta, Object controller) {
+  }
+	private void cambiarContentPane(String ruta, Object controller) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(ruta));
 		loader.setController(controller);

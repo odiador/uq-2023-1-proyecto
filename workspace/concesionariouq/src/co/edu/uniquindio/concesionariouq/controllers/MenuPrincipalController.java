@@ -107,7 +107,7 @@ public class MenuPrincipalController {
 
 	@FXML
 	void agregarMenuEvent(ActionEvent event) {
-		agregarMenuAction();
+
 	}
 
 	@FXML
@@ -238,11 +238,6 @@ public class MenuPrincipalController {
 			cambiarMenuTam(-1);
 			labelNombre.setVisible(false);
 		}
-	}
-
-	private void agregarMenuAction() {
-		AgregarGeneralController controller = new AgregarGeneralController(contentPane, empleado);
-		cambiarContentPane("../view/panelAddDelete.fxml", controller);
 	}
 
 	private void cambiarContentPane(String ruta, Object controller) {

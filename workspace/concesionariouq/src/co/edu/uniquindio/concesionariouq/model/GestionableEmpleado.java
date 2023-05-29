@@ -12,12 +12,13 @@ public interface GestionableEmpleado {
 	public void agregarEmpleado(Empleado empleado)
 			throws UsuarioEncontradoException, AtributosFaltantesException, NullException;
 
-	public void eliminarEmpleado(String id)
-			throws UsuarioNoEncontradoException, NullException;
+	public void eliminarEmpleado(String id) throws UsuarioNoEncontradoException, NullException;
 
 	public Empleado buscarEmpleado(String id);
 
-	public boolean validarEmpleado(String id);
+	public default boolean validarEmpleado(String id) {
+		return buscarEmpleado(id) != null;
+	}
 
 	public List<Empleado> listarEmpleados();
 }

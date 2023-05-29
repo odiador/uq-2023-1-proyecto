@@ -3,8 +3,7 @@ package co.edu.uniquindio.concesionariouq.util;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map.Entry;
+import java.util.HashSet;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Chunk;
@@ -45,7 +44,7 @@ public class PdfUtility {
 		document.add(new Paragraph(" "));
 	}
 
-	public static void agregarTablaVehiculosDocumento(Document document, HashMap<String, Vehiculo> listaVehiculos)
+	public static void agregarTablaVehiculosDocumento(Document document, HashSet<Vehiculo> listaVehiculos)
 			throws DocumentException {
 		Font font = new Font(FontFamily.HELVETICA, 14, FontStyle.BOLD.ordinal());
 		Font fontCelda = new Font(FontFamily.HELVETICA, 13.5f);
@@ -61,15 +60,15 @@ public class PdfUtility {
 		tabla.addCell(new Phrase("Estado", font));
 		tabla.addCell(new Phrase("Tipo de Cambio", font));
 		listaVehiculos.stream().forEach(vehiculo -> {
-			tabla.addCell(new Phrase(vehiculo.getTipoVehiculo().getTipo(),fontCelda));
-			tabla.addCell(new Phrase(vehiculo.getPlaca(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getTipoVehiculo().getTipo(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getId(), fontCelda));
 			tabla.addCell(new Phrase(vehiculo.getMarca(), fontCelda));
 			tabla.addCell(new Phrase(vehiculo.getModelo(), fontCelda));
 			tabla.addCell(new Phrase(vehiculo.getCilindraje().toString(), fontCelda));
 			tabla.addCell(new Phrase(vehiculo.getVelocidadMaxima().toString(), fontCelda));
-			tabla.addCell(entrada.getValue().getCombustible().getTipoCombustible().getText(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getCombustible().getTipoCombustible().getText(), fontCelda));
 			tabla.addCell(new Phrase(vehiculo.getEstado().getText(), fontCelda));
-			tabla.addCell(new Phrase(vehiculo.getTipo().getText(), fontCelda));=
+			tabla.addCell(new Phrase(vehiculo.getTipo().getText(), fontCelda));
 		});
 		document.add(tabla);
 	}

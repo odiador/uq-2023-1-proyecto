@@ -47,8 +47,10 @@ public class PdfUtility {
 
 	public static void agregarTablaVehiculosDocumento(Document document, HashMap<String, Vehiculo> listaVehiculos)
 			throws DocumentException {
-		Font font = new Font(FontFamily.HELVETICA, 10, FontStyle.BOLD.ordinal());
+		Font font = new Font(FontFamily.HELVETICA, 14, FontStyle.BOLD.ordinal());
+		Font fontCelda = new Font(FontFamily.HELVETICA, 13.5f);
 		PdfPTable tabla = new PdfPTable(9);
+		tabla.setWidthPercentage(100);
 		tabla.addCell(new Phrase("Tipo de Vehiculo", font));
 		tabla.addCell(new Phrase("ID", font));
 		tabla.addCell(new Phrase("Marca", font));
@@ -58,16 +60,16 @@ public class PdfUtility {
 		tabla.addCell(new Phrase("Combustible", font));
 		tabla.addCell(new Phrase("Estado", font));
 		tabla.addCell(new Phrase("Tipo de Cambio", font));
-		listaVehiculos.entrySet().stream().forEach((Entry<String, Vehiculo> entrada) -> {
-			tabla.addCell(entrada.getValue().getTipoVehiculo().getTipo());
-			tabla.addCell(entrada.getValue().getId());
-			tabla.addCell(entrada.getValue().getMarca());
-			tabla.addCell(entrada.getValue().getModelo());
-			tabla.addCell(entrada.getValue().getCilindraje().toString());
-			tabla.addCell(entrada.getValue().getVelocidadMaxima().toString());
-			tabla.addCell(entrada.getValue().getCombustible().getTipoCombustible().getText());
-			tabla.addCell(entrada.getValue().getEstado().getText());
-			tabla.addCell(entrada.getValue().getTipo().getText());
+		listaVehiculos.stream().forEach(vehiculo -> {
+			tabla.addCell(new Phrase(vehiculo.getTipoVehiculo().getTipo(),fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getPlaca(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getMarca(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getModelo(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getCilindraje().toString(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getVelocidadMaxima().toString(), fontCelda));
+			tabla.addCell(entrada.getValue().getCombustible().getTipoCombustible().getText(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getEstado().getText(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getTipo().getText(), fontCelda));=
 		});
 		document.add(tabla);
 	}

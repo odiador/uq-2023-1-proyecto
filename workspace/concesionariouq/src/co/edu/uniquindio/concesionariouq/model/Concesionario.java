@@ -1,6 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -180,33 +181,46 @@ public class Concesionario
 	 * @param contrasena
 	 * @return
 	 */
-	public Usuario buscarUsuarioLogin(String identificacion, String contrasena) {
-		Usuario usuario = buscarCliente(identificacion);
+	public Cliente buscarClienteLogin(String identificacion, String contrasena) {
+		Cliente usuario = buscarCliente(identificacion);
 		if (usuario != null && usuario.getContrasena().equals(contrasena))
 			return usuario;
+		return null;
+	}
+
+	private Empleado buscarEmpleadoLogin(String identificacion, String contrasena) {
+		Empleado empleado = buscarEmpleado(identificacion);
+		if (empleado != null && empleado.getContrasena().equals(contrasena))
+			return empleado;
 		return null;
 	}
 
 	/**
 	 * Intenta hacer login al usuario, si no se puede marca una excepcion
 	 * 
-	 * @param contrasena
 	 * @param identificacion
+	 * @param contrasena
+	 * @return
 	 * @throws LoginFailedException
-	 * @return el usuario al obtenido al hacer login
 	 * @throws NullException
 	 */
-	public Usuario hacerLogin(String identificacion, String contrasena) throws LoginFailedException, NullException {
+	public ArrayList<Usuario> hacerLogin(String identificacion, String contrasena)
+			throws LoginFailedException, NullException {
 		if (identificacion == null)
 			throw new NullException("La identificacion enviada es null");
 		if (contrasena == null)
 			throw new NullException("La contrasena enviada es null");
-		Usuario usuario = buscarUsuarioLogin(identificacion, contrasena);
-		if (usuario == null)
+		Empleado empleado = buscarEmpleadoLogin(identificacion, contrasena);
+		Cliente cliente = buscarClienteLogin(identificacion, contrasena);
+		if (empleado == null && cliente == null)
 			throw new LoginFailedException(
 					"La id o contraseña especificada no coinciden con tus datos, intenta nuevamente");
-
-		return usuario;
+		ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+		if (empleado != null)
+			listaUsuarios.add(empleado);
+		if (cliente != null)
+			listaUsuarios.add(cliente);
+		return listaUsuarios;
 	}
 
 	@Override

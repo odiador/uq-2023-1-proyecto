@@ -88,12 +88,12 @@
    <bottom>
       <HBox alignment="CENTER" maxHeight="30.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cerrarEvent" text="Cerrar" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+            <Button cancelButton="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cerrarEvent" text="Cerrar" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loginEvent" text="Iniciar Sesion" HBox.hgrow="ALWAYS">
+            <Button defaultButton="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loginEvent" text="Iniciar Sesion" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin>

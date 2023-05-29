@@ -44,14 +44,14 @@ public class TestPdfs {
 	@Test
 	public void sendMailPdf() throws MessagingException, IOException {
 		File file = new File("Reporte de Vehiculos.pdf");
-		ProjectUtility.enviarCorreoReporte("juanito.amador.roa@gmail.com", "Amador", "Reporte de Vehiculos",
+		ProjectUtility.enviarCorreoReporte("perdomocardenas18@gmail.com", "Juancho", "Reporte de Vehiculos",
 				"de cilindraje, placa, tipo de vehiculo", file);
 		file.delete();
 	}
 
 	private static void generarPdf(String titulo, List<Vehiculo> listaVehiculos) {
 		try {
-			Document document = new Document(PageSize.A4, 40, 40, 40, 40);
+			Document document = new Document(PageSize.A4.rotate(), 0, 0, 0, 0);
 			PdfWriter.getInstance(document, new FileOutputStream(titulo + ".pdf"));
 			document.open();
 			document.addAuthor("Concesionario UQ");

@@ -46,8 +46,10 @@ public class PdfUtility {
 
 	public static void agregarTablaVehiculosDocumento(Document document, List<Vehiculo> listaVehiculos)
 			throws DocumentException {
-		Font font = new Font(FontFamily.HELVETICA, 10, FontStyle.BOLD.ordinal());
+		Font font = new Font(FontFamily.HELVETICA, 14, FontStyle.BOLD.ordinal());
+		Font fontCelda = new Font(FontFamily.HELVETICA, 13.5f);
 		PdfPTable tabla = new PdfPTable(9);
+		tabla.setWidthPercentage(100);
 		tabla.addCell(new Phrase("Tipo de Vehiculo", font));
 		tabla.addCell(new Phrase("Placa", font));
 		tabla.addCell(new Phrase("Marca", font));
@@ -58,15 +60,15 @@ public class PdfUtility {
 		tabla.addCell(new Phrase("Estado", font));
 		tabla.addCell(new Phrase("Tipo de Cambio", font));
 		listaVehiculos.stream().forEach(vehiculo -> {
-			tabla.addCell(vehiculo.getTipoVehiculo().getTipo());
-			tabla.addCell(vehiculo.getPlaca());
-			tabla.addCell(vehiculo.getMarca());
-			tabla.addCell(vehiculo.getModelo());
-			tabla.addCell(vehiculo.getCilindraje().toString());
-			tabla.addCell(vehiculo.getVelocidadMaxima().toString());
-			tabla.addCell("Gasolina"); // TODO Cambiar
-			tabla.addCell(vehiculo.getEstado().getText());
-			tabla.addCell(vehiculo.getTipo().getText());
+			tabla.addCell(new Phrase(vehiculo.getTipoVehiculo().getTipo(),fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getPlaca(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getMarca(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getModelo(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getCilindraje().toString(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getVelocidadMaxima().toString(), fontCelda));
+			tabla.addCell(new Phrase("Gasolina", fontCelda)); // TODO Cambiar
+			tabla.addCell(new Phrase(vehiculo.getEstado().getText(), fontCelda));
+			tabla.addCell(new Phrase(vehiculo.getTipo().getText(), fontCelda));
 		});
 		document.add(tabla);
 	}

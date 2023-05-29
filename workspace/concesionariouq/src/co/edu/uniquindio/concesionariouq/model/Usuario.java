@@ -38,7 +38,9 @@ public abstract class Usuario implements Serializable {
 	public abstract TipoUsuario getTipoUsuario();
 
 	public boolean atributosLlenos() {
-		return id != null && nombre != null && contrasena != null && email != null && respuestaDeSeguridad != null;
+		return id != null && nombre != null && contrasena != null && email != null && respuestaDeSeguridad != null
+				&& !id.isEmpty() && !nombre.isEmpty() && !contrasena.isEmpty() && !email.isEmpty()
+				&& !respuestaDeSeguridad.isEmpty();
 	}
 
 	public boolean tieneId(String id) {

@@ -7,17 +7,19 @@ import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException;
 
-public interface GestionableUsuario {
+public interface GestionableCliente {
 
-	public void agregarUsuario(Usuario usuario)
+	public void agregarCliente(Cliente cliente)
 			throws UsuarioEncontradoException, AtributosFaltantesException, NullException;
 
-	public void eliminarUsuario(String id)
+	public void eliminarCliente(String id)
 			throws UsuarioNoEncontradoException, AtributosFaltantesException, NullException;
 
-	public Usuario buscarUsuario(String id);
+	public Cliente buscarCliente(String id);
 
-	public boolean validarUsuario(String id);
+	public default boolean validarCliente(String id) {
+		return buscarCliente(id) != null;
+	}
 
-	public List<Usuario> listarUsuarios();
+	public List<Cliente> listarClientes();
 }

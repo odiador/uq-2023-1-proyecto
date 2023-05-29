@@ -17,7 +17,9 @@ public interface GestionableTransaccion {
 
 	public Transaccion buscarTransaccion(String id);
 
-	public boolean validarTransaccion(String id);
+	public default boolean validarTransaccion(String id) {
+		return buscarTransaccion(id) != null;
+	}
 
 	public List<Transaccion> listarTransacciones();
 }

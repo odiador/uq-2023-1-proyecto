@@ -1,6 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +18,8 @@ import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
-public class Concesionario implements GestionableVehiculo, GestionableUsuario, GestionableTransaccion, Serializable {
+public class Concesionario
+		implements GestionableVehiculo, GestionableCliente, GestionableEmpleado, GestionableTransaccion, Serializable {
 
 	/**
 	 * 
@@ -26,7 +28,8 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	private String nombre;
 	private String direccion;
 	private Set<Vehiculo> listaVehiculos;
-	private Set<Usuario> listaUsuarios;
+	private Set<Cliente> listaClientes;
+	private Set<Empleado> listaEmpleados;
 	private Set<Transaccion> listaTransacciones;
 
 	/**
@@ -41,9 +44,10 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	public Concesionario(final String nombre, final String direccion) {
 		this.nombre = nombre;
 		this.direccion = direccion;
-		this.listaVehiculos = new HashSet<Vehiculo>();
-		this.listaUsuarios = new HashSet<Usuario>();
-		this.listaTransacciones = new HashSet<Transaccion>();
+		this.listaVehiculos = new HashSet<>();
+		this.listaClientes = new HashSet<>();
+		this.listaEmpleados = new HashSet<>();
+		this.listaTransacciones = new HashSet<>();
 	}
 
 	@Override
@@ -106,46 +110,68 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	 * @return
 	 */
 	@Override
-	public Usuario buscarUsuario(String identificacion) {
-		return listaUsuarios.stream().filter(usuario -> usuario.tieneId(identificacion)).findFirst().orElse(null);
-	}
-
-	/**
-	 * 
-	 * @param identificacion
-	 * @return
-	 */
-	@Override
-	public boolean validarUsuario(String identificacion) {
-		return buscarUsuario(identificacion) != null;
+	public Cliente buscarCliente(String identificacion) {
+		return listaClientes.stream().filter(cliente -> cliente.tieneId(identificacion)).findFirst().orElse(null);
 	}
 
 	@Override
-	public void agregarUsuario(Usuario usuario)
+	public void agregarCliente(Cliente cliente)
 			throws UsuarioEncontradoException, NullException, AtributosFaltantesException {
-		if (usuario == null)
-			throw new NullException("El usuario enviado es null");
-		if (!usuario.atributosLlenos())
-			throw new AtributosFaltantesException("Al usuario le hacen falta atributos");
-		if (validarUsuario(usuario.getId()))
-			throw new UsuarioEncontradoException("El usuario ya se encuentra agregado");
-		listaUsuarios.add(usuario);
+		if (cliente == null)
+			throw new NullException("El cliente enviado es null");
+		if (!cliente.atributosLlenos())
+			throw new AtributosFaltantesException("Al cliente le hacen falta atributos");
+		if (validarCliente(cliente.getId()))
+			throw new UsuarioEncontradoException("El cliente ya se encuentra agregado");
+		listaClientes.add(cliente);
 
 	}
 
 	@Override
-	public void eliminarUsuario(String id) throws UsuarioNoEncontradoException, NullException {
+	public void eliminarCliente(String id) throws UsuarioNoEncontradoException, NullException {
 		if (id == null)
 			throw new NullException("La identificacion enviada es null");
-		Usuario usuario = buscarUsuario(id);
+		Usuario usuario = buscarCliente(id);
 		if (usuario == null)
 			throw new UsuarioNoEncontradoException("El usuario no fue encontrado, no se puede eliminar");
-		listaUsuarios.remove(usuario);
+		listaEmpleados.remove(usuario);
 	}
 
 	@Override
-	public List<Usuario> listarUsuarios() {
-		return listaUsuarios.stream().collect(Collectors.toList());
+	public List<Cliente> listarClientes() {
+		return listaClientes.stream().collect(Collectors.toList());
+	}
+
+	@Override
+	public void agregarEmpleado(Empleado empleado)
+			throws UsuarioEncontradoException, AtributosFaltantesException, NullException {
+		if (empleado == null)
+			throw new NullException("El empleado enviado es null");
+		if (!empleado.atributosLlenos())
+			throw new AtributosFaltantesException("Al empleado le hacen falta atributos");
+		if (validarEmpleado(empleado.getId()))
+			throw new UsuarioEncontradoException("El empleado ya se encuentra agregado");
+		listaEmpleados.add(empleado);
+	}
+
+	@Override
+	public void eliminarEmpleado(String id) throws UsuarioNoEncontradoException, NullException {
+		if (id == null)
+			throw new NullException("La identificacion enviada es null");
+		Empleado empleado = buscarEmpleado(id);
+		if (empleado == null)
+			throw new UsuarioNoEncontradoException("El usuario no fue encontrado, no se puede eliminar");
+		listaEmpleados.remove(empleado);
+	}
+
+	@Override
+	public Empleado buscarEmpleado(String id) {
+		return listaEmpleados.stream().filter(empleado -> empleado.tieneId(id)).findFirst().orElse(null);
+	}
+
+	@Override
+	public List<Empleado> listarEmpleados() {
+		return listaEmpleados.stream().collect(Collectors.toList());
 	}
 
 	/**
@@ -155,33 +181,46 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	 * @param contrasena
 	 * @return
 	 */
-	public Usuario buscarUsuarioLogin(String identificacion, String contrasena) {
-		Usuario usuario = buscarUsuario(identificacion);
+	public Cliente buscarClienteLogin(String identificacion, String contrasena) {
+		Cliente usuario = buscarCliente(identificacion);
 		if (usuario != null && usuario.getContrasena().equals(contrasena))
 			return usuario;
+		return null;
+	}
+
+	private Empleado buscarEmpleadoLogin(String identificacion, String contrasena) {
+		Empleado empleado = buscarEmpleado(identificacion);
+		if (empleado != null && empleado.getContrasena().equals(contrasena))
+			return empleado;
 		return null;
 	}
 
 	/**
 	 * Intenta hacer login al usuario, si no se puede marca una excepcion
 	 * 
-	 * @param contrasena
 	 * @param identificacion
+	 * @param contrasena
+	 * @return
 	 * @throws LoginFailedException
-	 * @return el usuario al obtenido al hacer login
 	 * @throws NullException
 	 */
-	public Usuario hacerLogin(String identificacion, String contrasena) throws LoginFailedException, NullException {
+	public ArrayList<Usuario> hacerLogin(String identificacion, String contrasena)
+			throws LoginFailedException, NullException {
 		if (identificacion == null)
 			throw new NullException("La identificacion enviada es null");
 		if (contrasena == null)
 			throw new NullException("La contrasena enviada es null");
-		Usuario usuario = buscarUsuarioLogin(identificacion, contrasena);
-		if (usuario == null)
+		Empleado empleado = buscarEmpleadoLogin(identificacion, contrasena);
+		Cliente cliente = buscarClienteLogin(identificacion, contrasena);
+		if (empleado == null && cliente == null)
 			throw new LoginFailedException(
 					"La id o contraseña especificada no coinciden con tus datos, intenta nuevamente");
-
-		return usuario;
+		ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+		if (empleado != null)
+			listaUsuarios.add(empleado);
+		if (cliente != null)
+			listaUsuarios.add(cliente);
+		return listaUsuarios;
 	}
 
 	@Override
@@ -273,8 +312,8 @@ public class Concesionario implements GestionableVehiculo, GestionableUsuario, G
 	@Override
 	public String toString() {
 		return String.format(
-				"Concesionario [nombre=%s, direccion=%s, listaVehiculos=%s, listaUsuarios=%s, listaTransacciones=%s]",
-				nombre, direccion, listaVehiculos, listaUsuarios, listaTransacciones);
+				"Concesionario [nombre=%s, direccion=%s, listaVehiculos=%s, listaEmpleados=%s, listaTransacciones=%s]",
+				nombre, direccion, listaVehiculos, listaEmpleados, listaTransacciones);
 	}
 
 }

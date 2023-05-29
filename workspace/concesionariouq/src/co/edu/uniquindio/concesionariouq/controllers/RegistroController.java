@@ -2,6 +2,11 @@ package co.edu.uniquindio.concesionariouq.controllers;
 
 import java.io.IOException;
 
+import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
+import co.edu.uniquindio.concesionariouq.exceptions.NullException;
+import co.edu.uniquindio.concesionariouq.exceptions.UsuarioEncontradoException;
+import co.edu.uniquindio.concesionariouq.model.Cliente;
+import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -53,12 +59,23 @@ public class RegistroController {
 
 	@FXML
 	void registrarEvent(ActionEvent event) {
-
+		registrarAction();
 	}
 
 	@FXML
 	void irIniciarSesionEvent(ActionEvent event) {
 		irIniciarSesionAction();
+	}
+
+	private void registrarAction() {
+		try {
+			ModelFactoryController.getInstance().agregarCliente(new Cliente(txtId.getText(), txtNombre.getText(),
+					txtContrasena.getText(), txtEmail.getText(), txtRespuesta.getText()));
+			FxUtility.mostrarMensaje("Confirmacion", "Has sido registrad@ con exito", "Has sido registrad@ con exito",
+					AlertType.CONFIRMATION);
+		} catch (UsuarioEncontradoException | NullException | AtributosFaltantesException e) {
+			FxUtility.mostrarMensaje("Advertencia", "No te has podido registrar", e.getMessage(), AlertType.ERROR);
+		}
 	}
 
 	private void irIniciarSesionAction() {
@@ -73,13 +90,6 @@ public class RegistroController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @return the txtId
-	 */
-	public TextField getTxtId() {
-		return txtId;
 	}
 
 }

@@ -2,7 +2,7 @@ package co.edu.uniquindio.concesionariouq.controllers;
 
 import java.io.IOException;
 
-import co.edu.uniquindio.concesionariouq.model.Empleado;
+import co.edu.uniquindio.concesionariouq.model.Usuario;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import co.edu.uniquindio.concesionariouq.util.ValorObservable;
 import javafx.animation.Interpolator;
@@ -12,8 +12,10 @@ import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -24,9 +26,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MenuPrincipalController {
+
+	@FXML
+	private Label lblGestion;
+
+	@FXML
+	private Label lblBloqueo;
 
 	@FXML
 	private ImageView imgLogo;
@@ -63,7 +72,7 @@ public class MenuPrincipalController {
 
 	@FXML
 	void initialize() {
-		imgLogo.fitHeightProperty().bind(menuPane.widthProperty().subtract(15));
+		imgLogo.fitWidthProperty().bind(menuPane.widthProperty().multiply(0.99));
 		crearAnimacionLogoHome();
 		Interpolator interpolacion = new Interpolator() {
 
@@ -78,12 +87,12 @@ public class MenuPrincipalController {
 		transition.setInterpolator(interpolacion);
 
 		transicion2 = new ScaleTransition(Duration.millis(200), boxDetalleEmpleado);
-		estaActivada = new ValorObservable<>(false, (oldValue, newValue) -> {
-			transition.setToAngle(estaActivada.getValue() ? 0 : 180);
-			transicion2.setByY(estaActivada.getValue() ? 1 : -1);
+		estaContraida = new ValorObservable<>(false, (oldValue, newValue) -> {
+			transition.setToAngle(estaContraida.getValue() ? 0 : 180);
+			transicion2.setByY(estaContraida.getValue() ? 1 : -1);
 
 			transicion3 = new Timeline(new KeyFrame(Duration.millis(200),
-					new KeyValue(boxDetalleEmpleado.prefHeightProperty(), (estaActivada.getValue() ? 200 : 0))));
+					new KeyValue(boxDetalleEmpleado.prefHeightProperty(), (estaContraida.getValue() ? 200 : 0))));
 			transicion3.setOnFinished(v -> status--);
 		});
 		transition.setOnFinished(v -> status--);
@@ -112,8 +121,6 @@ public class MenuPrincipalController {
 
 	@FXML
 	void gestionVehiculosEvent(ActionEvent event) {
-		EliminarGeneralController controller = new EliminarGeneralController(contentPane, empleado);
-		cambiarContentPane("../view/panelAddDelete.fxml", controller);
 	}
 
 	@FXML
@@ -137,16 +144,6 @@ public class MenuPrincipalController {
 	}
 
 	@FXML
-	void homeEnteredEvent(MouseEvent event) {
-		homeEnteredAction();
-	}
-
-	@FXML
-	void homeExitedEvent(MouseEvent event) {
-		homeExitedAction();
-	}
-
-	@FXML
 	void bloquearBarraEvent(ActionEvent event) {
 		bloquearBarraAction();
 	}
@@ -158,7 +155,7 @@ public class MenuPrincipalController {
 
 	@FXML
 	void cerrarSesionEvent(ActionEvent event) {
-
+		cerrarSesionAction();
 	}
 
 	@FXML
@@ -168,11 +165,11 @@ public class MenuPrincipalController {
 
 	private boolean barraBloqueada;
 
-	private Empleado empleado;
+	private Usuario usuario;
 
 	private int status = 0;
 
-	private ValorObservable<Boolean> estaActivada;
+	private ValorObservable<Boolean> estaContraida;
 
 	private RotateTransition transition;
 
@@ -180,12 +177,12 @@ public class MenuPrincipalController {
 
 	private Timeline transicion3;
 
-	public MenuPrincipalController(Empleado empleado) {
-		this.empleado = empleado;
+	public MenuPrincipalController(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public void updateNameField() {
-		labelNombre.setText(empleado.getNombre());
+		labelNombre.setText(usuario.getNombre());
 	}
 
 	private void crearAnimacionLogoHome() {
@@ -210,7 +207,8 @@ public class MenuPrincipalController {
 	private void extenderMenuAction() {
 		if (!barraBloqueada) {
 			cambiarMenuTam(1);
-			labelNombre.setVisible(true);
+			lblGestion.setVisible(true);
+			lblBloqueo.setVisible(true);
 		}
 	}
 
@@ -218,14 +216,17 @@ public class MenuPrincipalController {
 		mainPane.getDividers().forEach(divider -> {
 			KeyValue kv = new KeyValue(divider.positionProperty(), divider.getPosition() + num);
 			KeyFrame kf = new KeyFrame(Duration.millis(1000), kv);
-			Timeline timeline = new Timeline(kf);
+			EventHandler<ActionEvent> evento = event -> setLogoImage(
+					"/resources/images/" + (num == 1 ? "Whitelogowoutbg.png" : "Logo Window Big.png"));
+			KeyFrame k2 = new KeyFrame(Duration.millis(70), evento);
+			Timeline timeline = new Timeline(kf, k2);
 			timeline.play();
 		});
 	}
 
 	public void accionarDetalleEmpleado() {
 		if (status <= 0) {
-			estaActivada.setValue(!estaActivada.getValue());
+			estaContraida.setValue(!estaContraida.getValue());
 			status = 3;
 			transicion3.play();
 			transicion2.play();
@@ -236,16 +237,15 @@ public class MenuPrincipalController {
 	private void contraerMenuAction() {
 		if (!barraBloqueada) {
 			cambiarMenuTam(-1);
-			labelNombre.setVisible(false);
+			lblGestion.setVisible(false);
+			lblBloqueo.setVisible(false);
 		}
 	}
 
 	private void agregarMenuAction() {
-		AgregarGeneralController controller = new AgregarGeneralController(contentPane, empleado);
-		cambiarContentPane("../view/panelAddDelete.fxml", controller);
 	}
 
-	private void cambiarContentPane(String ruta, Object controller) {
+	public void cambiarContentPane(String ruta, Object controller) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(ruta));
 		loader.setController(controller);
@@ -258,14 +258,6 @@ public class MenuPrincipalController {
 
 	private void homeAction() {
 		contentPane.setCenter(homePane);
-	}
-
-	private void homeEnteredAction() {
-		setLogoImage("/resources/images/Casa.png");
-	}
-
-	private void homeExitedAction() {
-		setLogoImage("/resources/images/Whitelogowoutbg.png");
 	}
 
 	private void setLogoImage(String route) {
@@ -293,4 +285,24 @@ public class MenuPrincipalController {
 			contraerMenuAction();
 		}
 	}
+
+	private void cerrarSesionAction() {
+		ButtonType btnNo = new ButtonType("No");
+		ButtonType btnSi = new ButtonType("Si");
+		ButtonType btn = FxUtility.crearDecisionAlerta("Decision", "¿Deseas cerrar sesion?",
+				"¿Estas segur@ que deseas cerrar sesion?", AlertType.CONFIRMATION, 600, btnSi, btnNo);
+		if (btn != btnSi)
+			return;
+		FXMLLoader loader = new FXMLLoader();
+		loader.setController(new LoginPageController());
+		loader.setLocation(getClass().getResource("../view/login.fxml"));
+		Stage stage = (Stage) mainPane.getScene().getWindow();
+		try {
+			stage.setScene(new Scene(loader.load()));
+			stage.centerOnScreen();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

@@ -3,6 +3,7 @@ package co.edu.uniquindio.concesionariouq.controllers;
 import java.io.IOException;
 
 import co.edu.uniquindio.concesionariouq.model.Dueno;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,7 @@ public class LoginPageController {
 	@FXML
 	void initialize() {
 		txtIdentificacion.setText(id == null ? "" : id);
+		Platform.runLater(() -> ((Stage) mainPane.getScene().getWindow()).setTitle("Carro UQ | Inicio de Sesión"));
 	}
 
 	private String id;

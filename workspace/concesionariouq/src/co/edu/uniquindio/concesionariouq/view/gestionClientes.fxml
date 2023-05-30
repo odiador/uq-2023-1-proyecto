@@ -8,8 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane prefHeight="551.0" prefWidth="662.0" styleClass="mainpane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="mainPane" styleClass="mainpane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <TableView fx:id="tablaClientes" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
@@ -37,6 +36,9 @@
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
             </Label>
          </children>
       </VBox>
@@ -53,12 +55,11 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Ver detalle" />
-            <Button maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Actualizar Informacion" GridPane.columnIndex="1" />
-            <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Agregar" GridPane.rowIndex="1" />
-            <Button maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Eliminar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Volver" GridPane.rowIndex="2" />
-            <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Filtrar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#detalleEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Ver detalle" />
+            <Button maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#actualizarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Actualizar Informacion" GridPane.columnIndex="1" />
+            <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#filtrarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Filtrar" GridPane.rowIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#eliminarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Eliminar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#volverEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Volver" GridPane.columnSpan="2" GridPane.rowIndex="2" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

@@ -2,15 +2,16 @@ package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
 
-public class Transaccion implements Serializable {
+public abstract class Transaccion implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String codigo;
-	private Vehiculo vehiculo;
+	protected String codigo;
+	protected Vehiculo vehiculo;
+	protected Double valor;
 
 	/**
 	 * Este es el constructor vacio de la clase
@@ -28,6 +29,7 @@ public class Transaccion implements Serializable {
 		this.codigo = codigo;
 		this.vehiculo = vehiculo;
 	}
+	public abstract TipoTransaccion getTipoTransaccion();
 
 	public boolean atributosLlenos() {
 		return codigo != null && vehiculo != null;
@@ -97,6 +99,14 @@ public class Transaccion implements Serializable {
 	@Override
 	public String toString() {
 		return String.format("Transaccion [codigo=%s, vehiculo=%s]", codigo, vehiculo);
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
 }

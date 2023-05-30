@@ -36,8 +36,3 @@
 	-fx-border-color: white;
 }
 
-.botones{
-	-fx-background-color: white;
-	-fx-effect: dropshadow(gaussian, crimson, 1em, 0.3, 0.0, 0.0);
-	-fx-text-fill: black;
-}

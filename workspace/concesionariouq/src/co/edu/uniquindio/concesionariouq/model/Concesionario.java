@@ -131,10 +131,10 @@ public class Concesionario
 	public void eliminarCliente(String id) throws UsuarioNoEncontradoException, NullException {
 		if (id == null)
 			throw new NullException("La identificacion enviada es null");
-		Usuario usuario = buscarCliente(id);
-		if (usuario == null)
+		Cliente cliente = buscarCliente(id);
+		if (cliente == null)
 			throw new UsuarioNoEncontradoException("El usuario no fue encontrado, no se puede eliminar");
-		listaEmpleados.remove(usuario);
+		listaClientes.remove(cliente);
 	}
 
 	@Override

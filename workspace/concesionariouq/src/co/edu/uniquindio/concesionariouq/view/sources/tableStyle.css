@@ -33,6 +33,16 @@
 .table-view > .filler {
     -fx-background-color: transparent;
 }
+#btn-tabla {
+	-fx-background-color: #5d14ff;
+}
+
+#btn-tabla:hover {
+	-fx-background-color: #783bff;
+}
+#btn-tabla:pressed {
+	-fx-background-color: #4300d8;
+}
 .cell {
 	-fx-background-color: #505050;
 }

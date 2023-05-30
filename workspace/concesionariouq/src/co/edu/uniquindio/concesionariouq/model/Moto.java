@@ -1,5 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import javafx.scene.image.Image;
+
 public class Moto extends Vehiculo {
 
 	/**
@@ -18,10 +20,11 @@ public class Moto extends Vehiculo {
 	 * @param combustible
 	 * @param estado
 	 * @param tipo
+	 * @param imagen 
 	 */
 	public Moto(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo) {
-		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Image imagen) {
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, imagen);
 	}
 
 	@Override

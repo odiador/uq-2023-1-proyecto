@@ -1,5 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import javafx.scene.image.Image;
+
 public class Camion extends Vehiculo {
 
 	/**
@@ -30,12 +32,13 @@ public class Camion extends Vehiculo {
 	 * @param numeroEjes
 	 * @param tieneABS
 	 * @param tipoCamion
+	 * @param image
 	 */
 	public Camion(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Double capacidadCarga,
 			Boolean tieneAireAcondicionado, Boolean tieneFrenosAire, Integer numeroEjes, Boolean tieneABS,
-			String tipoCamion) {
-		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+			String tipoCamion, Image imagen) {
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, imagen);
 		this.capacidadCarga = capacidadCarga;
 		this.tieneAireAcondicionado = tieneAireAcondicionado;
 		this.tieneFrenosAire = tieneFrenosAire;

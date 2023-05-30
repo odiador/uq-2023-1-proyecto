@@ -1,5 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import javafx.scene.image.Image;
+
 public abstract class Familiar extends Automovil {
 
 	/**
@@ -27,13 +29,14 @@ public abstract class Familiar extends Automovil {
 	 * @param tieneAireAcondicionado
 	 * @param tieneCamaraReversa
 	 * @param tieneABS
+	 * @param image
 	 */
 	public Familiar(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
 			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
-			Boolean tieneABS) {
+			Boolean tieneABS, Image imagen) {
 		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
-				numeroBolsasAire, numeroPuertas);
+				numeroBolsasAire, numeroPuertas, imagen);
 		this.tieneAireAcondicionado = tieneAireAcondicionado;
 		this.tieneCamaraReversa = tieneCamaraReversa;
 		this.tieneABS = tieneABS;

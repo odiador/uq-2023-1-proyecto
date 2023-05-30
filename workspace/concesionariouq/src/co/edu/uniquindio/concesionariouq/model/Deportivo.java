@@ -1,5 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import javafx.scene.image.Image;
+
 public class Deportivo extends Automovil {
 
 	/**
@@ -25,12 +27,14 @@ public class Deportivo extends Automovil {
 	 * @param numeroPuertas
 	 * @param numeroCaballosFuerza
 	 * @param tiempoAlcanza100Kmh
+	 * @param image
 	 */
 	public Deportivo(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
-			Integer numeroBolsasAire, Integer numeroPuertas, Integer numeroCaballosFuerza, Double tiempoAlcanza100Kmh) {
+			Integer numeroBolsasAire, Integer numeroPuertas, Integer numeroCaballosFuerza, Double tiempoAlcanza100Kmh,
+			Image imagen) {
 		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
-				numeroBolsasAire, numeroPuertas);
+				numeroBolsasAire, numeroPuertas, imagen);
 		this.numeroCaballosFuerza = numeroCaballosFuerza;
 		this.tiempoAlcanza100Kmh = tiempoAlcanza100Kmh;
 	}

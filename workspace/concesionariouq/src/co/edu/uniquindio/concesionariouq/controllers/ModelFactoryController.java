@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
@@ -15,8 +14,9 @@ import co.edu.uniquindio.concesionariouq.exceptions.UsuarioEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException;
 import co.edu.uniquindio.concesionariouq.model.Cliente;
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
-import co.edu.uniquindio.concesionariouq.model.Usuario;
+import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
+import javafx.scene.image.Image;
 
 public class ModelFactoryController {
 
@@ -36,7 +36,7 @@ public class ModelFactoryController {
 		return concesionario;
 	}
 
-	public ArrayList<Usuario> hacerLogin(String id, String password) throws LoginFailedException, NullException {
+	public Empleado hacerLogin(String id, String password) throws LoginFailedException, NullException {
 		return getConcesionario().hacerLogin(id, password);
 	}
 
@@ -57,6 +57,21 @@ public class ModelFactoryController {
 
 	public List<Vehiculo> listarVehiculo() {
 		return getConcesionario().listarVehiculos();
+	}
+
+	public Empleado buscarEmpleado(String id) {
+		return getConcesionario().buscarEmpleado(id);
+	}
+
+	public void agregarEmpleado(Empleado empleado)
+			throws UsuarioEncontradoException, AtributosFaltantesException, NullException {
+		getConcesionario().agregarEmpleado(empleado);
+		saveData();
+	}
+
+	public void actualizarContrasena(String id, String pass) throws NullException, UsuarioNoEncontradoException {
+		getConcesionario().actualizarContrasena(id, pass);
+		saveData();
 	}
 
 	/**
@@ -90,6 +105,12 @@ public class ModelFactoryController {
 
 	public List<Cliente> listarClientes() {
 		return getConcesionario().listarClientes();
+	}
+
+	public void actualizarImagen(String id, Image imagen)
+			throws NullException, AtributosFaltantesException, UsuarioNoEncontradoException {
+		getConcesionario().actualizarImagen(id, imagen);
+		saveData();
 	}
 
 }

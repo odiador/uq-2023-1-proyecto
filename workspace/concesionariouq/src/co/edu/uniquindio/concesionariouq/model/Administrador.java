@@ -1,6 +1,8 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -9,6 +11,7 @@ import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
 import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException;
+import javafx.scene.image.Image;
 
 public class Administrador extends Empleado implements GestionableEmpleado {
 
@@ -27,11 +30,12 @@ public class Administrador extends Empleado implements GestionableEmpleado {
 	 * @param email
 	 * @param respuestaDeSeguridad
 	 * @param estaActivo
+	 * @param file
 	 */
 	public Administrador(String id, String nombre, String contrasena, String email, String respuestaDeSeguridad,
-			Boolean estaActivo) {
-		super(id, nombre, contrasena, email, respuestaDeSeguridad, estaActivo);
-		this.listaEmpleados = new HashSet<Empleado>();
+			Boolean estaActivo, Image file) {
+		super(id, nombre, contrasena, email, respuestaDeSeguridad, estaActivo, file);
+		this.listaEmpleados = new HashSet<>();
 	}
 
 	@Override
@@ -40,8 +44,8 @@ public class Administrador extends Empleado implements GestionableEmpleado {
 	}
 
 	@Override
-	public TipoUsuario getTipoUsuario() {
-		return TipoUsuario.ADMIN;
+	public TipoPersona getTipoPersona() {
+		return TipoPersona.ADMIN;
 	}
 
 	@Override
@@ -117,39 +121,26 @@ public class Administrador extends Empleado implements GestionableEmpleado {
 		actualizarEmpleado(empleado);
 	}
 
-	/**
-	 * Este metodo genera un reporte
-	 */
-	public void generarReporte() {
-
-	}
-
-	/**
-	 * Este metodo es la que recupera contraseñas
-	 */
-	public void recuperarContrasena() {
-
-	}
-
-	/**
-	 * @return the listaEmpleados
-	 */
-	public Set<Empleado> getListaEmpleados() {
-		return listaEmpleados;
-	}
-
-	/**
-	 * @param listaEmpleados the listaEmpleados to set
-	 */
-	public void setListaEmpleados(Set<Empleado> listaEmpleados) {
-		this.listaEmpleados = listaEmpleados;
-	}
-
 	@Override
 	public String toString() {
+		final int maxLen = 10;
 		return String.format(
-				"Administrador [id=%s, nombre=%s, contrasena=%s, email=%s, respuestaDeSeguridad=%s, estaActivo=%s, listaEmpleados=%s]",
-				id, nombre, contrasena, email, respuestaDeSeguridad, estaActivo, listaEmpleados);
+				"Administrador [id=%s, nombre=%s, contrasena=%s, email=%s, respuestaDeSeguridad=%s, estaActivo=%s, imagen=%s, listaEmpleados=%s]",
+				id, nombre, contrasena, email, respuestaDeSeguridad, estaActivo, imagen,
+				listaEmpleados != null ? toString(listaEmpleados, maxLen) : null);
+	}
+
+	private String toString(Collection<?> collection, int maxLen) {
+		StringBuilder builder = new StringBuilder();
+		builder.append("[");
+		int i = 0;
+		for (Iterator<?> iterator = collection.iterator(); iterator.hasNext() && i < maxLen; i++) {
+			if (i > 0)
+				builder.append(", ");
+			builder.append(iterator.next());
+		}
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

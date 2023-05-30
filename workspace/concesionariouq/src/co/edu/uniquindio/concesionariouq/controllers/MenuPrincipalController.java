@@ -2,7 +2,7 @@ package co.edu.uniquindio.concesionariouq.controllers;
 
 import java.io.IOException;
 
-import co.edu.uniquindio.concesionariouq.model.Usuario;
+import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import co.edu.uniquindio.concesionariouq.util.ValorObservable;
 import javafx.animation.Interpolator;
@@ -165,7 +165,7 @@ public class MenuPrincipalController {
 
 	private boolean barraBloqueada;
 
-	private Usuario usuario;
+	private Empleado empleado;
 
 	private int status = 0;
 
@@ -177,12 +177,12 @@ public class MenuPrincipalController {
 
 	private Timeline transicion3;
 
-	public MenuPrincipalController(Usuario usuario) {
-		this.usuario = usuario;
+	public MenuPrincipalController(Empleado empleado) {
+		this.empleado = empleado;
 	}
 
 	public void updateNameField() {
-		labelNombre.setText(usuario.getNombre());
+		labelNombre.setText(empleado.getNombre());
 	}
 
 	private void crearAnimacionLogoHome() {
@@ -292,7 +292,7 @@ public class MenuPrincipalController {
 
 	private void gestionClientesAction() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setController(new GestionClientesController(usuario, () -> homeAction()));
+		loader.setController(new GestionClientesController(() -> homeAction()));
 		loader.setLocation(getClass().getResource("../view/gestionClientes.fxml"));
 		try {
 			contentPane.setCenter(loader.load());

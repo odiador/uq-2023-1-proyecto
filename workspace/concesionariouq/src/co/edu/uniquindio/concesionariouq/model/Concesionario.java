@@ -1,7 +1,6 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,6 +16,7 @@ import co.edu.uniquindio.concesionariouq.exceptions.UsuarioEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
+import javafx.scene.image.Image;
 
 public class Concesionario
 		implements GestionableVehiculo, GestionableCliente, GestionableEmpleado, GestionableTransaccion, Serializable {
@@ -174,18 +174,15 @@ public class Concesionario
 		return listaEmpleados.stream().collect(Collectors.toList());
 	}
 
-	/**
-	 * Busca un usuario a partir de su identificacion y contraseña
-	 *
-	 * @param identificacion
-	 * @param contrasena
-	 * @return
-	 */
-	public Cliente buscarClienteLogin(String identificacion, String contrasena) {
-		Cliente usuario = buscarCliente(identificacion);
-		if (usuario != null && usuario.getContrasena().equals(contrasena))
-			return usuario;
-		return null;
+	public void actualizarContrasena(String id, String pass) throws UsuarioNoEncontradoException, NullException {
+		if (id == null || pass == null)
+			throw new NullException("Recuerda enviar todos los datos correspondientes");
+		Empleado empleado = buscarEmpleado(id);
+		if (empleado == null)
+			throw new UsuarioNoEncontradoException("El empleado con esa identificacion no fue encontrado");
+		empleado.setContrasena(pass);
+		listaEmpleados.remove(empleado);
+		listaEmpleados.add(empleado);
 	}
 
 	private Empleado buscarEmpleadoLogin(String identificacion, String contrasena) {
@@ -204,23 +201,16 @@ public class Concesionario
 	 * @throws LoginFailedException
 	 * @throws NullException
 	 */
-	public ArrayList<Usuario> hacerLogin(String identificacion, String contrasena)
-			throws LoginFailedException, NullException {
+	public Empleado hacerLogin(String identificacion, String contrasena) throws LoginFailedException, NullException {
 		if (identificacion == null)
 			throw new NullException("La identificacion enviada es null");
 		if (contrasena == null)
 			throw new NullException("La contrasena enviada es null");
 		Empleado empleado = buscarEmpleadoLogin(identificacion, contrasena);
-		Cliente cliente = buscarClienteLogin(identificacion, contrasena);
-		if (empleado == null && cliente == null)
+		if (empleado == null)
 			throw new LoginFailedException(
 					"La id o contraseña especificada no coinciden con tus datos, intenta nuevamente");
-		ArrayList<Usuario> listaUsuarios = new ArrayList<>();
-		if (empleado != null)
-			listaUsuarios.add(empleado);
-		if (cliente != null)
-			listaUsuarios.add(cliente);
-		return listaUsuarios;
+		return empleado;
 	}
 
 	@Override
@@ -314,6 +304,36 @@ public class Concesionario
 		return String.format(
 				"Concesionario [nombre=%s, direccion=%s, listaVehiculos=%s, listaEmpleados=%s, listaTransacciones=%s]",
 				nombre, direccion, listaVehiculos, listaEmpleados, listaTransacciones);
+	}
+
+	/**
+	 * Actualiza un empleado con la instancia entregada por parametro. Realiza
+	 * verificaciones para saber si el empleado existe.
+	 *
+	 * @param empleado
+	 * @throws NullException
+	 * @throws UsuarioNoEncontradoException
+	 * @throws AtributosFaltantesException
+	 */
+	public void actualizarEmpleado(Empleado empleado)
+			throws NullException, UsuarioNoEncontradoException, AtributosFaltantesException {
+		if (empleado == null)
+			throw new NullException("El empleado es null");
+		if (validarEmpleado(empleado.getId()))
+			throw new UsuarioNoEncontradoException("El empleado no existe en la lista");
+		if (empleado.atributosLlenos())
+			throw new AtributosFaltantesException("El empleado no tiene todos sus atributos completos");
+		Empleado employee = buscarEmpleado(empleado.getId());
+		listaEmpleados.removeIf(e -> e.getId().equals(empleado.getId()));
+		listaEmpleados.add(employee);
+
+	}
+
+	public void actualizarImagen(String id, Image imagen)
+			throws NullException, AtributosFaltantesException, UsuarioNoEncontradoException {
+		Empleado employee = buscarEmpleado(id);
+		employee.setImagen(imagen);
+		actualizarEmpleado(employee);
 	}
 
 }

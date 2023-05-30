@@ -56,8 +56,8 @@
    <bottom>
       <HBox spacing="30.0">
          <children>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cancelarEvent" text="Cancelar" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cambiarContrasenaEvent" text="Cambiar Contraseña" HBox.hgrow="ALWAYS" />
+            <Button cancelButton="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cancelarEvent" text="Cancelar" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS" />
+            <Button defaultButton="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cambiarContrasenaEvent" text="Cambiar Contraseña" HBox.hgrow="ALWAYS" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

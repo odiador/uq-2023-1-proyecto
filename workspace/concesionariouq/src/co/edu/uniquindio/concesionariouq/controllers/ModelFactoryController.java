@@ -91,7 +91,7 @@ public class ModelFactoryController {
 	}
 
 	/**
-	 * 
+	 * Obtiene los datos del archivo serializado y setea el concesionario con estos datos.
 	 */
 	public void loadData() {
 		try (FileInputStream fileIn = new FileInputStream("src/co/edu/uniquindio/concesionariouq/controllers/data.dat");
@@ -103,10 +103,22 @@ public class ModelFactoryController {
 		}
 	}
 
+	/**
+	 * Enlista los clientes del concesionario.
+	 * @return
+	 */
 	public List<Cliente> listarClientes() {
 		return getConcesionario().listarClientes();
 	}
 
+	/**
+	 * Actualiza la imagen de un empleado. La exceptions si el empleado no existe.
+	 * @param id
+	 * @param imagen
+	 * @throws NullException
+	 * @throws AtributosFaltantesException
+	 * @throws UsuarioNoEncontradoException
+	 */
 	public void actualizarImagen(String id, Image imagen)
 			throws NullException, AtributosFaltantesException, UsuarioNoEncontradoException {
 		getConcesionario().actualizarImagen(id, imagen);

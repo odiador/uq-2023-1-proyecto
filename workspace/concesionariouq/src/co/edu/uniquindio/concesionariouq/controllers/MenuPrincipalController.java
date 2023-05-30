@@ -130,7 +130,7 @@ public class MenuPrincipalController {
 
 	@FXML
 	void gestionClientesEvent(ActionEvent event) {
-
+		gestionClientesAction();
 	}
 
 	@FXML
@@ -186,7 +186,6 @@ public class MenuPrincipalController {
 	}
 
 	private void crearAnimacionLogoHome() {
-		imgLogoHome.fitHeightProperty().set(200);
 		ScaleTransition transicion = new ScaleTransition(Duration.millis(5000), imgLogoHome);
 		transicion.setToX(1.2f);
 		transicion.setToY(1.2f);
@@ -240,16 +239,6 @@ public class MenuPrincipalController {
 			lblGestion.setVisible(false);
 			lblBloqueo.setVisible(false);
 		}
-  }
-	private void cambiarContentPane(String ruta, Object controller) {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource(ruta));
-		loader.setController(controller);
-		try {
-			contentPane.setCenter(loader.load());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	private void homeAction() {
@@ -296,6 +285,17 @@ public class MenuPrincipalController {
 		try {
 			stage.setScene(new Scene(loader.load()));
 			stage.centerOnScreen();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void gestionClientesAction() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setController(new GestionClientesController(usuario, () -> homeAction()));
+		loader.setLocation(getClass().getResource("../view/gestionClientes.fxml"));
+		try {
+			contentPane.setCenter(loader.load());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

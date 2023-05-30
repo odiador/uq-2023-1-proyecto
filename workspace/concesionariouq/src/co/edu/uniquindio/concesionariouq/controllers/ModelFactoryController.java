@@ -3,8 +3,8 @@ package co.edu.uniquindio.concesionariouq.controllers;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +12,7 @@ import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
 import co.edu.uniquindio.concesionariouq.exceptions.LoginFailedException;
 import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioEncontradoException;
+import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException;
 import co.edu.uniquindio.concesionariouq.model.Cliente;
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
 import co.edu.uniquindio.concesionariouq.model.Usuario;
@@ -42,6 +43,11 @@ public class ModelFactoryController {
 	public void agregarCliente(Cliente cliente)
 			throws UsuarioEncontradoException, NullException, AtributosFaltantesException {
 		getConcesionario().agregarCliente(cliente);
+		saveData();
+	}
+
+	public void eliminarCliente(String id) throws NullException, UsuarioNoEncontradoException {
+		getConcesionario().eliminarCliente(id);
 		saveData();
 	}
 
@@ -80,6 +86,10 @@ public class ModelFactoryController {
 			setConcesionario(new Concesionario("Carro UQ", "Universidad del Quindio"));
 			saveData();
 		}
+	}
+
+	public List<Cliente> listarClientes() {
+		return getConcesionario().listarClientes();
 	}
 
 }

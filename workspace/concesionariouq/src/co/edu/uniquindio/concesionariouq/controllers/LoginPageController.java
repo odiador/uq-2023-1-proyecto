@@ -116,7 +116,7 @@ public class LoginPageController {
 			}
 		} catch (LoginFailedException | NullException e1) {
 			FxUtility.mostrarMensaje("Advertencia", "No se pudo iniciar sesion", e1.getMessage(),
-					AlertType.CONFIRMATION);
+					AlertType.ERROR);
 			return;
 		}
 		MenuPrincipalController controller = new MenuPrincipalController(usuario);

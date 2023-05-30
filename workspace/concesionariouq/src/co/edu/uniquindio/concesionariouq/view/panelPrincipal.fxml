@@ -149,7 +149,7 @@
          <top>
             <BorderPane BorderPane.alignment="CENTER">
                <top>
-                  <BorderPane BorderPane.alignment="CENTER">
+                  <BorderPane style="-fx-border-color: #ce3126; -fx-border-width: 2;" BorderPane.alignment="CENTER">
                      <right>
                         <Button mnemonicParsing="false" onAction="#accionarDetalleEvent" styleClass="btnsPrincipales" BorderPane.alignment="CENTER">
                            <graphic>

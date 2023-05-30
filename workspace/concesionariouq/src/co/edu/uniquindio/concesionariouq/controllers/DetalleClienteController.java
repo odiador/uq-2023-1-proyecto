@@ -17,9 +17,6 @@ public class DetalleClienteController {
 	@FXML
 	private TextField txtIdentificacion;
 
-	@FXML
-	private TextField txtCorreo;
-
 	private Cliente cliente;
 
 	@FXML
@@ -35,7 +32,6 @@ public class DetalleClienteController {
 	@FXML
 	void initialize() {
 		txtIdentificacion.setText(cliente.getId());
-		txtCorreo.setText(cliente.getEmail());
 		txtNombre.setText(cliente.getNombre());
 	}
 

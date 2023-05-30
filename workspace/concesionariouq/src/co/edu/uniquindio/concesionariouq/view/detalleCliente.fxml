@@ -30,7 +30,6 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -38,9 +37,7 @@
             <TextField fx:id="txtNombre" editable="false" GridPane.columnIndex="1" />
             <Label text="Identificación:" GridPane.rowIndex="1" />
             <TextField fx:id="txtIdentificacion" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Correo:" GridPane.rowIndex="2" />
-            <TextField fx:id="txtCorreo" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#verVehiculosEvent" text="Ver Vehículos" GridPane.columnSpan="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#verVehiculosEvent" text="Ver Vehículos" GridPane.columnSpan="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets left="30.0" right="30.0" />
                </GridPane.margin></Button>

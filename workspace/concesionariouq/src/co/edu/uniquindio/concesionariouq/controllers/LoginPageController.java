@@ -1,13 +1,10 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import co.edu.uniquindio.concesionariouq.exceptions.LoginFailedException;
 import co.edu.uniquindio.concesionariouq.exceptions.NullException;
-import co.edu.uniquindio.concesionariouq.model.Usuario;
+import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -15,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -64,6 +60,7 @@ public class LoginPageController {
 	}
 
 	public LoginPageController() {
+		this(null);
 	}
 
 	private void contrasenaOlvidadaAction() {
@@ -95,31 +92,15 @@ public class LoginPageController {
 
 	private void loginAction() {
 		FXMLLoader loader = new FXMLLoader();
-		Usuario usuario;
+		Empleado empleado;
 		try {
-			ArrayList<Usuario> datosUsuarios = ModelFactoryController.getInstance()
-					.hacerLogin(txtIdentificacion.getText(), txtContrasena.getText());
-			if (datosUsuarios.size() == 1) {
-				usuario = datosUsuarios.get(0);
-			} else {
-				List<ButtonType> collect = datosUsuarios.stream()
-						.map(user -> new ButtonType(user.getTipoUsuario().getText())).collect(Collectors.toList());
-				ButtonType[] buttonTypes = (ButtonType[]) collect.toArray(new ButtonType[collect.size()]);
-				ButtonType botonAlerta = FxUtility.crearDecisionAlerta("Decision", "Que tipo de bloqueo quieres tener",
-						"Eligue el tipo de bloqueo que deseas para la barra lateral de la ventana",
-						AlertType.INFORMATION, 600, buttonTypes);
-				if (botonAlerta == null)
-					throw new LoginFailedException("Debes de elegir un tipo");
-				int indice = collect.indexOf(botonAlerta);
-				usuario = datosUsuarios.get(indice);
-
-			}
+			empleado = ModelFactoryController.getInstance().hacerLogin(txtIdentificacion.getText(),
+					txtContrasena.getText());
 		} catch (LoginFailedException | NullException e1) {
-			FxUtility.mostrarMensaje("Advertencia", "No se pudo iniciar sesion", e1.getMessage(),
-					AlertType.ERROR);
+			FxUtility.mostrarMensaje("Advertencia", "No se pudo iniciar sesion", e1.getMessage(), AlertType.ERROR);
 			return;
 		}
-		MenuPrincipalController controller = new MenuPrincipalController(usuario);
+		MenuPrincipalController controller = new MenuPrincipalController(empleado);
 		loader.setController(controller);
 		loader.setLocation(getClass().getResource("../view/panelPrincipal.fxml"));
 		try {

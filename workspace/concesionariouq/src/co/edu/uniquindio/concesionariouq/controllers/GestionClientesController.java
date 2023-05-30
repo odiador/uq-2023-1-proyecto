@@ -5,8 +5,6 @@ import java.io.IOException;
 import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException;
 import co.edu.uniquindio.concesionariouq.model.Cliente;
-import co.edu.uniquindio.concesionariouq.model.TipoUsuario;
-import co.edu.uniquindio.concesionariouq.model.Usuario;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
@@ -118,18 +116,11 @@ public class GestionClientesController {
 	void initialize() {
 		actualizarTabla();
 		inicializarValoresColumnas();
-		TipoUsuario tipoUsuario = usuario.getTipoUsuario();
-		if (tipoUsuario == TipoUsuario.CLIENTE) {
-
-		}
 	}
-
-	private Usuario usuario;
 
 	private Runnable volverRunnable;
 
-	public GestionClientesController(Usuario usuario, Runnable volverRunnable) {
-		this.usuario = usuario;
+	public GestionClientesController(Runnable volverRunnable) {
 		this.volverRunnable = volverRunnable;
 	}
 

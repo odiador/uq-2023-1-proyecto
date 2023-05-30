@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 import javax.mail.MessagingException;
 
-import co.edu.uniquindio.concesionariouq.model.Usuario;
+import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import co.edu.uniquindio.concesionariouq.util.ProjectUtility;
 import co.edu.uniquindio.concesionariouq.util.ValorObservable;
@@ -20,9 +20,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -61,14 +61,14 @@ public class MidEnviarCorreoController {
 		ejecutarHiloEnviarCodigo();
 	}
 
-	private Usuario usuario;
+	private Empleado empleado;
 
 	private String code;
 
 	private ValorObservable<Boolean> seHaTerminado;
 
-	public MidEnviarCorreoController(Usuario usuario) {
-		this.usuario = usuario;
+	public MidEnviarCorreoController(Empleado empleado) {
+		this.empleado = empleado;
 	}
 
 	private void initValues() {
@@ -98,7 +98,7 @@ public class MidEnviarCorreoController {
 
 	private void enviarCorreo() {
 		try {
-			ProjectUtility.enviarCorreoRecuperacion(usuario.getEmail(), usuario.getNombre(), code);
+			ProjectUtility.enviarCorreoRecuperacion(empleado.getEmail(), empleado.getNombre(), code);
 			seHaTerminado.setValue(true);
 		} catch (MessagingException | IOException e) {
 			Platform.runLater(() -> {
@@ -125,7 +125,7 @@ public class MidEnviarCorreoController {
 	}
 
 	private void irAVercodigo() {
-		CodigoRecuperacionController controller = new CodigoRecuperacionController(usuario, code, LocalDateTime.now());
+		CodigoRecuperacionController controller = new CodigoRecuperacionController(empleado, code, LocalDateTime.now());
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../view/panelCodigoRecuperacion.fxml"));
 		loader.setController(controller);
@@ -145,7 +145,7 @@ public class MidEnviarCorreoController {
 
 	private void volverAction() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setController(new LoginPageController(usuario.getId()));
+		loader.setController(new LoginPageController(empleado.getId()));
 		loader.setLocation(getClass().getResource("../view/login.fxml"));
 		try {
 			Stage stage = (Stage) mainPane.getScene().getWindow();

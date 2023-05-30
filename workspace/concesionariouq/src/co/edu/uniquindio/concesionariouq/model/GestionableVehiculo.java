@@ -12,12 +12,13 @@ public interface GestionableVehiculo {
 	public void agregarVehiculo(String id, Vehiculo vehiculo)
 			throws VehiculoYaExisteException, AtributosFaltantesException, NullException;
 
-	public void eliminarVehiculo(String id)
-			throws VehiculoNoExisteException, NullException;
+	public void eliminarVehiculo(String id) throws VehiculoNoExisteException, NullException;
 
 	public Vehiculo buscarVehiculo(String id);
 
-	public boolean validarVehiculo(String id);
+	public default boolean validarVehiculo(String id) {
+		return buscarVehiculo(id) != null;
+	}
 
 	public List<Vehiculo> listarVehiculos();
 }

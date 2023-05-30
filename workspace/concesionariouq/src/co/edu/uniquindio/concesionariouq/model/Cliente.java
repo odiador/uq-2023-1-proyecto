@@ -1,8 +1,8 @@
 package co.edu.uniquindio.concesionariouq.model;
 
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
@@ -10,26 +10,28 @@ import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
-public class Cliente extends Usuario implements GestionableVehiculo {
+public class Cliente extends Persona implements GestionableVehiculo {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private HashMap<String, Vehiculo> listaVehiculos;
+	private Set<Vehiculo> listaVehiculos;
 
 	/**
-	 * Este el constructor de la clase Cliente
+	 * Es el constructor de la clase {@link Cliente}
 	 * 
 	 * @param id
 	 * @param nombre
-	 * @param contrasena
-	 * @param email
-	 * @param respuestaDeSeguridad
 	 */
-	public Cliente(String id, String nombre, String contrasena, String email, String respuestaDeSeguridad) {
-		super(id, nombre, contrasena, email, respuestaDeSeguridad);
+	public Cliente(String id, String nombre) {
+		super(id, nombre);
+		listaVehiculos = new HashSet<>();
+	}
 
-		this.listaVehiculos = new HashMap<String, Vehiculo>();
+	@Override
+	public TipoPersona getTipoPersona() {
+		return TipoPersona.CLIENTE;
 	}
 
 	@Override
@@ -37,12 +39,9 @@ public class Cliente extends Usuario implements GestionableVehiculo {
 		return super.atributosLlenos() && listaVehiculos != null;
 	}
 
-	public boolean validarVehiculo(String id) {
-		return listaVehiculos.containsKey(id);
-	}
-
+	@Override
 	public Vehiculo buscarVehiculo(String id) {
-		return listaVehiculos.getOrDefault(id, null);
+		return listaVehiculos.stream().filter(vehiculo -> vehiculo.tieneId(id)).findFirst().orElse(null);
 	}
 
 	@Override
@@ -57,33 +56,22 @@ public class Cliente extends Usuario implements GestionableVehiculo {
 		if (validarVehiculo(id))
 			throw new VehiculoYaExisteException("El vehiculo ya existe, no se puede agregar");
 
-		listaVehiculos.put(id, vehiculo);
+		listaVehiculos.add(vehiculo);
 	}
 
 	@Override
 	public void eliminarVehiculo(String id) throws VehiculoNoExisteException, NullException {
 		if (id == null)
 			throw new NullException("La identificacion enviada es null");
-		if (!validarVehiculo(id))
+		Vehiculo vehiculo = buscarVehiculo(id);
+		if (vehiculo == null)
 			throw new VehiculoNoExisteException("El vehiculo no existe, no se puede eliminar");
-		listaVehiculos.remove(id);
+		listaVehiculos.remove(vehiculo);
 	}
 
 	@Override
 	public List<Vehiculo> listarVehiculos() {
-		return listaVehiculos.entrySet().stream().map(Entry<String, Vehiculo>::getValue).collect(Collectors.toList());
-	}
-
-	@Override
-	public TipoUsuario getTipoUsuario() {
-		return TipoUsuario.CLIENTE;
-	}
-
-	@Override
-	public String toString() {
-		return String.format(
-				"Cliente [id=%s, nombre=%s, contrasena=%s, email=%s, respuestaDeSeguridad=%s, listaVehiculos=%s]", id,
-				nombre, contrasena, email, respuestaDeSeguridad, listaVehiculos);
+		return listaVehiculos.stream().collect(Collectors.toList());
 	}
 
 }

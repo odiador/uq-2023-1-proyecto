@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import co.edu.uniquindio.concesionariouq.model.Usuario;
+import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -66,18 +66,18 @@ public class CodigoRecuperacionController {
 
 	private LocalDateTime fechaEnvio;
 
-	private Usuario usuario;
+	private Empleado empleado;
 
 	private String code;
 
-	public CodigoRecuperacionController(Usuario usuario, String code, LocalDateTime fechaEnvio) {
-		this.usuario = usuario;
+	public CodigoRecuperacionController(Empleado empleado, String code, LocalDateTime fechaEnvio) {
+		this.empleado = empleado;
 		this.fechaEnvio = fechaEnvio;
 		this.code = code;
 	}
 
 	private void setComponentProperties() {
-		lblIdentificacion.setText(usuario.getId());
+		lblIdentificacion.setText(empleado.getId());
 		btnOtroCodigo.setDisable(true);
 	}
 
@@ -138,7 +138,7 @@ public class CodigoRecuperacionController {
 	private void otroCodigoAction() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../view/panelMidEnviarCorreo.fxml"));
-		loader.setController(new MidEnviarCorreoController(usuario));
+		loader.setController(new MidEnviarCorreoController(empleado));
 		try {
 			Stage stage = (Stage) mainPane.getScene().getWindow();
 			stage.setScene(new Scene(loader.load()));
@@ -159,7 +159,7 @@ public class CodigoRecuperacionController {
 
 	private void irACambiarContrasena() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setController(new CambioContrasenaController(usuario));
+		loader.setController(new CambioContrasenaController(empleado));
 		loader.setLocation(getClass().getResource("../view/panelCambiarContrasena.fxml"));
 		Stage stage = (Stage) mainPane.getScene().getWindow();
 		try {

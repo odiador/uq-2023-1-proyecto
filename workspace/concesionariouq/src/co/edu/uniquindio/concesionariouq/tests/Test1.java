@@ -1,5 +1,8 @@
 package co.edu.uniquindio.concesionariouq.tests;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,22 +17,25 @@ import co.edu.uniquindio.concesionariouq.model.Gasolina;
 import co.edu.uniquindio.concesionariouq.model.Moto;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.ProjectUtility;
+import javafx.scene.image.Image;
 
 public class Test1 {
 	Concesionario concesionario = new Concesionario("Nombre", "id");
 
 	@Before
-	public void test() throws NullException, VehiculoYaExisteException, AtributosFaltantesException {
+	public void test()
+			throws NullException, VehiculoYaExisteException, AtributosFaltantesException, FileNotFoundException {
+		Image imagen = new Image(new FileInputStream("src/resources/images/vehiculo.png"));
 		concesionario.agregarVehiculo("AAAA", new Moto("AAAA", "mazda", "2020", 200d, 200d, new Gasolina(),
-				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO, imagen));
 		concesionario.agregarVehiculo("XG", new Deportivo("XG", "mazda", "2020", 200d, 200d, new Gasolina(),
-				EstadoVehiculo.NUEVO, TipoCambio.MANUAL, 5, 2, 3, 40, 4d));
+				EstadoVehiculo.NUEVO, TipoCambio.MANUAL, 5, 2, 3, 40, 4d, imagen));
 		concesionario.agregarVehiculo("ASAAS", new Moto("ASAAS", "mazda", "2020", 200d, 200d, new Gasolina(),
-				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO, imagen));
 		concesionario.agregarVehiculo("AAAZ", new Moto("AAAZ", "mazda", "2020", 200d, 200d, new Diesel(),
-				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO, imagen));
 		concesionario.agregarVehiculo("AAAV", new Moto("AAAV", "mazda", "2020", 200d, 200d, new Diesel(),
-				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO));
+				EstadoVehiculo.NUEVO, TipoCambio.AUTOMATICO, imagen));
 		System.out.println(concesionario.listarVehiculos());
 	}
 

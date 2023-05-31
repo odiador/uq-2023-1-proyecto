@@ -21,7 +21,6 @@ import co.edu.uniquindio.concesionariouq.model.Concesionario;
 import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 import co.edu.uniquindio.concesionariouq.model.Venta;
-import javafx.scene.image.Image;
 
 public class ModelFactoryController {
 
@@ -116,21 +115,6 @@ public class ModelFactoryController {
 	 */
 	public List<Cliente> listarClientes() {
 		return getConcesionario().listarClientes();
-	}
-
-	/**
-	 * Actualiza la imagen de un empleado. La exceptions si el empleado no existe.
-	 * 
-	 * @param id
-	 * @param imagen
-	 * @throws NullException
-	 * @throws AtributosFaltantesException
-	 * @throws UsuarioNoEncontradoException
-	 */
-	public void actualizarImagen(String id, Image imagen)
-			throws NullException, AtributosFaltantesException, UsuarioNoEncontradoException {
-		getConcesionario().actualizarImagen(id, imagen);
-		saveData();
 	}
 
 	/**

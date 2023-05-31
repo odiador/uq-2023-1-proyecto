@@ -125,8 +125,8 @@ public class Administrador extends Empleado implements GestionableEmpleado {
 	public String toString() {
 		final int maxLen = 10;
 		return String.format(
-				"Administrador [id=%s, nombre=%s, contrasena=%s, email=%s, respuestaDeSeguridad=%s, estaActivo=%s, imagen=%s, listaEmpleados=%s]",
-				id, nombre, contrasena, email, respuestaDeSeguridad, estaActivo, imagen,
+				"Administrador [id=%s, nombre=%s, contrasena=%s, email=%s, respuestaDeSeguridad=%s, estaActivo=%s, listaEmpleados=%s]",
+				id, nombre, contrasena, email, respuestaDeSeguridad, estaActivo,
 				listaEmpleados != null ? toString(listaEmpleados, maxLen) : null);
 	}
 

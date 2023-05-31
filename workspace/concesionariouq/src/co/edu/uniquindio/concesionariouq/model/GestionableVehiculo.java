@@ -9,7 +9,7 @@ import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
 public interface GestionableVehiculo {
 
-	public void agregarVehiculo(String id, Vehiculo vehiculo)
+	public void agregarVehiculo(Vehiculo vehiculo)
 			throws VehiculoYaExisteException, AtributosFaltantesException, NullException;
 
 	public void eliminarVehiculo(String id) throws VehiculoNoExisteException, NullException;

@@ -2,8 +2,11 @@ package co.edu.uniquindio.concesionariouq.model;
 
 public class Venta extends Transaccion {
 
-	public Venta(String codigo, Vehiculo vehiculo, Double valor) {
-		super(codigo, vehiculo, valor);
+	private Proveedor proveedor;
+
+	public Venta(Vehiculo vehiculo, Double valor,Proveedor proveedor) {
+		super(vehiculo, valor);
+		this.proveedor = proveedor;
 	}
 
 	/**

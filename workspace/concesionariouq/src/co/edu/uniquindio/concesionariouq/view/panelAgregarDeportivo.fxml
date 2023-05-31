@@ -109,47 +109,36 @@
                         <Insets />
                      </GridPane.margin>
                   </ComboBox>
-                  <Label text="Elige el combustible del vehiculo" GridPane.rowIndex="7">
+                  <Label text="Ingresa el numero de pasajeros" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <Button fx:id="btnCombustible" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#combustibleEvent" text="Combustible" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Button>
-                  <Label text="Ingresa el numero de pasajeros" GridPane.rowIndex="8">
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Label>
-                  <TextField fx:id="txtNumPasajeros" promptText="Numero Pasajeros" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <TextField fx:id="txtNumPasajeros" promptText="Numero Pasajeros" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Ingresa el numero de bolsas de aire" GridPane.rowIndex="9">
+                  <Label text="Ingresa el numero de bolsas de aire" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="txtNumBolsas" promptText="Numero Bolsas de Aire" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <TextField fx:id="txtNumBolsas" promptText="Numero Bolsas de Aire" GridPane.columnIndex="1" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Ingresa el numero de puertas" GridPane.rowIndex="10" />
-                  <TextField fx:id="txtNumPuertas" promptText="Numero Puertas" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <Label text="Ingresa el tiempo en que se demora en llegar a 100 km/h (s)" GridPane.rowIndex="11" />
-                  <TextField fx:id="txtTiempo100km" promptText="Timpo llega a 100 km/h" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <Label text="Ingresa el numero de puertas" GridPane.rowIndex="9" />
+                  <TextField fx:id="txtNumPuertas" promptText="Numero Puertas" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <Label text="Ingresa el tiempo en que se demora en llegar a 100 km/h (s)" GridPane.rowIndex="10" />
+                  <TextField fx:id="txtTiempo100km" promptText="Timpo llega a 100 km/h" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />

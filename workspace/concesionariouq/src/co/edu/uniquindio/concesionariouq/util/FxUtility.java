@@ -13,6 +13,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -122,4 +123,16 @@ public class FxUtility {
 		if (boton == ButtonType.OK)
 			metodo.run();
 	}
+	
+	public static void setMaximumTextSize(TextField tf, int tamanio) {
+        tf.setTextFormatter(new TextFormatter<String>(cambio -> {
+            if (cambio.isContentChange()) {
+                if (cambio.getControlNewText().length() > tamanio) {
+                    abrirContextMenu(tf, "Este campo puede tener maximo " + tamanio + " caracteres");
+                    return null;
+                }
+            }
+            return cambio;
+        }));
+    }
 }

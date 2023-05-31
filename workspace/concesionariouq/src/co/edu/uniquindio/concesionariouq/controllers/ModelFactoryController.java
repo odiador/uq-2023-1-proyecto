@@ -131,6 +131,17 @@ public class ModelFactoryController {
 		getConcesionario().actualizarImagen(id, imagen);
 		saveData();
 	}
+	
+	/**
+	 * Agrega un vehiculo a la lista del concesionario.
+	 * @param vehiculo
+	 * @throws NullException
+	 * @throws AtributosFaltantesException
+	 * @throws VehiculoYaExisteException
+	 */
+	public void agregarVehiculo(Vehiculo vehiculo) throws NullException, AtributosFaltantesException, VehiculoYaExisteException {
+		getConcesionario().agregarVehiculo(vehiculo.getId(), vehiculo);
+	}
 
 	public void venderVehiculoACliente(String idCliente, Venta venta)
 			throws NullException, VehiculoYaExisteException, AtributosFaltantesException, UsuarioNoEncontradoException,

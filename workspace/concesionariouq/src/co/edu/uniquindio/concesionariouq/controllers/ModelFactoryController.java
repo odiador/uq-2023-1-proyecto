@@ -12,6 +12,7 @@ import co.edu.uniquindio.concesionariouq.exceptions.LoginFailedException;
 import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException;
+import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 import co.edu.uniquindio.concesionariouq.model.Cliente;
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
 import co.edu.uniquindio.concesionariouq.model.Empleado;
@@ -123,6 +124,17 @@ public class ModelFactoryController {
 			throws NullException, AtributosFaltantesException, UsuarioNoEncontradoException {
 		getConcesionario().actualizarImagen(id, imagen);
 		saveData();
+	}
+	
+	/**
+	 * Agrega un vehiculo a la lista del concesionario.
+	 * @param vehiculo
+	 * @throws NullException
+	 * @throws AtributosFaltantesException
+	 * @throws VehiculoYaExisteException
+	 */
+	public void agregarVehiculo(Vehiculo vehiculo) throws NullException, AtributosFaltantesException, VehiculoYaExisteException {
+		getConcesionario().agregarVehiculo(vehiculo.getId(), vehiculo);
 	}
 
 }

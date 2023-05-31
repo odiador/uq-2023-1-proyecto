@@ -7,12 +7,9 @@ import java.util.ResourceBundle;
 import co.edu.uniquindio.concesionariouq.model.Combustible;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class AgregarVehiculoController {
 

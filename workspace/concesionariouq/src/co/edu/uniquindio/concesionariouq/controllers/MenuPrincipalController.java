@@ -124,6 +124,11 @@ public class MenuPrincipalController {
 	}
 
 	@FXML
+	void gestionTransaccionesEvent(ActionEvent event) {
+		gestionTransaccionesAction();
+	}
+
+	@FXML
 	void gestionEmpleadosEvent(ActionEvent event) {
 		gestionEmpleadosAction();
 	}
@@ -132,6 +137,18 @@ public class MenuPrincipalController {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setController(new GestionEmpleadosController(() -> homeAction()));
 		loader.setLocation(getClass().getResource("../view/gestionEmpleados.fxml"));
+		try {
+			contentPane.setCenter(loader.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+			e.getMessage();
+		}
+	}
+
+	private void gestionTransaccionesAction() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setController(new GestionTransaccionesController(() -> homeAction()));
+		loader.setLocation(getClass().getResource("../view/gestionTransacciones.fxml"));
 		try {
 			contentPane.setCenter(loader.load());
 		} catch (IOException e) {

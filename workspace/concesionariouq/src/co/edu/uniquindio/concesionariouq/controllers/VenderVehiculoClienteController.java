@@ -85,7 +85,7 @@ public class VenderVehiculoClienteController {
 
 	private void actualizarTabla() {
 		tableVehiculos
-				.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance().listarVehiculo()));
+				.setItems(FXCollections.observableArrayList(cliente.listarVehiculos()));
 		tableVehiculos.refresh();
 	}
 
@@ -113,7 +113,7 @@ public class VenderVehiculoClienteController {
 			ModelFactoryController.getInstance().comprarVehiculoDeCliente(cliente.getId(),
 					new Compra(vehiculo, valor, cliente));
 			FxUtility.mostrarMensaje("Informacion", "El vehiculo ha sido vendido al cliente",
-					"El cliente con id " + cliente.getId() + " ahora tiene un nuevo vehiculo", AlertType.CONFIRMATION);
+					"El concesionario ahora tiene un nuevo vehiculo", AlertType.CONFIRMATION);
 		} catch (NullException | VehiculoYaExisteException | AtributosFaltantesException | UsuarioNoEncontradoException
 				| TransaccionYaExisteException | VehiculoNoExisteException e) {
 			FxUtility.mostrarMensaje("Advertencia", "No se pudo vender el vehiculo al cliente", e.getMessage(),

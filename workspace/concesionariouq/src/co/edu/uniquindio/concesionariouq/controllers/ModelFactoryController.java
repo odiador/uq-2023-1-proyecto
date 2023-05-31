@@ -19,6 +19,7 @@ import co.edu.uniquindio.concesionariouq.model.Cliente;
 import co.edu.uniquindio.concesionariouq.model.Compra;
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
 import co.edu.uniquindio.concesionariouq.model.Empleado;
+import co.edu.uniquindio.concesionariouq.model.Transaccion;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 import co.edu.uniquindio.concesionariouq.model.Venta;
 import javafx.util.Callback;
@@ -153,6 +154,10 @@ public class ModelFactoryController {
 
 	public List<Empleado> listarEmpleados() {
 		return getConcesionario().listarEmpleados();
+	}
+
+	public List<Transaccion> listarTransacciones() {
+		return getConcesionario().listarTransacciones();
 	}
 
 }

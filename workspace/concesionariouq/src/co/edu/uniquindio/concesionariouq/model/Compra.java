@@ -30,4 +30,12 @@ public class Compra extends Transaccion {
 	public TipoTransaccion getTipoTransaccion() {
 		return TipoTransaccion.COMPRA;
 	}
+
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
 }

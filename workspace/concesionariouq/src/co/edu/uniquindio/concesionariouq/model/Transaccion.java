@@ -54,6 +54,14 @@ public abstract class Transaccion implements Serializable {
 		this.valor = valor;
 	}
 
+	public LocalDateTime getMomento() {
+		return momento;
+	}
+
+	public void setMomento(LocalDateTime momento) {
+		this.momento = momento;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -83,14 +91,6 @@ public abstract class Transaccion implements Serializable {
 	@Override
 	public String toString() {
 		return String.format("Transaccion [vehiculo=%s, valor=%s, momento=%s]", vehiculo, valor, momento);
-	}
-
-	public LocalDateTime getMomento() {
-		return momento;
-	}
-
-	public void setMomento(LocalDateTime momento) {
-		this.momento = momento;
 	}
 
 }

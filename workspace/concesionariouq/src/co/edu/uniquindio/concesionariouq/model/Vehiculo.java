@@ -140,7 +140,7 @@ public abstract class Vehiculo implements Serializable {
 
 	public boolean atributosLlenos() {
 		return marca != null && modelo != null && cilindraje != null && velocidadMaxima != null && combustible != null
-				&& estado != null && tipo != null && imagenData != null;
+				&& estado != null && tipo != null && imagenData != null && !(marca.isEmpty() || modelo.isEmpty());
 	}
 
 	/**

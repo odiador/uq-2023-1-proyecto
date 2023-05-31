@@ -50,7 +50,8 @@ public class Camion extends Vehiculo {
 	@Override
 	public boolean atributosLlenos() {
 		return super.atributosLlenos() && capacidadCarga != null && tieneAireAcondicionado != null
-				&& tieneFrenosAire != null && numeroEjes != null && tieneABS != null && tipoCamion != null;
+				&& tieneFrenosAire != null && numeroEjes != null && tieneABS != null && tipoCamion != null
+				&& !tipoCamion.isEmpty();
 	}
 
 	/**

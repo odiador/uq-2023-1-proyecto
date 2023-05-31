@@ -293,7 +293,7 @@ public class MenuPrincipalController {
 
 	private void gestionClientesAction() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setController(new GestionClientesController(() -> homeAction()));
+		loader.setController(new GestionClientesController(contentPane, () -> homeAction()));
 		loader.setLocation(getClass().getResource("../view/gestionClientes.fxml"));
 		try {
 			contentPane.setCenter(loader.load());
@@ -301,7 +301,7 @@ public class MenuPrincipalController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void gestionVehiculosAction() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setController(new TablaVehiculosController(() -> homeAction()));

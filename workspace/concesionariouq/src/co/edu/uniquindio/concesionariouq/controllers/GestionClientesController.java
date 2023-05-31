@@ -39,10 +39,6 @@ public class GestionClientesController {
 	@FXML
 	private BorderPane mainPane;
 
-	public GestionClientesController(Runnable volverRunnable) {
-		this.volverRunnable = volverRunnable;
-	}
-
 	@FXML
 	void eliminarEvent(ActionEvent event) {
 		ButtonType botonSeleccion = new ButtonType("Por Selección");

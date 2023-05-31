@@ -81,7 +81,7 @@ public class AgregarMotoController {
 	@FXML
 	void agregarAction(ActionEvent event) {
 		try {
-			Image image = new Image(new FileInputStream("/resources/images/vehiculos/moto.png"));
+			Image image = new Image(new FileInputStream("src/resources/images/vehiculos/moto.png"));
 			ModelFactoryController.getInstance()
 					.agregarVehiculo(new Moto(txtPlaca.getText().trim(), txtMarca.getText().trim(),
 							txtModelo.getText().trim(), Double.parseDouble(txtCilindraje.getText().trim()),

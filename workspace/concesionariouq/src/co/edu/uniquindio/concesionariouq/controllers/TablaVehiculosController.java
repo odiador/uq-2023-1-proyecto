@@ -109,7 +109,7 @@ public class TablaVehiculosController {
 		GestionCombustibleController controller = new GestionCombustibleController(() -> actualizarTabla());
 		loader.setController(controller);
 		try {
-			Stage stage = (Stage) root.getScene().getWindow();
+			Stage stage = new Stage();
 			Scene scene = new Scene(loader.load(), 1280, 720);
 			stage.setScene(scene);
 			stage.setMinWidth(760);

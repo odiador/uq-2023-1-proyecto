@@ -112,9 +112,14 @@ public class GestionCombustibleController {
 			case DIESEL:
 				lbl1.setVisible(false);
 				lbl2.setVisible(false);
+				txtAutonomia.setVisible(false);
+				checkEnchufable.setVisible(false);
+				
 			case GASOLINA:
 				lbl1.setVisible(false);
 				lbl2.setVisible(false);
+				txtCarga.setVisible(false);
+				checkHibridoLigero.setVisible(false);
 			default:
 				break;
 			}

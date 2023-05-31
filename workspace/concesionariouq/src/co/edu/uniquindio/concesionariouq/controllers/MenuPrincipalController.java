@@ -121,6 +121,7 @@ public class MenuPrincipalController {
 
 	@FXML
 	void gestionVehiculosEvent(ActionEvent event) {
+		gestionVehiculosAction();
 	}
 
 	@FXML
@@ -298,6 +299,18 @@ public class MenuPrincipalController {
 			contentPane.setCenter(loader.load());
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	private void gestionVehiculosAction() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setController(new TablaVehiculosController(() -> homeAction()));
+		loader.setLocation(getClass().getResource("../view/tablaVehiculo.fxml"));
+		try {
+			contentPane.setCenter(loader.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

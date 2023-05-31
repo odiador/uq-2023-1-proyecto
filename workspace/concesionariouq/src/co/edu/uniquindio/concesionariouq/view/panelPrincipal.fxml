@@ -69,20 +69,6 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#gestionReportesEvent" styleClass="btnsPrincipales" stylesheets="@sources/application.css">
-                     <graphic>
-                        <HBox alignment="CENTER_LEFT" minWidth="40.0" spacing="5.0">
-                           <children>
-                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../resources/images/reportes.png" />
-                                 </image>
-                              </ImageView>
-                              <Label ellipsisString="" text="Reportes" textFill="WHITE" textOverrun="CLIP" />
-                           </children>
-                        </HBox>
-                     </graphic>
-                  </Button>
                   <Separator prefWidth="200.0" />
                   <Label fx:id="lblBloqueo" text="Bloqueo de" textFill="WHITE" textOverrun="CLIP">
                      <font>

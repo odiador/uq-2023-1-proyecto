@@ -183,8 +183,4 @@ public class AgregarBusController {
 		}
 	}
 
-	private void verficarCampos() {
-
-	}
-
 }

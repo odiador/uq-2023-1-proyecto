@@ -22,7 +22,6 @@ import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.model.Transaccion;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 import co.edu.uniquindio.concesionariouq.model.Venta;
-import javafx.util.Callback;
 
 public class ModelFactoryController {
 

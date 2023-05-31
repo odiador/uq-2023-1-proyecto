@@ -18,7 +18,6 @@ import co.edu.uniquindio.concesionariouq.exceptions.UsuarioEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
-import javafx.scene.image.Image;
 
 public class Concesionario implements GestionableVehiculo, GestionableCliente, GestionableEmpleado,
 		GestionableTransaccion, Serializable, Proveedor {

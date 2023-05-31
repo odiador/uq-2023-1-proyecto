@@ -48,7 +48,13 @@ public class GestionEmpleadosController {
 	private void agregarAction() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../view/register.fxml"));
-		loader.setController(new RegistroEmpleadoController(""));
+		loader.setController(new RegistroEmpleadoController(new Runnable() {
+			
+			@Override
+			public void run() {
+				actualizarTabla();
+			}
+		}));
 		try {
 			Stage stage = new Stage();
 			stage.setScene(new Scene(loader.load()));
@@ -68,6 +74,9 @@ public class GestionEmpleadosController {
 		}
 		try {
 			ModelFactoryController.getInstance().eliminarEmpleado(empleado.getId());
+			actualizarTabla();
+			FxUtility.mostrarMensaje("Informacion", "El empleado fue eliminado", "El empleado fue eliminado",
+					AlertType.CONFIRMATION);
 		} catch (UsuarioNoEncontradoException | NullException e) {
 			FxUtility.mostrarMensaje("Advertencia", "El empleado no se pudo eliminar", e.getMessage(), AlertType.ERROR);
 		}
@@ -80,10 +89,15 @@ public class GestionEmpleadosController {
 
 	@FXML
 	void initialize() {
-		tablaEmpleados
-				.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance().listarEmpleados()));
+		actualizarTabla();
 		colNombre.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getNombre()));
 		columIdentificacion.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getId()));
+	}
+
+	private void actualizarTabla() {
+		tablaEmpleados
+				.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance().listarEmpleados()));
+		tablaEmpleados.refresh();
 	}
 
 	public GestionEmpleadosController(Runnable volverEvent) {

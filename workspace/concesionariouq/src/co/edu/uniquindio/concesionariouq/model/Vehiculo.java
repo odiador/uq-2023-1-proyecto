@@ -2,6 +2,8 @@ package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
 
+import javafx.scene.image.Image;
+
 public abstract class Vehiculo implements Serializable {
 
 	/**
@@ -17,6 +19,7 @@ public abstract class Vehiculo implements Serializable {
 	protected Combustible combustible;
 	protected EstadoVehiculo estado;
 	protected TipoCambio tipo;
+	private Image imagen;
 
 	/**
 	 * Es el constructor de la clase {@link Vehiculo}
@@ -30,7 +33,7 @@ public abstract class Vehiculo implements Serializable {
 	 * @param tipo
 	 */
 	public Vehiculo(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
-			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo) {
+			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Image imagen) {
 		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
@@ -39,13 +42,84 @@ public abstract class Vehiculo implements Serializable {
 		this.combustible = combustible;
 		this.estado = estado;
 		this.tipo = tipo;
+		this.imagen = imagen;
+	}
+
+	public boolean tieneId(String id) {
+		return this.id.equals(id);
+	}
+
+	/**
+	 * Determina si el cilindraje esta en un rango determinado
+	 * 
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public boolean cilindrajeEnRango(double min, double max) {
+		return cilindrajeMayorQue(min) && cilindrajeMenorQue(max);
+	}
+
+	/**
+	 * Determina si el cilindraje es mayor a un rango determinado
+	 * 
+	 * @param val
+	 * @return
+	 */
+	public boolean cilindrajeMayorQue(double val) {
+		return cilindraje > val;
+	}
+
+	/**
+	 * Determina si el cilindraje es menor a un rango determinado
+	 * 
+	 * @param val
+	 * @return
+	 */
+	public boolean cilindrajeMenorQue(double val) {
+		return cilindraje < val;
+	}
+
+	/**
+	 * Determina si la velocidad maxima esta en un rango determinado
+	 * 
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public boolean velocidadMaximaRango(double min, double max) {
+		return velocidadMaximaMayorQue(min) && velocidadMaximaMenorQue(max);
+	}
+
+	/**
+	 * Determina si la velocidad maxima es menor que un valor
+	 * 
+	 * @param val
+	 * @return
+	 */
+	public boolean velocidadMaximaMenorQue(double val) {
+		return velocidadMaxima < val;
+	}
+
+	/**
+	 * Determina si la velocidad maxima es mayor que un valor
+	 * 
+	 * @param val
+	 * @return
+	 */
+	public boolean velocidadMaximaMayorQue(double val) {
+		return velocidadMaxima > val;
+	}
+
+	public boolean tieneCombustible(TipoCombustible tipoCombustible) {
+		return combustible.getTipoCombustible() == tipoCombustible;
 	}
 
 	public abstract TipoVehiculo getTipoVehiculo();
 
 	public boolean atributosLlenos() {
 		return marca != null && modelo != null && cilindraje != null && velocidadMaxima != null && combustible != null
-				&& estado != null && tipo != null;
+				&& estado != null && tipo != null && imagen != null;
 	}
 
 	/**
@@ -192,74 +266,22 @@ public abstract class Vehiculo implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public boolean tieneId(String id) {
-		return this.id.equals(id);
+	/**
+	 * Obtiene la imagen del vehiculo
+	 * 
+	 * @return
+	 */
+	public Image getImagen() {
+		return imagen;
 	}
 
 	/**
-	 * Determina si el cilindraje esta en un rango determinado
+	 * Cambia la imagen del vehiculo
 	 * 
-	 * @param min
-	 * @param max
-	 * @return
+	 * @param imagen
 	 */
-	public boolean cilindrajeEnRango(double min, double max) {
-		return cilindrajeMayorQue(min) && cilindrajeMenorQue(max);
-	}
-
-	/**
-	 * Determina si el cilindraje es mayor a un rango determinado
-	 * 
-	 * @param val
-	 * @return
-	 */
-	public boolean cilindrajeMayorQue(double val) {
-		return cilindraje > val;
-	}
-
-	/**
-	 * Determina si el cilindraje es menor a un rango determinado
-	 * 
-	 * @param val
-	 * @return
-	 */
-	public boolean cilindrajeMenorQue(double val) {
-		return cilindraje < val;
-	}
-
-	/**
-	 * Determina si la velocidad maxima esta en un rango determinado
-	 * 
-	 * @param min
-	 * @param max
-	 * @return
-	 */
-	public boolean velocidadMaximaRango(double min, double max) {
-		return velocidadMaximaMayorQue(min) && velocidadMaximaMenorQue(max);
-	}
-
-	/**
-	 * Determina si la velocidad maxima es menor que un valor
-	 * 
-	 * @param val
-	 * @return
-	 */
-	public boolean velocidadMaximaMenorQue(double val) {
-		return velocidadMaxima < val;
-	}
-
-	/**
-	 * Determina si la velocidad maxima es mayor que un valor
-	 * 
-	 * @param val
-	 * @return
-	 */
-	public boolean velocidadMaximaMayorQue(double val) {
-		return velocidadMaxima > val;
-	}
-
-	public boolean tieneCombustible(TipoCombustible tipoCombustible) {
-		return combustible.getTipoCombustible() == tipoCombustible;
+	public void setImagen(Image imagen) {
+		this.imagen = imagen;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import javafx.scene.image.Image;
+
 public class Camioneta extends Sedan {
 
 	/**
@@ -31,16 +33,17 @@ public class Camioneta extends Sedan {
 	 * @param tieneSensorTrafico
 	 * @param tieneAsistentePermanencia
 	 * @param es4x4
+	 * @param imagen
 	 */
 	public Camioneta(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
 			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
 			Boolean tieneABS, Double capacidadMaletero, Boolean tieneVelocidadCrucero, Boolean tieneSensorColision,
-			Boolean tieneSensorTrafico, Boolean tieneAsistentePermanencia, Boolean es4x4) {
+			Boolean tieneSensorTrafico, Boolean tieneAsistentePermanencia, Boolean es4x4, Image imagen) {
 		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
 				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
 				capacidadMaletero, tieneVelocidadCrucero, tieneSensorColision, tieneSensorTrafico,
-				tieneAsistentePermanencia);
+				tieneAsistentePermanencia, imagen);
 		this.es4x4 = es4x4;
 	}
 

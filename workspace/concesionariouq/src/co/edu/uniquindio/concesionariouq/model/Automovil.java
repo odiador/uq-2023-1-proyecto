@@ -1,5 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import javafx.scene.image.Image;
+
 public abstract class Automovil extends Vehiculo {
 
 	/**
@@ -24,11 +26,12 @@ public abstract class Automovil extends Vehiculo {
 	 * @param numeroPasajeros
 	 * @param numeroBolsasAire
 	 * @param numeroPuertas
+	 * @param image
 	 */
 	public Automovil(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
-			Integer numeroBolsasAire, Integer numeroPuertas) {
-		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo);
+			Integer numeroBolsasAire, Integer numeroPuertas, Image imagen) {
+		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, imagen);
 		this.numeroPasajeros = numeroPasajeros;
 		this.numeroBolsasAire = numeroBolsasAire;
 		this.numeroPuertas = numeroPuertas;

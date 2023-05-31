@@ -14,25 +14,22 @@ public abstract class Transaccion implements Serializable {
 	protected Double valor;
 
 	/**
-	 * Este es el constructor vacio de la clase
-	 * 
-	 */
-	public Transaccion() {
-	}
-
-	/**
-	 * Este es el constructor principal de la clase
+	 * Este es el constructor principal de la clase {@link Transaccion}
 	 * 
 	 * @param codigo
+	 * @param vehiculo
+	 * @param valor
 	 */
-	public Transaccion(final String codigo, final Vehiculo vehiculo) {
+	public Transaccion(final String codigo, final Vehiculo vehiculo, final Double valor) {
 		this.codigo = codigo;
 		this.vehiculo = vehiculo;
+		this.valor = valor;
 	}
+
 	public abstract TipoTransaccion getTipoTransaccion();
 
 	public boolean atributosLlenos() {
-		return codigo != null && vehiculo != null;
+		return codigo != null && vehiculo != null && vehiculo.atributosLlenos();
 	}
 
 	public boolean tieneCodigo(String codigo) {
@@ -71,6 +68,14 @@ public abstract class Transaccion implements Serializable {
 		this.vehiculo = vehiculo;
 	}
 
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -98,15 +103,7 @@ public abstract class Transaccion implements Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("Transaccion [codigo=%s, vehiculo=%s]", codigo, vehiculo);
-	}
-
-	public Double getValor() {
-		return valor;
-	}
-
-	public void setValor(Double valor) {
-		this.valor = valor;
+		return String.format("Transaccion [codigo=%s, vehiculo=%s, valor=%s]", codigo, vehiculo, valor);
 	}
 
 }

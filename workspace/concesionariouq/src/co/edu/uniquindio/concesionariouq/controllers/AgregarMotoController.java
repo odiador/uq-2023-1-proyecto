@@ -3,6 +3,7 @@ package co.edu.uniquindio.concesionariouq.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.concesionariouq.model.Combustible;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -55,7 +56,13 @@ public class AgregarMotoController {
     @FXML
     private Button btnAgregar;
 
-    @FXML
+	private Combustible combustible;
+
+    public AgregarMotoController(Combustible combustible) {
+		this.combustible = combustible;
+	}
+
+	@FXML
     void agregarAction(ActionEvent event) {
 
     }

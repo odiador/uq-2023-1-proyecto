@@ -1,5 +1,6 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -13,12 +14,13 @@ import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 
 public class GestionCombustibleController {
@@ -42,6 +44,9 @@ public class GestionCombustibleController {
 	private BorderPane root;
 
 	@FXML
+	private BorderPane mainPane;
+
+	@FXML
 	private TextField txtAutonomia;
 
 	@FXML
@@ -55,8 +60,11 @@ public class GestionCombustibleController {
 
 	@FXML
 	private Button btnSiguiente;
-	
-	public GestionCombustibleController() {
+
+	private Runnable actualizarTabla;
+
+	public GestionCombustibleController(Runnable actualizarTabla) {
+		this.actualizarTabla = actualizarTabla;
 	}
 
 	@FXML
@@ -89,7 +97,7 @@ public class GestionCombustibleController {
 				txtCarga.setVisible(true);
 				checkHibridoLigero.setVisible(false);
 				break;
-				
+
 			case HIBRIDO:
 				lbl1.setText("El Vehichulo es enchufable:");
 				lbl1.setVisible(true);
@@ -128,8 +136,9 @@ public class GestionCombustibleController {
 			break;
 
 		case ELECTRICO:
-			if(!validarCampos()) {
-				FxUtility.mostrarMensaje("Llene", "Llene todos los campos", "Recuerde llenar todos los campos", AlertType.WARNING);
+			if (!validarCampos()) {
+				FxUtility.mostrarMensaje("Llene", "Llene todos los campos", "Recuerde llenar todos los campos",
+						AlertType.WARNING);
 				break;
 			}
 			combustible = new Electrico(Double.parseDouble(txtAutonomia.getText().trim()),
@@ -139,14 +148,22 @@ public class GestionCombustibleController {
 		default:
 			break;
 		}
-		
-		if(combustible != null) {
-			
+
+		if (combustible != null) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setController(new AgregarVehiculoController(combustible, mainPane, actualizarTabla));
+			loader.setLocation(getClass().getResource("../view/panelAgregarVehiculo.fxml"));
+			try {
+				mainPane.setCenter(loader.load());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
-	
+
 	private boolean validarCampos() {
-		if(txtAutonomia.getText().isEmpty() || txtCarga.getText().isEmpty()) return false;
+		if (txtAutonomia.getText().isEmpty() || txtCarga.getText().isEmpty())
+			return false;
 		return true;
 	}
 

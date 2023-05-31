@@ -40,20 +40,10 @@ public class GestionClientesController {
 	private BorderPane mainPane;
 
 	@FXML
-	void detalleEvent(ActionEvent event) {
-		detalleAction();
-	}
-
-	@FXML
-	void actualizarEvent(ActionEvent event) {
-
-	}
-
-	@FXML
 	void eliminarEvent(ActionEvent event) {
 		ButtonType botonSeleccion = new ButtonType("Por Selección");
 		ButtonType botonId = new ButtonType("Por id");
-		ButtonType decisionAlerta = FxUtility.crearDecisionAlerta("Decision", "Como deseas eliminar el empleado?",
+		ButtonType decisionAlerta = FxUtility.crearDecisionAlerta("Decision", "Como deseas eliminar el cliente?",
 				"\"Por id\" te pregunta la identificacion del cliente a eliminar, \"por seleccion\" elimina el cliente que tengas seleccionado",
 				AlertType.INFORMATION, 600, botonSeleccion, botonId);
 		if (decisionAlerta == botonSeleccion) {
@@ -108,8 +98,25 @@ public class GestionClientesController {
 	}
 
 	@FXML
-	void filtrarEvent(ActionEvent event) {
+	void agregarEvent(ActionEvent event) {
+		actualizarClienteAction();
+	}
 
+	@FXML
+	void verAccionesEvent(ActionEvent event) {
+		Cliente cliente = tablaClientes.getSelectionModel().getSelectedItem();
+		if (cliente == null) {
+			FxUtility.mostrarMensaje("Advertencia", "Elige un cliente", "Elige un cliente", AlertType.WARNING);
+			return;
+		}
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../view/accionesCliente.fxml"));
+		loader.setController(new AccionesClienteController(cliente, () -> superiorPane.setCenter(mainPane)));
+		try {
+			superiorPane.setCenter(loader.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
@@ -120,7 +127,10 @@ public class GestionClientesController {
 
 	private Runnable volverRunnable;
 
-	public GestionClientesController(Runnable volverRunnable) {
+	private BorderPane superiorPane;
+
+	public GestionClientesController(BorderPane mainPane, Runnable volverRunnable) {
+		superiorPane = mainPane;
 		this.volverRunnable = volverRunnable;
 	}
 
@@ -162,18 +172,13 @@ public class GestionClientesController {
 		volverRunnable.run();
 	}
 
-	private void detalleAction() {
-		Cliente cliente = tablaClientes.getSelectionModel().getSelectedItem();
-		if (cliente == null) {
-			FxUtility.mostrarMensaje("Advertencia", "Selecciona el cliente", "Recuerda seleccionar el cliente",
-					AlertType.WARNING);
-			return;
-		}
+	private void actualizarClienteAction() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../view/detalleCliente.fxml"));
-		loader.setController(new DetalleClienteController(cliente));
+		loader.setLocation(getClass().getResource("../view/agregarCliente.fxml"));
+		loader.setController(new AgregarClienteController(() -> actualizarTabla()));
 		try {
 			Stage stage = new Stage();
+			stage.setTitle("Carro UQ | Adicion de Clientes");
 			stage.getIcons().add(new Image("/resources/images/Logo Window.png"));
 			stage.setScene(new Scene(loader.load()));
 			stage.show();

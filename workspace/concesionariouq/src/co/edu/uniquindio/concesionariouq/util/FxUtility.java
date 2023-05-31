@@ -29,8 +29,21 @@ public class FxUtility {
 		});
 	}
 
+	public static void setAsAlphanumericTextfield(TextField tf) {
+		tf.textProperty().addListener(new ChangeListener<String>() {
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (!newValue.matches("[a-zA-z\\d\\s]*")) {
+					tf.setText(newValue.replaceAll("[^\\[a-zA-z\\d\\s]", ""));
+					abrirContextMenu(tf, "Este campo solo puede tener caracteres");
+				}
+			}
+
+		});
+	}
+
 	private static void abrirContextMenu(Node nodo, String msg) {
 		final ContextMenu menu = new ContextMenu();
+		menu.setStyle("-fx-text-fill: black;");
 		menu.getItems().add(new MenuItem(msg));
 		menu.show(nodo, Side.BOTTOM, 0, 0);
 

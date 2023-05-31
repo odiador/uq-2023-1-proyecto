@@ -56,8 +56,8 @@ public class EliminarClienteController {
 	private void accionCustomAction() {
 		String id = txtIdentificacion.getText();
 		ButtonType decisionAlerta = FxUtility.crearDecisionAlerta("Decision", "Confirmar eliminación",
-				"Deseas confirmar la eliminacion del cliente con identificacion" + id + "?", AlertType.INFORMATION, 600,
-				ButtonType.OK, ButtonType.CLOSE);
+				"Deseas confirmar la eliminacion del cliente con identificacion \"" + id + "\"?", AlertType.INFORMATION,
+				600, ButtonType.OK, ButtonType.CLOSE);
 		if (decisionAlerta == ButtonType.OK) {
 			try {
 				ModelFactoryController.getInstance().eliminarCliente(id);

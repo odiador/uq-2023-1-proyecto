@@ -359,6 +359,18 @@ public class Concesionario implements GestionableVehiculo, GestionableCliente, G
 		agregarTransaccion(venta);
 	}
 
+	public void comprarVehiculoDeCliente(String idCliente, Compra compra)
+			throws NullException, VehiculoYaExisteException, AtributosFaltantesException, UsuarioNoEncontradoException,
+			TransaccionYaExisteException, VehiculoNoExisteException {
+		if (idCliente == null || compra == null)
+			throw new NullException("Algun parametro enviado es null");
+		Cliente cliente = buscarCliente(idCliente);
+		cliente.eliminarVehiculo(compra.getVehiculo().getId());
+		agregarVehiculo(compra.getVehiculo());
+		actualizarCliente(cliente);
+		agregarTransaccion(compra);
+	}
+
 	@Override
 	public TipoProveedor getTipoProveedor() {
 		return TipoProveedor.CONCESIONARIO;

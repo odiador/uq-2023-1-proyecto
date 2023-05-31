@@ -1,13 +1,20 @@
 package co.edu.uniquindio.concesionariouq.util;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
@@ -50,6 +57,29 @@ public class ProjectUtility {
 			builder.append(num < 10 ? num : String.valueOf((char) ('A' + num - 10)));
 		}
 		return builder.toString();
+	}
+
+	public static void enviarReporteConPdf(List<Vehiculo> listaVehiculos, String reporte, String toMail, String nombre)
+			throws MessagingException, IOException {
+		ProjectUtility.generarPdf(reporte, listaVehiculos);
+		File file = new File(reporte + ".pdf");
+		enviarCorreoReporte(toMail, nombre, reporte, " todos los vehiculos", file);
+		file.delete();
+	}
+
+	public static void generarPdf(String titulo, List<Vehiculo> listaVehiculos) {
+		try {
+			Document document = new Document(PageSize.A4.rotate(), 0, 0, 0, 0);
+			PdfWriter.getInstance(document, new FileOutputStream(titulo + ".pdf"));
+			document.open();
+			document.addAuthor("Concesionario UQ");
+	
+			PdfUtility.agregarHeaderDocumento(document, titulo);
+			PdfUtility.agregarTablaVehiculosDocumento(document, listaVehiculos);
+			document.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

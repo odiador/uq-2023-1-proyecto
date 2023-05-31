@@ -11,6 +11,7 @@ import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.Sedan;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
@@ -21,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class AgregarSedanController {
 
@@ -46,7 +48,7 @@ public class AgregarSedanController {
 	private CheckBox checkReversa;
 
 	@FXML
-	private ComboBox<String> comboEstado;
+	private ComboBox<EstadoVehiculo> comboEstado;
 
 	@FXML
 	private TextField txtNumBolsas;
@@ -70,7 +72,7 @@ public class AgregarSedanController {
 	private TextField txtNumPuertas;
 
 	@FXML
-	private ComboBox<String> comboCambio;
+	private ComboBox<TipoCambio> comboCambio;
 
 	@FXML
 	private CheckBox checkAireAcondicionado;
@@ -110,20 +112,20 @@ public class AgregarSedanController {
 
 	private void agregarSedan() {
 		try {
-			Image imagen = new Image("/resources/images/vehiculos&/camioneta.png");
+			Image imagen = new Image("/resources/images/vehiculos/sedan.png");
 			ModelFactoryController.getInstance().agregarVehiculo(new Sedan(txtPlaca.getText().trim(),
 					txtMarca.getText().trim(), txtModelo.getText(), Double.parseDouble(txtCilindraje.getText()),
 					Double.parseDouble(txtVelMaxima.getText()), combustible,
-					EstadoVehiculo.obtenerEstadoTexto(comboEstado.getValue()),
-					TipoCambio.obtenerEstadoTexto(comboCambio.getValue()), Integer.parseInt(txtNumPasajeros.getText()),
+					comboEstado.getValue(),
+					comboCambio.getValue(), Integer.parseInt(txtNumPasajeros.getText()),
 					Integer.parseInt(txtNumBolsas.getText()), Integer.parseInt(txtNumPuertas.getText()),
 					checkAireAcondicionado.isSelected(), checkReversa.isSelected(), checkABS.isSelected(),
 					Double.parseDouble(txtCapacidadMaletero.getText()), checkVelCrucero.isSelected(),
 					checkSensorColision.isSelected(), checkSensorTrafico.isSelected(),
 					checkAsistPermanencia.isSelected(), imagen));
 			actualizarTabla.run();
-			FxUtility.mostrarMensaje("Informacion", "La camioneta ha sido agregada con exito",
-					"La camioneta ha sido agregada con exito", AlertType.CONFIRMATION);
+			FxUtility.mostrarMensaje("Informacion", "El vehiculo ha sido agregada con exito",
+					"El vehiculo ha sido agregada con exito", AlertType.CONFIRMATION);
 		} catch (NumberFormatException | NullException | AtributosFaltantesException | VehiculoYaExisteException e) {
 			FxUtility.mostrarMensaje("Advertencia", "No se pudo agregar la camioneta", e.getMessage(), AlertType.ERROR);
 		}
@@ -131,7 +133,7 @@ public class AgregarSedanController {
 
 	@FXML
 	void cerrarAction(ActionEvent event) {
-
+		((Stage) root.getScene().getWindow()).close();
 	}
 
 	@FXML
@@ -141,6 +143,23 @@ public class AgregarSedanController {
 
 	@FXML
 	void initialize() {
+		FxUtility.setAsNumberTextfield(txtPlaca);
+		FxUtility.setMaximumTextSize(txtPlaca, 12);
+
+		FxUtility.setAsAlphanumericTextfield(txtMarca);
+		FxUtility.setMaximumTextSize(txtMarca, 12);
+
+		FxUtility.setAsNumberTextfield(txtModelo);
+		FxUtility.setMaximumTextSize(txtModelo, 4);
+
+		FxUtility.setAsNumberTextfield(txtCilindraje);
+		FxUtility.setMaximumTextSize(txtCilindraje, 10);
+
+		FxUtility.setAsNumberTextfield(txtVelMaxima);
+		FxUtility.setMaximumTextSize(txtVelMaxima, 10);
+
+		comboEstado.setItems(FXCollections.observableList(EstadoVehiculo.getValues()));
+		comboCambio.setItems(FXCollections.observableList(TipoCambio.getValues()));
 
 	}
 

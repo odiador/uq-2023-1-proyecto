@@ -66,17 +66,17 @@ public class AgregarVehiculoController {
 
 	@FXML
 	void sedanEvent(MouseEvent e) {
-		motoAction();
+		sedanAction();
 	}
 
 	@FXML
 	void pickUpEvent(MouseEvent e) {
-		motoAction();
+		pickUpction();
 	}
 
 	@FXML
 	void vanEvent(MouseEvent e) {
-		motoAction();
+		vanAction();
 	}
 
 	@FXML
@@ -88,24 +88,55 @@ public class AgregarVehiculoController {
 
 	@FXML
 	void camionEvent(MouseEvent e) {
-		motoAction();
+		camionAction();
 	}
 
 	@FXML
 	void deportivoEvent(MouseEvent e) {
-		motoAction();
-	}
-
-	private void motoAction() {
-		String ruta = "../view/panelAgregarMoto.fxml";
-		AgregarMotoController controller = new AgregarMotoController(combustible);
-		abrirVentana(ruta, controller);
+		deportivoAction();
 	}
 
 	@FXML
 	void busEvent(MouseEvent action) {
 		String ruta = "../view/panelAgregarBus.fxml";
-		AgregarBusController controller = new AgregarBusController(combustible);
+		AgregarBusController controller = new AgregarBusController(combustible, actualizarTabla);
+		abrirVentana(ruta, controller);
+	}
+
+	private void motoAction() {
+		String ruta = "../view/panelAgregarMoto.fxml";
+		AgregarMotoController controller = new AgregarMotoController(combustible, actualizarTabla);
+		abrirVentana(ruta, controller);
+	}
+
+	private void sedanAction() {
+		String ruta = "../view/panelAgregarSedan.fxml";
+		AgregarSedanController controller = new AgregarSedanController(combustible, actualizarTabla);
+		abrirVentana(ruta, controller);
+
+	}
+
+	private void camionAction() {
+		String ruta = "../view/panelAgregarCamion.fxml";
+		AgregarCamionController controller = new AgregarCamionController(combustible, actualizarTabla);
+		abrirVentana(ruta, controller);
+	}
+	
+	private void deportivoAction() {
+		String ruta = "../view/panelAgregarDeportivo.fxml";
+		AgregarDeportivoController controller = new AgregarDeportivoController(combustible, actualizarTabla);
+		abrirVentana(ruta, controller);
+	}
+	
+	private void pickUpction() {
+		String ruta = "../view/panelAgregarPickUp.fxml";
+		AgregarPickUpController controller = new AgregarPickUpController(combustible, actualizarTabla);
+		abrirVentana(ruta, controller);
+	}
+	
+	private void vanAction() {
+		String ruta = "../view/panelAgregarVan.fxml";
+		AgregarVanController controller = new AgregarVanController(combustible, actualizarTabla);
 		abrirVentana(ruta, controller);
 	}
 

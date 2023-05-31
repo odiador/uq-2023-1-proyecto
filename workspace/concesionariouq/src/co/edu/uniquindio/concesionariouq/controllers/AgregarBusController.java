@@ -1,8 +1,14 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
+import co.edu.uniquindio.concesionariouq.exceptions.NullException;
+import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
+import co.edu.uniquindio.concesionariouq.model.Bus;
 import co.edu.uniquindio.concesionariouq.model.Combustible;
 import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
@@ -15,7 +21,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class AgregarBusController {
 
@@ -90,8 +99,11 @@ public class AgregarBusController {
 
 	private Combustible combustible;
 
-	public AgregarBusController(Combustible combustible) {
+	private Runnable actualizarTabla;
+
+	public AgregarBusController(Combustible combustible, Runnable actualizarTabla) {
 		this.combustible = combustible;
+		this.actualizarTabla = actualizarTabla;
 	}
 
 	@FXML
@@ -101,7 +113,7 @@ public class AgregarBusController {
 
 	@FXML
 	void cerrarAction(ActionEvent event) {
-
+		((Stage) root.getScene().getWindow()).close();
 	}
 
 	@FXML
@@ -127,7 +139,7 @@ public class AgregarBusController {
 		FxUtility.setMaximumTextSize(txtVelMaxima, 10);
 
 		comboEstado.setItems(FXCollections.observableList(EstadoVehiculo.getValues()));
-		comboEstado.setItems(FXCollections.observableList(EstadoVehiculo.getValues()));
+		comboCambio.setItems(FXCollections.observableList(TipoCambio.getValues()));
 
 		FxUtility.setAsNumberTextfield(txtNumPasajeros);
 		FxUtility.setMaximumTextSize(txtNumPasajeros, 2);
@@ -149,9 +161,26 @@ public class AgregarBusController {
 	}
 
 	private void agregar() {
-//		Image image = new Image(new FileInputStream("../../../../../resources/images/vehiculos/bus.png"));
-//		Vehiculo vehiculo = new Bus(txtPlaca.getText().trim(), txtMarca.getText().trim(), txtModelo.getText().trim(), txtCilindraje.getText().trim(), txtVelMaxima.getText().trim(), );
-//		ModelFactoryController.getInstance().agregarVehiculo(vehiculo);
+		try {
+			Image image = new Image(new FileInputStream("/resources/images/vehiculos/bus.png"));
+			ModelFactoryController.getInstance()
+					.agregarVehiculo(new Bus(txtPlaca.getText().trim(), txtMarca.getText().trim(),
+							txtModelo.getText().trim(), Double.parseDouble(txtCilindraje.getText().trim()),
+							Double.parseDouble(txtVelMaxima.getText().trim()), combustible, comboEstado.getValue(),
+							comboCambio.getValue(), Integer.parseInt(txtNumPasajeros.getText().trim()),
+							Integer.parseInt(txtNumBolsas.getText().trim()),
+							Integer.parseInt(txtNumPuertas.getText().trim()), checkAireAcondicionado.isSelected(),
+							checkReversa.isSelected(), checkABS.isSelected(),
+							Double.parseDouble(txtCapacidadMaletero.getText().trim()),
+							Integer.parseInt(txtNumEjes.getText().trim()),
+							Integer.parseInt(txtSalidasEmergencia.getText().trim()), image));
+			actualizarTabla.run();
+			FxUtility.mostrarMensaje("Informacion", "El vehiculo ha sido agregado con exito",
+					"El vehiculo ha sido agregado con exito", AlertType.CONFIRMATION);
+		} catch (NumberFormatException | NullException | AtributosFaltantesException | VehiculoYaExisteException
+				| FileNotFoundException e) {
+			FxUtility.mostrarMensaje("Advertencia", "No se pudo agregar el vehiculo", e.getMessage(), AlertType.ERROR);
+		}
 	}
 
 	private void verficarCampos() {

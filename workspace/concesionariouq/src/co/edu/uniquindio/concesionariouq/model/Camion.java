@@ -36,7 +36,7 @@ public class Camion extends Vehiculo {
 	 */
 	public Camion(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Double capacidadCarga,
-			Boolean tieneAireAcondicionado, Boolean tieneFrenosAire, Integer numeroEjes, Boolean tieneABS,
+			Boolean tieneAireAcondicionado, Boolean tieneFrenosAire, Boolean tieneABS, Integer numeroEjes,
 			String tipoCamion, Image imagen) {
 		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, imagen);
 		this.capacidadCarga = capacidadCarga;

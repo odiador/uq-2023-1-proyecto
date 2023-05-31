@@ -17,15 +17,18 @@ public class Cliente extends Persona implements GestionableVehiculo {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Set<Vehiculo> listaVehiculos;
+	private String correo;
 
 	/**
 	 * Es el constructor de la clase {@link Cliente}
 	 * 
 	 * @param id
 	 * @param nombre
+	 * @param correo
 	 */
-	public Cliente(String id, String nombre) {
+	public Cliente(String id, String nombre, String correo) {
 		super(id, nombre);
+		this.correo = correo;
 		listaVehiculos = new HashSet<>();
 	}
 
@@ -36,7 +39,7 @@ public class Cliente extends Persona implements GestionableVehiculo {
 
 	@Override
 	public boolean atributosLlenos() {
-		return super.atributosLlenos() && listaVehiculos != null;
+		return super.atributosLlenos() && listaVehiculos != null && correo != null && !correo.isEmpty();
 	}
 
 	@Override
@@ -72,6 +75,14 @@ public class Cliente extends Persona implements GestionableVehiculo {
 	@Override
 	public List<Vehiculo> listarVehiculos() {
 		return listaVehiculos.stream().collect(Collectors.toList());
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 
 }

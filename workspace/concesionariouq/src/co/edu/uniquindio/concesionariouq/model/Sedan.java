@@ -1,5 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import javafx.scene.image.Image;
+
 public class Sedan extends Van {
 
 	/**
@@ -35,15 +37,16 @@ public class Sedan extends Van {
 	 * @param tieneSensorColision
 	 * @param tieneSensorTrafico
 	 * @param tieneAsistentePermanencia
+	 * @param imagen
 	 */
 	public Sedan(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
 			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
 			Boolean tieneABS, Double capacidadMaletero, Boolean tieneVelocidadCrucero, Boolean tieneSensorColision,
-			Boolean tieneSensorTrafico, Boolean tieneAsistentePermanencia) {
+			Boolean tieneSensorTrafico, Boolean tieneAsistentePermanencia, Image imagen) {
 		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
 				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
-				capacidadMaletero);
+				capacidadMaletero, imagen);
 		this.tieneVelocidadCrucero = tieneVelocidadCrucero;
 		this.tieneSensorColision = tieneSensorColision;
 		this.tieneSensorTrafico = tieneSensorTrafico;

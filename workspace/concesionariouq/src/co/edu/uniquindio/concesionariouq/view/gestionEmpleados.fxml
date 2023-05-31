@@ -14,7 +14,6 @@
         <columns>
           <TableColumn fx:id="columIdentificacion" prefWidth="75.0" styleClass="columna-tabla" text="Identificación" />
           <TableColumn fx:id="colNombre" prefWidth="75.0" styleClass="columna-tabla" text="Nombre" />
-            <TableColumn fx:id="colVehiculos" prefWidth="75.0" styleClass="columna-tabla" text="Vehículos" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -32,7 +31,7 @@
                   <Image url="@../../../../../resources/images/Logo%20fondo%20oscuro.png" />
                </image>
             </ImageView>
-            <Label text="Gestión de Clientes">
+            <Label text="Gestión de Empleados">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
@@ -55,7 +54,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#verAccionesEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Ver Acciones" GridPane.columnSpan="2" />
+            <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#filtrarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Ver Detalle" GridPane.columnSpan="2" />
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#agregarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Agregar" GridPane.rowIndex="1" />
             <Button maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#eliminarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Eliminar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#volverEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Volver" GridPane.columnSpan="2" GridPane.rowIndex="2" />

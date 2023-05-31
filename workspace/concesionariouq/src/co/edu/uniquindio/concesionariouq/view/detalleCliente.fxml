@@ -17,12 +17,12 @@
                   <Image url="@../../../../../resources/images/Logo%20fondo%20oscuro.png" />
                </image>
             </ImageView>
-            <Label style="-fx-font-size: 26;" text="Detalle de Cliente" />
+            <Label style="-fx-font-size: 26;" text="Actualizar Informacion de Cliente" />
          </children>
       </VBox>
    </top>
    <center>
-      <GridPane maxHeight="300.0" style="-fx-background-color: #060028; -fx-background-radius: 20; -fx-border-color: white; -fx-border-radius: 20;" vgap="20.0" BorderPane.alignment="CENTER">
+      <GridPane fx:id="clientPane" maxHeight="300.0" style="-fx-background-color: #060028; -fx-background-radius: 20; -fx-border-color: white; -fx-border-radius: 20;" vgap="20.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,11 +33,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Nombre:" />
-            <TextField fx:id="txtNombre" editable="false" GridPane.columnIndex="1" />
-            <Label text="Identificación:" GridPane.rowIndex="1" />
-            <TextField fx:id="txtIdentificacion" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#verVehiculosEvent" text="Ver Vehículos" GridPane.columnSpan="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label text="Identificación:" />
+            <TextField fx:id="txtNombre" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Nombre:" GridPane.rowIndex="1" />
+            <TextField fx:id="txtIdentificacion" GridPane.columnIndex="1" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#verVehiculosEvent" text="Gestionar Vehículos" GridPane.columnSpan="2" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets left="30.0" right="30.0" />
                </GridPane.margin></Button>
@@ -54,11 +54,19 @@
       </GridPane>
    </center>
    <bottom>
-      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cerrarEvent" text="Cerrar" BorderPane.alignment="CENTER">
+      <HBox spacing="30.0">
+         <children>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#volverEvent" text="Volver" BorderPane.alignment="CENTER" HBox.hgrow="ALWAYS">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#guardarEvent" text="Guardar" HBox.hgrow="ALWAYS" />
+         </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
-      </Button>
+      </HBox>
    </bottom>
    <stylesheets>
       <URL value="@login.css" />

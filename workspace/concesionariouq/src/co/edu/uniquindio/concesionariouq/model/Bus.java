@@ -1,5 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import javafx.scene.image.Image;
+
 public class Bus extends Van {
 
 	/**
@@ -30,14 +32,16 @@ public class Bus extends Van {
 	 * @param capacidadMaletero
 	 * @param numeroEjes
 	 * @param numeroSalidasEmergencia
+	 * @param image
 	 */
 	public Bus(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
 			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
-			Boolean tieneABS, Double capacidadMaletero, Integer numeroEjes, Integer numeroSalidasEmergencia) {
+			Boolean tieneABS, Double capacidadMaletero, Integer numeroEjes, Integer numeroSalidasEmergencia,
+			Image imagen) {
 		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
 				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS,
-				capacidadMaletero);
+				capacidadMaletero, imagen);
 		this.numeroEjes = numeroEjes;
 		this.numeroSalidasEmergencia = numeroSalidasEmergencia;
 	}

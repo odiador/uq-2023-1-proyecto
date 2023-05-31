@@ -1,5 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import javafx.scene.image.Image;
+
 public class PickUp extends Familiar {
 
 	/**
@@ -26,13 +28,14 @@ public class PickUp extends Familiar {
 	 * @param tieneABS
 	 * @param es4x4
 	 * @param capacidadCajaCarga
+	 * @param image
 	 */
 	public PickUp(String id, String marca, String modelo, Double cilindraje, Double velocidadMaxima,
 			Combustible combustible, EstadoVehiculo estado, TipoCambio tipo, Integer numeroPasajeros,
 			Integer numeroBolsasAire, Integer numeroPuertas, Boolean tieneAireAcondicionado, Boolean tieneCamaraReversa,
-			Boolean tieneABS, Boolean es4x4, Double capacidadCajaCarga) {
+			Boolean tieneABS, Boolean es4x4, Double capacidadCajaCarga, Image imagen) {
 		super(id, marca, modelo, cilindraje, velocidadMaxima, combustible, estado, tipo, numeroPasajeros,
-				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS);
+				numeroBolsasAire, numeroPuertas, tieneAireAcondicionado, tieneCamaraReversa, tieneABS, imagen);
 		this.es4x4 = es4x4;
 		this.capacidadCajaCarga = capacidadCajaCarga;
 	}

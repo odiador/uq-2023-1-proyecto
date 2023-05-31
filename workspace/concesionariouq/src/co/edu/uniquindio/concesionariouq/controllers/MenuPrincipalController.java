@@ -11,6 +11,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -72,8 +73,11 @@ public class MenuPrincipalController {
 
 	@FXML
 	void initialize() {
+		imgUsuario.setImage(empleado.getImagen());
 		imgLogo.fitWidthProperty().bind(menuPane.widthProperty().multiply(0.99));
 		crearAnimacionLogoHome();
+		Platform.runLater(() -> ((Stage) mainPane.getScene().getWindow())
+				.setTitle("Carro UQ | Menu Principal | " + empleado.getNombre()));
 		Interpolator interpolacion = new Interpolator() {
 
 			@Override

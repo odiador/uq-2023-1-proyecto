@@ -51,13 +51,11 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#filtrarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Ver Detalle" GridPane.columnSpan="2" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#agregarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Agregar" GridPane.rowIndex="1" />
-            <Button maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#eliminarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Eliminar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#volverEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Volver" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#agregarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Agregar" />
+            <Button maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#eliminarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Eliminar" GridPane.columnIndex="1" />
+            <Button layoutX="297.0" layoutY="10.0" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#volverEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" text="Volver" GridPane.columnSpan="2" GridPane.rowIndex="1" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

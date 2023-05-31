@@ -101,8 +101,9 @@ public class RegistroController {
 
 	private void registrarAction() {
 		try {
-			ModelFactoryController.getInstance().agregarEmpleado(new Empleado(txtId.getText(), txtNombre.getText(),
-					txtContrasena.getText(), txtEmail.getText(), txtRespuesta.getText(), true, null));
+			ModelFactoryController.getInstance()
+					.agregarEmpleado(new Empleado(txtId.getText(), txtNombre.getText(), txtContrasena.getText(),
+							txtEmail.getText(), txtRespuesta.getText(), true, imagenEmpleado.getImage()));
 			FxUtility.mostrarMensaje("Confirmacion", "Has sido registrad@ con exito", "Has sido registrad@ con exito",
 					AlertType.CONFIRMATION);
 		} catch (UsuarioEncontradoException | NullException | AtributosFaltantesException e) {

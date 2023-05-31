@@ -340,13 +340,6 @@ public class Concesionario implements GestionableVehiculo, GestionableCliente, G
 		listaClientes.add(employee);
 	}
 
-	public void actualizarImagen(String id, Image imagen)
-			throws NullException, AtributosFaltantesException, UsuarioNoEncontradoException {
-		Empleado employee = buscarEmpleado(id);
-		employee.setImagen(imagen);
-		actualizarEmpleado(employee);
-	}
-
 	public void venderVehiculoACliente(String idCliente, Venta venta)
 			throws NullException, VehiculoYaExisteException, AtributosFaltantesException, UsuarioNoEncontradoException,
 			TransaccionYaExisteException, VehiculoNoExisteException {

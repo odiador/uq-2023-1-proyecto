@@ -1,5 +1,12 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
 public class Empleado extends Persona {
@@ -12,7 +19,7 @@ public class Empleado extends Persona {
 	protected String email;
 	protected String respuestaDeSeguridad;
 	protected Boolean estaActivo;
-	protected Image imagen;
+	protected byte[] imagenData;
 
 	/**
 	 * Este es el constructor principal de la clase {@link Empleado}
@@ -32,7 +39,22 @@ public class Empleado extends Persona {
 		this.email = email;
 		this.respuestaDeSeguridad = respuestaDeSeguridad;
 		this.estaActivo = estaActivo;
-		this.imagen = imagen;
+		this.imagenData = getByteArrayImg(imagen);
+	}
+
+	public Image getImagen() {
+		ByteArrayInputStream bais = new ByteArrayInputStream(imagenData);
+		return new Image(bais);
+	}
+
+	private byte[] getByteArrayImg(Image imagen) {
+		try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+			ImageIO.write(SwingFXUtils.fromFXImage(imagen, null), "png", baos);
+			return baos.toByteArray();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
@@ -91,19 +113,16 @@ public class Empleado extends Persona {
 		this.estaActivo = estaActivo;
 	}
 
-	public Image getImagen() {
-		return imagen;
-	}
-
-	public void setImagen(Image imagen) {
-		this.imagen = imagen;
-	}
-
 	@Override
 	public String toString() {
 		return String.format(
-				"Empleado [id=%s, nombre=%s, contrasena=%s, email=%s, respuestaDeSeguridad=%s, estaActivo=%s, imagen=%s]",
-				id, nombre, contrasena, email, respuestaDeSeguridad, estaActivo, imagen);
+				"Empleado [id=%s, nombre=%s, contrasena=%s, email=%s, respuestaDeSeguridad=%s, estaActivo=%s]",
+				id, nombre, contrasena, email, respuestaDeSeguridad, estaActivo);
+	}
+
+	public void setImagen(Image imagen) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,7 +1,13 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
 
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
 public abstract class Vehiculo implements Serializable {
@@ -19,7 +25,7 @@ public abstract class Vehiculo implements Serializable {
 	protected Combustible combustible;
 	protected EstadoVehiculo estado;
 	protected TipoCambio tipo;
-	private Image imagen;
+	private byte[] imagenData;
 
 	/**
 	 * Es el constructor de la clase {@link Vehiculo}
@@ -42,7 +48,22 @@ public abstract class Vehiculo implements Serializable {
 		this.combustible = combustible;
 		this.estado = estado;
 		this.tipo = tipo;
-		this.imagen = imagen;
+		this.imagenData = getByteArrayImg(imagen);
+	}
+
+	public Image getImagen() {
+		ByteArrayInputStream bais = new ByteArrayInputStream(imagenData);
+		return new Image(bais);
+	}
+
+	private byte[] getByteArrayImg(Image imagen) {
+		try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+			ImageIO.write(SwingFXUtils.fromFXImage(imagen, null), "png", baos);
+			return baos.toByteArray();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public boolean tieneId(String id) {
@@ -119,7 +140,7 @@ public abstract class Vehiculo implements Serializable {
 
 	public boolean atributosLlenos() {
 		return marca != null && modelo != null && cilindraje != null && velocidadMaxima != null && combustible != null
-				&& estado != null && tipo != null && imagen != null;
+				&& estado != null && tipo != null && imagenData != null;
 	}
 
 	/**
@@ -264,24 +285,6 @@ public abstract class Vehiculo implements Serializable {
 	 */
 	public void setTipo(final TipoCambio tipo) {
 		this.tipo = tipo;
-	}
-
-	/**
-	 * Obtiene la imagen del vehiculo
-	 * 
-	 * @return
-	 */
-	public Image getImagen() {
-		return imagen;
-	}
-
-	/**
-	 * Cambia la imagen del vehiculo
-	 * 
-	 * @param imagen
-	 */
-	public void setImagen(Image imagen) {
-		this.imagen = imagen;
 	}
 
 	@Override

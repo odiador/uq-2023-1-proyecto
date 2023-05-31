@@ -38,6 +38,12 @@ public class GestionClientesController {
 
 	@FXML
 	private BorderPane mainPane;
+	
+	private Runnable volverRunnable;
+
+	public GestionClientesController(Runnable volverRunnable) {
+		this.volverRunnable = volverRunnable;
+	}
 
 	@FXML
 	void detalleEvent(ActionEvent event) {
@@ -116,12 +122,6 @@ public class GestionClientesController {
 	void initialize() {
 		actualizarTabla();
 		inicializarValoresColumnas();
-	}
-
-	private Runnable volverRunnable;
-
-	public GestionClientesController(Runnable volverRunnable) {
-		this.volverRunnable = volverRunnable;
 	}
 
 	private void inicializarValoresColumnas() {

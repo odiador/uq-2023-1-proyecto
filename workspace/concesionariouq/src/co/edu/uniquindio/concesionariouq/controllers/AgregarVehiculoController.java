@@ -1,9 +1,15 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class AgregarVehiculoController {
 
@@ -12,6 +18,9 @@ public class AgregarVehiculoController {
 
     @FXML
     private URL location;
+    
+    @FXML
+    private BorderPane root;
 
     @FXML
     private VBox btnDeportivo;
@@ -39,5 +48,22 @@ public class AgregarVehiculoController {
 
     @FXML
     void initialize() {
+    }
+    
+    @FXML
+    void busEvent(MouseEvent action) {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/panelAgregarBus.fxml"));
+		AgregarVehiculoController controller = new AgregarVehiculoController();
+		loader.setController(controller);
+		try {
+			Stage stage = (Stage) root.getScene().getWindow();
+			Scene scene = new Scene(loader.load(), 1280, 720);
+			stage.setScene(scene);
+			stage.setMinWidth(760);
+			stage.setMinHeight(760);
+			stage.centerOnScreen();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 }

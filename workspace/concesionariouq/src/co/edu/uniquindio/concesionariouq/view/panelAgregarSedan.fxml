@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane stylesheets="@panelVehiculo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="root" stylesheets="@panelVehiculo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
@@ -193,8 +193,8 @@
    <bottom>
       <HBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#agregarAction" text="Agregar" HBox.hgrow="ALWAYS" />
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cerrarAction" text="Cerrar" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnAgregar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#agregarAction" text="Agregar" HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnCerrar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#cerrarAction" text="Cerrar" HBox.hgrow="ALWAYS" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

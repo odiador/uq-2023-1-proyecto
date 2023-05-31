@@ -10,7 +10,7 @@ import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 
-public class Cliente extends Persona implements GestionableVehiculo {
+public class Cliente extends Persona implements GestionableVehiculo, Proveedor {
 
 	/**
 	 * 
@@ -48,15 +48,13 @@ public class Cliente extends Persona implements GestionableVehiculo {
 	}
 
 	@Override
-	public void agregarVehiculo(String id, Vehiculo vehiculo)
+	public void agregarVehiculo(Vehiculo vehiculo)
 			throws VehiculoYaExisteException, AtributosFaltantesException, NullException {
-		if (id == null)
-			throw new NullException("La identificacion enviada es null");
 		if (vehiculo == null)
 			throw new NullException("El vehiculo enviado es null");
 		if (!vehiculo.atributosLlenos())
-			throw new AtributosFaltantesException("El vehiculo enviado es null");
-		if (validarVehiculo(id))
+			throw new AtributosFaltantesException("Al vehiculo le hacen falta datos");
+		if (validarVehiculo(vehiculo.getId()))
 			throw new VehiculoYaExisteException("El vehiculo ya existe, no se puede agregar");
 
 		listaVehiculos.add(vehiculo);
@@ -83,6 +81,11 @@ public class Cliente extends Persona implements GestionableVehiculo {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	@Override
+	public TipoProveedor getTipoProveedor() {
+		return TipoProveedor.CLIENTE;
 	}
 
 }

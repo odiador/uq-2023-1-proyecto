@@ -1,6 +1,7 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public abstract class Transaccion implements Serializable {
 
@@ -9,19 +10,18 @@ public abstract class Transaccion implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected String codigo;
 	protected Vehiculo vehiculo;
 	protected Double valor;
+	protected LocalDateTime momento;
 
 	/**
 	 * Este es el constructor principal de la clase {@link Transaccion}
 	 * 
-	 * @param codigo
 	 * @param vehiculo
 	 * @param valor
 	 */
-	public Transaccion(final String codigo, final Vehiculo vehiculo, final Double valor) {
-		this.codigo = codigo;
+	public Transaccion(final Vehiculo vehiculo, final Double valor) {
+		this.momento = LocalDateTime.now();
 		this.vehiculo = vehiculo;
 		this.valor = valor;
 	}
@@ -29,29 +29,7 @@ public abstract class Transaccion implements Serializable {
 	public abstract TipoTransaccion getTipoTransaccion();
 
 	public boolean atributosLlenos() {
-		return codigo != null && vehiculo != null && vehiculo.atributosLlenos();
-	}
-
-	public boolean tieneCodigo(String codigo) {
-		return this.codigo.equals(codigo);
-	}
-
-	/**
-	 * Obtiene el codigo de la Transaccion
-	 * 
-	 * @return codigo
-	 */
-	public String getCodigo() {
-		return codigo;
-	}
-
-	/**
-	 * Cambia el codigo de la Transaccion
-	 * 
-	 * @param codigo
-	 */
-	public void setCodigo(final String codigo) {
-		this.codigo = codigo;
+		return vehiculo != null && vehiculo.atributosLlenos();
 	}
 
 	/**
@@ -76,11 +54,19 @@ public abstract class Transaccion implements Serializable {
 		this.valor = valor;
 	}
 
+	public LocalDateTime getMomento() {
+		return momento;
+	}
+
+	public void setMomento(LocalDateTime momento) {
+		this.momento = momento;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((momento == null) ? 0 : momento.hashCode());
 		return result;
 	}
 
@@ -90,20 +76,21 @@ public abstract class Transaccion implements Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		// se cambio para que 2 transacciones en la misma fecha puedan ser iguales
+		if (!(obj instanceof Transaccion))
 			return false;
 		Transaccion other = (Transaccion) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
+		if (momento == null) {
+			if (other.momento != null)
 				return false;
-		} else if (!codigo.equals(other.codigo))
+		} else if (!momento.equals(other.momento))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Transaccion [codigo=%s, vehiculo=%s, valor=%s]", codigo, vehiculo, valor);
+		return String.format("Transaccion [vehiculo=%s, valor=%s, momento=%s]", vehiculo, valor, momento);
 	}
 
 }

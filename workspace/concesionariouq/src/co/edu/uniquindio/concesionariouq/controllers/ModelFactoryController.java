@@ -10,13 +10,16 @@ import java.util.List;
 import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
 import co.edu.uniquindio.concesionariouq.exceptions.LoginFailedException;
 import co.edu.uniquindio.concesionariouq.exceptions.NullException;
+import co.edu.uniquindio.concesionariouq.exceptions.TransaccionYaExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioEncontradoException;
 import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException;
+import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 import co.edu.uniquindio.concesionariouq.model.Cliente;
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
 import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
+import co.edu.uniquindio.concesionariouq.model.Venta;
 import javafx.scene.image.Image;
 
 public class ModelFactoryController {
@@ -92,7 +95,8 @@ public class ModelFactoryController {
 	}
 
 	/**
-	 * Obtiene los datos del archivo serializado y setea el concesionario con estos datos.
+	 * Obtiene los datos del archivo serializado y setea el concesionario con estos
+	 * datos.
 	 */
 	public void loadData() {
 		try (FileInputStream fileIn = new FileInputStream("src/co/edu/uniquindio/concesionariouq/controllers/data.dat");
@@ -106,6 +110,7 @@ public class ModelFactoryController {
 
 	/**
 	 * Enlista los clientes del concesionario.
+	 * 
 	 * @return
 	 */
 	public List<Cliente> listarClientes() {
@@ -114,6 +119,7 @@ public class ModelFactoryController {
 
 	/**
 	 * Actualiza la imagen de un empleado. La exceptions si el empleado no existe.
+	 * 
 	 * @param id
 	 * @param imagen
 	 * @throws NullException
@@ -135,6 +141,13 @@ public class ModelFactoryController {
 	 */
 	public void agregarVehiculo(Vehiculo vehiculo) throws NullException, AtributosFaltantesException, VehiculoYaExisteException {
 		getConcesionario().agregarVehiculo(vehiculo.getId(), vehiculo);
+	}
+
+	public void venderVehiculoACliente(String idCliente, Venta venta)
+			throws NullException, VehiculoYaExisteException, AtributosFaltantesException, UsuarioNoEncontradoException,
+			TransaccionYaExisteException, VehiculoNoExisteException {
+		getConcesionario().venderVehiculoACliente(idCliente, venta);
+		saveData();
 	}
 
 }

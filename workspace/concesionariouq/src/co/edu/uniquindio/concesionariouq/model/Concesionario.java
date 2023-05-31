@@ -1,6 +1,8 @@
 package co.edu.uniquindio.concesionariouq.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,8 +20,8 @@ import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 import javafx.scene.image.Image;
 
-public class Concesionario
-		implements GestionableVehiculo, GestionableCliente, GestionableEmpleado, GestionableTransaccion, Serializable {
+public class Concesionario implements GestionableVehiculo, GestionableCliente, GestionableEmpleado,
+		GestionableTransaccion, Serializable, Proveedor {
 
 	/**
 	 * 
@@ -30,7 +32,7 @@ public class Concesionario
 	private Set<Vehiculo> listaVehiculos;
 	private Set<Cliente> listaClientes;
 	private Set<Empleado> listaEmpleados;
-	private Set<Transaccion> listaTransacciones;
+	private List<Transaccion> listaTransacciones;
 
 	/**
 	 * Es el metodo constructor vacio de la clase
@@ -47,7 +49,7 @@ public class Concesionario
 		this.listaVehiculos = new HashSet<>();
 		this.listaClientes = new HashSet<>();
 		this.listaEmpleados = new HashSet<>();
-		this.listaTransacciones = new HashSet<>();
+		this.listaTransacciones = new ArrayList<>();
 	}
 
 	@Override
@@ -61,16 +63,14 @@ public class Concesionario
 	}
 
 	@Override
-	public void agregarVehiculo(String id, Vehiculo vehiculo)
+	public void agregarVehiculo(Vehiculo vehiculo)
 			throws NullException, AtributosFaltantesException, VehiculoYaExisteException {
-		if (id == null)
-			throw new NullException("La identificacion enviada es null");
 		if (vehiculo == null)
 			throw new NullException("El vehiculo enviado es null");
 		if (!vehiculo.atributosLlenos())
 			throw new AtributosFaltantesException("Al vehiculo le hacen falta atributos por llenar");
-		if (validarVehiculo(id))
-			throw new VehiculoYaExisteException("El vehiculo con la identificacion " + id + " ya existe");
+		if (validarVehiculo(vehiculo.getId()))
+			throw new VehiculoYaExisteException("El vehiculo con la identificacion " + vehiculo.getId() + " ya existe");
 		listaVehiculos.add(vehiculo);
 	}
 
@@ -214,19 +214,9 @@ public class Concesionario
 	}
 
 	@Override
-	public Transaccion buscarTransaccion(String id) {
-		return listaTransacciones.stream().filter(transaccion -> transaccion.tieneCodigo(id)).findFirst().orElse(null);
-	}
-
-	/**
-	 * Valida si una transaccion existe o no a partir de su código
-	 * 
-	 * @param id
-	 * @return
-	 */
-	@Override
-	public boolean validarTransaccion(String id) {
-		return buscarTransaccion(id) != null;
+	public Transaccion buscarTransaccion(LocalDateTime momento) {
+		int indice = listaTransacciones.indexOf(new TransaccionBusqueda(momento));
+		return indice == -1 ? null : listaTransacciones.get(indice);
 	}
 
 	@Override
@@ -236,7 +226,7 @@ public class Concesionario
 			throw new NullException("La transaccion enviada es null");
 		if (!transaccion.atributosLlenos())
 			throw new AtributosFaltantesException("A la transaccion le hacen falta atributos");
-		if (validarTransaccion(transaccion.getCodigo()))
+		if (validarTransaccion(transaccion.getMomento()))
 			throw new TransaccionYaExisteException("La transaccion ya existe");
 		listaTransacciones.add(transaccion);
 	}
@@ -244,15 +234,15 @@ public class Concesionario
 	/**
 	 * Elimina una transaccion, muestra un error si no se encuentra
 	 * 
-	 * @param codigo
+	 * @param momento
 	 * @throws NullException
 	 * @throws ConcesionarioException
 	 */
 	@Override
-	public void eliminarTransaccion(String codigo) throws TransaccionNoExisteException, NullException {
-		if (codigo == null)
-			throw new NullException("El codigo enviado es null");
-		Transaccion transaccion = buscarTransaccion(codigo);
+	public void eliminarTransaccion(LocalDateTime momento) throws TransaccionNoExisteException, NullException {
+		if (momento == null)
+			throw new NullException("El momento enviado es null");
+		Transaccion transaccion = buscarTransaccion(momento);
 		if (transaccion == null)
 			throw new TransaccionNoExisteException("La transaccion no existe, no se puede eliminar");
 		listaTransacciones.remove(transaccion);
@@ -319,14 +309,35 @@ public class Concesionario
 			throws NullException, UsuarioNoEncontradoException, AtributosFaltantesException {
 		if (empleado == null)
 			throw new NullException("El empleado es null");
+		if (!empleado.atributosLlenos())
+			throw new AtributosFaltantesException("El empleado no tiene todos sus atributos completos");
 		if (validarEmpleado(empleado.getId()))
 			throw new UsuarioNoEncontradoException("El empleado no existe en la lista");
-		if (empleado.atributosLlenos())
-			throw new AtributosFaltantesException("El empleado no tiene todos sus atributos completos");
 		Empleado employee = buscarEmpleado(empleado.getId());
-		listaEmpleados.removeIf(e -> e.getId().equals(empleado.getId()));
+		listaEmpleados.remove(employee);
 		listaEmpleados.add(employee);
+	}
 
+	/**
+	 * Actualiza un cliente con la instancia entregada por parametro. Realiza
+	 * verificaciones para saber si el cliente existe.
+	 *
+	 * @param empleado
+	 * @throws NullException
+	 * @throws UsuarioNoEncontradoException
+	 * @throws AtributosFaltantesException
+	 */
+	public void actualizarCliente(Cliente cliente)
+			throws NullException, UsuarioNoEncontradoException, AtributosFaltantesException {
+		if (cliente == null)
+			throw new NullException("El cliente enviado es null");
+		if (!cliente.atributosLlenos())
+			throw new AtributosFaltantesException("El cliente no tiene todos sus atributos completos");
+		if (validarEmpleado(cliente.getId()))
+			throw new UsuarioNoEncontradoException("El cliente no existe en la lista");
+		Cliente employee = buscarCliente(cliente.getId());
+		listaClientes.remove(employee);
+		listaClientes.add(employee);
 	}
 
 	public void actualizarImagen(String id, Image imagen)
@@ -334,6 +345,23 @@ public class Concesionario
 		Empleado employee = buscarEmpleado(id);
 		employee.setImagen(imagen);
 		actualizarEmpleado(employee);
+	}
+
+	public void venderVehiculoACliente(String idCliente, Venta venta)
+			throws NullException, VehiculoYaExisteException, AtributosFaltantesException, UsuarioNoEncontradoException,
+			TransaccionYaExisteException, VehiculoNoExisteException {
+		if (idCliente == null || venta == null)
+			throw new NullException("Algun parametro enviado es null");
+		Cliente cliente = buscarCliente(idCliente);
+		eliminarVehiculo(venta.getVehiculo().getId());
+		cliente.agregarVehiculo(venta.getVehiculo());
+		actualizarCliente(cliente);
+		agregarTransaccion(venta);
+	}
+
+	@Override
+	public TipoProveedor getTipoProveedor() {
+		return TipoProveedor.CONCESIONARIO;
 	}
 
 }

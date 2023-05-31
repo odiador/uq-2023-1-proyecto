@@ -120,16 +120,6 @@
                </BorderPane.margin>
             </VBox>
          </top>
-         <bottom>
-            <Pane styleClass="btnsPrincipales">
-               <children>
-                  <Separator prefWidth="200.0" />
-               </children>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </Pane>
-         </bottom>
       </BorderPane>
       <BorderPane fx:id="contentPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
          <center>

@@ -7,12 +7,12 @@ public class Compra extends Transaccion {
 	/**
 	 * Es el constructor de la clase {@link Compra}
 	 * 
-	 * @param codigo
 	 * @param vehiculo
 	 * @param valor
+	 * @param proveedor
 	 */
-	public Compra(String codigo, Vehiculo vehiculo, Double valor, Proveedor proveedor) {
-		super(codigo, vehiculo, valor);
+	public Compra(Vehiculo vehiculo, Double valor, Proveedor proveedor) {
+		super(vehiculo, valor);
 		this.proveedor = proveedor;
 	}
 

@@ -8,7 +8,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" styleClass="mainpane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <VBox alignment="CENTER">
@@ -38,12 +37,6 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="167.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label maxWidth="1.7976931348623157E308" text="Escribe el codigo de la compra:" HBox.hgrow="ALWAYS" />
-                  <TextField fx:id="txtCodigo" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
             <Label text="Elige el vehiculo a comprar" />
             <TableView fx:id="tableVehiculos" maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS">
               <columns>

@@ -52,11 +52,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnDetalle" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#detalleEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" stylesheets="@sources/btnStyle.css" text="Ver Detalle" />
+            <Button fx:id="btnDetalle" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#detalleEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" stylesheets="@sources/btnStyle.css" text="Ver Detalle" GridPane.columnSpan="2" />
             <Button fx:id="btnAgregar" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#agregarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" stylesheets="@sources/btnStyle.css" text="Agregar" GridPane.rowIndex="1" />
             <Button fx:id="btnEliminar" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" style="-fx-font-size: 15;" styleClass="btnsAgregar" stylesheets="@sources/btnStyle.css" text="Eliminar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button fx:id="btnVolver" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#volverEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" stylesheets="@sources/btnStyle.css" text="Volver" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-            <Button fx:id="btnFiltrar" maxWidth="1.7976931348623157E308" minHeight="30.0" mnemonicParsing="false" onAction="#filtrarEvent" style="-fx-font-size: 15;" styleClass="btnsAgregar" stylesheets="@sources/btnStyle.css" text="Filtrar" GridPane.columnIndex="1" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

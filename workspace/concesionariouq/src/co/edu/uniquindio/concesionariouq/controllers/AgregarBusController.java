@@ -3,6 +3,7 @@ package co.edu.uniquindio.concesionariouq.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.concesionariouq.model.Combustible;
 import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
@@ -16,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
-public class AgregarBusController{
+public class AgregarBusController {
 
 	@FXML
 	private ResourceBundle resources;
@@ -87,6 +88,12 @@ public class AgregarBusController{
 	@FXML
 	private TextField txtNumPasajeros;
 
+	private Combustible combustible;
+
+	public AgregarBusController(Combustible combustible) {
+		this.combustible = combustible;
+	}
+
 	@FXML
 	void agregarAction(ActionEvent event) {
 		agregar();
@@ -106,37 +113,37 @@ public class AgregarBusController{
 	void initialize() {
 		FxUtility.setAsNumberTextfield(txtPlaca);
 		FxUtility.setMaximumTextSize(txtPlaca, 12);
-		
+
 		FxUtility.setAsAlphanumericTextfield(txtMarca);
 		FxUtility.setMaximumTextSize(txtMarca, 12);
-		
+
 		FxUtility.setAsNumberTextfield(txtModelo);
 		FxUtility.setMaximumTextSize(txtModelo, 4);
-		
+
 		FxUtility.setAsNumberTextfield(txtCilindraje);
 		FxUtility.setMaximumTextSize(txtCilindraje, 10);
-		
+
 		FxUtility.setAsNumberTextfield(txtVelMaxima);
 		FxUtility.setMaximumTextSize(txtVelMaxima, 10);
-		
+
 		comboEstado.setItems(FXCollections.observableList(EstadoVehiculo.getValues()));
 		comboEstado.setItems(FXCollections.observableList(EstadoVehiculo.getValues()));
-		
+
 		FxUtility.setAsNumberTextfield(txtNumPasajeros);
 		FxUtility.setMaximumTextSize(txtNumPasajeros, 2);
-		
+
 		FxUtility.setAsNumberTextfield(txtNumBolsas);
 		FxUtility.setMaximumTextSize(txtNumBolsas, 2);
-		
+
 		FxUtility.setAsNumberTextfield(txtNumPuertas);
 		FxUtility.setMaximumTextSize(txtNumPuertas, 2);
-		
+
 		FxUtility.setAsNumberTextfield(txtCapacidadMaletero);
 		FxUtility.setMaximumTextSize(txtCapacidadMaletero, 10);
-		
+
 		FxUtility.setAsNumberTextfield(txtNumEjes);
 		FxUtility.setMaximumTextSize(txtNumEjes, 2);
-		
+
 		FxUtility.setAsNumberTextfield(txtSalidasEmergencia);
 		FxUtility.setMaximumTextSize(txtSalidasEmergencia, 2);
 	}
@@ -146,11 +153,9 @@ public class AgregarBusController{
 //		Vehiculo vehiculo = new Bus(txtPlaca.getText().trim(), txtMarca.getText().trim(), txtModelo.getText().trim(), txtCilindraje.getText().trim(), txtVelMaxima.getText().trim(), );
 //		ModelFactoryController.getInstance().agregarVehiculo(vehiculo);
 	}
-	
+
 	private void verficarCampos() {
-		
+
 	}
-	
-	
 
 }

@@ -59,9 +59,6 @@ public class TablaVehiculosController {
 	private Button btnEliminar;
 
 	@FXML
-	private Button btnFiltrar;
-
-	@FXML
 	private BorderPane root;
 
 	@FXML
@@ -103,27 +100,13 @@ public class TablaVehiculosController {
 	}
 
 	@FXML
-	void filtrarEvent(ActionEvent event) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/gestionVehiculo.fxml"));
-		GestionVehiculoController controller = new GestionVehiculoController();
-		loader.setController(controller);
-		try {
-			Stage stage = (Stage) root.getScene().getWindow();
-			Scene scene = new Scene(loader.load(), 1280, 720);
-			stage.setScene(scene);
-			stage.setMinWidth(760);
-			stage.setMinHeight(760);
-			stage.centerOnScreen();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+	void agregarEvent(ActionEvent event) {
+		irACombustibleAction();
 	}
 
-	@FXML
-	void agregarEvent(ActionEvent event) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/panelAgregarVehiculo.fxml"));
-		AgregarVehiculoController controller = new AgregarVehiculoController();
+	private void irACombustibleAction() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/panelCombustible.fxml"));
+		GestionCombustibleController controller = new GestionCombustibleController(() -> actualizarTabla());
 		loader.setController(controller);
 		try {
 			Stage stage = (Stage) root.getScene().getWindow();
@@ -132,6 +115,7 @@ public class TablaVehiculosController {
 			stage.setMinWidth(760);
 			stage.setMinHeight(760);
 			stage.centerOnScreen();
+			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -144,7 +128,7 @@ public class TablaVehiculosController {
 
 	@FXML
 	void volverEvent(ActionEvent event) {
-		// TODO
+		volverRunnable.run();
 	}
 
 	private void actualizarTabla() {

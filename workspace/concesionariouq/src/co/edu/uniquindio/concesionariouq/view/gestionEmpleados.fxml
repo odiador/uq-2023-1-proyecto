@@ -10,7 +10,7 @@
 
 <BorderPane fx:id="mainPane" styleClass="mainpane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <TableView fx:id="tablaClientes" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tablaEmpleados" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="columIdentificacion" prefWidth="75.0" styleClass="columna-tabla" text="Identificación" />
           <TableColumn fx:id="colNombre" prefWidth="75.0" styleClass="columna-tabla" text="Nombre" />

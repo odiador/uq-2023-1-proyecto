@@ -119,18 +119,25 @@ public class MenuPrincipalController {
 	}
 
 	@FXML
-	void agregarMenuEvent(ActionEvent event) {
-
-	}
-
-	@FXML
 	void gestionVehiculosEvent(ActionEvent event) {
 		gestionVehiculosAction();
 	}
 
 	@FXML
 	void gestionEmpleadosEvent(ActionEvent event) {
+		gestionEmpleadosAction();
+	}
 
+	private void gestionEmpleadosAction() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setController(new GestionEmpleadosController(() -> homeAction()));
+		loader.setLocation(getClass().getResource("../view/gestionEmpleados.fxml"));
+		try {
+			contentPane.setCenter(loader.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+			e.getMessage();
+		}
 	}
 
 	@FXML

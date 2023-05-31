@@ -21,6 +21,7 @@ import co.edu.uniquindio.concesionariouq.model.Concesionario;
 import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 import co.edu.uniquindio.concesionariouq.model.Venta;
+import javafx.util.Callback;
 
 public class ModelFactoryController {
 
@@ -143,6 +144,15 @@ public class ModelFactoryController {
 			TransaccionYaExisteException, VehiculoNoExisteException {
 		getConcesionario().comprarVehiculoDeCliente(id, compra);
 		saveData();
+	}
+
+	public void eliminarEmpleado(String id) throws UsuarioNoEncontradoException, NullException {
+		getConcesionario().eliminarEmpleado(id);
+		saveData();
+	}
+
+	public List<Empleado> listarEmpleados() {
+		return getConcesionario().listarEmpleados();
 	}
 
 }

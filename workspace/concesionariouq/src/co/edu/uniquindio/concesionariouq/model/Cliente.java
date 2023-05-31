@@ -1,14 +1,18 @@
 package co.edu.uniquindio.concesionariouq.model;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.mail.MessagingException;
+
 import co.edu.uniquindio.concesionariouq.exceptions.AtributosFaltantesException;
 import co.edu.uniquindio.concesionariouq.exceptions.NullException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
+import co.edu.uniquindio.concesionariouq.util.ProjectUtility;
 
 public class Cliente extends Persona implements GestionableVehiculo, Proveedor {
 
@@ -86,6 +90,11 @@ public class Cliente extends Persona implements GestionableVehiculo, Proveedor {
 	@Override
 	public TipoProveedor getTipoProveedor() {
 		return TipoProveedor.CLIENTE;
+	}
+
+	public void enviarReporteVehiculos() throws MessagingException, IOException {
+		ProjectUtility.enviarReporteConPdf(listarVehiculos(), "Reporte de Vehiculos_" + getNombre(), getCorreo(),
+				getNombre());
 	}
 
 }

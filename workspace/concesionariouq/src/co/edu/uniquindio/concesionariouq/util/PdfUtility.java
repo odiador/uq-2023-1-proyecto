@@ -3,7 +3,7 @@ package co.edu.uniquindio.concesionariouq.util;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashSet;
+import java.util.List;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Chunk;
@@ -44,7 +44,7 @@ public class PdfUtility {
 		document.add(new Paragraph(" "));
 	}
 
-	public static void agregarTablaVehiculosDocumento(Document document, HashSet<Vehiculo> listaVehiculos)
+	public static void agregarTablaVehiculosDocumento(Document document, List<Vehiculo> listaVehiculos)
 			throws DocumentException {
 		Font font = new Font(FontFamily.HELVETICA, 14, FontStyle.BOLD.ordinal());
 		Font fontCelda = new Font(FontFamily.HELVETICA, 13.5f);

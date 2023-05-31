@@ -111,7 +111,8 @@ public class GestionClientesController {
 		}
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../view/accionesCliente.fxml"));
-		loader.setController(new AccionesClienteController(cliente, () -> superiorPane.setCenter(mainPane)));
+		loader.setController(
+				new AccionesClienteController(superiorPane, cliente, () -> superiorPane.setCenter(mainPane)));
 		try {
 			superiorPane.setCenter(loader.load());
 		} catch (IOException e) {
@@ -124,7 +125,7 @@ public class GestionClientesController {
 		actualizarTabla();
 		inicializarValoresColumnas();
 	}
-  
+
 	private Runnable volverRunnable;
 
 	private BorderPane superiorPane;

@@ -1,13 +1,10 @@
 package co.edu.uniquindio.concesionariouq.controllers;
 
-import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.concesionariouq.model.Bus;
 import co.edu.uniquindio.concesionariouq.model.EstadoVehiculo;
 import co.edu.uniquindio.concesionariouq.model.TipoCambio;
-import co.edu.uniquindio.concesionariouq.model.Vehiculo;
 import co.edu.uniquindio.concesionariouq.util.FxUtility;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -17,7 +14,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
 public class AgregarBusController{

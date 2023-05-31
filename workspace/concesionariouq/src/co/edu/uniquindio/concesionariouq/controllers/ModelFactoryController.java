@@ -16,6 +16,7 @@ import co.edu.uniquindio.concesionariouq.exceptions.UsuarioNoEncontradoException
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoNoExisteException;
 import co.edu.uniquindio.concesionariouq.exceptions.VehiculoYaExisteException;
 import co.edu.uniquindio.concesionariouq.model.Cliente;
+import co.edu.uniquindio.concesionariouq.model.Compra;
 import co.edu.uniquindio.concesionariouq.model.Concesionario;
 import co.edu.uniquindio.concesionariouq.model.Empleado;
 import co.edu.uniquindio.concesionariouq.model.Vehiculo;
@@ -131,22 +132,32 @@ public class ModelFactoryController {
 		getConcesionario().actualizarImagen(id, imagen);
 		saveData();
 	}
-	
+
 	/**
 	 * Agrega un vehiculo a la lista del concesionario.
+	 * 
 	 * @param vehiculo
 	 * @throws NullException
 	 * @throws AtributosFaltantesException
 	 * @throws VehiculoYaExisteException
 	 */
-	public void agregarVehiculo(Vehiculo vehiculo) throws NullException, AtributosFaltantesException, VehiculoYaExisteException {
-		getConcesionario().agregarVehiculo(vehiculo.getId(), vehiculo);
+	public void agregarVehiculo(Vehiculo vehiculo)
+			throws NullException, AtributosFaltantesException, VehiculoYaExisteException {
+		getConcesionario().agregarVehiculo(vehiculo);
+		saveData();
 	}
 
 	public void venderVehiculoACliente(String idCliente, Venta venta)
 			throws NullException, VehiculoYaExisteException, AtributosFaltantesException, UsuarioNoEncontradoException,
 			TransaccionYaExisteException, VehiculoNoExisteException {
 		getConcesionario().venderVehiculoACliente(idCliente, venta);
+		saveData();
+	}
+
+	public void comprarVehiculoDeCliente(String id, Compra compra)
+			throws NullException, VehiculoYaExisteException, AtributosFaltantesException, UsuarioNoEncontradoException,
+			TransaccionYaExisteException, VehiculoNoExisteException {
+		getConcesionario().comprarVehiculoDeCliente(id, compra);
 		saveData();
 	}
 
